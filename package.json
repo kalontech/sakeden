@@ -24,6 +24,10 @@
     "@types/node": "^13.7.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.15",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.1",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
   },
@@ -38,7 +42,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint:app": "eslint \"src/**/*.tsx\"",
+    "lint:gatsby": "eslint \"gatsby-*.js\""
   },
   "repository": {
     "type": "git",

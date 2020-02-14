@@ -1,37 +1,79 @@
 /** @jsx jsx */
 
 import { Link } from "gatsby"
-import React from "react"
-import { MdShoppingCart } from "react-icons/md"
-import { Box, Container, Flex, jsx } from "theme-ui"
+import React, { useContext } from "react"
+import { MdMenu, MdShoppingCart } from "react-icons/md"
+import { useScrollYPosition } from "react-use-scroll-position"
+import { Box, Button, Container, Flex, jsx } from "theme-ui"
+
+import AppContext from "../app-context"
 
 interface HeaderProps {
-  title?: string
+  logo?: React.ReactNode
 }
 
-const Header: React.FC<HeaderProps> = ({ title = "" }) => (
-  <Box bg="primary">
-    <Container>
-      <Flex
+const Header: React.FC<HeaderProps> = ({ logo }) => {
+  const { setIsCartVisible, setIsMenuVisible } = useContext(AppContext)
+  const scrollY = useScrollYPosition()
+
+  const isSticky = scrollY > 0
+
+  return (
+    <Box pt="100px">
+      <Box
+        bg="secondary"
         sx={{
-          alignItems: "center",
-          height: "80px",
-          justifyContent: "space-between",
+          border: "1px solid #eee",
+          boxShadow: isSticky ? "0px 3px 5px 1px rgba(0, 0, 0, 0.1)" : "none",
+          left: 0,
+          position: "fixed",
+          right: 0,
+          top: 0,
+          transition: "100ms ease-in-out",
+          zIndex: 100,
         }}
       >
-        <Box>
-          <Link to="/" sx={{ color: "inherit" }}>
-            {title}
-          </Link>
-        </Box>
-        <Box>
-          <Link to="/cart" sx={{ color: "inherit" }}>
-            <MdShoppingCart size="24px" />
-          </Link>
-        </Box>
-      </Flex>
-    </Container>
-  </Box>
-)
+        <Container>
+          <Flex
+            sx={{
+              alignItems: "center",
+              height: isSticky ? "70px" : "100px",
+              justifyContent: "space-between",
+              transition: "100ms ease-in-out",
+            }}
+          >
+            <Box>
+              <Link to="/" sx={{ color: "inherit", textDecoration: "none" }}>
+                {logo}
+              </Link>
+            </Box>
+            <Flex>
+              <Box>
+                <Button
+                  onClick={(): void => {
+                    setIsCartVisible(true)
+                  }}
+                  variant="iconInverted"
+                >
+                  <MdShoppingCart />
+                </Button>
+              </Box>
+              <Box>
+                <Button
+                  onClick={(): void => {
+                    setIsMenuVisible(true)
+                  }}
+                  variant="iconInverted"
+                >
+                  <MdMenu />
+                </Button>
+              </Box>
+            </Flex>
+          </Flex>
+        </Container>
+      </Box>
+    </Box>
+  )
+}
 
 export default Header

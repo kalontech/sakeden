@@ -1,44 +1,100 @@
 /* eslint-disable sort-keys */
 
 const heading = {
-  color: "text",
   fontFamily: "heading",
   lineHeight: "heading",
   fontWeight: "heading",
 }
 
-const theme = {
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fonts: {
-    body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: "inherit",
-    monospace: "Menlo, monospace",
+const button = {
+  ":hover": {
+    opacity: "0.8",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
-  fontWeights: {
-    body: 400,
-    heading: 700,
-    bold: 700,
+  alignItems: "center",
+  borderRadius: 0,
+  cursor: "pointer",
+  display: "flex",
+  fontFamily: "heading",
+  height: "60px",
+  justifyContent: "center",
+  outline: "none",
+  transition: "200ms ease-in-out",
+}
+
+const theme = {
+  buttons: {
+    primary: {
+      ...button,
+      bg: "primary",
+    },
+    secondary: {
+      ...button,
+      bg: "secondary",
+      borderColor: "primary",
+      borderStyle: "solid",
+      borderWidth: "2px",
+      color: "primary",
+    },
+    icon: {
+      ...button,
+      bg: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
+    iconBordered: {
+      ...button,
+      bg: "secondary",
+      borderColor: "primary",
+      borderStyle: "solid",
+      borderWidth: "2px",
+      color: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
+    iconInverted: {
+      ...button,
+      bg: "secondary",
+      color: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
   },
   colors: {
-    text: "#000",
-    background: "#fff",
-    primary: "#222fff",
-    secondary: "#30c",
-    muted: "#f6f6f6",
+    background: "#ffffff",
+    gray: "#8b8c8e",
+    primary: "#000000",
+    secondary: "#ffffff",
+    text: "#000000",
   },
-  sizes: {
-    container: "1200px",
+  fontSizes: [12, 19, 30, 48, 52, 98],
+  fontWeights: {
+    light: 200,
+    body: 400,
+    heading: 400,
+  },
+  fonts: {
+    body: "Barlow, sans-serif",
+    heading: "Bebas Neue, sans-serif",
   },
   layout: {
     container: {
       px: 3,
     },
   },
+  sizes: {
+    container: "1200px",
+  },
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
     root: {
       fontFamily: "body",
+      fontSize: 1,
       fontWeight: "body",
     },
   },
@@ -63,9 +119,9 @@ const theme = {
       ...heading,
       fontSize: 1,
     },
-    h6: {
-      ...heading,
-      fontSize: 0,
+    price: {
+      fontWeight: "light",
+      fontSize: 2,
     },
   },
 }

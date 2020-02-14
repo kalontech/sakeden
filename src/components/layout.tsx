@@ -1,28 +1,23 @@
-import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { Container } from "theme-ui"
+import { Box, Container } from "theme-ui"
 
+// @ts-ignore
+import Logo from "../images/logo.svg"
 import Header from "./header"
+import Modals from "./modals"
 
 interface LayoutProps {
   children: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header title={data.site.siteMetadata.title} />
-      <Container>{children}</Container>
+      <Modals />
+      <Header logo={<Logo />} />
+      <Container>
+        <Box py={4}>{children}</Box>
+      </Container>
     </>
   )
 }

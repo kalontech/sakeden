@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
+require("dotenv").config({
+  path: ".env",
+})
+
 module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -27,6 +31,33 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
     "gatsby-plugin-theme-ui",
+    {
+      options: {
+        // accessToken: "a0f3d652ef788ebfcd822c81ed816e23",
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+        apiVersion: "2020-01",
+        // shopName: "kalontech.myshopify.com",
+        shopName: process.env.SHOPIFY_SHOP_NAME,
+      },
+      resolve: "gatsby-source-shopify",
+    },
+    "gatsby-plugin-graphql-codegen",
+    "gatsby-plugin-react-svg",
+    {
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Bebas Neue",
+            },
+            {
+              family: "Barlow",
+            },
+          ],
+        },
+      },
+      resolve: "gatsby-plugin-webfonts",
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // "gatsby-plugin-offline",

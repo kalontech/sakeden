@@ -97,7 +97,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               )}
             </Text>
           ) : (
-            <Text variant="price">SOLD OUT</Text>
+            <Text color="danger" variant="price">
+              SOLD OUT
+            </Text>
           )}
           <Button onClick={handleAddToCart} variant="icon">
             {justAddedToCart ? <MdDone /> : <MdShoppingCart />}

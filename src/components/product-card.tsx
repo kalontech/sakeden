@@ -1,14 +1,12 @@
-/** @jsx jsx */
-
-import { Link } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
-import { Box, Button, Flex, Heading, jsx, Text } from "theme-ui"
+import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
 import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
 import { getPriceFromVariants } from "../utils/price"
+import { InternalLink } from "./link"
 
 interface ProductCardProps {
   node: ShopifyProduct
@@ -38,10 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   }
 
   return (
-    <Link
-      to={`/products/${node.handle}`}
-      sx={{ color: "inherit", textDecoration: "none" }}
-    >
+    <InternalLink href={`/products/${node.handle}`}>
       <Flex
         bg="muted"
         p={3}
@@ -106,7 +101,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
           </Button>
         </Flex>
       </Flex>
-    </Link>
+    </InternalLink>
   )
 }
 

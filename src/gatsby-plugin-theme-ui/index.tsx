@@ -68,7 +68,7 @@ const theme = {
   colors: {
     background: "#ffffff",
     danger: "#CC3333",
-    gray: "#8b8c8e",
+    gray: "#abacae",
     primary: "#000000",
     secondary: "#ffffff",
     text: "#000000",

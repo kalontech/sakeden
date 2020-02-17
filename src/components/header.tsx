@@ -1,12 +1,10 @@
-/** @jsx jsx */
-
-import { Link } from "gatsby"
 import React, { useContext } from "react"
 import { MdMenu, MdShoppingCart } from "react-icons/md"
 import { useScrollYPosition } from "react-use-scroll-position"
-import { Box, Button, Container, Flex, jsx } from "theme-ui"
+import { Box, Button, Container, Flex } from "theme-ui"
 
 import AppContext from "../app-context"
+import { InternalLink } from "./link"
 
 interface HeaderProps {
   logo?: React.ReactNode
@@ -43,9 +41,7 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
             }}
           >
             <Box>
-              <Link to="/" sx={{ color: "inherit", textDecoration: "none" }}>
-                {logo}
-              </Link>
+              <InternalLink href="/">{logo}</InternalLink>
             </Box>
             <Flex>
               <Box>

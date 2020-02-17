@@ -7,25 +7,27 @@ import AppContext from "../app-context"
 import CartPopup from "./cart-popup"
 import MenuPopup from "./menu-popup"
 
-const modalStyles = {
-  content: {
-    backgroundColor: "transparent",
-    border: "none",
-    borderRadius: 0,
-    bottom: "unset",
-    left: "unset",
-    maxHeight: "100vh",
-    padding: 0,
-    right: "unset",
-    top: "unset",
-  },
-  overlay: {
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, .5)",
-    display: "flex",
-    justifyContent: "center",
-    zIndex: 200,
-  },
+const getModalStyles = (x = "center", y = "center"): Modal.Styles => {
+  return {
+    content: {
+      backgroundColor: "transparent",
+      border: "none",
+      borderRadius: 0,
+      bottom: "unset",
+      left: "unset",
+      maxHeight: "100vh",
+      padding: 0,
+      right: "unset",
+      top: "unset",
+    },
+    overlay: {
+      alignItems: y,
+      backgroundColor: "rgba(0, 0, 0, .5)",
+      display: "flex",
+      justifyContent: x,
+      zIndex: 200,
+    },
+  }
 }
 
 const Modals: React.FC = () => {
@@ -45,7 +47,7 @@ const Modals: React.FC = () => {
         onRequestClose={(): void => {
           setIsCartVisible(false)
         }}
-        style={modalStyles}
+        style={getModalStyles("center", "center")}
       >
         <CartPopup />
       </Modal>
@@ -56,7 +58,7 @@ const Modals: React.FC = () => {
         onRequestClose={(): void => {
           setIsMenuVisible(false)
         }}
-        style={modalStyles}
+        style={getModalStyles("flex-end", "center")}
       >
         <MenuPopup />
       </Modal>

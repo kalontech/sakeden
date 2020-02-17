@@ -1,7 +1,7 @@
 import "./layout.css"
 
 import React from "react"
-import { Box, Container } from "theme-ui"
+import { Container } from "theme-ui"
 
 // @ts-ignore
 import Logo from "../images/logo.svg"

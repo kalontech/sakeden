@@ -1,3 +1,5 @@
+import "./layout.css"
+
 import React from "react"
 import { Box, Container } from "theme-ui"
 
@@ -15,8 +17,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <Modals />
       <Header logo={<Logo />} />
-      <Container>
-        <Box py={4}>{children}</Box>
+      <Container py={4} sx={{ flex: 1 }}>
+        {children}
       </Container>
     </>
   )

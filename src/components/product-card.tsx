@@ -2,7 +2,7 @@
 
 import { Link } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
-import React, { useContext, useState } from "react"
+import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, jsx, Text } from "theme-ui"
 
@@ -17,6 +17,25 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const { addLineItems } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
+
+  const handleAddToCart = (e: SyntheticEvent): void => {
+    if (node.variants && node.variants[0] && node.variants[0].shopifyId) {
+      e.preventDefault()
+
+      addLineItems([
+        {
+          quantity: 1,
+          variantId: node.variants[0].shopifyId,
+        },
+      ])
+
+      setJustAddedToCart(true)
+
+      setTimeout(() => {
+        setJustAddedToCart(false)
+      }, 3000)
+    }
+  }
 
   return (
     <Link
@@ -70,35 +89,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
           mt={2}
           sx={{ alignItems: "center", justifyContent: "space-between" }}
         >
-          <Text variant="price">
-            {getPriceFromVariants(node.variants as ShopifyProductVariant[], 0)}
-          </Text>
-          <Button
-            variant="icon"
-            onClick={(e: any): void => {
-              if (
-                node.variants &&
-                node.variants[0] &&
-                node.variants[0].shopifyId
-              ) {
-                e.preventDefault()
-
-                addLineItems([
-                  {
-                    quantity: 1,
-                    // eslint-disable-next-line @typescript-eslint/camelcase
-                    variantId: node.variants[0].shopifyId,
-                  },
-                ])
-
-                setJustAddedToCart(true)
-
-                setTimeout(() => {
-                  setJustAddedToCart(false)
-                }, 3000)
-              }
-            }}
-          >
+          {node.availableForSale ? (
+            <Text variant="price">
+              {getPriceFromVariants(
+                node.variants as ShopifyProductVariant[],
+                0,
+              )}
+            </Text>
+          ) : (
+            <Text variant="price">SOLD OUT</Text>
+          )}
+          <Button onClick={handleAddToCart} variant="icon">
             {justAddedToCart ? <MdDone /> : <MdShoppingCart />}
           </Button>
         </Flex>

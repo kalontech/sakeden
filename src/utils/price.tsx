@@ -46,6 +46,11 @@ export const getPriceFromVariants = (
     }
   }
 
+  if (minAmount === Number.MAX_VALUE || maxAmount === Number.MIN_VALUE) {
+    minAmount = 0
+    maxAmount = 0
+  }
+
   if (minAmount === maxAmount) {
     return formatPrice(minAmount, currencyCode, fractionDigits)
   }

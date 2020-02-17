@@ -88,7 +88,7 @@ const theme = {
     },
   },
   sizes: {
-    container: "1200px",
+    container: "1280px",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {

@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useContext } from "react"
+import React from "react"
 import { Grid, Heading } from "theme-ui"
 
 import { ProductsPageQuery, ShopifyProduct } from "../../graphql-types"
-import AppContext from "../app-context"
 import Layout from "../components/layout"
 import ProductCard from "../components/product-card"
 import SEO from "../components/seo"
@@ -15,6 +14,7 @@ const ProductsPage: React.FC = () => {
         allShopifyProduct {
           edges {
             node {
+              availableForSale
               description
               handle
               images {

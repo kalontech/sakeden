@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const IndexPage: React.FC = () => {
   useEffect(() => {
-    window.location.replace("/products")
+    window.location.replace("/products/sakeden-sub-club")
   }, [])
 
   return (

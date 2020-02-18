@@ -1,3 +1,4 @@
+import "react-day-picker/lib/style.css"
 import "./layout.css"
 
 import React from "react"

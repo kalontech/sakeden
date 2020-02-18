@@ -67,8 +67,8 @@ const theme = {
   },
   colors: {
     background: "#ffffff",
-    danger: "#CC3333",
-    gray: "#abacae",
+    danger: "#cc3333",
+    gray: "#cccccc",
     primary: "#000000",
     secondary: "#ffffff",
     text: "#000000",
@@ -82,6 +82,11 @@ const theme = {
   fonts: {
     body: "Barlow, sans-serif",
     heading: "Bebas Neue, sans-serif",
+  },
+  forms: {
+    textarea: {
+      borderColor: "gray",
+    },
   },
   layout: {
     container: {

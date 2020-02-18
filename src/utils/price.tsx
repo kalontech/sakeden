@@ -15,6 +15,7 @@ export const formatPrice = (
 export const getPriceFromVariants = (
   variants: ShopifyProductVariant[],
   fractionDigits = 2,
+  subscriptionInterval = 0,
 ): string => {
   let currencyCode = "USD"
   let minAmount = Number.MAX_VALUE
@@ -51,10 +52,26 @@ export const getPriceFromVariants = (
     maxAmount = 0
   }
 
-  if (minAmount === maxAmount) {
-    return formatPrice(minAmount, currencyCode, fractionDigits)
+  let formattedPrice = ""
+
+  if (subscriptionInterval > 0) {
+    formattedPrice = " / month"
+
+    minAmount /= subscriptionInterval
+    maxAmount /= subscriptionInterval
   }
 
-  // eslint-disable-next-line prettier/prettier
-  return `${formatPrice(minAmount,currencyCode, fractionDigits)} - ${formatPrice(maxAmount, currencyCode, fractionDigits)}`
+  if (minAmount === maxAmount) {
+    formattedPrice =
+      formatPrice(minAmount, currencyCode, fractionDigits) + formattedPrice
+  } else {
+    formattedPrice =
+      `${formatPrice(minAmount, currencyCode, fractionDigits)} - ${formatPrice(
+        maxAmount,
+        currencyCode,
+        fractionDigits,
+      )}` + formatPrice
+  }
+
+  return formattedPrice
 }

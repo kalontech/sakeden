@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 
 require("dotenv").config({
-  path: ".env",
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -33,10 +33,8 @@ module.exports = {
     "gatsby-plugin-theme-ui",
     {
       options: {
-        // accessToken: "a0f3d652ef788ebfcd822c81ed816e23",
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
         apiVersion: "2020-01",
-        // shopName: "kalontech.myshopify.com",
         shopName: process.env.SHOPIFY_SHOP_NAME,
       },
       resolve: "gatsby-source-shopify",

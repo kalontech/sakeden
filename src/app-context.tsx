@@ -3,9 +3,8 @@ import React, { createContext, useEffect, useState } from "react"
 import Client from "shopify-buy"
 
 const client = Client.buildClient({
-  domain: process.env.SHOPIFY_SHOP_NAME || "sakaguranow.myshopify.com",
-  storefrontAccessToken:
-    process.env.SHOPIFY_ACCESS_TOKEN || "7a20e560f4c2abc01efca665556207c6",
+  domain: process.env.SHOPIFY_SHOP_NAME,
+  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
 })
 
 export interface AppContextProps {
@@ -13,9 +12,13 @@ export interface AppContextProps {
   checkout?: Client.Cart
   client: Client.Client
   isCartVisible: boolean
+  isCheckoutVisible: boolean
   isMenuVisible: boolean
+  isSubscribeVisible: boolean
   setIsCartVisible: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCheckoutVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
+  setIsSubscribeVisible: React.Dispatch<React.SetStateAction<boolean>>
   updateLineItems: (lineItemsToUpdate: any[]) => Promise<void>
 }
 
@@ -30,7 +33,9 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 }) => {
   const [checkout, setCheckout] = useState<Client.Cart | undefined>(undefined)
   const [isCartVisible, setIsCartVisible] = useState(false)
+  const [isCheckoutVisible, setIsCheckoutVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
+  const [isSubscribeVisible, setIsSubscribeVisible] = useState(false)
 
   useEffect(() => {
     fetchCheckout()
@@ -87,9 +92,13 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
         checkout,
         client,
         isCartVisible,
+        isCheckoutVisible,
         isMenuVisible,
+        isSubscribeVisible,
         setIsCartVisible,
+        setIsCheckoutVisible,
         setIsMenuVisible,
+        setIsSubscribeVisible,
         updateLineItems,
       }}
     >

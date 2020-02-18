@@ -5,7 +5,9 @@ import Modal from "react-modal"
 
 import AppContext from "../app-context"
 import CartPopup from "./cart-popup"
+import CheckoutPopup from "./checkout-popup"
 import MenuPopup from "./menu-popup"
+import SubscribePopup from "./subscribe-popup"
 
 const getModalStyles = (x = "center", y = "center"): Modal.Styles => {
   return {
@@ -33,9 +35,13 @@ const getModalStyles = (x = "center", y = "center"): Modal.Styles => {
 const Modals: React.FC = () => {
   const {
     isCartVisible,
+    isCheckoutVisible,
     isMenuVisible,
+    isSubscribeVisible,
     setIsCartVisible,
+    setIsCheckoutVisible,
     setIsMenuVisible,
+    setIsSubscribeVisible,
   } = useContext(AppContext)
 
   return (
@@ -53,6 +59,17 @@ const Modals: React.FC = () => {
       </Modal>
       <Modal
         closeTimeoutMS={100}
+        contentLabel="Checkout"
+        isOpen={isCheckoutVisible}
+        onRequestClose={(): void => {
+          setIsCheckoutVisible(false)
+        }}
+        style={getModalStyles("center", "center")}
+      >
+        <CheckoutPopup />
+      </Modal>
+      <Modal
+        closeTimeoutMS={100}
         contentLabel="Menu"
         isOpen={isMenuVisible}
         onRequestClose={(): void => {
@@ -61,6 +78,17 @@ const Modals: React.FC = () => {
         style={getModalStyles("flex-end", "center")}
       >
         <MenuPopup />
+      </Modal>
+      <Modal
+        closeTimeoutMS={100}
+        contentLabel="Subscribe"
+        isOpen={isSubscribeVisible}
+        onRequestClose={(): void => {
+          setIsSubscribeVisible(false)
+        }}
+        style={getModalStyles("center", "center")}
+      >
+        <SubscribePopup />
       </Modal>
     </>
   )

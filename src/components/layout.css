@@ -3,3 +3,9 @@ html, body, #___gatsby, #gatsby-focus-wrapper {
   flex-direction: column;
   height: 100%;
 }
+
+.DayPicker-Month {
+  margin: unset;
+  margin-top: unset;
+  margin-right: 1em;
+}

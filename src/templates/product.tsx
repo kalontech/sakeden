@@ -1,5 +1,6 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
+import moment from "moment"
 import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
@@ -14,8 +15,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const shopifyProduct = (props.pageResources as any).json.data
     .shopifyProduct as ShopifyProduct
 
-  const { addLineItems } = useContext(AppContext)
+  const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
+
+  // Determine whether this product is subscription.
+  const isSubscription = shopifyProduct.title!.includes("Sub")
 
   const handleAddToCart = (e: SyntheticEvent): void => {
     if (
@@ -38,6 +42,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         setJustAddedToCart(false)
       }, 3000)
     }
+  }
+
+  const handleSubscribe = (): void => {
+    setIsSubscribeVisible(true)
   }
 
   return (
@@ -86,35 +94,56 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 />
               )}
             </Box>
-            <Flex mt={4}>
-              <Button sx={{ flex: 1 }} variant="secondary">
-                {getPriceFromVariants(
-                  shopifyProduct.variants as ShopifyProductVariant[],
-                  0,
-                )}
-              </Button>
-              <Box p={2} />
-              <Button
-                disabled={!shopifyProduct.availableForSale}
-                onClick={handleAddToCart}
-                sx={{ flex: 1 }}
-              >
-                {shopifyProduct.availableForSale ? (
-                  <>
-                    <Box mr={1}>
-                      {justAddedToCart ? (
-                        <MdDone fontSize="28px" />
-                      ) : (
-                        <MdShoppingCart fontSize="28px" />
-                      )}
-                    </Box>
-                    <Text>Add to Cart</Text>
-                  </>
-                ) : (
-                  <Text>Sold out</Text>
-                )}
-              </Button>
-            </Flex>
+            {isSubscription ? (
+              <Box mt={2}>
+                <Text sx={{ fontStyle: "italic" }}>
+                  Automatically renews every 3 month
+                </Text>
+                <Flex mt={2}>
+                  <Button sx={{ flex: 1 }} variant="secondary">
+                    {getPriceFromVariants(
+                      shopifyProduct.variants as ShopifyProductVariant[],
+                      0,
+                      3,
+                    )}
+                  </Button>
+                  <Box p={2} />
+                  <Button onClick={handleSubscribe} sx={{ flex: 1 }}>
+                    <Text>Subscribe</Text>
+                  </Button>
+                </Flex>
+              </Box>
+            ) : (
+              <Flex mt={4}>
+                <Button sx={{ flex: 1 }} variant="secondary">
+                  {getPriceFromVariants(
+                    shopifyProduct.variants as ShopifyProductVariant[],
+                    0,
+                  )}
+                </Button>
+                <Box p={2} />
+                <Button
+                  disabled={!shopifyProduct.availableForSale}
+                  onClick={handleAddToCart}
+                  sx={{ flex: 1 }}
+                >
+                  {shopifyProduct.availableForSale ? (
+                    <>
+                      <Box mr={1}>
+                        {justAddedToCart ? (
+                          <MdDone fontSize="28px" />
+                        ) : (
+                          <MdShoppingCart fontSize="28px" />
+                        )}
+                      </Box>
+                      <Text>Add to Cart</Text>
+                    </>
+                  ) : (
+                    <Text>Sold out</Text>
+                  )}
+                </Button>
+              </Flex>
+            )}
           </Flex>
           <Box
             pl={5}

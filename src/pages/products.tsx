@@ -11,7 +11,7 @@ const ProductsPage: React.FC = () => {
   const { allShopifyProduct } = useStaticQuery<ProductsPageQuery>(
     graphql`
       query ProductsPage {
-        allShopifyProduct {
+        allShopifyProduct(filter: { title: { regex: "/^((?!Sub).)*$/" } }) {
           edges {
             node {
               availableForSale

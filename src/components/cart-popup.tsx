@@ -1,3 +1,4 @@
+import moment from "moment"
 import React, { useContext } from "react"
 import { IoMdAdd, IoMdClose, IoMdRemove, IoMdTrash } from "react-icons/io"
 import { Box, Button, Flex, Heading, Image, Text } from "theme-ui"
@@ -7,7 +8,12 @@ import AppContext from "../app-context"
 import { getPriceFromVariants } from "../utils/price"
 
 const CartPopup: React.FC = () => {
-  const { checkout, setIsCartVisible, updateLineItems } = useContext(AppContext)
+  const {
+    checkout,
+    setIsCheckoutVisible,
+    setIsCartVisible,
+    updateLineItems,
+  } = useContext(AppContext)
 
   const setQuantity = (lineItemId: string, quantity: number): void => {
     updateLineItems([
@@ -163,7 +169,11 @@ const CartPopup: React.FC = () => {
         <Box p={2} />
         <Button
           onClick={(): void => {
-            window.open(checkout.webUrl, "_newtab")
+            setIsCartVisible(false)
+
+            setTimeout(() => {
+              setIsCheckoutVisible(true)
+            }, 100)
           }}
           variant="primary"
           sx={{ flex: 1 }}

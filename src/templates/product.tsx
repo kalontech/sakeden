@@ -100,7 +100,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   Automatically renews every 3 month
                 </Text>
                 <Flex mt={2}>
-                  <Button sx={{ flex: 1 }} variant="secondary">
+                  <Button
+                    sx={{ flex: 1, fontSize: "28px" }}
+                    variant="secondary"
+                  >
                     {getPriceFromVariants(
                       shopifyProduct.variants as ShopifyProductVariant[],
                       0,
@@ -115,7 +118,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               </Box>
             ) : (
               <Flex mt={4}>
-                <Button sx={{ flex: 1 }} variant="secondary">
+                <Button sx={{ flex: 1, fontSize: "30px" }} variant="secondary">
                   {getPriceFromVariants(
                     shopifyProduct.variants as ShopifyProductVariant[],
                     0,

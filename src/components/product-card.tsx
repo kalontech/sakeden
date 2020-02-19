@@ -16,6 +16,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const { addLineItems } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
 
+  const descriptionMetafield =
+    node.metafields &&
+    node.metafields.find(
+      metafield => metafield && metafield.key === "One-Line-Description",
+    )
+  const description =
+    (descriptionMetafield && descriptionMetafield.value) || node.description
+
   const handleAddToCart = (e: SyntheticEvent): void => {
     if (node.variants && node.variants[0] && node.variants[0].shopifyId) {
       e.preventDefault()
@@ -55,7 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
             {node.title}
           </Heading>
         )}
-        {node.description && (
+        {description && (
           <Text
             style={{
               WebkitBoxOrient: "vertical",
@@ -65,7 +73,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               textOverflow: "ellipsis",
             }}
           >
-            {node.description}
+            {description}
           </Text>
         )}
         {node.images && node.images[0] && (

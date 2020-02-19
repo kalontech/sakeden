@@ -56,14 +56,19 @@ module.exports = {
       },
       resolve: "gatsby-plugin-webfonts",
     },
+    {
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+      },
+      resolve: "gatsby-plugin-mailchimp",
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // "gatsby-plugin-offline",
   ],
   siteMetadata: {
-    author: "@gatsbyjs",
-    description:
-      "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
-    title: "Gatsby Default Starter",
+    author: "@andriytsaryov",
+    description: "",
+    title: "Sakeden",
   },
 }

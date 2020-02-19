@@ -18,6 +18,7 @@ const button = {
   height: "60px",
   justifyContent: "center",
   outline: "none",
+  padding: "0 24px",
   transition: "200ms ease-in-out",
 }
 
@@ -26,14 +27,6 @@ const theme = {
     primary: {
       ...button,
       bg: "primary",
-    },
-    secondary: {
-      ...button,
-      bg: "secondary",
-      borderColor: "primary",
-      borderStyle: "solid",
-      borderWidth: "2px",
-      color: "primary",
     },
     icon: {
       ...button,
@@ -64,6 +57,14 @@ const theme = {
       padding: "0px",
       width: "40px",
     },
+    secondary: {
+      ...button,
+      bg: "secondary",
+      borderColor: "primary",
+      borderStyle: "solid",
+      borderWidth: "2px",
+      color: "primary",
+    },
   },
   colors: {
     background: "#ffffff",
@@ -84,6 +85,14 @@ const theme = {
     heading: "Bebas Neue, sans-serif",
   },
   forms: {
+    borderless: {
+      borderColor: "transparent",
+      outline: "none",
+      padding: "8px 0",
+    },
+    input: {
+      borderColor: "gray",
+    },
     textarea: {
       borderColor: "gray",
     },

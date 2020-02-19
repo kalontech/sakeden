@@ -27,10 +27,6 @@ const IndexPage: React.FC = () => {
                 }
                 originalSrc
               }
-              metafields {
-                key
-                value
-              }
               shopifyId
               title
               variants {

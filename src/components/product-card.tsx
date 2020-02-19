@@ -16,13 +16,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const { addLineItems } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
 
-  const descriptionMetafield =
-    node.metafields &&
-    node.metafields.find(
-      metafield => metafield && metafield.key === "One-Line-Description",
-    )
-  const description =
-    (descriptionMetafield && descriptionMetafield.value) || node.description
+  // const descriptionMetafield =
+  //   node.metafields &&
+  //   node.metafields.find(
+  //     metafield => metafield && metafield.key === "One-Line-Description",
+  //   )
+  // const description =
+  //   (descriptionMetafield && descriptionMetafield.value) || node.description
+  const description = node.description
 
   const handleAddToCart = (e: SyntheticEvent): void => {
     if (node.variants && node.variants[0] && node.variants[0].shopifyId) {

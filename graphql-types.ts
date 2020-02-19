@@ -1299,18 +1299,14 @@ export type Query = {
   allImageSharp: ImageSharpConnection
   shopifyProductOption?: Maybe<ShopifyProductOption>
   allShopifyProductOption: ShopifyProductOptionConnection
-  shopifyProductMetafield?: Maybe<ShopifyProductMetafield>
-  allShopifyProductMetafield: ShopifyProductMetafieldConnection
   shopifyProductVariant?: Maybe<ShopifyProductVariant>
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
-  shopifyCollection?: Maybe<ShopifyCollection>
-  allShopifyCollection: ShopifyCollectionConnection
-  shopifyPage?: Maybe<ShopifyPage>
-  allShopifyPage: ShopifyPageConnection
   shopifyBlog?: Maybe<ShopifyBlog>
   allShopifyBlog: ShopifyBlogConnection
+  shopifyCollection?: Maybe<ShopifyCollection>
+  allShopifyCollection: ShopifyCollectionConnection
   site?: Maybe<Site>
   allSite: SiteConnection
   sitePlugin?: Maybe<SitePlugin>
@@ -1475,25 +1471,6 @@ export type QueryAllShopifyProductOptionArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyProductMetafieldArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  key?: Maybe<StringQueryOperatorInput>
-  namespace?: Maybe<StringQueryOperatorInput>
-  value?: Maybe<StringQueryOperatorInput>
-  valueType?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyProductMetafieldArgs = {
-  filter?: Maybe<ShopifyProductMetafieldFilterInput>
-  sort?: Maybe<ShopifyProductMetafieldSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyProductVariantArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -1531,7 +1508,6 @@ export type QueryShopifyProductArgs = {
   descriptionHtml?: Maybe<StringQueryOperatorInput>
   handle?: Maybe<StringQueryOperatorInput>
   images?: Maybe<ShopifyProductImagesFilterListInput>
-  onlineStoreUrl?: Maybe<StringQueryOperatorInput>
   priceRange?: Maybe<ShopifyProductPriceRangeFilterInput>
   productType?: Maybe<StringQueryOperatorInput>
   publishedAt?: Maybe<DateQueryOperatorInput>
@@ -1540,55 +1516,12 @@ export type QueryShopifyProductArgs = {
   vendor?: Maybe<StringQueryOperatorInput>
   shopifyId?: Maybe<StringQueryOperatorInput>
   variants?: Maybe<ShopifyProductVariantFilterListInput>
-  metafields?: Maybe<ShopifyProductMetafieldFilterListInput>
   options?: Maybe<ShopifyProductOptionFilterListInput>
 }
 
 export type QueryAllShopifyProductArgs = {
   filter?: Maybe<ShopifyProductFilterInput>
   sort?: Maybe<ShopifyProductSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
-export type QueryShopifyCollectionArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  description?: Maybe<StringQueryOperatorInput>
-  descriptionHtml?: Maybe<StringQueryOperatorInput>
-  handle?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-  products?: Maybe<ShopifyProductFilterListInput>
-}
-
-export type QueryAllShopifyCollectionArgs = {
-  filter?: Maybe<ShopifyCollectionFilterInput>
-  sort?: Maybe<ShopifyCollectionSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
-export type QueryShopifyPageArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  handle?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
-  body?: Maybe<StringQueryOperatorInput>
-  bodySummary?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyPageArgs = {
-  filter?: Maybe<ShopifyPageFilterInput>
-  sort?: Maybe<ShopifyPageSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -1606,6 +1539,26 @@ export type QueryShopifyBlogArgs = {
 export type QueryAllShopifyBlogArgs = {
   filter?: Maybe<ShopifyBlogFilterInput>
   sort?: Maybe<ShopifyBlogSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryShopifyCollectionArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+  descriptionHtml?: Maybe<StringQueryOperatorInput>
+  handle?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyCollectionArgs = {
+  filter?: Maybe<ShopifyCollectionFilterInput>
+  sort?: Maybe<ShopifyCollectionSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -1814,7 +1767,6 @@ export type ShopifyCollection = Node & {
   title?: Maybe<Scalars["String"]>
   updatedAt?: Maybe<Scalars["Date"]>
   shopifyId?: Maybe<Scalars["String"]>
-  products?: Maybe<Array<Maybe<ShopifyProduct>>>
 }
 
 export type ShopifyCollectionUpdatedAtArgs = {
@@ -1942,170 +1894,6 @@ export type ShopifyCollectionFieldsEnum =
   | "title"
   | "updatedAt"
   | "shopifyId"
-  | "products"
-  | "products___id"
-  | "products___parent___id"
-  | "products___parent___parent___id"
-  | "products___parent___parent___children"
-  | "products___parent___children"
-  | "products___parent___children___id"
-  | "products___parent___children___children"
-  | "products___parent___internal___content"
-  | "products___parent___internal___contentDigest"
-  | "products___parent___internal___description"
-  | "products___parent___internal___fieldOwners"
-  | "products___parent___internal___ignoreType"
-  | "products___parent___internal___mediaType"
-  | "products___parent___internal___owner"
-  | "products___parent___internal___type"
-  | "products___children"
-  | "products___children___id"
-  | "products___children___parent___id"
-  | "products___children___parent___children"
-  | "products___children___children"
-  | "products___children___children___id"
-  | "products___children___children___children"
-  | "products___children___internal___content"
-  | "products___children___internal___contentDigest"
-  | "products___children___internal___description"
-  | "products___children___internal___fieldOwners"
-  | "products___children___internal___ignoreType"
-  | "products___children___internal___mediaType"
-  | "products___children___internal___owner"
-  | "products___children___internal___type"
-  | "products___internal___content"
-  | "products___internal___contentDigest"
-  | "products___internal___description"
-  | "products___internal___fieldOwners"
-  | "products___internal___ignoreType"
-  | "products___internal___mediaType"
-  | "products___internal___owner"
-  | "products___internal___type"
-  | "products___availableForSale"
-  | "products___createdAt"
-  | "products___description"
-  | "products___descriptionHtml"
-  | "products___handle"
-  | "products___images"
-  | "products___images___id"
-  | "products___images___originalSrc"
-  | "products___images___localFile___sourceInstanceName"
-  | "products___images___localFile___absolutePath"
-  | "products___images___localFile___relativePath"
-  | "products___images___localFile___extension"
-  | "products___images___localFile___size"
-  | "products___images___localFile___prettySize"
-  | "products___images___localFile___modifiedTime"
-  | "products___images___localFile___accessTime"
-  | "products___images___localFile___changeTime"
-  | "products___images___localFile___birthTime"
-  | "products___images___localFile___root"
-  | "products___images___localFile___dir"
-  | "products___images___localFile___base"
-  | "products___images___localFile___ext"
-  | "products___images___localFile___name"
-  | "products___images___localFile___relativeDirectory"
-  | "products___images___localFile___dev"
-  | "products___images___localFile___mode"
-  | "products___images___localFile___nlink"
-  | "products___images___localFile___uid"
-  | "products___images___localFile___gid"
-  | "products___images___localFile___rdev"
-  | "products___images___localFile___ino"
-  | "products___images___localFile___atimeMs"
-  | "products___images___localFile___mtimeMs"
-  | "products___images___localFile___ctimeMs"
-  | "products___images___localFile___atime"
-  | "products___images___localFile___mtime"
-  | "products___images___localFile___ctime"
-  | "products___images___localFile___birthtime"
-  | "products___images___localFile___birthtimeMs"
-  | "products___images___localFile___blksize"
-  | "products___images___localFile___blocks"
-  | "products___images___localFile___url"
-  | "products___images___localFile___publicURL"
-  | "products___images___localFile___id"
-  | "products___images___localFile___children"
-  | "products___onlineStoreUrl"
-  | "products___priceRange___minVariantPrice___amount"
-  | "products___priceRange___minVariantPrice___currencyCode"
-  | "products___priceRange___maxVariantPrice___amount"
-  | "products___priceRange___maxVariantPrice___currencyCode"
-  | "products___productType"
-  | "products___publishedAt"
-  | "products___title"
-  | "products___updatedAt"
-  | "products___vendor"
-  | "products___shopifyId"
-  | "products___variants"
-  | "products___variants___id"
-  | "products___variants___parent___id"
-  | "products___variants___parent___children"
-  | "products___variants___children"
-  | "products___variants___children___id"
-  | "products___variants___children___children"
-  | "products___variants___internal___content"
-  | "products___variants___internal___contentDigest"
-  | "products___variants___internal___description"
-  | "products___variants___internal___fieldOwners"
-  | "products___variants___internal___ignoreType"
-  | "products___variants___internal___mediaType"
-  | "products___variants___internal___owner"
-  | "products___variants___internal___type"
-  | "products___variants___availableForSale"
-  | "products___variants___image___id"
-  | "products___variants___image___originalSrc"
-  | "products___variants___price"
-  | "products___variants___priceV2___amount"
-  | "products___variants___priceV2___currencyCode"
-  | "products___variants___requiresShipping"
-  | "products___variants___selectedOptions"
-  | "products___variants___selectedOptions___name"
-  | "products___variants___selectedOptions___value"
-  | "products___variants___sku"
-  | "products___variants___title"
-  | "products___variants___weight"
-  | "products___variants___weightUnit"
-  | "products___variants___presentmentPrices___edges"
-  | "products___variants___shopifyId"
-  | "products___metafields"
-  | "products___metafields___id"
-  | "products___metafields___parent___id"
-  | "products___metafields___parent___children"
-  | "products___metafields___children"
-  | "products___metafields___children___id"
-  | "products___metafields___children___children"
-  | "products___metafields___internal___content"
-  | "products___metafields___internal___contentDigest"
-  | "products___metafields___internal___description"
-  | "products___metafields___internal___fieldOwners"
-  | "products___metafields___internal___ignoreType"
-  | "products___metafields___internal___mediaType"
-  | "products___metafields___internal___owner"
-  | "products___metafields___internal___type"
-  | "products___metafields___key"
-  | "products___metafields___namespace"
-  | "products___metafields___value"
-  | "products___metafields___valueType"
-  | "products___metafields___shopifyId"
-  | "products___options"
-  | "products___options___id"
-  | "products___options___parent___id"
-  | "products___options___parent___children"
-  | "products___options___children"
-  | "products___options___children___id"
-  | "products___options___children___children"
-  | "products___options___internal___content"
-  | "products___options___internal___contentDigest"
-  | "products___options___internal___description"
-  | "products___options___internal___fieldOwners"
-  | "products___options___internal___ignoreType"
-  | "products___options___internal___mediaType"
-  | "products___options___internal___owner"
-  | "products___options___internal___type"
-  | "products___options___name"
-  | "products___options___values"
-  | "products___options___shopifyId"
 
 export type ShopifyCollectionFilterInput = {
   id?: Maybe<StringQueryOperatorInput>
@@ -2118,7 +1906,6 @@ export type ShopifyCollectionFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   updatedAt?: Maybe<DateQueryOperatorInput>
   shopifyId?: Maybe<StringQueryOperatorInput>
-  products?: Maybe<ShopifyProductFilterListInput>
 }
 
 export type ShopifyCollectionGroupConnection = {
@@ -2135,175 +1922,6 @@ export type ShopifyCollectionSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
-export type ShopifyPage = Node & {
-  id: Scalars["ID"]
-  parent?: Maybe<Node>
-  children: Array<Node>
-  internal: Internal
-  handle?: Maybe<Scalars["String"]>
-  title?: Maybe<Scalars["String"]>
-  body?: Maybe<Scalars["String"]>
-  bodySummary?: Maybe<Scalars["String"]>
-  updatedAt?: Maybe<Scalars["Date"]>
-  url?: Maybe<Scalars["String"]>
-  shopifyId?: Maybe<Scalars["String"]>
-}
-
-export type ShopifyPageUpdatedAtArgs = {
-  formatString?: Maybe<Scalars["String"]>
-  fromNow?: Maybe<Scalars["Boolean"]>
-  difference?: Maybe<Scalars["String"]>
-  locale?: Maybe<Scalars["String"]>
-}
-
-export type ShopifyPageConnection = {
-  totalCount: Scalars["Int"]
-  edges: Array<ShopifyPageEdge>
-  nodes: Array<ShopifyPage>
-  pageInfo: PageInfo
-  distinct: Array<Scalars["String"]>
-  group: Array<ShopifyPageGroupConnection>
-}
-
-export type ShopifyPageConnectionDistinctArgs = {
-  field: ShopifyPageFieldsEnum
-}
-
-export type ShopifyPageConnectionGroupArgs = {
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-  field: ShopifyPageFieldsEnum
-}
-
-export type ShopifyPageEdge = {
-  next?: Maybe<ShopifyPage>
-  node: ShopifyPage
-  previous?: Maybe<ShopifyPage>
-}
-
-export type ShopifyPageFieldsEnum =
-  | "id"
-  | "parent___id"
-  | "parent___parent___id"
-  | "parent___parent___parent___id"
-  | "parent___parent___parent___children"
-  | "parent___parent___children"
-  | "parent___parent___children___id"
-  | "parent___parent___children___children"
-  | "parent___parent___internal___content"
-  | "parent___parent___internal___contentDigest"
-  | "parent___parent___internal___description"
-  | "parent___parent___internal___fieldOwners"
-  | "parent___parent___internal___ignoreType"
-  | "parent___parent___internal___mediaType"
-  | "parent___parent___internal___owner"
-  | "parent___parent___internal___type"
-  | "parent___children"
-  | "parent___children___id"
-  | "parent___children___parent___id"
-  | "parent___children___parent___children"
-  | "parent___children___children"
-  | "parent___children___children___id"
-  | "parent___children___children___children"
-  | "parent___children___internal___content"
-  | "parent___children___internal___contentDigest"
-  | "parent___children___internal___description"
-  | "parent___children___internal___fieldOwners"
-  | "parent___children___internal___ignoreType"
-  | "parent___children___internal___mediaType"
-  | "parent___children___internal___owner"
-  | "parent___children___internal___type"
-  | "parent___internal___content"
-  | "parent___internal___contentDigest"
-  | "parent___internal___description"
-  | "parent___internal___fieldOwners"
-  | "parent___internal___ignoreType"
-  | "parent___internal___mediaType"
-  | "parent___internal___owner"
-  | "parent___internal___type"
-  | "children"
-  | "children___id"
-  | "children___parent___id"
-  | "children___parent___parent___id"
-  | "children___parent___parent___children"
-  | "children___parent___children"
-  | "children___parent___children___id"
-  | "children___parent___children___children"
-  | "children___parent___internal___content"
-  | "children___parent___internal___contentDigest"
-  | "children___parent___internal___description"
-  | "children___parent___internal___fieldOwners"
-  | "children___parent___internal___ignoreType"
-  | "children___parent___internal___mediaType"
-  | "children___parent___internal___owner"
-  | "children___parent___internal___type"
-  | "children___children"
-  | "children___children___id"
-  | "children___children___parent___id"
-  | "children___children___parent___children"
-  | "children___children___children"
-  | "children___children___children___id"
-  | "children___children___children___children"
-  | "children___children___internal___content"
-  | "children___children___internal___contentDigest"
-  | "children___children___internal___description"
-  | "children___children___internal___fieldOwners"
-  | "children___children___internal___ignoreType"
-  | "children___children___internal___mediaType"
-  | "children___children___internal___owner"
-  | "children___children___internal___type"
-  | "children___internal___content"
-  | "children___internal___contentDigest"
-  | "children___internal___description"
-  | "children___internal___fieldOwners"
-  | "children___internal___ignoreType"
-  | "children___internal___mediaType"
-  | "children___internal___owner"
-  | "children___internal___type"
-  | "internal___content"
-  | "internal___contentDigest"
-  | "internal___description"
-  | "internal___fieldOwners"
-  | "internal___ignoreType"
-  | "internal___mediaType"
-  | "internal___owner"
-  | "internal___type"
-  | "handle"
-  | "title"
-  | "body"
-  | "bodySummary"
-  | "updatedAt"
-  | "url"
-  | "shopifyId"
-
-export type ShopifyPageFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  handle?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
-  body?: Maybe<StringQueryOperatorInput>
-  bodySummary?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type ShopifyPageGroupConnection = {
-  totalCount: Scalars["Int"]
-  edges: Array<ShopifyPageEdge>
-  nodes: Array<ShopifyPage>
-  pageInfo: PageInfo
-  field: Scalars["String"]
-  fieldValue?: Maybe<Scalars["String"]>
-}
-
-export type ShopifyPageSortInput = {
-  fields?: Maybe<Array<Maybe<ShopifyPageFieldsEnum>>>
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>
-}
-
 export type ShopifyProduct = Node & {
   id: Scalars["ID"]
   parent?: Maybe<Node>
@@ -2315,7 +1933,6 @@ export type ShopifyProduct = Node & {
   descriptionHtml?: Maybe<Scalars["String"]>
   handle?: Maybe<Scalars["String"]>
   images?: Maybe<Array<Maybe<ShopifyProductImages>>>
-  onlineStoreUrl?: Maybe<Scalars["String"]>
   priceRange?: Maybe<ShopifyProductPriceRange>
   productType?: Maybe<Scalars["String"]>
   publishedAt?: Maybe<Scalars["Date"]>
@@ -2324,7 +1941,6 @@ export type ShopifyProduct = Node & {
   vendor?: Maybe<Scalars["String"]>
   shopifyId?: Maybe<Scalars["String"]>
   variants?: Maybe<Array<Maybe<ShopifyProductVariant>>>
-  metafields?: Maybe<Array<Maybe<ShopifyProductMetafield>>>
   options?: Maybe<Array<Maybe<ShopifyProductOption>>>
 }
 
@@ -2520,7 +2136,6 @@ export type ShopifyProductFieldsEnum =
   | "images___localFile___internal___mediaType"
   | "images___localFile___internal___owner"
   | "images___localFile___internal___type"
-  | "onlineStoreUrl"
   | "priceRange___minVariantPrice___amount"
   | "priceRange___minVariantPrice___currencyCode"
   | "priceRange___maxVariantPrice___amount"
@@ -2623,50 +2238,6 @@ export type ShopifyProductFieldsEnum =
   | "variants___weightUnit"
   | "variants___presentmentPrices___edges"
   | "variants___shopifyId"
-  | "metafields"
-  | "metafields___id"
-  | "metafields___parent___id"
-  | "metafields___parent___parent___id"
-  | "metafields___parent___parent___children"
-  | "metafields___parent___children"
-  | "metafields___parent___children___id"
-  | "metafields___parent___children___children"
-  | "metafields___parent___internal___content"
-  | "metafields___parent___internal___contentDigest"
-  | "metafields___parent___internal___description"
-  | "metafields___parent___internal___fieldOwners"
-  | "metafields___parent___internal___ignoreType"
-  | "metafields___parent___internal___mediaType"
-  | "metafields___parent___internal___owner"
-  | "metafields___parent___internal___type"
-  | "metafields___children"
-  | "metafields___children___id"
-  | "metafields___children___parent___id"
-  | "metafields___children___parent___children"
-  | "metafields___children___children"
-  | "metafields___children___children___id"
-  | "metafields___children___children___children"
-  | "metafields___children___internal___content"
-  | "metafields___children___internal___contentDigest"
-  | "metafields___children___internal___description"
-  | "metafields___children___internal___fieldOwners"
-  | "metafields___children___internal___ignoreType"
-  | "metafields___children___internal___mediaType"
-  | "metafields___children___internal___owner"
-  | "metafields___children___internal___type"
-  | "metafields___internal___content"
-  | "metafields___internal___contentDigest"
-  | "metafields___internal___description"
-  | "metafields___internal___fieldOwners"
-  | "metafields___internal___ignoreType"
-  | "metafields___internal___mediaType"
-  | "metafields___internal___owner"
-  | "metafields___internal___type"
-  | "metafields___key"
-  | "metafields___namespace"
-  | "metafields___value"
-  | "metafields___valueType"
-  | "metafields___shopifyId"
   | "options"
   | "options___id"
   | "options___parent___id"
@@ -2721,7 +2292,6 @@ export type ShopifyProductFilterInput = {
   descriptionHtml?: Maybe<StringQueryOperatorInput>
   handle?: Maybe<StringQueryOperatorInput>
   images?: Maybe<ShopifyProductImagesFilterListInput>
-  onlineStoreUrl?: Maybe<StringQueryOperatorInput>
   priceRange?: Maybe<ShopifyProductPriceRangeFilterInput>
   productType?: Maybe<StringQueryOperatorInput>
   publishedAt?: Maybe<DateQueryOperatorInput>
@@ -2730,12 +2300,7 @@ export type ShopifyProductFilterInput = {
   vendor?: Maybe<StringQueryOperatorInput>
   shopifyId?: Maybe<StringQueryOperatorInput>
   variants?: Maybe<ShopifyProductVariantFilterListInput>
-  metafields?: Maybe<ShopifyProductMetafieldFilterListInput>
   options?: Maybe<ShopifyProductOptionFilterListInput>
-}
-
-export type ShopifyProductFilterListInput = {
-  elemMatch?: Maybe<ShopifyProductFilterInput>
 }
 
 export type ShopifyProductGroupConnection = {
@@ -2761,166 +2326,6 @@ export type ShopifyProductImagesFilterInput = {
 
 export type ShopifyProductImagesFilterListInput = {
   elemMatch?: Maybe<ShopifyProductImagesFilterInput>
-}
-
-export type ShopifyProductMetafield = Node & {
-  id: Scalars["ID"]
-  parent?: Maybe<Node>
-  children: Array<Node>
-  internal: Internal
-  key?: Maybe<Scalars["String"]>
-  namespace?: Maybe<Scalars["String"]>
-  value?: Maybe<Scalars["String"]>
-  valueType?: Maybe<Scalars["String"]>
-  shopifyId?: Maybe<Scalars["String"]>
-}
-
-export type ShopifyProductMetafieldConnection = {
-  totalCount: Scalars["Int"]
-  edges: Array<ShopifyProductMetafieldEdge>
-  nodes: Array<ShopifyProductMetafield>
-  pageInfo: PageInfo
-  distinct: Array<Scalars["String"]>
-  group: Array<ShopifyProductMetafieldGroupConnection>
-}
-
-export type ShopifyProductMetafieldConnectionDistinctArgs = {
-  field: ShopifyProductMetafieldFieldsEnum
-}
-
-export type ShopifyProductMetafieldConnectionGroupArgs = {
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-  field: ShopifyProductMetafieldFieldsEnum
-}
-
-export type ShopifyProductMetafieldEdge = {
-  next?: Maybe<ShopifyProductMetafield>
-  node: ShopifyProductMetafield
-  previous?: Maybe<ShopifyProductMetafield>
-}
-
-export type ShopifyProductMetafieldFieldsEnum =
-  | "id"
-  | "parent___id"
-  | "parent___parent___id"
-  | "parent___parent___parent___id"
-  | "parent___parent___parent___children"
-  | "parent___parent___children"
-  | "parent___parent___children___id"
-  | "parent___parent___children___children"
-  | "parent___parent___internal___content"
-  | "parent___parent___internal___contentDigest"
-  | "parent___parent___internal___description"
-  | "parent___parent___internal___fieldOwners"
-  | "parent___parent___internal___ignoreType"
-  | "parent___parent___internal___mediaType"
-  | "parent___parent___internal___owner"
-  | "parent___parent___internal___type"
-  | "parent___children"
-  | "parent___children___id"
-  | "parent___children___parent___id"
-  | "parent___children___parent___children"
-  | "parent___children___children"
-  | "parent___children___children___id"
-  | "parent___children___children___children"
-  | "parent___children___internal___content"
-  | "parent___children___internal___contentDigest"
-  | "parent___children___internal___description"
-  | "parent___children___internal___fieldOwners"
-  | "parent___children___internal___ignoreType"
-  | "parent___children___internal___mediaType"
-  | "parent___children___internal___owner"
-  | "parent___children___internal___type"
-  | "parent___internal___content"
-  | "parent___internal___contentDigest"
-  | "parent___internal___description"
-  | "parent___internal___fieldOwners"
-  | "parent___internal___ignoreType"
-  | "parent___internal___mediaType"
-  | "parent___internal___owner"
-  | "parent___internal___type"
-  | "children"
-  | "children___id"
-  | "children___parent___id"
-  | "children___parent___parent___id"
-  | "children___parent___parent___children"
-  | "children___parent___children"
-  | "children___parent___children___id"
-  | "children___parent___children___children"
-  | "children___parent___internal___content"
-  | "children___parent___internal___contentDigest"
-  | "children___parent___internal___description"
-  | "children___parent___internal___fieldOwners"
-  | "children___parent___internal___ignoreType"
-  | "children___parent___internal___mediaType"
-  | "children___parent___internal___owner"
-  | "children___parent___internal___type"
-  | "children___children"
-  | "children___children___id"
-  | "children___children___parent___id"
-  | "children___children___parent___children"
-  | "children___children___children"
-  | "children___children___children___id"
-  | "children___children___children___children"
-  | "children___children___internal___content"
-  | "children___children___internal___contentDigest"
-  | "children___children___internal___description"
-  | "children___children___internal___fieldOwners"
-  | "children___children___internal___ignoreType"
-  | "children___children___internal___mediaType"
-  | "children___children___internal___owner"
-  | "children___children___internal___type"
-  | "children___internal___content"
-  | "children___internal___contentDigest"
-  | "children___internal___description"
-  | "children___internal___fieldOwners"
-  | "children___internal___ignoreType"
-  | "children___internal___mediaType"
-  | "children___internal___owner"
-  | "children___internal___type"
-  | "internal___content"
-  | "internal___contentDigest"
-  | "internal___description"
-  | "internal___fieldOwners"
-  | "internal___ignoreType"
-  | "internal___mediaType"
-  | "internal___owner"
-  | "internal___type"
-  | "key"
-  | "namespace"
-  | "value"
-  | "valueType"
-  | "shopifyId"
-
-export type ShopifyProductMetafieldFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  key?: Maybe<StringQueryOperatorInput>
-  namespace?: Maybe<StringQueryOperatorInput>
-  value?: Maybe<StringQueryOperatorInput>
-  valueType?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type ShopifyProductMetafieldFilterListInput = {
-  elemMatch?: Maybe<ShopifyProductMetafieldFilterInput>
-}
-
-export type ShopifyProductMetafieldGroupConnection = {
-  totalCount: Scalars["Int"]
-  edges: Array<ShopifyProductMetafieldEdge>
-  nodes: Array<ShopifyProductMetafield>
-  pageInfo: PageInfo
-  field: Scalars["String"]
-  fieldValue?: Maybe<Scalars["String"]>
-}
-
-export type ShopifyProductMetafieldSortInput = {
-  fields?: Maybe<Array<Maybe<ShopifyProductMetafieldFieldsEnum>>>
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
 export type ShopifyProductOption = Node & {
@@ -4231,9 +3636,6 @@ export type ProductsPageQuery = {
               }
             >
           >
-        >
-        metafields: Maybe<
-          Array<Maybe<Pick<ShopifyProductMetafield, "key" | "value">>>
         >
         variants: Maybe<
           Array<

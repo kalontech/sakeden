@@ -4,6 +4,7 @@ import React, { useContext } from "react"
 import Modal from "react-modal"
 
 import AppContext from "../app-context"
+import AgeRestrictionPopup from "./age-restriction-popup"
 import CartPopup from "./cart-popup"
 import CheckoutPopup from "./checkout-popup"
 import MenuPopup from "./menu-popup"
@@ -34,6 +35,7 @@ const getModalStyles = (x = "center", y = "center"): Modal.Styles => {
 
 const Modals: React.FC = () => {
   const {
+    isAgeRestrictionVisible,
     isCartVisible,
     isCheckoutVisible,
     isMenuVisible,
@@ -46,6 +48,14 @@ const Modals: React.FC = () => {
 
   return (
     <>
+      <Modal
+        closeTimeoutMS={100}
+        contentLabel="Age restriction"
+        isOpen={isAgeRestrictionVisible}
+        style={getModalStyles("center", "center")}
+      >
+        <AgeRestrictionPopup />
+      </Modal>
       <Modal
         closeTimeoutMS={100}
         contentLabel="Cart"

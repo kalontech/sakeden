@@ -1,7 +1,31 @@
 const path = require("path")
 
 exports.createPages = ({ graphql, actions }) => {
-  return graphql(`
+  // Create Contenful pages.
+  const contentfulPages = graphql(`
+    {
+      allContentfulPage {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allContentfulPage.edges.forEach(({ node }) => {
+      actions.createPage({
+        component: path.resolve("./src/templates/page.tsx"),
+        context: {
+          slug: node.slug,
+        },
+        path: `/pages/${node.slug}`,
+      })
+    })
+  })
+
+  // Create Shopify products.
+  const shopifyProducts = graphql(`
     {
       allShopifyProduct {
         edges {
@@ -22,4 +46,6 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
   })
+
+  return Promise.all([contentfulPages, shopifyProducts])
 }

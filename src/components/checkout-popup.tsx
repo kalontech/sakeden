@@ -1,13 +1,11 @@
 import moment from "moment"
-import React, { SyntheticEvent, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 // @ts-ignore
 import DayPicker from "react-day-picker"
-import { IoMdAdd, IoMdClose, IoMdRemove, IoMdTrash } from "react-icons/io"
-import { Box, Button, Flex, Heading, Image, Text, Textarea } from "theme-ui"
+import { IoMdClose } from "react-icons/io"
+import { Box, Button, Flex, Heading, Textarea } from "theme-ui"
 
-import { ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
-import { getPriceFromVariants } from "../utils/price"
 
 const getDeliveryTime = (): Date => {
   const deliveryTime = new Date()
@@ -20,12 +18,7 @@ const getDeliveryTime = (): Date => {
 }
 
 const CheckoutPopup: React.FC = () => {
-  const {
-    checkout,
-    client,
-
-    setIsCheckoutVisible,
-  } = useContext(AppContext)
+  const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
   const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(undefined)
   const [additionalNotes, setAdditionalNotes] = useState("")
 
@@ -48,7 +41,7 @@ const CheckoutPopup: React.FC = () => {
   }
 
   if (!checkout) {
-    return <></>
+    return null
   }
 
   return (

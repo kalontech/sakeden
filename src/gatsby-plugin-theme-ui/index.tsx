@@ -1,9 +1,7 @@
-/* eslint-disable sort-keys */
-
 const heading = {
   fontFamily: "heading",
-  lineHeight: "heading",
   fontWeight: "heading",
+  lineHeight: "heading",
 }
 
 const button = {
@@ -24,10 +22,6 @@ const button = {
 
 const theme = {
   buttons: {
-    primary: {
-      ...button,
-      bg: "primary",
-    },
     icon: {
       ...button,
       bg: "primary",
@@ -57,6 +51,10 @@ const theme = {
       padding: "0px",
       width: "40px",
     },
+    primary: {
+      ...button,
+      bg: "primary",
+    },
     secondary: {
       ...button,
       bg: "secondary",
@@ -77,6 +75,7 @@ const theme = {
   fontSizes: [12, 19, 30, 48, 52, 98],
   fontWeights: {
     light: 200,
+    // eslint-disable-next-line sort-keys
     body: 400,
     heading: 400,
   },
@@ -135,8 +134,8 @@ const theme = {
       fontSize: 1,
     },
     price: {
-      fontWeight: "light",
       fontSize: 2,
+      fontWeight: "light",
     },
   },
 }

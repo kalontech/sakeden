@@ -5,7 +5,7 @@ import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
 import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
-import { getPriceFromVariants } from "../utils/price"
+import { getPriceFromVariants } from "../utils/helpers"
 import { InternalLink } from "./link"
 
 interface ProductCardProps {
@@ -80,7 +80,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
           <Box mt={2}>
             <Image
               fluid={
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 node.images[0].localFile!.childImageSharp!.fluid as FluidObject
               }
               imgStyle={{ objectFit: "contain" }}

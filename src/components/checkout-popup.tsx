@@ -1,5 +1,6 @@
 import moment from "moment"
 import React, { SyntheticEvent, useContext, useState } from "react"
+// @ts-ignore
 import DayPicker from "react-day-picker"
 import { IoMdAdd, IoMdClose, IoMdRemove, IoMdTrash } from "react-icons/io"
 import { Box, Button, Flex, Heading, Image, Text, Textarea } from "theme-ui"
@@ -90,7 +91,7 @@ const CheckoutPopup: React.FC = () => {
               before: getDeliveryTime(),
             }}
             firstDayOfWeek={1}
-            onDayClick={(date): void => {
+            onDayClick={(date: Date): void => {
               setDeliveryDate(date)
             }}
             selectedDays={deliveryDate}

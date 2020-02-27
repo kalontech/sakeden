@@ -65,7 +65,8 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint:app": "eslint \"src/**/*.tsx\"",
-    "lint:gatsby": "eslint \"gatsby-*.js\""
+    "lint:gatsby": "eslint \"gatsby-*.js\"",
+    "postinstall": "sh postinstall.sh"
   },
   "repository": {
     "type": "git",

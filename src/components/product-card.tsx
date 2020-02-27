@@ -1,11 +1,11 @@
 import Image, { FluidObject } from "gatsby-image"
-import React, { SyntheticEvent, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
 import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
-import { getPriceFromVariants } from "../utils/helpers"
+import { getPriceFromVariants, wait } from "../utils/helpers"
 import { InternalLink } from "./link"
 
 interface ProductCardProps {
@@ -24,10 +24,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const description =
     (descriptionMetafield && descriptionMetafield.value) || node.description
 
-  const handleAddToCart = (e: SyntheticEvent): void => {
+  const handleAddToCart = async (): Promise<void> => {
     if (node.variants && node.variants[0] && node.variants[0].shopifyId) {
-      e.preventDefault()
-
       addLineItems([
         {
           quantity: 1,
@@ -35,11 +33,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
         },
       ])
 
+      // Display success mark in the button.
       setJustAddedToCart(true)
-
-      setTimeout(() => {
-        setJustAddedToCart(false)
-      }, 3000)
+      await wait(3000)
+      setJustAddedToCart(false)
     }
   }
 

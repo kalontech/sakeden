@@ -97,12 +97,12 @@ const MenuPopup: React.FC = () => {
         </Box>
         <Flex mt={3} sx={{ justifyContent: "center" }}>
           <Box px={2}>
-            <ExternalLink href="https://www.instagram.com/sake_den">
+            <ExternalLink href={process.env.SOCIAL_INSTAGRAM_URL!}>
               <TiSocialInstagram fontSize="36px" />
             </ExternalLink>
           </Box>
           <Box px={2}>
-            <ExternalLink href="https://www.facebook.com/Sakeden-112334880273667">
+            <ExternalLink href={process.env.SOCIAL_FACEBOOK_URL!}>
               <IoLogoFacebook fontSize="36px" />
             </ExternalLink>
           </Box>

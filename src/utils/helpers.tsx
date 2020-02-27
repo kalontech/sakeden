@@ -17,10 +17,12 @@ export const getPriceFromVariants = (
   fractionDigits = 2,
   subscriptionInterval = 0,
 ): string => {
+  // USD is just a fallback value while the real currency code will be taken from the checkout.
   let currencyCode = "USD"
   let minAmount = Number.MAX_VALUE
   let maxAmount = Number.MIN_VALUE
 
+  // Determine minimum and maximum amounts.
   for (const variant of variants) {
     if (
       variant.priceV2 &&
@@ -47,31 +49,44 @@ export const getPriceFromVariants = (
     }
   }
 
+  // Fallback to zeros.
   if (minAmount === Number.MAX_VALUE || maxAmount === Number.MIN_VALUE) {
     minAmount = 0
     maxAmount = 0
   }
 
+  // Build a string for the formatted price output.
   let formattedPrice = ""
 
+  // Additional formatting for subscription-based prices..
   if (subscriptionInterval > 0) {
+    // Append "/month" suffix.
     formattedPrice = " / month"
 
+    // Divide the amounts by subscription interval.
     minAmount /= subscriptionInterval
     maxAmount /= subscriptionInterval
   }
 
   if (minAmount === maxAmount) {
+    // Format common price.
     formattedPrice =
       formatPrice(minAmount, currencyCode, fractionDigits) + formattedPrice
   } else {
+    // Format range of prices.
     formattedPrice =
       `${formatPrice(minAmount, currencyCode, fractionDigits)} - ${formatPrice(
         maxAmount,
         currencyCode,
         fractionDigits,
-      )}` + formatPrice
+      )}` + formattedPrice
   }
 
   return formattedPrice
+}
+
+export const wait = (timeout: number): Promise<void> => {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout)
+  })
 }

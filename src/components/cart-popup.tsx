@@ -1,11 +1,10 @@
-import moment from "moment"
 import React, { useContext } from "react"
 import { IoMdAdd, IoMdClose, IoMdRemove, IoMdTrash } from "react-icons/io"
 import { Box, Button, Flex, Heading, Image, Text } from "theme-ui"
 
 import { ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
-import { getPriceFromVariants } from "../utils/price"
+import { getPriceFromVariants } from "../utils/helpers"
 
 const CartPopup: React.FC = () => {
   const {
@@ -25,7 +24,7 @@ const CartPopup: React.FC = () => {
   }
 
   if (!checkout) {
-    return <></>
+    return null
   }
 
   return (

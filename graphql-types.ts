@@ -1305,12 +1305,12 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
-  shopifyCollection?: Maybe<ShopifyCollection>
-  allShopifyCollection: ShopifyCollectionConnection
-  shopifyPage?: Maybe<ShopifyPage>
-  allShopifyPage: ShopifyPageConnection
   shopifyBlog?: Maybe<ShopifyBlog>
   allShopifyBlog: ShopifyBlogConnection
+  shopifyPage?: Maybe<ShopifyPage>
+  allShopifyPage: ShopifyPageConnection
+  shopifyCollection?: Maybe<ShopifyCollection>
+  allShopifyCollection: ShopifyCollectionConnection
   site?: Maybe<Site>
   allSite: SiteConnection
   sitePlugin?: Maybe<SitePlugin>
@@ -1551,23 +1551,19 @@ export type QueryAllShopifyProductArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyCollectionArgs = {
+export type QueryShopifyBlogArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
-  description?: Maybe<StringQueryOperatorInput>
-  descriptionHtml?: Maybe<StringQueryOperatorInput>
-  handle?: Maybe<StringQueryOperatorInput>
   title?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
   shopifyId?: Maybe<StringQueryOperatorInput>
-  products?: Maybe<ShopifyProductFilterListInput>
 }
 
-export type QueryAllShopifyCollectionArgs = {
-  filter?: Maybe<ShopifyCollectionFilterInput>
-  sort?: Maybe<ShopifyCollectionSortInput>
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>
+  sort?: Maybe<ShopifyBlogSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -1593,19 +1589,23 @@ export type QueryAllShopifyPageArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyBlogArgs = {
+export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+  descriptionHtml?: Maybe<StringQueryOperatorInput>
+  handle?: Maybe<StringQueryOperatorInput>
   title?: Maybe<StringQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
   shopifyId?: Maybe<StringQueryOperatorInput>
+  products?: Maybe<ShopifyProductFilterListInput>
 }
 
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>
-  sort?: Maybe<ShopifyBlogSortInput>
+export type QueryAllShopifyCollectionArgs = {
+  filter?: Maybe<ShopifyCollectionFilterInput>
+  sort?: Maybe<ShopifyCollectionSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -3770,19 +3770,18 @@ export type SitePageFieldsEnum =
   | "pluginCreator___resolve"
   | "pluginCreator___name"
   | "pluginCreator___version"
-  | "pluginCreator___pluginOptions___name"
-  | "pluginCreator___pluginOptions___path"
+  | "pluginCreator___pluginOptions___endpoint"
   | "pluginCreator___pluginOptions___background_color"
   | "pluginCreator___pluginOptions___display"
-  | "pluginCreator___pluginOptions___icon"
+  | "pluginCreator___pluginOptions___name"
   | "pluginCreator___pluginOptions___short_name"
   | "pluginCreator___pluginOptions___start_url"
   | "pluginCreator___pluginOptions___theme_color"
+  | "pluginCreator___pluginOptions___fonts___google"
+  | "pluginCreator___pluginOptions___path"
   | "pluginCreator___pluginOptions___accessToken"
   | "pluginCreator___pluginOptions___apiVersion"
   | "pluginCreator___pluginOptions___shopName"
-  | "pluginCreator___pluginOptions___fonts___google"
-  | "pluginCreator___pluginOptions___endpoint"
   | "pluginCreator___pluginOptions___pathCheck"
   | "pluginCreator___nodeAPIs"
   | "pluginCreator___browserAPIs"
@@ -3968,20 +3967,19 @@ export type SitePluginFieldsEnum =
   | "resolve"
   | "name"
   | "version"
-  | "pluginOptions___name"
-  | "pluginOptions___path"
+  | "pluginOptions___endpoint"
   | "pluginOptions___background_color"
   | "pluginOptions___display"
-  | "pluginOptions___icon"
+  | "pluginOptions___name"
   | "pluginOptions___short_name"
   | "pluginOptions___start_url"
   | "pluginOptions___theme_color"
+  | "pluginOptions___fonts___google"
+  | "pluginOptions___fonts___google___family"
+  | "pluginOptions___path"
   | "pluginOptions___accessToken"
   | "pluginOptions___apiVersion"
   | "pluginOptions___shopName"
-  | "pluginOptions___fonts___google"
-  | "pluginOptions___fonts___google___family"
-  | "pluginOptions___endpoint"
   | "pluginOptions___pathCheck"
   | "nodeAPIs"
   | "browserAPIs"
@@ -4095,19 +4093,18 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 }
 
 export type SitePluginPluginOptions = {
-  name?: Maybe<Scalars["String"]>
-  path?: Maybe<Scalars["String"]>
+  endpoint?: Maybe<Scalars["String"]>
   background_color?: Maybe<Scalars["String"]>
   display?: Maybe<Scalars["String"]>
-  icon?: Maybe<Scalars["String"]>
+  name?: Maybe<Scalars["String"]>
   short_name?: Maybe<Scalars["String"]>
   start_url?: Maybe<Scalars["String"]>
   theme_color?: Maybe<Scalars["String"]>
+  fonts?: Maybe<SitePluginPluginOptionsFonts>
+  path?: Maybe<Scalars["String"]>
   accessToken?: Maybe<Scalars["String"]>
   apiVersion?: Maybe<Scalars["Date"]>
   shopName?: Maybe<Scalars["String"]>
-  fonts?: Maybe<SitePluginPluginOptionsFonts>
-  endpoint?: Maybe<Scalars["String"]>
   pathCheck?: Maybe<Scalars["Boolean"]>
 }
 
@@ -4119,19 +4116,18 @@ export type SitePluginPluginOptionsApiVersionArgs = {
 }
 
 export type SitePluginPluginOptionsFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>
-  path?: Maybe<StringQueryOperatorInput>
+  endpoint?: Maybe<StringQueryOperatorInput>
   background_color?: Maybe<StringQueryOperatorInput>
   display?: Maybe<StringQueryOperatorInput>
-  icon?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
   short_name?: Maybe<StringQueryOperatorInput>
   start_url?: Maybe<StringQueryOperatorInput>
   theme_color?: Maybe<StringQueryOperatorInput>
+  fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>
+  path?: Maybe<StringQueryOperatorInput>
   accessToken?: Maybe<StringQueryOperatorInput>
   apiVersion?: Maybe<DateQueryOperatorInput>
   shopName?: Maybe<StringQueryOperatorInput>
-  fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>
-  endpoint?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
 }
 

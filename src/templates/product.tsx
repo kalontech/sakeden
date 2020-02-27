@@ -1,7 +1,6 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
-import moment from "moment"
-import React, { SyntheticEvent, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
@@ -9,7 +8,7 @@ import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { getPriceFromVariants } from "../utils/price"
+import { getPriceFromVariants, wait } from "../utils/helpers"
 
 const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const shopifyProduct = (props.pageResources as any).json.data
@@ -21,14 +20,12 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
 
-  const handleAddToCart = (e: SyntheticEvent): void => {
+  const handleAddToCart = async (): Promise<void> => {
     if (
       shopifyProduct.variants &&
       shopifyProduct.variants[0] &&
       shopifyProduct.variants[0].shopifyId
     ) {
-      e.preventDefault()
-
       addLineItems([
         {
           quantity: 1,
@@ -36,11 +33,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         },
       ])
 
+      // Display success mark in the button.
       setJustAddedToCart(true)
-
-      setTimeout(() => {
-        setJustAddedToCart(false)
-      }, 3000)
+      await wait(3000)
+      setJustAddedToCart(false)
     }
   }
 
@@ -72,7 +68,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               {shopifyProduct.images && shopifyProduct.images[0] && (
                 <Image
                   fluid={
-                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                     shopifyProduct.images[0].localFile!.childImageSharp!
                       .fluid as FluidObject
                   }
@@ -85,7 +80,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               {shopifyProduct.images && shopifyProduct.images[1] && (
                 <Image
                   fluid={
-                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                     shopifyProduct.images[1].localFile!.childImageSharp!
                       .fluid as FluidObject
                   }
@@ -158,7 +152,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             {shopifyProduct.images && shopifyProduct.images[0] && (
               <Image
                 fluid={
-                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                   shopifyProduct.images[0].localFile!.childImageSharp!
                     .fluid as FluidObject
                 }

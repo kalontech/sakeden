@@ -30,7 +30,7 @@ export const query = graphql`
             description {
               description
             }
-            heroImage {
+            image {
               id
               fluid {
                 base64
@@ -39,7 +39,7 @@ export const query = graphql`
                 srcSetWebp
               }
             }
-            id
+            slug
             title
           }
           id

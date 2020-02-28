@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Heading } from "theme-ui"
+import { Box, Grid, Heading } from "theme-ui"
 
 import {
   ContentfulBlockFeaturedBlogPosts as ContentfulBlockFeaturedBlogPostsProps,
@@ -12,8 +12,8 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
   title,
 }) => {
   return (
-    <div>
-      <Heading as="h2" sx={{ textAlign: "center" }} variant="h2">
+    <Box my={5}>
+      <Heading as="h2" sx={{ mb: 3, textAlign: "center" }} variant="h2">
         {title}
       </Heading>
       <Grid columns={[1, 1, 3, 3]} gap="20px">
@@ -22,7 +22,7 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
             return <BlogPostCard node={blogPost as ContentfulBlogPost} />
           })}
       </Grid>
-    </div>
+    </Box>
   )
 }
 

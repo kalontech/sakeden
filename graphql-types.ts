@@ -510,67 +510,67 @@ export type ContentfulBlockFeaturedBlogPostsFieldsEnum =
   | "blogPosts___title"
   | "blogPosts___slug"
   | "blogPosts___publishDate"
-  | "blogPosts___heroImage___id"
-  | "blogPosts___heroImage___parent___id"
-  | "blogPosts___heroImage___parent___children"
-  | "blogPosts___heroImage___children"
-  | "blogPosts___heroImage___children___id"
-  | "blogPosts___heroImage___children___children"
-  | "blogPosts___heroImage___internal___content"
-  | "blogPosts___heroImage___internal___contentDigest"
-  | "blogPosts___heroImage___internal___description"
-  | "blogPosts___heroImage___internal___fieldOwners"
-  | "blogPosts___heroImage___internal___ignoreType"
-  | "blogPosts___heroImage___internal___mediaType"
-  | "blogPosts___heroImage___internal___owner"
-  | "blogPosts___heroImage___internal___type"
-  | "blogPosts___heroImage___contentful_id"
-  | "blogPosts___heroImage___file___url"
-  | "blogPosts___heroImage___file___fileName"
-  | "blogPosts___heroImage___file___contentType"
-  | "blogPosts___heroImage___title"
-  | "blogPosts___heroImage___description"
-  | "blogPosts___heroImage___node_locale"
-  | "blogPosts___heroImage___fixed___base64"
-  | "blogPosts___heroImage___fixed___tracedSVG"
-  | "blogPosts___heroImage___fixed___aspectRatio"
-  | "blogPosts___heroImage___fixed___width"
-  | "blogPosts___heroImage___fixed___height"
-  | "blogPosts___heroImage___fixed___src"
-  | "blogPosts___heroImage___fixed___srcSet"
-  | "blogPosts___heroImage___fixed___srcWebp"
-  | "blogPosts___heroImage___fixed___srcSetWebp"
-  | "blogPosts___heroImage___resolutions___base64"
-  | "blogPosts___heroImage___resolutions___tracedSVG"
-  | "blogPosts___heroImage___resolutions___aspectRatio"
-  | "blogPosts___heroImage___resolutions___width"
-  | "blogPosts___heroImage___resolutions___height"
-  | "blogPosts___heroImage___resolutions___src"
-  | "blogPosts___heroImage___resolutions___srcSet"
-  | "blogPosts___heroImage___resolutions___srcWebp"
-  | "blogPosts___heroImage___resolutions___srcSetWebp"
-  | "blogPosts___heroImage___fluid___base64"
-  | "blogPosts___heroImage___fluid___tracedSVG"
-  | "blogPosts___heroImage___fluid___aspectRatio"
-  | "blogPosts___heroImage___fluid___src"
-  | "blogPosts___heroImage___fluid___srcSet"
-  | "blogPosts___heroImage___fluid___srcWebp"
-  | "blogPosts___heroImage___fluid___srcSetWebp"
-  | "blogPosts___heroImage___fluid___sizes"
-  | "blogPosts___heroImage___sizes___base64"
-  | "blogPosts___heroImage___sizes___tracedSVG"
-  | "blogPosts___heroImage___sizes___aspectRatio"
-  | "blogPosts___heroImage___sizes___src"
-  | "blogPosts___heroImage___sizes___srcSet"
-  | "blogPosts___heroImage___sizes___srcWebp"
-  | "blogPosts___heroImage___sizes___srcSetWebp"
-  | "blogPosts___heroImage___sizes___sizes"
-  | "blogPosts___heroImage___resize___base64"
-  | "blogPosts___heroImage___resize___tracedSVG"
-  | "blogPosts___heroImage___resize___src"
-  | "blogPosts___heroImage___resize___width"
-  | "blogPosts___heroImage___resize___height"
-  | "blogPosts___heroImage___resize___aspectRatio"
+  | "blogPosts___image___id"
+  | "blogPosts___image___parent___id"
+  | "blogPosts___image___parent___children"
+  | "blogPosts___image___children"
+  | "blogPosts___image___children___id"
+  | "blogPosts___image___children___children"
+  | "blogPosts___image___internal___content"
+  | "blogPosts___image___internal___contentDigest"
+  | "blogPosts___image___internal___description"
+  | "blogPosts___image___internal___fieldOwners"
+  | "blogPosts___image___internal___ignoreType"
+  | "blogPosts___image___internal___mediaType"
+  | "blogPosts___image___internal___owner"
+  | "blogPosts___image___internal___type"
+  | "blogPosts___image___contentful_id"
+  | "blogPosts___image___file___url"
+  | "blogPosts___image___file___fileName"
+  | "blogPosts___image___file___contentType"
+  | "blogPosts___image___title"
+  | "blogPosts___image___description"
+  | "blogPosts___image___node_locale"
+  | "blogPosts___image___fixed___base64"
+  | "blogPosts___image___fixed___tracedSVG"
+  | "blogPosts___image___fixed___aspectRatio"
+  | "blogPosts___image___fixed___width"
+  | "blogPosts___image___fixed___height"
+  | "blogPosts___image___fixed___src"
+  | "blogPosts___image___fixed___srcSet"
+  | "blogPosts___image___fixed___srcWebp"
+  | "blogPosts___image___fixed___srcSetWebp"
+  | "blogPosts___image___resolutions___base64"
+  | "blogPosts___image___resolutions___tracedSVG"
+  | "blogPosts___image___resolutions___aspectRatio"
+  | "blogPosts___image___resolutions___width"
+  | "blogPosts___image___resolutions___height"
+  | "blogPosts___image___resolutions___src"
+  | "blogPosts___image___resolutions___srcSet"
+  | "blogPosts___image___resolutions___srcWebp"
+  | "blogPosts___image___resolutions___srcSetWebp"
+  | "blogPosts___image___fluid___base64"
+  | "blogPosts___image___fluid___tracedSVG"
+  | "blogPosts___image___fluid___aspectRatio"
+  | "blogPosts___image___fluid___src"
+  | "blogPosts___image___fluid___srcSet"
+  | "blogPosts___image___fluid___srcWebp"
+  | "blogPosts___image___fluid___srcSetWebp"
+  | "blogPosts___image___fluid___sizes"
+  | "blogPosts___image___sizes___base64"
+  | "blogPosts___image___sizes___tracedSVG"
+  | "blogPosts___image___sizes___aspectRatio"
+  | "blogPosts___image___sizes___src"
+  | "blogPosts___image___sizes___srcSet"
+  | "blogPosts___image___sizes___srcWebp"
+  | "blogPosts___image___sizes___srcSetWebp"
+  | "blogPosts___image___sizes___sizes"
+  | "blogPosts___image___resize___base64"
+  | "blogPosts___image___resize___tracedSVG"
+  | "blogPosts___image___resize___src"
+  | "blogPosts___image___resize___width"
+  | "blogPosts___image___resize___height"
+  | "blogPosts___image___resize___aspectRatio"
   | "blogPosts___description___id"
   | "blogPosts___description___parent___id"
   | "blogPosts___description___parent___children"
@@ -764,6 +764,7 @@ export type ContentfulBlockFeaturedProducts = Node & {
   internal: Internal
   title?: Maybe<Scalars["String"]>
   products?: Maybe<Array<Maybe<Scalars["String"]>>>
+  page?: Maybe<Array<Maybe<ContentfulPage>>>
   spaceId?: Maybe<Scalars["String"]>
   contentful_id?: Maybe<Scalars["String"]>
   createdAt?: Maybe<Scalars["Date"]>
@@ -900,6 +901,53 @@ export type ContentfulBlockFeaturedProductsFieldsEnum =
   | "internal___type"
   | "title"
   | "products"
+  | "page"
+  | "page___id"
+  | "page___parent___id"
+  | "page___parent___parent___id"
+  | "page___parent___parent___children"
+  | "page___parent___children"
+  | "page___parent___children___id"
+  | "page___parent___children___children"
+  | "page___parent___internal___content"
+  | "page___parent___internal___contentDigest"
+  | "page___parent___internal___description"
+  | "page___parent___internal___fieldOwners"
+  | "page___parent___internal___ignoreType"
+  | "page___parent___internal___mediaType"
+  | "page___parent___internal___owner"
+  | "page___parent___internal___type"
+  | "page___children"
+  | "page___children___id"
+  | "page___children___parent___id"
+  | "page___children___parent___children"
+  | "page___children___children"
+  | "page___children___children___id"
+  | "page___children___children___children"
+  | "page___children___internal___content"
+  | "page___children___internal___contentDigest"
+  | "page___children___internal___description"
+  | "page___children___internal___fieldOwners"
+  | "page___children___internal___ignoreType"
+  | "page___children___internal___mediaType"
+  | "page___children___internal___owner"
+  | "page___children___internal___type"
+  | "page___internal___content"
+  | "page___internal___contentDigest"
+  | "page___internal___description"
+  | "page___internal___fieldOwners"
+  | "page___internal___ignoreType"
+  | "page___internal___mediaType"
+  | "page___internal___owner"
+  | "page___internal___type"
+  | "page___title"
+  | "page___slug"
+  | "page___spaceId"
+  | "page___contentful_id"
+  | "page___createdAt"
+  | "page___updatedAt"
+  | "page___sys___revision"
+  | "page___node_locale"
   | "spaceId"
   | "contentful_id"
   | "createdAt"
@@ -918,6 +966,7 @@ export type ContentfulBlockFeaturedProductsFilterInput = {
   internal?: Maybe<InternalFilterInput>
   title?: Maybe<StringQueryOperatorInput>
   products?: Maybe<StringQueryOperatorInput>
+  page?: Maybe<ContentfulPageFilterListInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   contentful_id?: Maybe<StringQueryOperatorInput>
   createdAt?: Maybe<DateQueryOperatorInput>
@@ -981,6 +1030,7 @@ export type ContentfulBlockHero = Node & {
   subtitle?: Maybe<Scalars["String"]>
   bottomText?: Maybe<Scalars["String"]>
   picture?: Maybe<ContentfulAsset>
+  page?: Maybe<Array<Maybe<ContentfulPage>>>
   spaceId?: Maybe<Scalars["String"]>
   contentful_id?: Maybe<Scalars["String"]>
   createdAt?: Maybe<Scalars["Date"]>
@@ -1204,6 +1254,53 @@ export type ContentfulBlockHeroFieldsEnum =
   | "picture___resize___width"
   | "picture___resize___height"
   | "picture___resize___aspectRatio"
+  | "page"
+  | "page___id"
+  | "page___parent___id"
+  | "page___parent___parent___id"
+  | "page___parent___parent___children"
+  | "page___parent___children"
+  | "page___parent___children___id"
+  | "page___parent___children___children"
+  | "page___parent___internal___content"
+  | "page___parent___internal___contentDigest"
+  | "page___parent___internal___description"
+  | "page___parent___internal___fieldOwners"
+  | "page___parent___internal___ignoreType"
+  | "page___parent___internal___mediaType"
+  | "page___parent___internal___owner"
+  | "page___parent___internal___type"
+  | "page___children"
+  | "page___children___id"
+  | "page___children___parent___id"
+  | "page___children___parent___children"
+  | "page___children___children"
+  | "page___children___children___id"
+  | "page___children___children___children"
+  | "page___children___internal___content"
+  | "page___children___internal___contentDigest"
+  | "page___children___internal___description"
+  | "page___children___internal___fieldOwners"
+  | "page___children___internal___ignoreType"
+  | "page___children___internal___mediaType"
+  | "page___children___internal___owner"
+  | "page___children___internal___type"
+  | "page___internal___content"
+  | "page___internal___contentDigest"
+  | "page___internal___description"
+  | "page___internal___fieldOwners"
+  | "page___internal___ignoreType"
+  | "page___internal___mediaType"
+  | "page___internal___owner"
+  | "page___internal___type"
+  | "page___title"
+  | "page___slug"
+  | "page___spaceId"
+  | "page___contentful_id"
+  | "page___createdAt"
+  | "page___updatedAt"
+  | "page___sys___revision"
+  | "page___node_locale"
   | "spaceId"
   | "contentful_id"
   | "createdAt"
@@ -1224,6 +1321,7 @@ export type ContentfulBlockHeroFilterInput = {
   subtitle?: Maybe<StringQueryOperatorInput>
   bottomText?: Maybe<StringQueryOperatorInput>
   picture?: Maybe<ContentfulAssetFilterInput>
+  page?: Maybe<ContentfulPageFilterListInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   contentful_id?: Maybe<StringQueryOperatorInput>
   createdAt?: Maybe<DateQueryOperatorInput>
@@ -1286,7 +1384,7 @@ export type ContentfulBlogPost = Node & {
   title?: Maybe<Scalars["String"]>
   slug?: Maybe<Scalars["String"]>
   publishDate?: Maybe<Scalars["Date"]>
-  heroImage?: Maybe<ContentfulAsset>
+  image?: Maybe<ContentfulAsset>
   description?: Maybe<ContentfulBlogPostDescriptionTextNode>
   body?: Maybe<ContentfulBlogPostBodyTextNode>
   spaceId?: Maybe<Scalars["String"]>
@@ -1725,92 +1823,92 @@ export type ContentfulBlogPostFieldsEnum =
   | "title"
   | "slug"
   | "publishDate"
-  | "heroImage___id"
-  | "heroImage___parent___id"
-  | "heroImage___parent___parent___id"
-  | "heroImage___parent___parent___children"
-  | "heroImage___parent___children"
-  | "heroImage___parent___children___id"
-  | "heroImage___parent___children___children"
-  | "heroImage___parent___internal___content"
-  | "heroImage___parent___internal___contentDigest"
-  | "heroImage___parent___internal___description"
-  | "heroImage___parent___internal___fieldOwners"
-  | "heroImage___parent___internal___ignoreType"
-  | "heroImage___parent___internal___mediaType"
-  | "heroImage___parent___internal___owner"
-  | "heroImage___parent___internal___type"
-  | "heroImage___children"
-  | "heroImage___children___id"
-  | "heroImage___children___parent___id"
-  | "heroImage___children___parent___children"
-  | "heroImage___children___children"
-  | "heroImage___children___children___id"
-  | "heroImage___children___children___children"
-  | "heroImage___children___internal___content"
-  | "heroImage___children___internal___contentDigest"
-  | "heroImage___children___internal___description"
-  | "heroImage___children___internal___fieldOwners"
-  | "heroImage___children___internal___ignoreType"
-  | "heroImage___children___internal___mediaType"
-  | "heroImage___children___internal___owner"
-  | "heroImage___children___internal___type"
-  | "heroImage___internal___content"
-  | "heroImage___internal___contentDigest"
-  | "heroImage___internal___description"
-  | "heroImage___internal___fieldOwners"
-  | "heroImage___internal___ignoreType"
-  | "heroImage___internal___mediaType"
-  | "heroImage___internal___owner"
-  | "heroImage___internal___type"
-  | "heroImage___contentful_id"
-  | "heroImage___file___url"
-  | "heroImage___file___details___size"
-  | "heroImage___file___fileName"
-  | "heroImage___file___contentType"
-  | "heroImage___title"
-  | "heroImage___description"
-  | "heroImage___node_locale"
-  | "heroImage___fixed___base64"
-  | "heroImage___fixed___tracedSVG"
-  | "heroImage___fixed___aspectRatio"
-  | "heroImage___fixed___width"
-  | "heroImage___fixed___height"
-  | "heroImage___fixed___src"
-  | "heroImage___fixed___srcSet"
-  | "heroImage___fixed___srcWebp"
-  | "heroImage___fixed___srcSetWebp"
-  | "heroImage___resolutions___base64"
-  | "heroImage___resolutions___tracedSVG"
-  | "heroImage___resolutions___aspectRatio"
-  | "heroImage___resolutions___width"
-  | "heroImage___resolutions___height"
-  | "heroImage___resolutions___src"
-  | "heroImage___resolutions___srcSet"
-  | "heroImage___resolutions___srcWebp"
-  | "heroImage___resolutions___srcSetWebp"
-  | "heroImage___fluid___base64"
-  | "heroImage___fluid___tracedSVG"
-  | "heroImage___fluid___aspectRatio"
-  | "heroImage___fluid___src"
-  | "heroImage___fluid___srcSet"
-  | "heroImage___fluid___srcWebp"
-  | "heroImage___fluid___srcSetWebp"
-  | "heroImage___fluid___sizes"
-  | "heroImage___sizes___base64"
-  | "heroImage___sizes___tracedSVG"
-  | "heroImage___sizes___aspectRatio"
-  | "heroImage___sizes___src"
-  | "heroImage___sizes___srcSet"
-  | "heroImage___sizes___srcWebp"
-  | "heroImage___sizes___srcSetWebp"
-  | "heroImage___sizes___sizes"
-  | "heroImage___resize___base64"
-  | "heroImage___resize___tracedSVG"
-  | "heroImage___resize___src"
-  | "heroImage___resize___width"
-  | "heroImage___resize___height"
-  | "heroImage___resize___aspectRatio"
+  | "image___id"
+  | "image___parent___id"
+  | "image___parent___parent___id"
+  | "image___parent___parent___children"
+  | "image___parent___children"
+  | "image___parent___children___id"
+  | "image___parent___children___children"
+  | "image___parent___internal___content"
+  | "image___parent___internal___contentDigest"
+  | "image___parent___internal___description"
+  | "image___parent___internal___fieldOwners"
+  | "image___parent___internal___ignoreType"
+  | "image___parent___internal___mediaType"
+  | "image___parent___internal___owner"
+  | "image___parent___internal___type"
+  | "image___children"
+  | "image___children___id"
+  | "image___children___parent___id"
+  | "image___children___parent___children"
+  | "image___children___children"
+  | "image___children___children___id"
+  | "image___children___children___children"
+  | "image___children___internal___content"
+  | "image___children___internal___contentDigest"
+  | "image___children___internal___description"
+  | "image___children___internal___fieldOwners"
+  | "image___children___internal___ignoreType"
+  | "image___children___internal___mediaType"
+  | "image___children___internal___owner"
+  | "image___children___internal___type"
+  | "image___internal___content"
+  | "image___internal___contentDigest"
+  | "image___internal___description"
+  | "image___internal___fieldOwners"
+  | "image___internal___ignoreType"
+  | "image___internal___mediaType"
+  | "image___internal___owner"
+  | "image___internal___type"
+  | "image___contentful_id"
+  | "image___file___url"
+  | "image___file___details___size"
+  | "image___file___fileName"
+  | "image___file___contentType"
+  | "image___title"
+  | "image___description"
+  | "image___node_locale"
+  | "image___fixed___base64"
+  | "image___fixed___tracedSVG"
+  | "image___fixed___aspectRatio"
+  | "image___fixed___width"
+  | "image___fixed___height"
+  | "image___fixed___src"
+  | "image___fixed___srcSet"
+  | "image___fixed___srcWebp"
+  | "image___fixed___srcSetWebp"
+  | "image___resolutions___base64"
+  | "image___resolutions___tracedSVG"
+  | "image___resolutions___aspectRatio"
+  | "image___resolutions___width"
+  | "image___resolutions___height"
+  | "image___resolutions___src"
+  | "image___resolutions___srcSet"
+  | "image___resolutions___srcWebp"
+  | "image___resolutions___srcSetWebp"
+  | "image___fluid___base64"
+  | "image___fluid___tracedSVG"
+  | "image___fluid___aspectRatio"
+  | "image___fluid___src"
+  | "image___fluid___srcSet"
+  | "image___fluid___srcWebp"
+  | "image___fluid___srcSetWebp"
+  | "image___fluid___sizes"
+  | "image___sizes___base64"
+  | "image___sizes___tracedSVG"
+  | "image___sizes___aspectRatio"
+  | "image___sizes___src"
+  | "image___sizes___srcSet"
+  | "image___sizes___srcWebp"
+  | "image___sizes___srcSetWebp"
+  | "image___sizes___sizes"
+  | "image___resize___base64"
+  | "image___resize___tracedSVG"
+  | "image___resize___src"
+  | "image___resize___width"
+  | "image___resize___height"
+  | "image___resize___aspectRatio"
   | "description___id"
   | "description___parent___id"
   | "description___parent___parent___id"
@@ -1986,7 +2084,7 @@ export type ContentfulBlogPostFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   slug?: Maybe<StringQueryOperatorInput>
   publishDate?: Maybe<DateQueryOperatorInput>
-  heroImage?: Maybe<ContentfulAssetFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
   spaceId?: Maybe<StringQueryOperatorInput>
@@ -3845,10 +3943,12 @@ export type Query = {
   allSitePage: SitePageConnection
   imageSharp?: Maybe<ImageSharp>
   allImageSharp: ImageSharpConnection
-  contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>
-  allContentfulBlockFeaturedProducts: ContentfulBlockFeaturedProductsConnection
-  contentfulBlockFeaturedBlogPosts?: Maybe<ContentfulBlockFeaturedBlogPosts>
-  allContentfulBlockFeaturedBlogPosts: ContentfulBlockFeaturedBlogPostsConnection
+  contentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNode>
+  allContentfulBlogPostBodyTextNode: ContentfulBlogPostBodyTextNodeConnection
+  contentfulBlogPostDescriptionTextNode?: Maybe<
+    ContentfulBlogPostDescriptionTextNode
+  >
+  allContentfulBlogPostDescriptionTextNode: ContentfulBlogPostDescriptionTextNodeConnection
   shopifyProductOption?: Maybe<ShopifyProductOption>
   allShopifyProductOption: ShopifyProductOptionConnection
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>
@@ -3857,24 +3957,22 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
-  shopifyBlog?: Maybe<ShopifyBlog>
-  allShopifyBlog: ShopifyBlogConnection
   shopifyCollection?: Maybe<ShopifyCollection>
   allShopifyCollection: ShopifyCollectionConnection
+  shopifyBlog?: Maybe<ShopifyBlog>
+  allShopifyBlog: ShopifyBlogConnection
   shopifyPage?: Maybe<ShopifyPage>
   allShopifyPage: ShopifyPageConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
+  contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>
+  allContentfulBlockFeaturedProducts: ContentfulBlockFeaturedProductsConnection
+  contentfulBlockFeaturedBlogPosts?: Maybe<ContentfulBlockFeaturedBlogPosts>
+  allContentfulBlockFeaturedBlogPosts: ContentfulBlockFeaturedBlogPostsConnection
   contentfulBlockHero?: Maybe<ContentfulBlockHero>
   allContentfulBlockHero: ContentfulBlockHeroConnection
   contentfulPage?: Maybe<ContentfulPage>
   allContentfulPage: ContentfulPageConnection
-  contentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNode>
-  allContentfulBlogPostBodyTextNode: ContentfulBlogPostBodyTextNodeConnection
-  contentfulBlogPostDescriptionTextNode?: Maybe<
-    ContentfulBlogPostDescriptionTextNode
-  >
-  allContentfulBlogPostDescriptionTextNode: ContentfulBlogPostDescriptionTextNodeConnection
   contentfulBlogPost?: Maybe<ContentfulBlogPost>
   allContentfulBlogPost: ContentfulBlogPostConnection
   contentfulContentType?: Maybe<ContentfulContentType>
@@ -4026,47 +4124,32 @@ export type QueryAllImageSharpArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryContentfulBlockFeaturedProductsArgs = {
+export type QueryContentfulBlogPostBodyTextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
-  title?: Maybe<StringQueryOperatorInput>
-  products?: Maybe<StringQueryOperatorInput>
-  spaceId?: Maybe<StringQueryOperatorInput>
-  contentful_id?: Maybe<StringQueryOperatorInput>
-  createdAt?: Maybe<DateQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  sys?: Maybe<ContentfulBlockFeaturedProductsSysFilterInput>
-  node_locale?: Maybe<StringQueryOperatorInput>
+  body?: Maybe<StringQueryOperatorInput>
 }
 
-export type QueryAllContentfulBlockFeaturedProductsArgs = {
-  filter?: Maybe<ContentfulBlockFeaturedProductsFilterInput>
-  sort?: Maybe<ContentfulBlockFeaturedProductsSortInput>
+export type QueryAllContentfulBlogPostBodyTextNodeArgs = {
+  filter?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlogPostBodyTextNodeSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryContentfulBlockFeaturedBlogPostsArgs = {
+export type QueryContentfulBlogPostDescriptionTextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
-  title?: Maybe<StringQueryOperatorInput>
-  blogPosts?: Maybe<ContentfulBlogPostFilterListInput>
-  page?: Maybe<ContentfulPageFilterListInput>
-  spaceId?: Maybe<StringQueryOperatorInput>
-  contentful_id?: Maybe<StringQueryOperatorInput>
-  createdAt?: Maybe<DateQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  sys?: Maybe<ContentfulBlockFeaturedBlogPostsSysFilterInput>
-  node_locale?: Maybe<StringQueryOperatorInput>
+  description?: Maybe<StringQueryOperatorInput>
 }
 
-export type QueryAllContentfulBlockFeaturedBlogPostsArgs = {
-  filter?: Maybe<ContentfulBlockFeaturedBlogPostsFilterInput>
-  sort?: Maybe<ContentfulBlockFeaturedBlogPostsSortInput>
+export type QueryAllContentfulBlogPostDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlogPostDescriptionTextNodeSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -4164,23 +4247,6 @@ export type QueryAllShopifyProductArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyBlogArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  title?: Maybe<StringQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>
-  sort?: Maybe<ShopifyBlogSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4198,6 +4264,23 @@ export type QueryShopifyCollectionArgs = {
 export type QueryAllShopifyCollectionArgs = {
   filter?: Maybe<ShopifyCollectionFilterInput>
   sort?: Maybe<ShopifyCollectionSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryShopifyBlogArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>
+  sort?: Maybe<ShopifyBlogSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -4247,6 +4330,52 @@ export type QueryAllContentfulAssetArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
+export type QueryContentfulBlockFeaturedProductsArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  products?: Maybe<StringQueryOperatorInput>
+  page?: Maybe<ContentfulPageFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  contentful_id?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulBlockFeaturedProductsSysFilterInput>
+  node_locale?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlockFeaturedProductsArgs = {
+  filter?: Maybe<ContentfulBlockFeaturedProductsFilterInput>
+  sort?: Maybe<ContentfulBlockFeaturedProductsSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlockFeaturedBlogPostsArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  blogPosts?: Maybe<ContentfulBlogPostFilterListInput>
+  page?: Maybe<ContentfulPageFilterListInput>
+  spaceId?: Maybe<StringQueryOperatorInput>
+  contentful_id?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulBlockFeaturedBlogPostsSysFilterInput>
+  node_locale?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlockFeaturedBlogPostsArgs = {
+  filter?: Maybe<ContentfulBlockFeaturedBlogPostsFilterInput>
+  sort?: Maybe<ContentfulBlockFeaturedBlogPostsSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
 export type QueryContentfulBlockHeroArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4256,6 +4385,7 @@ export type QueryContentfulBlockHeroArgs = {
   subtitle?: Maybe<StringQueryOperatorInput>
   bottomText?: Maybe<StringQueryOperatorInput>
   picture?: Maybe<ContentfulAssetFilterInput>
+  page?: Maybe<ContentfulPageFilterListInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   contentful_id?: Maybe<StringQueryOperatorInput>
   createdAt?: Maybe<DateQueryOperatorInput>
@@ -4293,36 +4423,6 @@ export type QueryAllContentfulPageArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryContentfulBlogPostBodyTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  body?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllContentfulBlogPostBodyTextNodeArgs = {
-  filter?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
-  sort?: Maybe<ContentfulBlogPostBodyTextNodeSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
-export type QueryContentfulBlogPostDescriptionTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  description?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllContentfulBlogPostDescriptionTextNodeArgs = {
-  filter?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
-  sort?: Maybe<ContentfulBlogPostDescriptionTextNodeSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryContentfulBlogPostArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4331,7 +4431,7 @@ export type QueryContentfulBlogPostArgs = {
   title?: Maybe<StringQueryOperatorInput>
   slug?: Maybe<StringQueryOperatorInput>
   publishDate?: Maybe<DateQueryOperatorInput>
-  heroImage?: Maybe<ContentfulAssetFilterInput>
+  image?: Maybe<ContentfulAssetFilterInput>
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
   spaceId?: Maybe<StringQueryOperatorInput>
@@ -7016,6 +7116,30 @@ export type Unnamed_2_Query = {
   }>
 }
 
+export type BlogPostsPageQueryVariables = {}
+
+export type BlogPostsPageQuery = {
+  allContentfulBlogPost: {
+    edges: Array<{
+      node: Pick<ContentfulBlogPost, "publishDate" | "slug" | "title"> & {
+        description: Maybe<
+          Pick<ContentfulBlogPostDescriptionTextNode, "description">
+        >
+        image: Maybe<
+          Pick<ContentfulAsset, "id"> & {
+            fluid: Maybe<
+              Pick<
+                ContentfulFluid,
+                "base64" | "tracedSVG" | "srcWebp" | "srcSetWebp"
+              >
+            >
+          }
+        >
+      }
+    }>
+  }
+}
+
 export type ProductsPageQueryVariables = {}
 
 export type ProductsPageQuery = {
@@ -7064,6 +7188,21 @@ export type Unnamed_3_QueryVariables = {
 }
 
 export type Unnamed_3_Query = {
+  contentfulBlogPost: Maybe<
+    Pick<ContentfulBlogPost, "publishDate" | "slug" | "title"> & {
+      body: Maybe<Pick<ContentfulBlogPostBodyTextNode, "body">>
+      description: Maybe<
+        Pick<ContentfulBlogPostDescriptionTextNode, "description">
+      >
+    }
+  >
+}
+
+export type Unnamed_4_QueryVariables = {
+  slug: Scalars["String"]
+}
+
+export type Unnamed_4_Query = {
   contentfulPage: Maybe<
     Pick<ContentfulPage, "slug" | "title"> & {
       blocks: Maybe<
@@ -7073,14 +7212,17 @@ export type Unnamed_3_Query = {
                 blogPosts: Maybe<
                   Array<
                     Maybe<
-                      Pick<ContentfulBlogPost, "createdAt" | "id" | "title"> & {
+                      Pick<
+                        ContentfulBlogPost,
+                        "createdAt" | "slug" | "title"
+                      > & {
                         description: Maybe<
                           Pick<
                             ContentfulBlogPostDescriptionTextNode,
                             "description"
                           >
                         >
-                        heroImage: Maybe<
+                        image: Maybe<
                           Pick<ContentfulAsset, "id"> & {
                             fluid: Maybe<
                               Pick<
@@ -7121,11 +7263,11 @@ export type Unnamed_3_Query = {
   >
 }
 
-export type Unnamed_4_QueryVariables = {
+export type Unnamed_5_QueryVariables = {
   handle: Scalars["String"]
 }
 
-export type Unnamed_4_Query = {
+export type Unnamed_5_Query = {
   shopifyProduct: Maybe<
     Pick<
       ShopifyProduct,

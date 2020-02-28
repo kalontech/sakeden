@@ -1,6 +1,29 @@
 const path = require("path")
 
 exports.createPages = ({ graphql, actions }) => {
+  // Create Contenful blog posts.
+  const contentfulBlogPosts = graphql(`
+    {
+      allContentfulBlogPost {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+      actions.createPage({
+        component: path.resolve("./src/templates/blog-post.tsx"),
+        context: {
+          slug: node.slug,
+        },
+        path: `/blog-posts/${node.slug}`,
+      })
+    })
+  })
+
   // Create Contenful pages.
   const contentfulPages = graphql(`
     {
@@ -19,7 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.slug,
         },
-        path: `/pages/${node.slug}`,
+        path: node.slug === "home" ? "/" : `/pages/${node.slug}`,
       })
     })
   })
@@ -47,5 +70,5 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([contentfulPages, shopifyProducts])
+  return Promise.all([contentfulBlogPosts, contentfulPages, shopifyProducts])
 }

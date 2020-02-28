@@ -11,7 +11,7 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
   title,
 }) => {
   return (
-    <div>
+    <Box my={5}>
       <Heading as="h1" sx={{ textAlign: "center" }} variant="h1">
         {title}
       </Heading>
@@ -25,7 +25,7 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
         </Box>
       )}
       <Text sx={{ textAlign: "center" }}>{bottomText}</Text>
-    </div>
+    </Box>
   )
 }
 

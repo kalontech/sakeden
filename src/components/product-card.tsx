@@ -6,6 +6,7 @@ import { Box, Button, Flex, Heading, Text } from "theme-ui"
 import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
 import { getPriceFromVariants, wait } from "../utils/helpers"
+import Card from "./card"
 import { InternalLink } from "./link"
 
 interface ProductCardProps {
@@ -42,19 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
 
   return (
     <InternalLink href={`/products/${node.handle}`}>
-      <Flex
-        bg="muted"
-        p={3}
-        sx={{
-          ":hover": {
-            boxShadow: "0px 3px 5px 3px rgba(0, 0, 0, 0.1)",
-          },
-          boxShadow: "0px 3px 5px 1px rgba(0, 0, 0, 0.05)",
-          flexDirection: "column",
-          height: "100%",
-          transition: "200ms ease-in-out",
-        }}
-      >
+      <Card>
         {node.title && (
           <Heading as="h4" variant="h4" mt={2}>
             {node.title}
@@ -104,7 +93,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
             {justAddedToCart ? <MdDone /> : <MdShoppingCart />}
           </Button>
         </Flex>
-      </Flex>
+      </Card>
     </InternalLink>
   )
 }

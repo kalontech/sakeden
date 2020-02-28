@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import ProductCard from "../components/product-card"
 import SEO from "../components/seo"
 
-const IndexPage: React.FC = () => {
+const ProductsPage: React.FC = () => {
   const { allShopifyProduct } = useStaticQuery<ProductsPageQuery>(
     graphql`
       query ProductsPage {
@@ -70,4 +70,4 @@ const IndexPage: React.FC = () => {
   )
 }
 
-export default IndexPage
+export default ProductsPage

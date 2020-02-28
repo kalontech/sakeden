@@ -4,6 +4,7 @@ import React from "react"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
 import { ContentfulBlogPost } from "../../graphql-types"
+import Card from "./card"
 import { InternalLink } from "./link"
 
 interface BlogPostCardProps {
@@ -12,37 +13,35 @@ interface BlogPostCardProps {
 
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
   return (
-    <InternalLink href={`/blog-posts/${node.id}`}>
-      <Flex
-        bg="muted"
-        p={3}
-        sx={{
-          ":hover": {
-            boxShadow: "0px 3px 5px 3px rgba(0, 0, 0, 0.1)",
-          },
-          boxShadow: "0px 3px 5px 1px rgba(0, 0, 0, 0.05)",
-          flexDirection: "column",
-          height: "100%",
-          transition: "200ms ease-in-out",
-        }}
-      >
-        <Heading as="h4" variant="h4">
-          {node.title}
-        </Heading>
-        <Text sx={{ color: "gray" }}>
-          {moment(node.createdAt).format("MMMM DD, YYYY")}
-        </Text>
-        {node.heroImage && (
-          <Box sx={{ my: 3 }}>
-            <Image
-              fluid={node.heroImage.fluid as FluidObject}
-              style={{ height: "210px" }}
-            />
+    <InternalLink href={`/blog-posts/${node.slug}`}>
+      <Card>
+        <Flex
+          sx={{
+            flexDirection: "column",
+            height: "100%",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box>
+            <Heading as="h4" variant="h4">
+              {node.title}
+            </Heading>
+            <Text sx={{ color: "gray", fontSize: 1 }}>
+              {moment(node.publishDate).format("MMMM DD, YYYY")}
+            </Text>
+            {node.image && (
+              <Box sx={{ my: 2 }}>
+                <Image
+                  fluid={node.image.fluid as FluidObject}
+                  style={{ height: "210px" }}
+                />
+              </Box>
+            )}
+            <Text>{node.description!.description}</Text>
           </Box>
-        )}
-        <Text>{node.description!.description}</Text>
-        <Button>Read more</Button>
-      </Flex>
+          <Button sx={{ mt: 3 }}>Read more</Button>
+        </Flex>
+      </Card>
     </InternalLink>
   )
 }

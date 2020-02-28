@@ -11,14 +11,19 @@ import Modals from "./modals"
 
 interface LayoutProps {
   children: React.ReactNode
+  narrow?: boolean
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, narrow }) => {
   return (
     <>
       <Modals />
       <Header logo={<Logo />} />
-      <Container py={4} sx={{ flex: 1 }}>
+      <Container
+        py={4}
+        variant={narrow ? "containerNarrow" : "container"}
+        sx={{ flex: 1 }}
+      >
         {children}
       </Container>
     </>

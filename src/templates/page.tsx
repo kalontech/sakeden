@@ -1,15 +1,15 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import React from "react"
 
-import { ContentfulPage } from "../../graphql-types"
+import { ContentfulPage, PageQuery } from "../../graphql-types"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Block, renderContentfulBlock } from "../utils/contentful"
 
 const PagePage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
-  const pageResources = props.pageResources as any
-  const contentfulPage = pageResources.json.data
-    .contentfulPage as ContentfulPage
+  const data = props.data as PageQuery
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+  const contentfulPage = data.contentfulPage as ContentfulPage
   const blocks = (contentfulPage.blocks || []) as Block[]
 
   return (
@@ -21,7 +21,7 @@ const PagePage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query Page($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       blocks {
         ... on ContentfulBlockFeaturedBlogPosts {

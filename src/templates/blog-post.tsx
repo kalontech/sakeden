@@ -17,14 +17,13 @@ import {
 } from "react-share"
 import { Box, Flex, Heading, Styled, Text } from "theme-ui"
 
-import { ContentfulBlogPost } from "../../graphql-types"
+import { BlogPostQuery, ContentfulBlogPost } from "../../graphql-types"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
-  const pageResources = props.pageResources as any
-  const contentfulBlogPost = pageResources.json.data
-    .contentfulBlogPost as ContentfulBlogPost
+  const data = props.data as BlogPostQuery
+  const contentfulBlogPost = data.contentfulBlogPost as ContentfulBlogPost
 
   return (
     <>
@@ -37,25 +36,25 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           <Flex>
             <EmailShareButton
               title={contentfulBlogPost.title!}
-              url={window.location.href}
+              url={window ? window.location.href : ""}
             >
               <MdEmail size="28px" />
             </EmailShareButton>
             <FacebookShareButton
               title={contentfulBlogPost.title!}
-              url={window.location.href}
+              url={window ? window.location.href : ""}
             >
               <FaFacebookSquare size="28px" />
             </FacebookShareButton>
             <TwitterShareButton
               title={contentfulBlogPost.title!}
-              url={window.location.href}
+              url={window ? window.location.href : ""}
             >
               <FaTwitterSquare size="28px" />
             </TwitterShareButton>
             <WhatsappShareButton
               title={contentfulBlogPost.title!}
-              url={window.location.href}
+              url={window ? window.location.href : ""}
             >
               <FaWhatsappSquare size="28px" />
             </WhatsappShareButton>
@@ -115,7 +114,7 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query BlogPost($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
       body {
         body

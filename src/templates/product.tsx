@@ -4,15 +4,19 @@ import React, { useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
-import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
+import {
+  ProductQuery,
+  ShopifyProduct,
+  ShopifyProductVariant,
+} from "../../graphql-types"
 import AppContext from "../app-context"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { getPriceFromVariants, wait } from "../utils/helpers"
 
 const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
-  const shopifyProduct = (props.pageResources as any).json.data
-    .shopifyProduct as ShopifyProduct
+  const data = props.data as ProductQuery
+  const shopifyProduct = data.shopifyProduct as ShopifyProduct
 
   const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
@@ -174,7 +178,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 }
 
 export const query = graphql`
-  query($handle: String!) {
+  query Product($handle: String!) {
     shopifyProduct(handle: { eq: $handle }) {
       availableForSale
       description

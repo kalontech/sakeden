@@ -571,6 +571,50 @@ export type ContentfulBlockFeaturedBlogPostsFieldsEnum =
   | "blogPosts___image___resize___width"
   | "blogPosts___image___resize___height"
   | "blogPosts___image___resize___aspectRatio"
+  | "blogPosts___block_featured_blog_posts"
+  | "blogPosts___block_featured_blog_posts___id"
+  | "blogPosts___block_featured_blog_posts___parent___id"
+  | "blogPosts___block_featured_blog_posts___parent___children"
+  | "blogPosts___block_featured_blog_posts___children"
+  | "blogPosts___block_featured_blog_posts___children___id"
+  | "blogPosts___block_featured_blog_posts___children___children"
+  | "blogPosts___block_featured_blog_posts___internal___content"
+  | "blogPosts___block_featured_blog_posts___internal___contentDigest"
+  | "blogPosts___block_featured_blog_posts___internal___description"
+  | "blogPosts___block_featured_blog_posts___internal___fieldOwners"
+  | "blogPosts___block_featured_blog_posts___internal___ignoreType"
+  | "blogPosts___block_featured_blog_posts___internal___mediaType"
+  | "blogPosts___block_featured_blog_posts___internal___owner"
+  | "blogPosts___block_featured_blog_posts___internal___type"
+  | "blogPosts___block_featured_blog_posts___title"
+  | "blogPosts___block_featured_blog_posts___blogPosts"
+  | "blogPosts___block_featured_blog_posts___blogPosts___id"
+  | "blogPosts___block_featured_blog_posts___blogPosts___children"
+  | "blogPosts___block_featured_blog_posts___blogPosts___title"
+  | "blogPosts___block_featured_blog_posts___blogPosts___slug"
+  | "blogPosts___block_featured_blog_posts___blogPosts___publishDate"
+  | "blogPosts___block_featured_blog_posts___blogPosts___block_featured_blog_posts"
+  | "blogPosts___block_featured_blog_posts___blogPosts___spaceId"
+  | "blogPosts___block_featured_blog_posts___blogPosts___contentful_id"
+  | "blogPosts___block_featured_blog_posts___blogPosts___createdAt"
+  | "blogPosts___block_featured_blog_posts___blogPosts___updatedAt"
+  | "blogPosts___block_featured_blog_posts___blogPosts___node_locale"
+  | "blogPosts___block_featured_blog_posts___page"
+  | "blogPosts___block_featured_blog_posts___page___id"
+  | "blogPosts___block_featured_blog_posts___page___children"
+  | "blogPosts___block_featured_blog_posts___page___title"
+  | "blogPosts___block_featured_blog_posts___page___slug"
+  | "blogPosts___block_featured_blog_posts___page___spaceId"
+  | "blogPosts___block_featured_blog_posts___page___contentful_id"
+  | "blogPosts___block_featured_blog_posts___page___createdAt"
+  | "blogPosts___block_featured_blog_posts___page___updatedAt"
+  | "blogPosts___block_featured_blog_posts___page___node_locale"
+  | "blogPosts___block_featured_blog_posts___spaceId"
+  | "blogPosts___block_featured_blog_posts___contentful_id"
+  | "blogPosts___block_featured_blog_posts___createdAt"
+  | "blogPosts___block_featured_blog_posts___updatedAt"
+  | "blogPosts___block_featured_blog_posts___sys___revision"
+  | "blogPosts___block_featured_blog_posts___node_locale"
   | "blogPosts___description___id"
   | "blogPosts___description___parent___id"
   | "blogPosts___description___parent___children"
@@ -709,6 +753,10 @@ export type ContentfulBlockFeaturedBlogPostsFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>
   sys?: Maybe<ContentfulBlockFeaturedBlogPostsSysFilterInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulBlockFeaturedBlogPostsFilterListInput = {
+  elemMatch?: Maybe<ContentfulBlockFeaturedBlogPostsFilterInput>
 }
 
 export type ContentfulBlockFeaturedBlogPostsGroupConnection = {
@@ -1385,6 +1433,9 @@ export type ContentfulBlogPost = Node & {
   slug?: Maybe<Scalars["String"]>
   publishDate?: Maybe<Scalars["Date"]>
   image?: Maybe<ContentfulAsset>
+  block_featured_blog_posts?: Maybe<
+    Array<Maybe<ContentfulBlockFeaturedBlogPosts>>
+  >
   description?: Maybe<ContentfulBlogPostDescriptionTextNode>
   body?: Maybe<ContentfulBlogPostBodyTextNode>
   spaceId?: Maybe<Scalars["String"]>
@@ -1909,6 +1960,128 @@ export type ContentfulBlogPostFieldsEnum =
   | "image___resize___width"
   | "image___resize___height"
   | "image___resize___aspectRatio"
+  | "block_featured_blog_posts"
+  | "block_featured_blog_posts___id"
+  | "block_featured_blog_posts___parent___id"
+  | "block_featured_blog_posts___parent___parent___id"
+  | "block_featured_blog_posts___parent___parent___children"
+  | "block_featured_blog_posts___parent___children"
+  | "block_featured_blog_posts___parent___children___id"
+  | "block_featured_blog_posts___parent___children___children"
+  | "block_featured_blog_posts___parent___internal___content"
+  | "block_featured_blog_posts___parent___internal___contentDigest"
+  | "block_featured_blog_posts___parent___internal___description"
+  | "block_featured_blog_posts___parent___internal___fieldOwners"
+  | "block_featured_blog_posts___parent___internal___ignoreType"
+  | "block_featured_blog_posts___parent___internal___mediaType"
+  | "block_featured_blog_posts___parent___internal___owner"
+  | "block_featured_blog_posts___parent___internal___type"
+  | "block_featured_blog_posts___children"
+  | "block_featured_blog_posts___children___id"
+  | "block_featured_blog_posts___children___parent___id"
+  | "block_featured_blog_posts___children___parent___children"
+  | "block_featured_blog_posts___children___children"
+  | "block_featured_blog_posts___children___children___id"
+  | "block_featured_blog_posts___children___children___children"
+  | "block_featured_blog_posts___children___internal___content"
+  | "block_featured_blog_posts___children___internal___contentDigest"
+  | "block_featured_blog_posts___children___internal___description"
+  | "block_featured_blog_posts___children___internal___fieldOwners"
+  | "block_featured_blog_posts___children___internal___ignoreType"
+  | "block_featured_blog_posts___children___internal___mediaType"
+  | "block_featured_blog_posts___children___internal___owner"
+  | "block_featured_blog_posts___children___internal___type"
+  | "block_featured_blog_posts___internal___content"
+  | "block_featured_blog_posts___internal___contentDigest"
+  | "block_featured_blog_posts___internal___description"
+  | "block_featured_blog_posts___internal___fieldOwners"
+  | "block_featured_blog_posts___internal___ignoreType"
+  | "block_featured_blog_posts___internal___mediaType"
+  | "block_featured_blog_posts___internal___owner"
+  | "block_featured_blog_posts___internal___type"
+  | "block_featured_blog_posts___title"
+  | "block_featured_blog_posts___blogPosts"
+  | "block_featured_blog_posts___blogPosts___id"
+  | "block_featured_blog_posts___blogPosts___parent___id"
+  | "block_featured_blog_posts___blogPosts___parent___children"
+  | "block_featured_blog_posts___blogPosts___children"
+  | "block_featured_blog_posts___blogPosts___children___id"
+  | "block_featured_blog_posts___blogPosts___children___children"
+  | "block_featured_blog_posts___blogPosts___internal___content"
+  | "block_featured_blog_posts___blogPosts___internal___contentDigest"
+  | "block_featured_blog_posts___blogPosts___internal___description"
+  | "block_featured_blog_posts___blogPosts___internal___fieldOwners"
+  | "block_featured_blog_posts___blogPosts___internal___ignoreType"
+  | "block_featured_blog_posts___blogPosts___internal___mediaType"
+  | "block_featured_blog_posts___blogPosts___internal___owner"
+  | "block_featured_blog_posts___blogPosts___internal___type"
+  | "block_featured_blog_posts___blogPosts___title"
+  | "block_featured_blog_posts___blogPosts___slug"
+  | "block_featured_blog_posts___blogPosts___publishDate"
+  | "block_featured_blog_posts___blogPosts___image___id"
+  | "block_featured_blog_posts___blogPosts___image___children"
+  | "block_featured_blog_posts___blogPosts___image___contentful_id"
+  | "block_featured_blog_posts___blogPosts___image___title"
+  | "block_featured_blog_posts___blogPosts___image___description"
+  | "block_featured_blog_posts___blogPosts___image___node_locale"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___id"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___children"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___title"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___blogPosts"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___page"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___spaceId"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___contentful_id"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___createdAt"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___updatedAt"
+  | "block_featured_blog_posts___blogPosts___block_featured_blog_posts___node_locale"
+  | "block_featured_blog_posts___blogPosts___description___id"
+  | "block_featured_blog_posts___blogPosts___description___children"
+  | "block_featured_blog_posts___blogPosts___description___description"
+  | "block_featured_blog_posts___blogPosts___body___id"
+  | "block_featured_blog_posts___blogPosts___body___children"
+  | "block_featured_blog_posts___blogPosts___body___body"
+  | "block_featured_blog_posts___blogPosts___spaceId"
+  | "block_featured_blog_posts___blogPosts___contentful_id"
+  | "block_featured_blog_posts___blogPosts___createdAt"
+  | "block_featured_blog_posts___blogPosts___updatedAt"
+  | "block_featured_blog_posts___blogPosts___sys___revision"
+  | "block_featured_blog_posts___blogPosts___node_locale"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___id"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___children"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___description"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___id"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___children"
+  | "block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___body"
+  | "block_featured_blog_posts___page"
+  | "block_featured_blog_posts___page___id"
+  | "block_featured_blog_posts___page___parent___id"
+  | "block_featured_blog_posts___page___parent___children"
+  | "block_featured_blog_posts___page___children"
+  | "block_featured_blog_posts___page___children___id"
+  | "block_featured_blog_posts___page___children___children"
+  | "block_featured_blog_posts___page___internal___content"
+  | "block_featured_blog_posts___page___internal___contentDigest"
+  | "block_featured_blog_posts___page___internal___description"
+  | "block_featured_blog_posts___page___internal___fieldOwners"
+  | "block_featured_blog_posts___page___internal___ignoreType"
+  | "block_featured_blog_posts___page___internal___mediaType"
+  | "block_featured_blog_posts___page___internal___owner"
+  | "block_featured_blog_posts___page___internal___type"
+  | "block_featured_blog_posts___page___title"
+  | "block_featured_blog_posts___page___slug"
+  | "block_featured_blog_posts___page___spaceId"
+  | "block_featured_blog_posts___page___contentful_id"
+  | "block_featured_blog_posts___page___createdAt"
+  | "block_featured_blog_posts___page___updatedAt"
+  | "block_featured_blog_posts___page___sys___revision"
+  | "block_featured_blog_posts___page___node_locale"
+  | "block_featured_blog_posts___spaceId"
+  | "block_featured_blog_posts___contentful_id"
+  | "block_featured_blog_posts___createdAt"
+  | "block_featured_blog_posts___updatedAt"
+  | "block_featured_blog_posts___sys___revision"
+  | "block_featured_blog_posts___node_locale"
   | "description___id"
   | "description___parent___id"
   | "description___parent___parent___id"
@@ -2085,6 +2258,9 @@ export type ContentfulBlogPostFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>
   publishDate?: Maybe<DateQueryOperatorInput>
   image?: Maybe<ContentfulAssetFilterInput>
+  block_featured_blog_posts?: Maybe<
+    ContentfulBlockFeaturedBlogPostsFilterListInput
+  >
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
   spaceId?: Maybe<StringQueryOperatorInput>
@@ -3943,12 +4119,6 @@ export type Query = {
   allSitePage: SitePageConnection
   imageSharp?: Maybe<ImageSharp>
   allImageSharp: ImageSharpConnection
-  contentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNode>
-  allContentfulBlogPostBodyTextNode: ContentfulBlogPostBodyTextNodeConnection
-  contentfulBlogPostDescriptionTextNode?: Maybe<
-    ContentfulBlogPostDescriptionTextNode
-  >
-  allContentfulBlogPostDescriptionTextNode: ContentfulBlogPostDescriptionTextNodeConnection
   shopifyProductOption?: Maybe<ShopifyProductOption>
   allShopifyProductOption: ShopifyProductOptionConnection
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>
@@ -3957,12 +4127,12 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
-  shopifyCollection?: Maybe<ShopifyCollection>
-  allShopifyCollection: ShopifyCollectionConnection
   shopifyBlog?: Maybe<ShopifyBlog>
   allShopifyBlog: ShopifyBlogConnection
   shopifyPage?: Maybe<ShopifyPage>
   allShopifyPage: ShopifyPageConnection
+  shopifyCollection?: Maybe<ShopifyCollection>
+  allShopifyCollection: ShopifyCollectionConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
   contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>
@@ -3973,6 +4143,12 @@ export type Query = {
   allContentfulBlockHero: ContentfulBlockHeroConnection
   contentfulPage?: Maybe<ContentfulPage>
   allContentfulPage: ContentfulPageConnection
+  contentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNode>
+  allContentfulBlogPostBodyTextNode: ContentfulBlogPostBodyTextNodeConnection
+  contentfulBlogPostDescriptionTextNode?: Maybe<
+    ContentfulBlogPostDescriptionTextNode
+  >
+  allContentfulBlogPostDescriptionTextNode: ContentfulBlogPostDescriptionTextNodeConnection
   contentfulBlogPost?: Maybe<ContentfulBlogPost>
   allContentfulBlogPost: ContentfulBlogPostConnection
   contentfulContentType?: Maybe<ContentfulContentType>
@@ -4124,36 +4300,6 @@ export type QueryAllImageSharpArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryContentfulBlogPostBodyTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  body?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllContentfulBlogPostBodyTextNodeArgs = {
-  filter?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
-  sort?: Maybe<ContentfulBlogPostBodyTextNodeSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
-export type QueryContentfulBlogPostDescriptionTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  description?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllContentfulBlogPostDescriptionTextNodeArgs = {
-  filter?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
-  sort?: Maybe<ContentfulBlogPostDescriptionTextNodeSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyProductOptionArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4247,27 +4393,6 @@ export type QueryAllShopifyProductArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyCollectionArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  description?: Maybe<StringQueryOperatorInput>
-  descriptionHtml?: Maybe<StringQueryOperatorInput>
-  handle?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-  products?: Maybe<ShopifyProductFilterListInput>
-}
-
-export type QueryAllShopifyCollectionArgs = {
-  filter?: Maybe<ShopifyCollectionFilterInput>
-  sort?: Maybe<ShopifyCollectionSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyBlogArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4302,6 +4427,27 @@ export type QueryShopifyPageArgs = {
 export type QueryAllShopifyPageArgs = {
   filter?: Maybe<ShopifyPageFilterInput>
   sort?: Maybe<ShopifyPageSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryShopifyCollectionArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+  descriptionHtml?: Maybe<StringQueryOperatorInput>
+  handle?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+  products?: Maybe<ShopifyProductFilterListInput>
+}
+
+export type QueryAllShopifyCollectionArgs = {
+  filter?: Maybe<ShopifyCollectionFilterInput>
+  sort?: Maybe<ShopifyCollectionSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -4423,6 +4569,36 @@ export type QueryAllContentfulPageArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
+export type QueryContentfulBlogPostBodyTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  body?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlogPostBodyTextNodeArgs = {
+  filter?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlogPostBodyTextNodeSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlogPostDescriptionTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlogPostDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlogPostDescriptionTextNodeSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
 export type QueryContentfulBlogPostArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4432,6 +4608,9 @@ export type QueryContentfulBlogPostArgs = {
   slug?: Maybe<StringQueryOperatorInput>
   publishDate?: Maybe<DateQueryOperatorInput>
   image?: Maybe<ContentfulAssetFilterInput>
+  block_featured_blog_posts?: Maybe<
+    ContentfulBlockFeaturedBlogPostsFilterListInput
+  >
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>
   spaceId?: Maybe<StringQueryOperatorInput>
@@ -4478,8 +4657,6 @@ export type QuerySiteArgs = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -6290,8 +6467,6 @@ export type Site = Node & {
   children: Array<Node>
   internal: Internal
   siteMetadata?: Maybe<SiteSiteMetadata>
-  port?: Maybe<Scalars["Int"]>
-  host?: Maybe<Scalars["String"]>
   polyfill?: Maybe<Scalars["Boolean"]>
   pathPrefix?: Maybe<Scalars["String"]>
   buildTime?: Maybe<Scalars["Date"]>
@@ -6419,8 +6594,6 @@ export type SiteFieldsEnum =
   | "siteMetadata___author"
   | "siteMetadata___description"
   | "siteMetadata___title"
-  | "port"
-  | "host"
   | "polyfill"
   | "pathPrefix"
   | "buildTime"
@@ -6431,8 +6604,6 @@ export type SiteFilterInput = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -7183,11 +7354,11 @@ export type ProductsPageQuery = {
   }
 }
 
-export type Unnamed_3_QueryVariables = {
+export type BlogPostQueryVariables = {
   slug: Scalars["String"]
 }
 
-export type Unnamed_3_Query = {
+export type BlogPostQuery = {
   contentfulBlogPost: Maybe<
     Pick<ContentfulBlogPost, "publishDate" | "slug" | "title"> & {
       body: Maybe<Pick<ContentfulBlogPostBodyTextNode, "body">>
@@ -7198,11 +7369,11 @@ export type Unnamed_3_Query = {
   >
 }
 
-export type Unnamed_4_QueryVariables = {
+export type PageQueryVariables = {
   slug: Scalars["String"]
 }
 
-export type Unnamed_4_Query = {
+export type PageQuery = {
   contentfulPage: Maybe<
     Pick<ContentfulPage, "slug" | "title"> & {
       blocks: Maybe<
@@ -7263,11 +7434,11 @@ export type Unnamed_4_Query = {
   >
 }
 
-export type Unnamed_5_QueryVariables = {
+export type ProductQueryVariables = {
   handle: Scalars["String"]
 }
 
-export type Unnamed_5_Query = {
+export type ProductQuery = {
   shopifyProduct: Maybe<
     Pick<
       ShopifyProduct,

@@ -32,7 +32,9 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
             {node.image && (
               <Box sx={{ my: 2 }}>
                 <Image
-                  fluid={node.image.fluid as FluidObject}
+                  fluid={
+                    node.image.localFile!.childImageSharp!.fluid as FluidObject
+                  }
                   style={{ height: "210px" }}
                 />
               </Box>

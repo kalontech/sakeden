@@ -18,12 +18,12 @@ const BlogPostsPage: React.FC = () => {
                 description
               }
               image {
-                id
-                fluid {
-                  base64
-                  tracedSVG
-                  srcWebp
-                  srcSetWebp
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 500) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
                 }
               }
               publishDate

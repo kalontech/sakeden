@@ -32,6 +32,7 @@ export type ContentfulAsset = Node & {
   title?: Maybe<Scalars["String"]>
   description?: Maybe<Scalars["String"]>
   node_locale?: Maybe<Scalars["String"]>
+  localFile?: Maybe<File>
   fixed?: Maybe<ContentfulFixed>
   resolutions?: Maybe<ContentfulResolutions>
   fluid?: Maybe<ContentfulFluid>
@@ -214,6 +215,146 @@ export type ContentfulAssetFieldsEnum =
   | "title"
   | "description"
   | "node_locale"
+  | "localFile___sourceInstanceName"
+  | "localFile___absolutePath"
+  | "localFile___relativePath"
+  | "localFile___extension"
+  | "localFile___size"
+  | "localFile___prettySize"
+  | "localFile___modifiedTime"
+  | "localFile___accessTime"
+  | "localFile___changeTime"
+  | "localFile___birthTime"
+  | "localFile___root"
+  | "localFile___dir"
+  | "localFile___base"
+  | "localFile___ext"
+  | "localFile___name"
+  | "localFile___relativeDirectory"
+  | "localFile___dev"
+  | "localFile___mode"
+  | "localFile___nlink"
+  | "localFile___uid"
+  | "localFile___gid"
+  | "localFile___rdev"
+  | "localFile___ino"
+  | "localFile___atimeMs"
+  | "localFile___mtimeMs"
+  | "localFile___ctimeMs"
+  | "localFile___atime"
+  | "localFile___mtime"
+  | "localFile___ctime"
+  | "localFile___birthtime"
+  | "localFile___birthtimeMs"
+  | "localFile___blksize"
+  | "localFile___blocks"
+  | "localFile___url"
+  | "localFile___publicURL"
+  | "localFile___childImageSharp___fixed___base64"
+  | "localFile___childImageSharp___fixed___tracedSVG"
+  | "localFile___childImageSharp___fixed___aspectRatio"
+  | "localFile___childImageSharp___fixed___width"
+  | "localFile___childImageSharp___fixed___height"
+  | "localFile___childImageSharp___fixed___src"
+  | "localFile___childImageSharp___fixed___srcSet"
+  | "localFile___childImageSharp___fixed___srcWebp"
+  | "localFile___childImageSharp___fixed___srcSetWebp"
+  | "localFile___childImageSharp___fixed___originalName"
+  | "localFile___childImageSharp___resolutions___base64"
+  | "localFile___childImageSharp___resolutions___tracedSVG"
+  | "localFile___childImageSharp___resolutions___aspectRatio"
+  | "localFile___childImageSharp___resolutions___width"
+  | "localFile___childImageSharp___resolutions___height"
+  | "localFile___childImageSharp___resolutions___src"
+  | "localFile___childImageSharp___resolutions___srcSet"
+  | "localFile___childImageSharp___resolutions___srcWebp"
+  | "localFile___childImageSharp___resolutions___srcSetWebp"
+  | "localFile___childImageSharp___resolutions___originalName"
+  | "localFile___childImageSharp___fluid___base64"
+  | "localFile___childImageSharp___fluid___tracedSVG"
+  | "localFile___childImageSharp___fluid___aspectRatio"
+  | "localFile___childImageSharp___fluid___src"
+  | "localFile___childImageSharp___fluid___srcSet"
+  | "localFile___childImageSharp___fluid___srcWebp"
+  | "localFile___childImageSharp___fluid___srcSetWebp"
+  | "localFile___childImageSharp___fluid___sizes"
+  | "localFile___childImageSharp___fluid___originalImg"
+  | "localFile___childImageSharp___fluid___originalName"
+  | "localFile___childImageSharp___fluid___presentationWidth"
+  | "localFile___childImageSharp___fluid___presentationHeight"
+  | "localFile___childImageSharp___sizes___base64"
+  | "localFile___childImageSharp___sizes___tracedSVG"
+  | "localFile___childImageSharp___sizes___aspectRatio"
+  | "localFile___childImageSharp___sizes___src"
+  | "localFile___childImageSharp___sizes___srcSet"
+  | "localFile___childImageSharp___sizes___srcWebp"
+  | "localFile___childImageSharp___sizes___srcSetWebp"
+  | "localFile___childImageSharp___sizes___sizes"
+  | "localFile___childImageSharp___sizes___originalImg"
+  | "localFile___childImageSharp___sizes___originalName"
+  | "localFile___childImageSharp___sizes___presentationWidth"
+  | "localFile___childImageSharp___sizes___presentationHeight"
+  | "localFile___childImageSharp___original___width"
+  | "localFile___childImageSharp___original___height"
+  | "localFile___childImageSharp___original___src"
+  | "localFile___childImageSharp___resize___src"
+  | "localFile___childImageSharp___resize___tracedSVG"
+  | "localFile___childImageSharp___resize___width"
+  | "localFile___childImageSharp___resize___height"
+  | "localFile___childImageSharp___resize___aspectRatio"
+  | "localFile___childImageSharp___resize___originalName"
+  | "localFile___childImageSharp___id"
+  | "localFile___childImageSharp___parent___id"
+  | "localFile___childImageSharp___parent___children"
+  | "localFile___childImageSharp___children"
+  | "localFile___childImageSharp___children___id"
+  | "localFile___childImageSharp___children___children"
+  | "localFile___childImageSharp___internal___content"
+  | "localFile___childImageSharp___internal___contentDigest"
+  | "localFile___childImageSharp___internal___description"
+  | "localFile___childImageSharp___internal___fieldOwners"
+  | "localFile___childImageSharp___internal___ignoreType"
+  | "localFile___childImageSharp___internal___mediaType"
+  | "localFile___childImageSharp___internal___owner"
+  | "localFile___childImageSharp___internal___type"
+  | "localFile___id"
+  | "localFile___parent___id"
+  | "localFile___parent___parent___id"
+  | "localFile___parent___parent___children"
+  | "localFile___parent___children"
+  | "localFile___parent___children___id"
+  | "localFile___parent___children___children"
+  | "localFile___parent___internal___content"
+  | "localFile___parent___internal___contentDigest"
+  | "localFile___parent___internal___description"
+  | "localFile___parent___internal___fieldOwners"
+  | "localFile___parent___internal___ignoreType"
+  | "localFile___parent___internal___mediaType"
+  | "localFile___parent___internal___owner"
+  | "localFile___parent___internal___type"
+  | "localFile___children"
+  | "localFile___children___id"
+  | "localFile___children___parent___id"
+  | "localFile___children___parent___children"
+  | "localFile___children___children"
+  | "localFile___children___children___id"
+  | "localFile___children___children___children"
+  | "localFile___children___internal___content"
+  | "localFile___children___internal___contentDigest"
+  | "localFile___children___internal___description"
+  | "localFile___children___internal___fieldOwners"
+  | "localFile___children___internal___ignoreType"
+  | "localFile___children___internal___mediaType"
+  | "localFile___children___internal___owner"
+  | "localFile___children___internal___type"
+  | "localFile___internal___content"
+  | "localFile___internal___contentDigest"
+  | "localFile___internal___description"
+  | "localFile___internal___fieldOwners"
+  | "localFile___internal___ignoreType"
+  | "localFile___internal___mediaType"
+  | "localFile___internal___owner"
+  | "localFile___internal___type"
   | "fixed___base64"
   | "fixed___tracedSVG"
   | "fixed___aspectRatio"
@@ -299,6 +440,7 @@ export type ContentfulAssetFilterInput = {
   title?: Maybe<StringQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  localFile?: Maybe<FileFilterInput>
   fixed?: Maybe<ContentfulFixedFilterInput>
   resolutions?: Maybe<ContentfulResolutionsFilterInput>
   fluid?: Maybe<ContentfulFluidFilterInput>
@@ -531,6 +673,43 @@ export type ContentfulBlockFeaturedBlogPostsFieldsEnum =
   | "blogPosts___image___title"
   | "blogPosts___image___description"
   | "blogPosts___image___node_locale"
+  | "blogPosts___image___localFile___sourceInstanceName"
+  | "blogPosts___image___localFile___absolutePath"
+  | "blogPosts___image___localFile___relativePath"
+  | "blogPosts___image___localFile___extension"
+  | "blogPosts___image___localFile___size"
+  | "blogPosts___image___localFile___prettySize"
+  | "blogPosts___image___localFile___modifiedTime"
+  | "blogPosts___image___localFile___accessTime"
+  | "blogPosts___image___localFile___changeTime"
+  | "blogPosts___image___localFile___birthTime"
+  | "blogPosts___image___localFile___root"
+  | "blogPosts___image___localFile___dir"
+  | "blogPosts___image___localFile___base"
+  | "blogPosts___image___localFile___ext"
+  | "blogPosts___image___localFile___name"
+  | "blogPosts___image___localFile___relativeDirectory"
+  | "blogPosts___image___localFile___dev"
+  | "blogPosts___image___localFile___mode"
+  | "blogPosts___image___localFile___nlink"
+  | "blogPosts___image___localFile___uid"
+  | "blogPosts___image___localFile___gid"
+  | "blogPosts___image___localFile___rdev"
+  | "blogPosts___image___localFile___ino"
+  | "blogPosts___image___localFile___atimeMs"
+  | "blogPosts___image___localFile___mtimeMs"
+  | "blogPosts___image___localFile___ctimeMs"
+  | "blogPosts___image___localFile___atime"
+  | "blogPosts___image___localFile___mtime"
+  | "blogPosts___image___localFile___ctime"
+  | "blogPosts___image___localFile___birthtime"
+  | "blogPosts___image___localFile___birthtimeMs"
+  | "blogPosts___image___localFile___blksize"
+  | "blogPosts___image___localFile___blocks"
+  | "blogPosts___image___localFile___url"
+  | "blogPosts___image___localFile___publicURL"
+  | "blogPosts___image___localFile___id"
+  | "blogPosts___image___localFile___children"
   | "blogPosts___image___fixed___base64"
   | "blogPosts___image___fixed___tracedSVG"
   | "blogPosts___image___fixed___aspectRatio"
@@ -1262,6 +1441,57 @@ export type ContentfulBlockHeroFieldsEnum =
   | "picture___title"
   | "picture___description"
   | "picture___node_locale"
+  | "picture___localFile___sourceInstanceName"
+  | "picture___localFile___absolutePath"
+  | "picture___localFile___relativePath"
+  | "picture___localFile___extension"
+  | "picture___localFile___size"
+  | "picture___localFile___prettySize"
+  | "picture___localFile___modifiedTime"
+  | "picture___localFile___accessTime"
+  | "picture___localFile___changeTime"
+  | "picture___localFile___birthTime"
+  | "picture___localFile___root"
+  | "picture___localFile___dir"
+  | "picture___localFile___base"
+  | "picture___localFile___ext"
+  | "picture___localFile___name"
+  | "picture___localFile___relativeDirectory"
+  | "picture___localFile___dev"
+  | "picture___localFile___mode"
+  | "picture___localFile___nlink"
+  | "picture___localFile___uid"
+  | "picture___localFile___gid"
+  | "picture___localFile___rdev"
+  | "picture___localFile___ino"
+  | "picture___localFile___atimeMs"
+  | "picture___localFile___mtimeMs"
+  | "picture___localFile___ctimeMs"
+  | "picture___localFile___atime"
+  | "picture___localFile___mtime"
+  | "picture___localFile___ctime"
+  | "picture___localFile___birthtime"
+  | "picture___localFile___birthtimeMs"
+  | "picture___localFile___blksize"
+  | "picture___localFile___blocks"
+  | "picture___localFile___url"
+  | "picture___localFile___publicURL"
+  | "picture___localFile___childImageSharp___id"
+  | "picture___localFile___childImageSharp___children"
+  | "picture___localFile___id"
+  | "picture___localFile___parent___id"
+  | "picture___localFile___parent___children"
+  | "picture___localFile___children"
+  | "picture___localFile___children___id"
+  | "picture___localFile___children___children"
+  | "picture___localFile___internal___content"
+  | "picture___localFile___internal___contentDigest"
+  | "picture___localFile___internal___description"
+  | "picture___localFile___internal___fieldOwners"
+  | "picture___localFile___internal___ignoreType"
+  | "picture___localFile___internal___mediaType"
+  | "picture___localFile___internal___owner"
+  | "picture___localFile___internal___type"
   | "picture___fixed___base64"
   | "picture___fixed___tracedSVG"
   | "picture___fixed___aspectRatio"
@@ -1920,6 +2150,57 @@ export type ContentfulBlogPostFieldsEnum =
   | "image___title"
   | "image___description"
   | "image___node_locale"
+  | "image___localFile___sourceInstanceName"
+  | "image___localFile___absolutePath"
+  | "image___localFile___relativePath"
+  | "image___localFile___extension"
+  | "image___localFile___size"
+  | "image___localFile___prettySize"
+  | "image___localFile___modifiedTime"
+  | "image___localFile___accessTime"
+  | "image___localFile___changeTime"
+  | "image___localFile___birthTime"
+  | "image___localFile___root"
+  | "image___localFile___dir"
+  | "image___localFile___base"
+  | "image___localFile___ext"
+  | "image___localFile___name"
+  | "image___localFile___relativeDirectory"
+  | "image___localFile___dev"
+  | "image___localFile___mode"
+  | "image___localFile___nlink"
+  | "image___localFile___uid"
+  | "image___localFile___gid"
+  | "image___localFile___rdev"
+  | "image___localFile___ino"
+  | "image___localFile___atimeMs"
+  | "image___localFile___mtimeMs"
+  | "image___localFile___ctimeMs"
+  | "image___localFile___atime"
+  | "image___localFile___mtime"
+  | "image___localFile___ctime"
+  | "image___localFile___birthtime"
+  | "image___localFile___birthtimeMs"
+  | "image___localFile___blksize"
+  | "image___localFile___blocks"
+  | "image___localFile___url"
+  | "image___localFile___publicURL"
+  | "image___localFile___childImageSharp___id"
+  | "image___localFile___childImageSharp___children"
+  | "image___localFile___id"
+  | "image___localFile___parent___id"
+  | "image___localFile___parent___children"
+  | "image___localFile___children"
+  | "image___localFile___children___id"
+  | "image___localFile___children___children"
+  | "image___localFile___internal___content"
+  | "image___localFile___internal___contentDigest"
+  | "image___localFile___internal___description"
+  | "image___localFile___internal___fieldOwners"
+  | "image___localFile___internal___ignoreType"
+  | "image___localFile___internal___mediaType"
+  | "image___localFile___internal___owner"
+  | "image___localFile___internal___type"
   | "image___fixed___base64"
   | "image___fixed___tracedSVG"
   | "image___fixed___aspectRatio"
@@ -4129,10 +4410,10 @@ export type Query = {
   allShopifyProduct: ShopifyProductConnection
   shopifyBlog?: Maybe<ShopifyBlog>
   allShopifyBlog: ShopifyBlogConnection
-  shopifyPage?: Maybe<ShopifyPage>
-  allShopifyPage: ShopifyPageConnection
   shopifyCollection?: Maybe<ShopifyCollection>
   allShopifyCollection: ShopifyCollectionConnection
+  shopifyPage?: Maybe<ShopifyPage>
+  allShopifyPage: ShopifyPageConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
   contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>
@@ -4410,27 +4691,6 @@ export type QueryAllShopifyBlogArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyPageArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  handle?: Maybe<StringQueryOperatorInput>
-  title?: Maybe<StringQueryOperatorInput>
-  body?: Maybe<StringQueryOperatorInput>
-  bodySummary?: Maybe<StringQueryOperatorInput>
-  updatedAt?: Maybe<DateQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyPageArgs = {
-  filter?: Maybe<ShopifyPageFilterInput>
-  sort?: Maybe<ShopifyPageSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4452,6 +4712,27 @@ export type QueryAllShopifyCollectionArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
+export type QueryShopifyPageArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  handle?: Maybe<StringQueryOperatorInput>
+  title?: Maybe<StringQueryOperatorInput>
+  body?: Maybe<StringQueryOperatorInput>
+  bodySummary?: Maybe<StringQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyPageArgs = {
+  filter?: Maybe<ShopifyPageFilterInput>
+  sort?: Maybe<ShopifyPageSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
 export type QueryContentfulAssetArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -4462,6 +4743,7 @@ export type QueryContentfulAssetArgs = {
   title?: Maybe<StringQueryOperatorInput>
   description?: Maybe<StringQueryOperatorInput>
   node_locale?: Maybe<StringQueryOperatorInput>
+  localFile?: Maybe<FileFilterInput>
   fixed?: Maybe<ContentfulFixedFilterInput>
   resolutions?: Maybe<ContentfulResolutionsFilterInput>
   fluid?: Maybe<ContentfulFluidFilterInput>
@@ -4657,6 +4939,8 @@ export type QuerySiteArgs = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
+  port?: Maybe<IntQueryOperatorInput>
+  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -6467,6 +6751,8 @@ export type Site = Node & {
   children: Array<Node>
   internal: Internal
   siteMetadata?: Maybe<SiteSiteMetadata>
+  port?: Maybe<Scalars["Int"]>
+  host?: Maybe<Scalars["String"]>
   polyfill?: Maybe<Scalars["Boolean"]>
   pathPrefix?: Maybe<Scalars["String"]>
   buildTime?: Maybe<Scalars["Date"]>
@@ -6594,6 +6880,8 @@ export type SiteFieldsEnum =
   | "siteMetadata___author"
   | "siteMetadata___description"
   | "siteMetadata___title"
+  | "port"
+  | "host"
   | "polyfill"
   | "pathPrefix"
   | "buildTime"
@@ -6604,6 +6892,8 @@ export type SiteFilterInput = {
   children?: Maybe<NodeFilterListInput>
   internal?: Maybe<InternalFilterInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
+  port?: Maybe<IntQueryOperatorInput>
+  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   buildTime?: Maybe<DateQueryOperatorInput>
@@ -6815,6 +7105,7 @@ export type SitePageFieldsEnum =
   | "pluginCreator___pluginOptions___theme_color"
   | "pluginCreator___pluginOptions___fonts___google"
   | "pluginCreator___pluginOptions___accessToken"
+  | "pluginCreator___pluginOptions___downloadLocal"
   | "pluginCreator___pluginOptions___spaceId"
   | "pluginCreator___pluginOptions___path"
   | "pluginCreator___pluginOptions___apiVersion"
@@ -7014,6 +7305,7 @@ export type SitePluginFieldsEnum =
   | "pluginOptions___fonts___google"
   | "pluginOptions___fonts___google___family"
   | "pluginOptions___accessToken"
+  | "pluginOptions___downloadLocal"
   | "pluginOptions___spaceId"
   | "pluginOptions___path"
   | "pluginOptions___apiVersion"
@@ -7140,6 +7432,7 @@ export type SitePluginPluginOptions = {
   theme_color?: Maybe<Scalars["String"]>
   fonts?: Maybe<SitePluginPluginOptionsFonts>
   accessToken?: Maybe<Scalars["String"]>
+  downloadLocal?: Maybe<Scalars["Boolean"]>
   spaceId?: Maybe<Scalars["String"]>
   path?: Maybe<Scalars["String"]>
   apiVersion?: Maybe<Scalars["Date"]>
@@ -7164,6 +7457,7 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color?: Maybe<StringQueryOperatorInput>
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>
   accessToken?: Maybe<StringQueryOperatorInput>
+  downloadLocal?: Maybe<BooleanQueryOperatorInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
   apiVersion?: Maybe<DateQueryOperatorInput>
@@ -7296,16 +7590,13 @@ export type BlogPostsPageQuery = {
         description: Maybe<
           Pick<ContentfulBlogPostDescriptionTextNode, "description">
         >
-        image: Maybe<
-          Pick<ContentfulAsset, "id"> & {
-            fluid: Maybe<
-              Pick<
-                ContentfulFluid,
-                "base64" | "tracedSVG" | "srcWebp" | "srcSetWebp"
-              >
-            >
-          }
-        >
+        image: Maybe<{
+          localFile: Maybe<{
+            childImageSharp: Maybe<{
+              fluid: Maybe<GatsbyImageSharpFluidFragment>
+            }>
+          }>
+        }>
       }
     }>
   }
@@ -7393,19 +7684,13 @@ export type PageQuery = {
                             "description"
                           >
                         >
-                        image: Maybe<
-                          Pick<ContentfulAsset, "id"> & {
-                            fluid: Maybe<
-                              Pick<
-                                ContentfulFluid,
-                                | "base64"
-                                | "tracedSVG"
-                                | "srcWebp"
-                                | "srcSetWebp"
-                              >
-                            >
-                          }
-                        >
+                        image: Maybe<{
+                          localFile: Maybe<{
+                            childImageSharp: Maybe<{
+                              fluid: Maybe<GatsbyImageSharpFluidFragment>
+                            }>
+                          }>
+                        }>
                       }
                     >
                   >
@@ -7416,16 +7701,13 @@ export type PageQuery = {
                 ContentfulBlockHero,
                 "bottomText" | "id" | "subtitle" | "title"
               > & {
-                picture: Maybe<
-                  Pick<ContentfulAsset, "id"> & {
-                    fluid: Maybe<
-                      Pick<
-                        ContentfulFluid,
-                        "base64" | "tracedSVG" | "srcWebp" | "srcSetWebp"
-                      >
-                    >
-                  }
-                >
+                picture: Maybe<{
+                  localFile: Maybe<{
+                    childImageSharp: Maybe<{
+                      fluid: Maybe<GatsbyImageSharpFluidFragment>
+                    }>
+                  }>
+                }>
               })
           >
         >

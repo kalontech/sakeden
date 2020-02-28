@@ -31,12 +31,12 @@ export const query = graphql`
               description
             }
             image {
-              id
-              fluid {
-                base64
-                tracedSVG
-                srcWebp
-                srcSetWebp
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
               }
             }
             slug
@@ -54,12 +54,12 @@ export const query = graphql`
           bottomText
           id
           picture {
-            id
-            fluid {
-              base64
-              tracedSVG
-              srcWebp
-              srcSetWebp
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
           subtitle

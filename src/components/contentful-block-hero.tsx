@@ -19,7 +19,7 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
       {picture && (
         <Box sx={{ my: 4 }}>
           <Image
-            fluid={picture.fluid as FluidObject}
+            fluid={picture.localFile!.childImageSharp!.fluid as FluidObject}
             style={{ height: "300px" }}
           />
         </Box>

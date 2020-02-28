@@ -1,5 +1,5 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
-import Image, { FixedObject, FluidObject } from "gatsby-image"
+import Image, { FixedObject } from "gatsby-image"
 import moment from "moment"
 import React from "react"
 import {
@@ -15,7 +15,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share"
-import { Box, Flex, Heading, Styled, Text } from "theme-ui"
+import { Box, Flex, Heading, Text } from "theme-ui"
 
 import { BlogPostQuery, ContentfulBlogPost } from "../../graphql-types"
 import Layout from "../components/layout"
@@ -62,51 +62,39 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             {moment(contentfulBlogPost.publishDate).format("MMMM DD, YYYY")}
           </Text>
         </Flex>
-        {/* {contentfulBlogPost.heroImage && (
-          <Box sx={{ my: 3 }}>
-            <Image
-              fluid={contentfulBlogPost.heroImage.fluid as FluidObject}
-              style={{ height: "500px" }}
-            />
-          </Box>
-        )} */}
-        <Styled.root>
-          <Markdown
-            renderers={{
-              heading: ({ children, level }) => {
-                return (
-                  <Heading
-                    as={`h${level + 1}` as "h2" | "h3" | "h4"}
-                    sx={{ mb: 3, mt: 4 }}
-                    variant={`h${level + 2}` as "h2" | "h3" | "h4"}
-                  >
-                    {children}
-                  </Heading>
-                )
-              },
-              image: ({ alt, src }) => {
-                return (
-                  <Box sx={{ my: 4 }}>
-                    <Image
-                      fixed={{ src } as FixedObject}
-                      style={{ height: "60vh", width: "100%" }}
-                    />
-                    <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
-                      {alt}
-                    </Text>
-                  </Box>
-                )
-              },
-              paragraph: ({ children }) => {
-                return <Text sx={{ my: 1 }}>{children}</Text>
-              },
-              root: ({ children }) => {
-                return <Box sx={{ my: 3 }}>{children}</Box>
-              },
-            }}
-            source={contentfulBlogPost.body!.body!}
-          />
-        </Styled.root>
+        <Markdown
+          renderers={{
+            heading: ({ children, level }) => {
+              return (
+                <Heading
+                  as={`h${level + 1}` as "h2" | "h3" | "h4"}
+                  sx={{ mb: 3, mt: 4 }}
+                  variant={`h${level + 2}` as "h2" | "h3" | "h4"}
+                >
+                  {children}
+                </Heading>
+              )
+            },
+            image: ({ alt, src }) => {
+              return (
+                <Box sx={{ my: 4 }}>
+                  <Image
+                    fixed={{ src } as FixedObject}
+                    style={{ height: "60vh", width: "100%" }}
+                  />
+                  <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>{alt}</Text>
+                </Box>
+              )
+            },
+            paragraph: ({ children }) => {
+              return <Text sx={{ my: 1 }}>{children}</Text>
+            },
+            root: ({ children }) => {
+              return <Box sx={{ my: 3 }}>{children}</Box>
+            },
+          }}
+          source={contentfulBlogPost.body!.body!}
+        />
       </Layout>
     </>
   )

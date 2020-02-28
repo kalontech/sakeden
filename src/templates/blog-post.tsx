@@ -25,6 +25,8 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const data = props.data as BlogPostQuery
   const contentfulBlogPost = data.contentfulBlogPost as ContentfulBlogPost
 
+  const shareUrl = typeof window !== "undefined" ? window.location.href : ""
+
   return (
     <>
       <SEO title={contentfulBlogPost.title!} />
@@ -34,27 +36,24 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         </Heading>
         <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
           <Flex>
-            <EmailShareButton
-              title={contentfulBlogPost.title!}
-              url={window ? window.location.href : ""}
-            >
+            <EmailShareButton title={contentfulBlogPost.title!} url={shareUrl}>
               <MdEmail size="28px" />
             </EmailShareButton>
             <FacebookShareButton
               title={contentfulBlogPost.title!}
-              url={window ? window.location.href : ""}
+              url={shareUrl}
             >
               <FaFacebookSquare size="28px" />
             </FacebookShareButton>
             <TwitterShareButton
               title={contentfulBlogPost.title!}
-              url={window ? window.location.href : ""}
+              url={shareUrl}
             >
               <FaTwitterSquare size="28px" />
             </TwitterShareButton>
             <WhatsappShareButton
               title={contentfulBlogPost.title!}
-              url={window ? window.location.href : ""}
+              url={shareUrl}
             >
               <FaWhatsappSquare size="28px" />
             </WhatsappShareButton>

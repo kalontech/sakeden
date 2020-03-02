@@ -41,7 +41,6 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
             )}
             <Text>{node.description!.description}</Text>
           </Box>
-          <Button sx={{ mt: 3 }}>Read more</Button>
         </Flex>
       </Card>
     </InternalLink>

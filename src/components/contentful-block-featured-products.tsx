@@ -1,12 +1,13 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { Box, Grid, Heading } from "theme-ui"
+import { Box, Button, Grid, Heading } from "theme-ui"
 
 import {
   ContentfulBlockFeaturedProducts as ContentfulBlockFeaturedProductsProps,
   ProductsPageQuery,
   ShopifyProduct,
 } from "../../graphql-types"
+import { InternalLink } from "./link"
 import ProductCard from "./product-card"
 
 const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsProps> = ({
@@ -67,6 +68,10 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
           return <ProductCard node={edge.node as ShopifyProduct} />
         })}
       </Grid>
+      <Box p={1} />
+      <InternalLink href="/products">
+        <Button sx={{ mt: 4, mx: "auto" }}>View all collection</Button>
+      </InternalLink>
     </Box>
   )
 }

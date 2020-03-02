@@ -1,11 +1,12 @@
 import React from "react"
-import { Box, Grid, Heading } from "theme-ui"
+import { Box, Button, Grid, Heading } from "theme-ui"
 
 import {
   ContentfulBlockFeaturedBlogPosts as ContentfulBlockFeaturedBlogPostsProps,
   ContentfulBlogPost,
 } from "../../graphql-types"
 import BlogPostCard from "./blog-post-card"
+import { InternalLink } from "./link"
 
 const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPostsProps> = ({
   blogPosts,
@@ -22,6 +23,10 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
             return <BlogPostCard node={blogPost as ContentfulBlogPost} />
           })}
       </Grid>
+      <Box p={1} />
+      <InternalLink href="/blog-posts">
+        <Button sx={{ mt: 4, mx: "auto" }}>View all posts</Button>
+      </InternalLink>
     </Box>
   )
 }

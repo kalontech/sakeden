@@ -16,7 +16,7 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
       <Heading as="h2" sx={{ mb: 3, textAlign: "center" }} variant="h2">
         {title}
       </Heading>
-      <Grid columns={[1, 1, 3, 3]} gap="20px">
+      <Grid columns={[1, 1, 3, 3]} gap="30px">
         {blogPosts &&
           blogPosts.map(blogPost => {
             return <BlogPostCard node={blogPost as ContentfulBlogPost} />

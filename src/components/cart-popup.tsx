@@ -46,7 +46,11 @@ const CartPopup: React.FC = () => {
           sx={{ textTransform: "uppercase" }}
           variant="h4"
         >
-          Shopping cart
+          {checkout.lineItems.length > 0
+            ? `Shopping cart (${checkout.lineItems.length} ${
+                checkout.lineItems.length === 1 ? "item" : "items"
+              })`
+            : "Shopping cart is empty"}
         </Heading>
         <Button
           onClick={(): void => {
@@ -174,7 +178,9 @@ const CartPopup: React.FC = () => {
               setIsCheckoutVisible(true)
             }, 100)
           }}
-          variant="primary"
+          variant={
+            checkout.lineItems.length > 0 ? "primary" : "primaryDisabled"
+          }
           sx={{ flex: 1 }}
         >
           Checkout

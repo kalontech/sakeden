@@ -30,7 +30,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
               {moment(node.publishDate).format("MMMM DD, YYYY")}
             </Text>
             {node.image && (
-              <Box sx={{ my: 2 }}>
+              <Box sx={{ my: 3 }}>
                 <Image
                   fluid={
                     node.image.localFile!.childImageSharp!.fluid as FluidObject

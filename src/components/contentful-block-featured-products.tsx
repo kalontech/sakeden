@@ -62,7 +62,7 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
       <Heading as="h2" sx={{ mb: 3, textAlign: "center" }} variant="h2">
         {title}
       </Heading>
-      <Grid columns={[1, 1, 3, 3]} gap="20px">
+      <Grid columns={[1, 1, 3, 3]} gap="30px">
         {featuredProducts.map(edge => {
           return <ProductCard node={edge.node as ShopifyProduct} />
         })}

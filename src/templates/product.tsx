@@ -117,30 +117,38 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             ) : (
               <Flex mt={4}>
                 <Button sx={{ flex: 1, fontSize: "30px" }} variant="secondary">
-                  {getPriceFromVariants(
-                    shopifyProduct.variants as ShopifyProductVariant[],
-                    0,
+                  {shopifyProduct.availableForSale ? (
+                    <Text>
+                      {getPriceFromVariants(
+                        shopifyProduct.variants as ShopifyProductVariant[],
+                        0,
+                      )}
+                    </Text>
+                  ) : (
+                    <Text color="danger">Sold out</Text>
                   )}
                 </Button>
                 <Box p={2} />
                 <Button
-                  disabled={!shopifyProduct.availableForSale}
                   onClick={handleAddToCart}
+                  variant={
+                    shopifyProduct.availableForSale
+                      ? "primary"
+                      : "primaryDisabled"
+                  }
                   sx={{ flex: 1 }}
                 >
-                  {shopifyProduct.availableForSale ? (
+                  {justAddedToCart ? (
+                    <Box mr={1}>
+                      <MdDone fontSize="28px" />
+                    </Box>
+                  ) : (
                     <>
                       <Box mr={1}>
-                        {justAddedToCart ? (
-                          <MdDone fontSize="28px" />
-                        ) : (
-                          <MdShoppingCart fontSize="28px" />
-                        )}
+                        <MdShoppingCart fontSize="28px" />
                       </Box>
-                      <Text>Add to Cart</Text>
+                      <Text>Add to cart</Text>
                     </>
-                  ) : (
-                    <Text>Sold out</Text>
                   )}
                 </Button>
               </Flex>
@@ -186,7 +194,7 @@ export const query = graphql`
       images {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 600) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

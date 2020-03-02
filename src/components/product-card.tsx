@@ -1,5 +1,5 @@
 import Image, { FluidObject } from "gatsby-image"
-import React, { useContext, useState } from "react"
+import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
@@ -25,7 +25,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const description =
     (descriptionMetafield && descriptionMetafield.value) || node.description
 
-  const handleAddToCart = async (): Promise<void> => {
+  const handleAddToCart = async (e: SyntheticEvent): Promise<void> => {
+    e.preventDefault()
+
     if (node.variants && node.variants[0] && node.variants[0].shopifyId) {
       addLineItems([
         {
@@ -89,7 +91,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               SOLD OUT
             </Text>
           )}
-          <Button onClick={handleAddToCart} variant="icon">
+          <Button
+            onClick={handleAddToCart}
+            variant={node.availableForSale ? "icon" : "iconDisabled"}
+          >
             {justAddedToCart ? <MdDone /> : <MdShoppingCart />}
           </Button>
         </Flex>

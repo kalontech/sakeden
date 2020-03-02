@@ -20,10 +20,24 @@ const button = {
   transition: "200ms ease-in-out",
 }
 
+const buttonDisabled = {
+  opacity: 0.5,
+  pointerEvents: "none",
+}
+
 const theme = {
   buttons: {
     icon: {
       ...button,
+      bg: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
+    iconDisabled: {
+      ...button,
+      ...buttonDisabled,
       bg: "primary",
       fontSize: "28px",
       height: "40px",
@@ -53,6 +67,11 @@ const theme = {
     },
     primary: {
       ...button,
+      bg: "primary",
+    },
+    primaryDisabled: {
+      ...button,
+      ...buttonDisabled,
       bg: "primary",
     },
     secondary: {
@@ -112,6 +131,7 @@ const theme = {
       fontFamily: "body",
       fontSize: 2,
       fontWeight: "body",
+      lineHeight: 1.5,
     },
   },
   text: {

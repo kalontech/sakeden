@@ -48,7 +48,7 @@ const BlogPostsPage: React.FC = () => {
         >
           Blog
         </Heading>
-        <Grid columns={[1, 1, 3, 3]} gap="20px">
+        <Grid columns={[1, 1, 3, 3]} gap="30px">
           {allContentfulBlogPost &&
             allContentfulBlogPost.edges.map(({ node }) => {
               return <BlogPostCard node={node as ContentfulBlogPost} />

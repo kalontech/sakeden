@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { MdMenu, MdShoppingCart } from "react-icons/md"
 import { useScrollYPosition } from "react-use-scroll-position"
-import { Box, Button, Container, Flex } from "theme-ui"
+import { Box, Button, Container, Flex, Text } from "theme-ui"
 
 import AppContext from "../app-context"
 import { InternalLink } from "./link"
@@ -11,7 +11,9 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ logo }) => {
-  const { setIsCartVisible, setIsMenuVisible } = useContext(AppContext)
+  const { checkout, setIsCartVisible, setIsMenuVisible } = useContext(
+    AppContext,
+  )
   const scrollY = useScrollYPosition()
 
   const isSticky = scrollY > 0
@@ -52,6 +54,18 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
                   variant="iconInverted"
                 >
                   <MdShoppingCart />
+                  <Text
+                    sx={{
+                      bottom: "-2px",
+                      fontSize: "14px",
+                      position: "absolute",
+                      right: "2px",
+                    }}
+                  >
+                    {checkout && checkout.lineItems
+                      ? checkout.lineItems.length
+                      : 0}
+                  </Text>
                 </Button>
               </Box>
               <Box>

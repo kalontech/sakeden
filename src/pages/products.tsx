@@ -8,22 +8,11 @@ import Layout from "../components/layout"
 import ProductCard from "../components/product-card"
 import SEO from "../components/seo"
 
-const availabilitySorter = (previousEdge: any, nextEdge: any) => {
-  // eslint-disable-next-line prettier/prettier
-  const previousAvailability = _.get(previousEdge, "node.availableForSale", false)
-  const nextAvailability = _.get(nextEdge, "node.availableForSale", false)
-  return previousAvailability === nextAvailability ? 1 : -1
-}
-
-const priceSorter = (previousEdge: any, nextEdge: any) => {
-  if (!_.get(previousEdge, "node.availableForSale", false)) {
-    return 0
-  }
-  // eslint-disable-next-line prettier/prettier
-  const previousPriceAmount = parseFloat(_.get(previousEdge, "node.variants[0].priceV2.amount", 0))
-  // eslint-disable-next-line prettier/prettier
-  const nextPriceAmount = parseFloat( _.get(nextEdge, "node.variants[0].priceV2.amount", 0))
-  return previousPriceAmount > nextPriceAmount ? 1 : -1
+const priceSorter = (previousEdge: any, nextEdge: any): number => {
+  return (
+    parseFloat(_.get(previousEdge, "node.variants[0].priceV2.amount", 0)) -
+    parseFloat(_.get(nextEdge, "node.variants[0].priceV2.amount", 0))
+  )
 }
 
 const ProductsPage: React.FC = () => {
@@ -67,6 +56,17 @@ const ProductsPage: React.FC = () => {
     `,
   )
 
+  // 1. Price 0 -> 9.
+  // 2. Available for sale -> Not available for sale.
+  const allShopifyProductSorted = [
+    ...allShopifyProduct.edges
+      .filter(edge => edge.node.availableForSale)
+      .sort(priceSorter),
+    ...allShopifyProduct.edges
+      .filter(edge => !edge.node.availableForSale)
+      .sort(priceSorter),
+  ]
+
   return (
     <>
       <SEO title="Collection" />
@@ -80,12 +80,9 @@ const ProductsPage: React.FC = () => {
           Collection
         </Heading>
         <Grid columns={[1, 1, 2, 2]} gap="30px">
-          {allShopifyProduct.edges
-            .sort(availabilitySorter)
-            .sort(priceSorter)
-            .map(edge => {
-              return <ProductCard node={edge.node as ShopifyProduct} />
-            })}
+          {allShopifyProductSorted.map(edge => {
+            return <ProductCard node={edge.node as ShopifyProduct} />
+          })}
         </Grid>
       </Layout>
     </>

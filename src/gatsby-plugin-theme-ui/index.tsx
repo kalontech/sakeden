@@ -17,6 +17,7 @@ const button = {
   justifyContent: "center",
   outline: "none",
   padding: "0 24px",
+  position: "relative",
   transition: "200ms ease-in-out",
 }
 
@@ -26,6 +27,7 @@ const buttonDisabled = {
 }
 
 const theme = {
+  breakpoints: ["640px", "920px", "1200px", "1280px"],
   buttons: {
     icon: {
       ...button,

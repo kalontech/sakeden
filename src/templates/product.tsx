@@ -159,24 +159,28 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             sx={{
               display: ["none", "none", "block", "block"],
               flex: ["unset", "unset", 0.6, 0.6],
+              position: "relative",
             }}
           >
             {shopifyProduct.images && shopifyProduct.images[0] && (
-              <Image
-                fluid={
-                  shopifyProduct.images[0].localFile!.childImageSharp!
-                    .fluid as FluidObject
-                }
-                imgStyle={{ objectFit: "contain" }}
-                style={{
+              <Box
+                sx={{
                   bottom: "0px",
-                  height: "calc(100% - 100px)",
-                  left: "40%",
-                  position: "fixed",
-                  right: "0px",
-                  top: "100px",
+                  left: "0px",
+                  position: "absolute",
+                  right: ["0px", "0px", "0px", "calc((100vw - 1280px) / -2)"],
+                  top: "0px",
                 }}
-              />
+              >
+                <Image
+                  fluid={
+                    shopifyProduct.images[0].localFile!.childImageSharp!
+                      .fluid as FluidObject
+                  }
+                  imgStyle={{ objectFit: "contain" }}
+                  style={{ height: "100%", width: "100%" }}
+                />
+              </Box>
             )}
           </Box>
         </Flex>

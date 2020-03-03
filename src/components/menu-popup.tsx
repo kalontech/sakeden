@@ -61,13 +61,25 @@ const MenuPopup: React.FC = () => {
       <Box p={4}>
         <Box py={2}>
           <InternalLink
-            href="/"
+            href="/products"
             onClick={(): void => {
               setIsMenuVisible(false)
             }}
           >
             <Heading as="h2" variant="h2">
               Collection
+            </Heading>
+          </InternalLink>
+        </Box>
+        <Box py={2}>
+          <InternalLink
+            href="/blog-posts"
+            onClick={(): void => {
+              setIsMenuVisible(false)
+            }}
+          >
+            <Heading as="h2" variant="h2">
+              Blog
             </Heading>
           </InternalLink>
         </Box>

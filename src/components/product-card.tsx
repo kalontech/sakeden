@@ -1,11 +1,12 @@
 import Image, { FluidObject } from "gatsby-image"
-import React, { useContext, useState } from "react"
+import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
 import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
 import AppContext from "../app-context"
 import { getPriceFromVariants, wait } from "../utils/helpers"
+import Card from "./card"
 import { InternalLink } from "./link"
 
 interface ProductCardProps {
@@ -24,7 +25,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const description =
     (descriptionMetafield && descriptionMetafield.value) || node.description
 
-  const handleAddToCart = async (): Promise<void> => {
+  const handleAddToCart = async (e: SyntheticEvent): Promise<void> => {
+    e.preventDefault()
+
     if (node.variants && node.variants[0] && node.variants[0].shopifyId) {
       addLineItems([
         {
@@ -42,19 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
 
   return (
     <InternalLink href={`/products/${node.handle}`}>
-      <Flex
-        bg="muted"
-        p={3}
-        sx={{
-          ":hover": {
-            boxShadow: "0px 3px 5px 3px rgba(0, 0, 0, 0.1)",
-          },
-          boxShadow: "0px 3px 5px 1px rgba(0, 0, 0, 0.05)",
-          flexDirection: "column",
-          height: "100%",
-          transition: "200ms ease-in-out",
-        }}
-      >
+      <Card>
         {node.title && (
           <Heading as="h4" variant="h4" mt={2}>
             {node.title}
@@ -100,11 +91,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               SOLD OUT
             </Text>
           )}
-          <Button onClick={handleAddToCart} variant="icon">
+          <Button
+            onClick={handleAddToCart}
+            variant={node.availableForSale ? "icon" : "iconDisabled"}
+          >
             {justAddedToCart ? <MdDone /> : <MdShoppingCart />}
           </Button>
         </Flex>
-      </Flex>
+      </Card>
     </InternalLink>
   )
 }

@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 const FormsPage: React.FC = () => (
   <Layout>
     <SEO title="Forms" />
-    <form name="Contact Us" data-netlify>
+    <form name="Contact" data-netlify>
       <p>
         <label>
           Name <input type="text" name="name" />

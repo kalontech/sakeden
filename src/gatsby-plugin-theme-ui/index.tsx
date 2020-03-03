@@ -20,10 +20,24 @@ const button = {
   transition: "200ms ease-in-out",
 }
 
+const buttonDisabled = {
+  opacity: 0.5,
+  pointerEvents: "none",
+}
+
 const theme = {
   buttons: {
     icon: {
       ...button,
+      bg: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
+    iconDisabled: {
+      ...button,
+      ...buttonDisabled,
       bg: "primary",
       fontSize: "28px",
       height: "40px",
@@ -55,6 +69,11 @@ const theme = {
       ...button,
       bg: "primary",
     },
+    primaryDisabled: {
+      ...button,
+      ...buttonDisabled,
+      bg: "primary",
+    },
     secondary: {
       ...button,
       bg: "secondary",
@@ -72,7 +91,7 @@ const theme = {
     secondary: "#ffffff",
     text: "#000000",
   },
-  fontSizes: [12, 19, 30, 48, 52, 98],
+  fontSizes: [12, 16, 19, 30, 48, 52, 98],
   fontWeights: {
     light: 200,
     // eslint-disable-next-line sort-keys
@@ -98,43 +117,46 @@ const theme = {
   },
   layout: {
     container: {
+      maxWidth: "1280px",
       px: 3,
     },
-  },
-  sizes: {
-    container: "1280px",
+    containerNarrow: {
+      maxWidth: "980px",
+      px: 3,
+    },
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
     root: {
       fontFamily: "body",
-      fontSize: 1,
+      fontSize: 2,
       fontWeight: "body",
+      lineHeight: 1.5,
     },
   },
   text: {
     h1: {
       ...heading,
-      fontSize: 5,
+      fontSize: 6,
     },
     h2: {
       ...heading,
-      fontSize: 4,
+      fontSize: 5,
     },
     h3: {
       ...heading,
-      fontSize: 3,
+      fontSize: 4,
     },
     h4: {
       ...heading,
-      fontSize: 2,
+      fontSize: 3,
     },
     h5: {
       ...heading,
-      fontSize: 1,
+      fontSize: 2,
     },
     price: {
-      fontSize: 2,
+      fontSize: 3,
       fontWeight: "light",
     },
   },

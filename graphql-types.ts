@@ -8658,6 +8658,16 @@ export type Unnamed_2_Query = {
   }>
 }
 
+export type WelcomePopupImageQueryVariables = {}
+
+export type WelcomePopupImageQuery = {
+  file: Maybe<{
+    childImageSharp: Maybe<{
+      fluid: Maybe<GatsbyImageSharpFluid_WithWebp_TracedSvgFragment>
+    }>
+  }>
+}
+
 export type BlogPostsPageQueryVariables = {}
 
 export type BlogPostsPageQuery = {

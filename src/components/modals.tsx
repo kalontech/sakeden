@@ -1,6 +1,6 @@
 import "./modals.css"
 
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Modal from "react-modal"
 
 import AppContext from "../app-context"
@@ -9,6 +9,7 @@ import CartPopup from "./cart-popup"
 import CheckoutPopup from "./checkout-popup"
 import MenuPopup from "./menu-popup"
 import SubscribePopup from "./subscribe-popup"
+import WelcomePopup from "./welcome-popup"
 
 const getModalStyles = (x = "center", y = "center"): Modal.Styles => {
   return {
@@ -40,14 +41,38 @@ const Modals: React.FC = () => {
     isCheckoutVisible,
     isMenuVisible,
     isSubscribeVisible,
+    isWelcomeVisible,
     setIsCartVisible,
     setIsCheckoutVisible,
     setIsMenuVisible,
     setIsSubscribeVisible,
+    setIsWelcomeVisible,
   } = useContext(AppContext)
+  const [isMountDelayedNodes, setIsMountDelayedNodes] = useState(false)
+
+  useEffect(() => {
+    if (!isAgeRestrictionVisible) {
+      setTimeout(() => {
+        setIsMountDelayedNodes(true)
+      }, 5000)
+    }
+  }, [isAgeRestrictionVisible])
 
   return (
     <>
+      {isMountDelayedNodes && (
+        <Modal
+          closeTimeoutMS={100}
+          contentLabel="Welcome"
+          isOpen={isWelcomeVisible}
+          onRequestClose={(): void => {
+            setIsWelcomeVisible(false)
+          }}
+          style={getModalStyles("center", "center")}
+        >
+          <WelcomePopup />
+        </Modal>
+      )}
       <Modal
         closeTimeoutMS={100}
         contentLabel="Age restriction"

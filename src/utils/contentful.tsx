@@ -3,15 +3,18 @@ import React from "react"
 import {
   ContentfulBlockFeaturedBlogPosts as ContentfulBlockFeaturedBlogPostsProps,
   ContentfulBlockFeaturedProducts as ContentfulBlockFeaturedProductsProps,
+  ContentfulBlockForm as ContentfulBlockFormProps,
   ContentfulBlockHero as ContentfulBlockHeroProps,
 } from "../../graphql-types"
 import ContentfulBlockFeaturedBlogPosts from "../components/contentful-block-featured-blog-posts"
 import ContentfulBlockFeaturedProducts from "../components/contentful-block-featured-products"
+import ContentfulBlockForm from "../components/contentful-block-form"
 import ContentfulBlockHero from "../components/contentful-block-hero"
 
 export interface Block
   extends ContentfulBlockFeaturedBlogPostsProps,
     ContentfulBlockFeaturedProductsProps,
+    ContentfulBlockFormProps,
     ContentfulBlockHeroProps {
   __typename: string
 }
@@ -25,6 +28,8 @@ export const renderContentfulBlock = ({
       return <ContentfulBlockFeaturedBlogPosts {...props} />
     case "ContentfulBlockFeaturedProducts":
       return <ContentfulBlockFeaturedProducts {...props} />
+    case "ContentfulBlockForm":
+      return <ContentfulBlockForm {...props} />
     case "ContentfulBlockHero":
       return <ContentfulBlockHero {...props} />
     default:

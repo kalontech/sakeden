@@ -511,9 +511,10 @@ export type ContentfulBlockFeaturedBlogPostsConnectionGroupArgs = {
   field: ContentfulBlockFeaturedBlogPostsFieldsEnum
 }
 
-export type ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockHeroUnion =
+export type ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroUnion =
   | ContentfulBlockFeaturedBlogPosts
   | ContentfulBlockFeaturedProducts
+  | ContentfulBlockForm
   | ContentfulBlockHero
 
 export type ContentfulBlockFeaturedBlogPostsEdge = {
@@ -1246,6 +1247,980 @@ export type ContentfulBlockFeaturedProductsSysContentTypeSysFilterInput = {
 export type ContentfulBlockFeaturedProductsSysFilterInput = {
   revision?: Maybe<IntQueryOperatorInput>
   contentType?: Maybe<ContentfulBlockFeaturedProductsSysContentTypeFilterInput>
+}
+
+export type ContentfulBlockForm = Node & {
+  id: Scalars["ID"]
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  title?: Maybe<Scalars["String"]>
+  sendToMailchimp?: Maybe<Scalars["Boolean"]>
+  sendToNetlifyForms?: Maybe<Scalars["Boolean"]>
+  successTitle?: Maybe<Scalars["String"]>
+  contentfulfields?: Maybe<Array<Maybe<Scalars["String"]>>>
+  page?: Maybe<Array<Maybe<ContentfulPage>>>
+  description?: Maybe<ContentfulBlockFormDescriptionTextNode>
+  successDescription?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>
+  spaceId?: Maybe<Scalars["String"]>
+  contentful_id?: Maybe<Scalars["String"]>
+  createdAt?: Maybe<Scalars["Date"]>
+  updatedAt?: Maybe<Scalars["Date"]>
+  sys?: Maybe<ContentfulBlockFormSys>
+  node_locale?: Maybe<Scalars["String"]>
+  extraTitle?: Maybe<Scalars["String"]>
+  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>
+  childContentfulBlockFormDescriptionTextNode?: Maybe<
+    ContentfulBlockFormDescriptionTextNode
+  >
+  childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNode
+  >
+  childContentfulBlockFormExtraDescriptionTextNode?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNode
+  >
+}
+
+export type ContentfulBlockFormCreatedAtArgs = {
+  formatString?: Maybe<Scalars["String"]>
+  fromNow?: Maybe<Scalars["Boolean"]>
+  difference?: Maybe<Scalars["String"]>
+  locale?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormUpdatedAtArgs = {
+  formatString?: Maybe<Scalars["String"]>
+  fromNow?: Maybe<Scalars["Boolean"]>
+  difference?: Maybe<Scalars["String"]>
+  locale?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormEdge>
+  nodes: Array<ContentfulBlockForm>
+  pageInfo: PageInfo
+  distinct: Array<Scalars["String"]>
+  group: Array<ContentfulBlockFormGroupConnection>
+}
+
+export type ContentfulBlockFormConnectionDistinctArgs = {
+  field: ContentfulBlockFormFieldsEnum
+}
+
+export type ContentfulBlockFormConnectionGroupArgs = {
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+  field: ContentfulBlockFormFieldsEnum
+}
+
+export type ContentfulBlockFormDescriptionTextNode = Node & {
+  id: Scalars["ID"]
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  description?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormDescriptionTextNodeConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormDescriptionTextNode>
+  pageInfo: PageInfo
+  distinct: Array<Scalars["String"]>
+  group: Array<ContentfulBlockFormDescriptionTextNodeGroupConnection>
+}
+
+export type ContentfulBlockFormDescriptionTextNodeConnectionDistinctArgs = {
+  field: ContentfulBlockFormDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormDescriptionTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+  field: ContentfulBlockFormDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormDescriptionTextNodeEdge = {
+  next?: Maybe<ContentfulBlockFormDescriptionTextNode>
+  node: ContentfulBlockFormDescriptionTextNode
+  previous?: Maybe<ContentfulBlockFormDescriptionTextNode>
+}
+
+export type ContentfulBlockFormDescriptionTextNodeFieldsEnum =
+  | "id"
+  | "parent___id"
+  | "parent___parent___id"
+  | "parent___parent___parent___id"
+  | "parent___parent___parent___children"
+  | "parent___parent___children"
+  | "parent___parent___children___id"
+  | "parent___parent___children___children"
+  | "parent___parent___internal___content"
+  | "parent___parent___internal___contentDigest"
+  | "parent___parent___internal___description"
+  | "parent___parent___internal___fieldOwners"
+  | "parent___parent___internal___ignoreType"
+  | "parent___parent___internal___mediaType"
+  | "parent___parent___internal___owner"
+  | "parent___parent___internal___type"
+  | "parent___children"
+  | "parent___children___id"
+  | "parent___children___parent___id"
+  | "parent___children___parent___children"
+  | "parent___children___children"
+  | "parent___children___children___id"
+  | "parent___children___children___children"
+  | "parent___children___internal___content"
+  | "parent___children___internal___contentDigest"
+  | "parent___children___internal___description"
+  | "parent___children___internal___fieldOwners"
+  | "parent___children___internal___ignoreType"
+  | "parent___children___internal___mediaType"
+  | "parent___children___internal___owner"
+  | "parent___children___internal___type"
+  | "parent___internal___content"
+  | "parent___internal___contentDigest"
+  | "parent___internal___description"
+  | "parent___internal___fieldOwners"
+  | "parent___internal___ignoreType"
+  | "parent___internal___mediaType"
+  | "parent___internal___owner"
+  | "parent___internal___type"
+  | "children"
+  | "children___id"
+  | "children___parent___id"
+  | "children___parent___parent___id"
+  | "children___parent___parent___children"
+  | "children___parent___children"
+  | "children___parent___children___id"
+  | "children___parent___children___children"
+  | "children___parent___internal___content"
+  | "children___parent___internal___contentDigest"
+  | "children___parent___internal___description"
+  | "children___parent___internal___fieldOwners"
+  | "children___parent___internal___ignoreType"
+  | "children___parent___internal___mediaType"
+  | "children___parent___internal___owner"
+  | "children___parent___internal___type"
+  | "children___children"
+  | "children___children___id"
+  | "children___children___parent___id"
+  | "children___children___parent___children"
+  | "children___children___children"
+  | "children___children___children___id"
+  | "children___children___children___children"
+  | "children___children___internal___content"
+  | "children___children___internal___contentDigest"
+  | "children___children___internal___description"
+  | "children___children___internal___fieldOwners"
+  | "children___children___internal___ignoreType"
+  | "children___children___internal___mediaType"
+  | "children___children___internal___owner"
+  | "children___children___internal___type"
+  | "children___internal___content"
+  | "children___internal___contentDigest"
+  | "children___internal___description"
+  | "children___internal___fieldOwners"
+  | "children___internal___ignoreType"
+  | "children___internal___mediaType"
+  | "children___internal___owner"
+  | "children___internal___type"
+  | "internal___content"
+  | "internal___contentDigest"
+  | "internal___description"
+  | "internal___fieldOwners"
+  | "internal___ignoreType"
+  | "internal___mediaType"
+  | "internal___owner"
+  | "internal___type"
+  | "description"
+
+export type ContentfulBlockFormDescriptionTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulBlockFormDescriptionTextNodeGroupConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormDescriptionTextNode>
+  pageInfo: PageInfo
+  field: Scalars["String"]
+  fieldValue?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormDescriptionTextNodeSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulBlockFormDescriptionTextNodeFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulBlockFormEdge = {
+  next?: Maybe<ContentfulBlockForm>
+  node: ContentfulBlockForm
+  previous?: Maybe<ContentfulBlockForm>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNode = Node & {
+  id: Scalars["ID"]
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  extraDescription?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormExtraDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormExtraDescriptionTextNode>
+  pageInfo: PageInfo
+  distinct: Array<Scalars["String"]>
+  group: Array<ContentfulBlockFormExtraDescriptionTextNodeGroupConnection>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeConnectionDistinctArgs = {
+  field: ContentfulBlockFormExtraDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+  field: ContentfulBlockFormExtraDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeEdge = {
+  next?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>
+  node: ContentfulBlockFormExtraDescriptionTextNode
+  previous?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeFieldsEnum =
+  | "id"
+  | "parent___id"
+  | "parent___parent___id"
+  | "parent___parent___parent___id"
+  | "parent___parent___parent___children"
+  | "parent___parent___children"
+  | "parent___parent___children___id"
+  | "parent___parent___children___children"
+  | "parent___parent___internal___content"
+  | "parent___parent___internal___contentDigest"
+  | "parent___parent___internal___description"
+  | "parent___parent___internal___fieldOwners"
+  | "parent___parent___internal___ignoreType"
+  | "parent___parent___internal___mediaType"
+  | "parent___parent___internal___owner"
+  | "parent___parent___internal___type"
+  | "parent___children"
+  | "parent___children___id"
+  | "parent___children___parent___id"
+  | "parent___children___parent___children"
+  | "parent___children___children"
+  | "parent___children___children___id"
+  | "parent___children___children___children"
+  | "parent___children___internal___content"
+  | "parent___children___internal___contentDigest"
+  | "parent___children___internal___description"
+  | "parent___children___internal___fieldOwners"
+  | "parent___children___internal___ignoreType"
+  | "parent___children___internal___mediaType"
+  | "parent___children___internal___owner"
+  | "parent___children___internal___type"
+  | "parent___internal___content"
+  | "parent___internal___contentDigest"
+  | "parent___internal___description"
+  | "parent___internal___fieldOwners"
+  | "parent___internal___ignoreType"
+  | "parent___internal___mediaType"
+  | "parent___internal___owner"
+  | "parent___internal___type"
+  | "children"
+  | "children___id"
+  | "children___parent___id"
+  | "children___parent___parent___id"
+  | "children___parent___parent___children"
+  | "children___parent___children"
+  | "children___parent___children___id"
+  | "children___parent___children___children"
+  | "children___parent___internal___content"
+  | "children___parent___internal___contentDigest"
+  | "children___parent___internal___description"
+  | "children___parent___internal___fieldOwners"
+  | "children___parent___internal___ignoreType"
+  | "children___parent___internal___mediaType"
+  | "children___parent___internal___owner"
+  | "children___parent___internal___type"
+  | "children___children"
+  | "children___children___id"
+  | "children___children___parent___id"
+  | "children___children___parent___children"
+  | "children___children___children"
+  | "children___children___children___id"
+  | "children___children___children___children"
+  | "children___children___internal___content"
+  | "children___children___internal___contentDigest"
+  | "children___children___internal___description"
+  | "children___children___internal___fieldOwners"
+  | "children___children___internal___ignoreType"
+  | "children___children___internal___mediaType"
+  | "children___children___internal___owner"
+  | "children___children___internal___type"
+  | "children___internal___content"
+  | "children___internal___contentDigest"
+  | "children___internal___description"
+  | "children___internal___fieldOwners"
+  | "children___internal___ignoreType"
+  | "children___internal___mediaType"
+  | "children___internal___owner"
+  | "children___internal___type"
+  | "internal___content"
+  | "internal___contentDigest"
+  | "internal___description"
+  | "internal___fieldOwners"
+  | "internal___ignoreType"
+  | "internal___mediaType"
+  | "internal___owner"
+  | "internal___type"
+  | "extraDescription"
+
+export type ContentfulBlockFormExtraDescriptionTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  extraDescription?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeGroupConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormExtraDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormExtraDescriptionTextNode>
+  pageInfo: PageInfo
+  field: Scalars["String"]
+  fieldValue?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormExtraDescriptionTextNodeSortInput = {
+  fields?: Maybe<
+    Array<Maybe<ContentfulBlockFormExtraDescriptionTextNodeFieldsEnum>>
+  >
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulBlockFormFieldsEnum =
+  | "id"
+  | "parent___id"
+  | "parent___parent___id"
+  | "parent___parent___parent___id"
+  | "parent___parent___parent___children"
+  | "parent___parent___children"
+  | "parent___parent___children___id"
+  | "parent___parent___children___children"
+  | "parent___parent___internal___content"
+  | "parent___parent___internal___contentDigest"
+  | "parent___parent___internal___description"
+  | "parent___parent___internal___fieldOwners"
+  | "parent___parent___internal___ignoreType"
+  | "parent___parent___internal___mediaType"
+  | "parent___parent___internal___owner"
+  | "parent___parent___internal___type"
+  | "parent___children"
+  | "parent___children___id"
+  | "parent___children___parent___id"
+  | "parent___children___parent___children"
+  | "parent___children___children"
+  | "parent___children___children___id"
+  | "parent___children___children___children"
+  | "parent___children___internal___content"
+  | "parent___children___internal___contentDigest"
+  | "parent___children___internal___description"
+  | "parent___children___internal___fieldOwners"
+  | "parent___children___internal___ignoreType"
+  | "parent___children___internal___mediaType"
+  | "parent___children___internal___owner"
+  | "parent___children___internal___type"
+  | "parent___internal___content"
+  | "parent___internal___contentDigest"
+  | "parent___internal___description"
+  | "parent___internal___fieldOwners"
+  | "parent___internal___ignoreType"
+  | "parent___internal___mediaType"
+  | "parent___internal___owner"
+  | "parent___internal___type"
+  | "children"
+  | "children___id"
+  | "children___parent___id"
+  | "children___parent___parent___id"
+  | "children___parent___parent___children"
+  | "children___parent___children"
+  | "children___parent___children___id"
+  | "children___parent___children___children"
+  | "children___parent___internal___content"
+  | "children___parent___internal___contentDigest"
+  | "children___parent___internal___description"
+  | "children___parent___internal___fieldOwners"
+  | "children___parent___internal___ignoreType"
+  | "children___parent___internal___mediaType"
+  | "children___parent___internal___owner"
+  | "children___parent___internal___type"
+  | "children___children"
+  | "children___children___id"
+  | "children___children___parent___id"
+  | "children___children___parent___children"
+  | "children___children___children"
+  | "children___children___children___id"
+  | "children___children___children___children"
+  | "children___children___internal___content"
+  | "children___children___internal___contentDigest"
+  | "children___children___internal___description"
+  | "children___children___internal___fieldOwners"
+  | "children___children___internal___ignoreType"
+  | "children___children___internal___mediaType"
+  | "children___children___internal___owner"
+  | "children___children___internal___type"
+  | "children___internal___content"
+  | "children___internal___contentDigest"
+  | "children___internal___description"
+  | "children___internal___fieldOwners"
+  | "children___internal___ignoreType"
+  | "children___internal___mediaType"
+  | "children___internal___owner"
+  | "children___internal___type"
+  | "internal___content"
+  | "internal___contentDigest"
+  | "internal___description"
+  | "internal___fieldOwners"
+  | "internal___ignoreType"
+  | "internal___mediaType"
+  | "internal___owner"
+  | "internal___type"
+  | "title"
+  | "sendToMailchimp"
+  | "sendToNetlifyForms"
+  | "successTitle"
+  | "contentfulfields"
+  | "page"
+  | "page___id"
+  | "page___parent___id"
+  | "page___parent___parent___id"
+  | "page___parent___parent___children"
+  | "page___parent___children"
+  | "page___parent___children___id"
+  | "page___parent___children___children"
+  | "page___parent___internal___content"
+  | "page___parent___internal___contentDigest"
+  | "page___parent___internal___description"
+  | "page___parent___internal___fieldOwners"
+  | "page___parent___internal___ignoreType"
+  | "page___parent___internal___mediaType"
+  | "page___parent___internal___owner"
+  | "page___parent___internal___type"
+  | "page___children"
+  | "page___children___id"
+  | "page___children___parent___id"
+  | "page___children___parent___children"
+  | "page___children___children"
+  | "page___children___children___id"
+  | "page___children___children___children"
+  | "page___children___internal___content"
+  | "page___children___internal___contentDigest"
+  | "page___children___internal___description"
+  | "page___children___internal___fieldOwners"
+  | "page___children___internal___ignoreType"
+  | "page___children___internal___mediaType"
+  | "page___children___internal___owner"
+  | "page___children___internal___type"
+  | "page___internal___content"
+  | "page___internal___contentDigest"
+  | "page___internal___description"
+  | "page___internal___fieldOwners"
+  | "page___internal___ignoreType"
+  | "page___internal___mediaType"
+  | "page___internal___owner"
+  | "page___internal___type"
+  | "page___title"
+  | "page___slug"
+  | "page___spaceId"
+  | "page___contentful_id"
+  | "page___createdAt"
+  | "page___updatedAt"
+  | "page___sys___revision"
+  | "page___node_locale"
+  | "description___id"
+  | "description___parent___id"
+  | "description___parent___parent___id"
+  | "description___parent___parent___children"
+  | "description___parent___children"
+  | "description___parent___children___id"
+  | "description___parent___children___children"
+  | "description___parent___internal___content"
+  | "description___parent___internal___contentDigest"
+  | "description___parent___internal___description"
+  | "description___parent___internal___fieldOwners"
+  | "description___parent___internal___ignoreType"
+  | "description___parent___internal___mediaType"
+  | "description___parent___internal___owner"
+  | "description___parent___internal___type"
+  | "description___children"
+  | "description___children___id"
+  | "description___children___parent___id"
+  | "description___children___parent___children"
+  | "description___children___children"
+  | "description___children___children___id"
+  | "description___children___children___children"
+  | "description___children___internal___content"
+  | "description___children___internal___contentDigest"
+  | "description___children___internal___description"
+  | "description___children___internal___fieldOwners"
+  | "description___children___internal___ignoreType"
+  | "description___children___internal___mediaType"
+  | "description___children___internal___owner"
+  | "description___children___internal___type"
+  | "description___internal___content"
+  | "description___internal___contentDigest"
+  | "description___internal___description"
+  | "description___internal___fieldOwners"
+  | "description___internal___ignoreType"
+  | "description___internal___mediaType"
+  | "description___internal___owner"
+  | "description___internal___type"
+  | "description___description"
+  | "successDescription___id"
+  | "successDescription___parent___id"
+  | "successDescription___parent___parent___id"
+  | "successDescription___parent___parent___children"
+  | "successDescription___parent___children"
+  | "successDescription___parent___children___id"
+  | "successDescription___parent___children___children"
+  | "successDescription___parent___internal___content"
+  | "successDescription___parent___internal___contentDigest"
+  | "successDescription___parent___internal___description"
+  | "successDescription___parent___internal___fieldOwners"
+  | "successDescription___parent___internal___ignoreType"
+  | "successDescription___parent___internal___mediaType"
+  | "successDescription___parent___internal___owner"
+  | "successDescription___parent___internal___type"
+  | "successDescription___children"
+  | "successDescription___children___id"
+  | "successDescription___children___parent___id"
+  | "successDescription___children___parent___children"
+  | "successDescription___children___children"
+  | "successDescription___children___children___id"
+  | "successDescription___children___children___children"
+  | "successDescription___children___internal___content"
+  | "successDescription___children___internal___contentDigest"
+  | "successDescription___children___internal___description"
+  | "successDescription___children___internal___fieldOwners"
+  | "successDescription___children___internal___ignoreType"
+  | "successDescription___children___internal___mediaType"
+  | "successDescription___children___internal___owner"
+  | "successDescription___children___internal___type"
+  | "successDescription___internal___content"
+  | "successDescription___internal___contentDigest"
+  | "successDescription___internal___description"
+  | "successDescription___internal___fieldOwners"
+  | "successDescription___internal___ignoreType"
+  | "successDescription___internal___mediaType"
+  | "successDescription___internal___owner"
+  | "successDescription___internal___type"
+  | "successDescription___successDescription"
+  | "spaceId"
+  | "contentful_id"
+  | "createdAt"
+  | "updatedAt"
+  | "sys___revision"
+  | "sys___contentType___sys___type"
+  | "sys___contentType___sys___linkType"
+  | "sys___contentType___sys___id"
+  | "sys___contentType___sys___contentful_id"
+  | "node_locale"
+  | "extraTitle"
+  | "extraDescription___id"
+  | "extraDescription___parent___id"
+  | "extraDescription___parent___parent___id"
+  | "extraDescription___parent___parent___children"
+  | "extraDescription___parent___children"
+  | "extraDescription___parent___children___id"
+  | "extraDescription___parent___children___children"
+  | "extraDescription___parent___internal___content"
+  | "extraDescription___parent___internal___contentDigest"
+  | "extraDescription___parent___internal___description"
+  | "extraDescription___parent___internal___fieldOwners"
+  | "extraDescription___parent___internal___ignoreType"
+  | "extraDescription___parent___internal___mediaType"
+  | "extraDescription___parent___internal___owner"
+  | "extraDescription___parent___internal___type"
+  | "extraDescription___children"
+  | "extraDescription___children___id"
+  | "extraDescription___children___parent___id"
+  | "extraDescription___children___parent___children"
+  | "extraDescription___children___children"
+  | "extraDescription___children___children___id"
+  | "extraDescription___children___children___children"
+  | "extraDescription___children___internal___content"
+  | "extraDescription___children___internal___contentDigest"
+  | "extraDescription___children___internal___description"
+  | "extraDescription___children___internal___fieldOwners"
+  | "extraDescription___children___internal___ignoreType"
+  | "extraDescription___children___internal___mediaType"
+  | "extraDescription___children___internal___owner"
+  | "extraDescription___children___internal___type"
+  | "extraDescription___internal___content"
+  | "extraDescription___internal___contentDigest"
+  | "extraDescription___internal___description"
+  | "extraDescription___internal___fieldOwners"
+  | "extraDescription___internal___ignoreType"
+  | "extraDescription___internal___mediaType"
+  | "extraDescription___internal___owner"
+  | "extraDescription___internal___type"
+  | "extraDescription___extraDescription"
+  | "childContentfulBlockFormDescriptionTextNode___id"
+  | "childContentfulBlockFormDescriptionTextNode___parent___id"
+  | "childContentfulBlockFormDescriptionTextNode___parent___parent___id"
+  | "childContentfulBlockFormDescriptionTextNode___parent___parent___children"
+  | "childContentfulBlockFormDescriptionTextNode___parent___children"
+  | "childContentfulBlockFormDescriptionTextNode___parent___children___id"
+  | "childContentfulBlockFormDescriptionTextNode___parent___children___children"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___content"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___contentDigest"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___description"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___fieldOwners"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___ignoreType"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___mediaType"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___owner"
+  | "childContentfulBlockFormDescriptionTextNode___parent___internal___type"
+  | "childContentfulBlockFormDescriptionTextNode___children"
+  | "childContentfulBlockFormDescriptionTextNode___children___id"
+  | "childContentfulBlockFormDescriptionTextNode___children___parent___id"
+  | "childContentfulBlockFormDescriptionTextNode___children___parent___children"
+  | "childContentfulBlockFormDescriptionTextNode___children___children"
+  | "childContentfulBlockFormDescriptionTextNode___children___children___id"
+  | "childContentfulBlockFormDescriptionTextNode___children___children___children"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___content"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___contentDigest"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___description"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___fieldOwners"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___ignoreType"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___mediaType"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___owner"
+  | "childContentfulBlockFormDescriptionTextNode___children___internal___type"
+  | "childContentfulBlockFormDescriptionTextNode___internal___content"
+  | "childContentfulBlockFormDescriptionTextNode___internal___contentDigest"
+  | "childContentfulBlockFormDescriptionTextNode___internal___description"
+  | "childContentfulBlockFormDescriptionTextNode___internal___fieldOwners"
+  | "childContentfulBlockFormDescriptionTextNode___internal___ignoreType"
+  | "childContentfulBlockFormDescriptionTextNode___internal___mediaType"
+  | "childContentfulBlockFormDescriptionTextNode___internal___owner"
+  | "childContentfulBlockFormDescriptionTextNode___internal___type"
+  | "childContentfulBlockFormDescriptionTextNode___description"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___parent___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___parent___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___children___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___children___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___content"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___contentDigest"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___description"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___fieldOwners"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___ignoreType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___mediaType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___owner"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___parent___internal___type"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___parent___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___parent___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___children___id"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___children___children"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___content"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___contentDigest"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___description"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___fieldOwners"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___ignoreType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___mediaType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___owner"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___children___internal___type"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___content"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___contentDigest"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___description"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___fieldOwners"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___ignoreType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___mediaType"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___owner"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___internal___type"
+  | "childContentfulBlockFormSuccessDescriptionTextNode___successDescription"
+  | "childContentfulBlockFormExtraDescriptionTextNode___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___parent___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___parent___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___children___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___children___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___content"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___contentDigest"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___description"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___fieldOwners"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___ignoreType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___mediaType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___owner"
+  | "childContentfulBlockFormExtraDescriptionTextNode___parent___internal___type"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___parent___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___parent___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___children___id"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___children___children"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___content"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___contentDigest"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___description"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___fieldOwners"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___ignoreType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___mediaType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___owner"
+  | "childContentfulBlockFormExtraDescriptionTextNode___children___internal___type"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___content"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___contentDigest"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___description"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___fieldOwners"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___ignoreType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___mediaType"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___owner"
+  | "childContentfulBlockFormExtraDescriptionTextNode___internal___type"
+  | "childContentfulBlockFormExtraDescriptionTextNode___extraDescription"
+
+export type ContentfulBlockFormFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  sendToMailchimp?: Maybe<BooleanQueryOperatorInput>
+  sendToNetlifyForms?: Maybe<BooleanQueryOperatorInput>
+  successTitle?: Maybe<StringQueryOperatorInput>
+  contentfulfields?: Maybe<StringQueryOperatorInput>
+  page?: Maybe<ContentfulPageFilterListInput>
+  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>
+  successDescription?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNodeFilterInput
+  >
+  spaceId?: Maybe<StringQueryOperatorInput>
+  contentful_id?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulBlockFormSysFilterInput>
+  node_locale?: Maybe<StringQueryOperatorInput>
+  extraTitle?: Maybe<StringQueryOperatorInput>
+  extraDescription?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormDescriptionTextNode?: Maybe<
+    ContentfulBlockFormDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormExtraDescriptionTextNode?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNodeFilterInput
+  >
+}
+
+export type ContentfulBlockFormGroupConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormEdge>
+  nodes: Array<ContentfulBlockForm>
+  pageInfo: PageInfo
+  field: Scalars["String"]
+  fieldValue?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulBlockFormFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNode = Node & {
+  id: Scalars["ID"]
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  successDescription?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormSuccessDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormSuccessDescriptionTextNode>
+  pageInfo: PageInfo
+  distinct: Array<Scalars["String"]>
+  group: Array<ContentfulBlockFormSuccessDescriptionTextNodeGroupConnection>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeConnectionDistinctArgs = {
+  field: ContentfulBlockFormSuccessDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+  field: ContentfulBlockFormSuccessDescriptionTextNodeFieldsEnum
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeEdge = {
+  next?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>
+  node: ContentfulBlockFormSuccessDescriptionTextNode
+  previous?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeFieldsEnum =
+  | "id"
+  | "parent___id"
+  | "parent___parent___id"
+  | "parent___parent___parent___id"
+  | "parent___parent___parent___children"
+  | "parent___parent___children"
+  | "parent___parent___children___id"
+  | "parent___parent___children___children"
+  | "parent___parent___internal___content"
+  | "parent___parent___internal___contentDigest"
+  | "parent___parent___internal___description"
+  | "parent___parent___internal___fieldOwners"
+  | "parent___parent___internal___ignoreType"
+  | "parent___parent___internal___mediaType"
+  | "parent___parent___internal___owner"
+  | "parent___parent___internal___type"
+  | "parent___children"
+  | "parent___children___id"
+  | "parent___children___parent___id"
+  | "parent___children___parent___children"
+  | "parent___children___children"
+  | "parent___children___children___id"
+  | "parent___children___children___children"
+  | "parent___children___internal___content"
+  | "parent___children___internal___contentDigest"
+  | "parent___children___internal___description"
+  | "parent___children___internal___fieldOwners"
+  | "parent___children___internal___ignoreType"
+  | "parent___children___internal___mediaType"
+  | "parent___children___internal___owner"
+  | "parent___children___internal___type"
+  | "parent___internal___content"
+  | "parent___internal___contentDigest"
+  | "parent___internal___description"
+  | "parent___internal___fieldOwners"
+  | "parent___internal___ignoreType"
+  | "parent___internal___mediaType"
+  | "parent___internal___owner"
+  | "parent___internal___type"
+  | "children"
+  | "children___id"
+  | "children___parent___id"
+  | "children___parent___parent___id"
+  | "children___parent___parent___children"
+  | "children___parent___children"
+  | "children___parent___children___id"
+  | "children___parent___children___children"
+  | "children___parent___internal___content"
+  | "children___parent___internal___contentDigest"
+  | "children___parent___internal___description"
+  | "children___parent___internal___fieldOwners"
+  | "children___parent___internal___ignoreType"
+  | "children___parent___internal___mediaType"
+  | "children___parent___internal___owner"
+  | "children___parent___internal___type"
+  | "children___children"
+  | "children___children___id"
+  | "children___children___parent___id"
+  | "children___children___parent___children"
+  | "children___children___children"
+  | "children___children___children___id"
+  | "children___children___children___children"
+  | "children___children___internal___content"
+  | "children___children___internal___contentDigest"
+  | "children___children___internal___description"
+  | "children___children___internal___fieldOwners"
+  | "children___children___internal___ignoreType"
+  | "children___children___internal___mediaType"
+  | "children___children___internal___owner"
+  | "children___children___internal___type"
+  | "children___internal___content"
+  | "children___internal___contentDigest"
+  | "children___internal___description"
+  | "children___internal___fieldOwners"
+  | "children___internal___ignoreType"
+  | "children___internal___mediaType"
+  | "children___internal___owner"
+  | "children___internal___type"
+  | "internal___content"
+  | "internal___contentDigest"
+  | "internal___description"
+  | "internal___fieldOwners"
+  | "internal___ignoreType"
+  | "internal___mediaType"
+  | "internal___owner"
+  | "internal___type"
+  | "successDescription"
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  successDescription?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeGroupConnection = {
+  totalCount: Scalars["Int"]
+  edges: Array<ContentfulBlockFormSuccessDescriptionTextNodeEdge>
+  nodes: Array<ContentfulBlockFormSuccessDescriptionTextNode>
+  pageInfo: PageInfo
+  field: Scalars["String"]
+  fieldValue?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormSuccessDescriptionTextNodeSortInput = {
+  fields?: Maybe<
+    Array<Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFieldsEnum>>
+  >
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ContentfulBlockFormSys = {
+  revision?: Maybe<Scalars["Int"]>
+  contentType?: Maybe<ContentfulBlockFormSysContentType>
+}
+
+export type ContentfulBlockFormSysContentType = {
+  sys?: Maybe<ContentfulBlockFormSysContentTypeSys>
+}
+
+export type ContentfulBlockFormSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulBlockFormSysContentTypeSysFilterInput>
+}
+
+export type ContentfulBlockFormSysContentTypeSys = {
+  type?: Maybe<Scalars["String"]>
+  linkType?: Maybe<Scalars["String"]>
+  id?: Maybe<Scalars["String"]>
+  contentful_id?: Maybe<Scalars["String"]>
+}
+
+export type ContentfulBlockFormSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  linkType?: Maybe<StringQueryOperatorInput>
+  id?: Maybe<StringQueryOperatorInput>
+  contentful_id?: Maybe<StringQueryOperatorInput>
+}
+
+export type ContentfulBlockFormSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>
+  contentType?: Maybe<ContentfulBlockFormSysContentTypeFilterInput>
 }
 
 export type ContentfulBlockHero = Node & {
@@ -2829,7 +3804,7 @@ export type ContentfulPage = Node & {
   blocks?: Maybe<
     Array<
       Maybe<
-        ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockHeroUnion
+        ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroUnion
       >
     >
   >
@@ -4416,6 +5391,20 @@ export type Query = {
   allShopifyPage: ShopifyPageConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
+  contentfulBlockFormExtraDescriptionTextNode?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNode
+  >
+  allContentfulBlockFormExtraDescriptionTextNode: ContentfulBlockFormExtraDescriptionTextNodeConnection
+  contentfulBlockFormSuccessDescriptionTextNode?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNode
+  >
+  allContentfulBlockFormSuccessDescriptionTextNode: ContentfulBlockFormSuccessDescriptionTextNodeConnection
+  contentfulBlockFormDescriptionTextNode?: Maybe<
+    ContentfulBlockFormDescriptionTextNode
+  >
+  allContentfulBlockFormDescriptionTextNode: ContentfulBlockFormDescriptionTextNodeConnection
+  contentfulBlockForm?: Maybe<ContentfulBlockForm>
+  allContentfulBlockForm: ContentfulBlockFormConnection
   contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>
   allContentfulBlockFeaturedProducts: ContentfulBlockFeaturedProductsConnection
   contentfulBlockFeaturedBlogPosts?: Maybe<ContentfulBlockFeaturedBlogPosts>
@@ -4754,6 +5743,94 @@ export type QueryContentfulAssetArgs = {
 export type QueryAllContentfulAssetArgs = {
   filter?: Maybe<ContentfulAssetFilterInput>
   sort?: Maybe<ContentfulAssetSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlockFormExtraDescriptionTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  extraDescription?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlockFormExtraDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlockFormSuccessDescriptionTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  successDescription?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlockFormSuccessDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlockFormDescriptionTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  description?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllContentfulBlockFormDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>
+  sort?: Maybe<ContentfulBlockFormDescriptionTextNodeSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryContentfulBlockFormArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  sendToMailchimp?: Maybe<BooleanQueryOperatorInput>
+  sendToNetlifyForms?: Maybe<BooleanQueryOperatorInput>
+  successTitle?: Maybe<StringQueryOperatorInput>
+  contentfulfields?: Maybe<StringQueryOperatorInput>
+  page?: Maybe<ContentfulPageFilterListInput>
+  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>
+  successDescription?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNodeFilterInput
+  >
+  spaceId?: Maybe<StringQueryOperatorInput>
+  contentful_id?: Maybe<StringQueryOperatorInput>
+  createdAt?: Maybe<DateQueryOperatorInput>
+  updatedAt?: Maybe<DateQueryOperatorInput>
+  sys?: Maybe<ContentfulBlockFormSysFilterInput>
+  node_locale?: Maybe<StringQueryOperatorInput>
+  extraTitle?: Maybe<StringQueryOperatorInput>
+  extraDescription?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormDescriptionTextNode?: Maybe<
+    ContentfulBlockFormDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<
+    ContentfulBlockFormSuccessDescriptionTextNodeFilterInput
+  >
+  childContentfulBlockFormExtraDescriptionTextNode?: Maybe<
+    ContentfulBlockFormExtraDescriptionTextNodeFilterInput
+  >
+}
+
+export type QueryAllContentfulBlockFormArgs = {
+  filter?: Maybe<ContentfulBlockFormFilterInput>
+  sort?: Maybe<ContentfulBlockFormSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -7697,6 +8774,31 @@ export type PageQuery = {
                 >
               })
             | Pick<ContentfulBlockFeaturedProducts, "id" | "products" | "title">
+            | (Pick<
+                ContentfulBlockForm,
+                | "contentfulfields"
+                | "extraTitle"
+                | "sendToMailchimp"
+                | "sendToNetlifyForms"
+                | "successTitle"
+                | "title"
+              > & {
+                description: Maybe<
+                  Pick<ContentfulBlockFormDescriptionTextNode, "description">
+                >
+                extraDescription: Maybe<
+                  Pick<
+                    ContentfulBlockFormExtraDescriptionTextNode,
+                    "extraDescription"
+                  >
+                >
+                successDescription: Maybe<
+                  Pick<
+                    ContentfulBlockFormSuccessDescriptionTextNode,
+                    "successDescription"
+                  >
+                >
+              })
             | (Pick<
                 ContentfulBlockHero,
                 "bottomText" | "id" | "subtitle" | "title"

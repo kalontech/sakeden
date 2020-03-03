@@ -50,6 +50,23 @@ export const query = graphql`
           products
           title
         }
+        ... on ContentfulBlockForm {
+          contentfulfields
+          description {
+            description
+          }
+          extraDescription {
+            extraDescription
+          }
+          extraTitle
+          sendToMailchimp
+          sendToNetlifyForms
+          successDescription {
+            successDescription
+          }
+          successTitle
+          title
+        }
         ... on ContentfulBlockHero {
           bottomText
           id

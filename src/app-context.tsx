@@ -21,11 +21,13 @@ export interface AppContextProps {
   isCheckoutVisible: boolean
   isMenuVisible: boolean
   isSubscribeVisible: boolean
+  isWelcomeVisible: boolean
   setIsAgeRestrictionVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsCartVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsCheckoutVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsSubscribeVisible: React.Dispatch<React.SetStateAction<boolean>>
+  setIsWelcomeVisible: React.Dispatch<React.SetStateAction<boolean>>
   updateLineItems: (lineItemsToUpdate: any[]) => Promise<void>
 }
 
@@ -47,6 +49,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   const [isCheckoutVisible, setIsCheckoutVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false)
+  const [isWelcomeVisible, setIsWelcomeVisible] = useState(true)
 
   useEffect(() => {
     fetchCheckout()
@@ -107,11 +110,13 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
         isCheckoutVisible,
         isMenuVisible,
         isSubscribeVisible,
+        isWelcomeVisible,
         setIsAgeRestrictionVisible,
         setIsCartVisible,
         setIsCheckoutVisible,
         setIsMenuVisible,
         setIsSubscribeVisible,
+        setIsWelcomeVisible,
         updateLineItems,
       }}
     >

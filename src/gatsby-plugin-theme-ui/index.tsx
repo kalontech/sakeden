@@ -140,26 +140,32 @@ const theme = {
     h1: {
       ...heading,
       fontSize: 6,
+      lineHeight: 1,
     },
     h2: {
       ...heading,
       fontSize: 5,
+      lineHeight: 1,
     },
     h3: {
       ...heading,
       fontSize: 4,
+      lineHeight: 1,
     },
     h4: {
       ...heading,
       fontSize: 3,
+      lineHeight: 1,
     },
     h5: {
       ...heading,
       fontSize: 2,
+      lineHeight: 1,
     },
     price: {
       fontSize: 3,
       fontWeight: "light",
+      lineHeight: 1,
     },
   },
 }

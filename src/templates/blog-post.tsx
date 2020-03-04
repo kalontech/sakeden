@@ -31,9 +31,18 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     <>
       <SEO title={contentfulBlogPost.title!} />
       <Layout narrow>
-        <Heading as="h1" variant="h1">
-          {contentfulBlogPost.title}
-        </Heading>
+        <Box mb={3}>
+          <Box sx={{ display: ["none", "none", "block", "block"] }}>
+            <Heading as="h1" variant="h1">
+              {contentfulBlogPost.title}
+            </Heading>
+          </Box>
+          <Box sx={{ display: ["block", "block", "none", "none"] }}>
+            <Heading as="h2" variant="h2">
+              {contentfulBlogPost.title}
+            </Heading>
+          </Box>
+        </Box>
         <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
           <Flex>
             <EmailShareButton title={contentfulBlogPost.title!} url={shareUrl}>

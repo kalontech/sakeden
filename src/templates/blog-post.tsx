@@ -76,6 +76,16 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               )
             },
             image: ({ alt, src }) => {
+              if (src.endsWith(".mp4")) {
+                return (
+                  <Box sx={{ my: 4 }}>
+                    <video controls style={{ width: "100%" }}>
+                      <source src={src} />
+                    </video>
+                  </Box>
+                )
+              }
+
               return (
                 <Box sx={{ my: 4 }}>
                   <Image

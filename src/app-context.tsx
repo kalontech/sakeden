@@ -11,6 +11,7 @@ const client = Client.buildClient({
 const useIsAgeRestrictionVisible = createPersistedState(
   "isAgeRestrictionVisible",
 )
+const useIsWelcomeVisible = createPersistedState("isWelcomeVisible")
 
 export interface AppContextProps {
   addLineItems: (lineItemsToAdd: any[]) => Promise<void>
@@ -49,7 +50,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   const [isCheckoutVisible, setIsCheckoutVisible] = useState(false)
   const [isMenuVisible, setIsMenuVisible] = useState(false)
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false)
-  const [isWelcomeVisible, setIsWelcomeVisible] = useState(true)
+  const [isWelcomeVisible, setIsWelcomeVisible] = useIsWelcomeVisible(true)
 
   useEffect(() => {
     fetchCheckout()

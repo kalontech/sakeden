@@ -4,8 +4,14 @@ import Client from "shopify-buy"
 import createPersistedState from "use-persisted-state"
 
 const client = Client.buildClient({
-  domain: process.env.SHOPIFY_SHOP_NAME,
-  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
+  domain:
+    process.env.CONTEXT === "branch-deploy"
+      ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
+      : process.env.SHOPIFY_SHOP_NAME,
+  storefrontAccessToken:
+    process.env.CONTEXT === "branch-deploy"
+      ? process.env.SHOPIFY_PREVIEW_ACCESS_TOKEN
+      : process.env.SHOPIFY_ACCESS_TOKEN,
 })
 
 const useIsAgeRestrictionVisible = createPersistedState(

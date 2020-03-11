@@ -33,10 +33,12 @@ const CheckoutPopup: React.FC = () => {
       note: additionalNotes,
     })
     window.location.replace(
-      checkout.webUrl.replace(
-        process.env.SHOPIFY_SHOP_NAME,
-        process.env.SHOPIFY_EXTERNAL_DOMAIN,
-      ),
+      checkout.webUrl,
+      // TODO: Fix and uncomment.
+      // .replace(
+      //   process.env.SHOPIFY_SHOP_NAME,
+      //   process.env.SHOPIFY_EXTERNAL_DOMAIN,
+      // ),
     )
   }
 

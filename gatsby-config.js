@@ -59,6 +59,10 @@ module.exports = {
             ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
             : process.env.CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
+        host:
+          process.env.CONTEXT === "branch-deploy"
+            ? "preview.contentful.com"
+            : "cdn.contentful.com",
         spaceId:
           process.env.CONTEXT === "branch-deploy"
             ? process.env.CONTENTFUL_PREVIEW_SPACE_ID

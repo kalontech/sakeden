@@ -5383,12 +5383,12 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
-  shopifyBlog?: Maybe<ShopifyBlog>
-  allShopifyBlog: ShopifyBlogConnection
   shopifyCollection?: Maybe<ShopifyCollection>
   allShopifyCollection: ShopifyCollectionConnection
   shopifyPage?: Maybe<ShopifyPage>
   allShopifyPage: ShopifyPageConnection
+  shopifyBlog?: Maybe<ShopifyBlog>
+  allShopifyBlog: ShopifyBlogConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
   contentfulBlockFormExtraDescriptionTextNode?: Maybe<
@@ -5663,23 +5663,6 @@ export type QueryAllShopifyProductArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyBlogArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  title?: Maybe<StringQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>
-  sort?: Maybe<ShopifyBlogSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -5718,6 +5701,23 @@ export type QueryShopifyPageArgs = {
 export type QueryAllShopifyPageArgs = {
   filter?: Maybe<ShopifyPageFilterInput>
   sort?: Maybe<ShopifyPageSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryShopifyBlogArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>
+  sort?: Maybe<ShopifyBlogSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }

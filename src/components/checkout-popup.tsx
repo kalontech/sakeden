@@ -34,8 +34,10 @@ const CheckoutPopup: React.FC = () => {
     })
     window.location.replace(
       checkout.webUrl.replace(
-        process.env.SHOPIFY_SHOP_NAME,
-        process.env.SHOPIFY_EXTERNAL_DOMAIN,
+        process.env.CONTEXT === "branch-deploy"
+          ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
+          : process.env.SHOPIFY_SHOP_NAME,
+        process.env.EXTERNAL_DOMAIN,
       ),
     )
   }

@@ -11,17 +11,17 @@ const generatePackingSlip = order => {
     const billingAddress = `${order.billing_address.first_name} ${
       order.billing_address.last_name
     }
-  ${order.billing_address.address1 || ""}
-  ${order.billing_address.address2 || ""}
-  ${order.billing_address.zip}
-  ${order.billing_address.city}, ${order.billing_address.country}`
+${order.billing_address.address1 || ""}
+${order.billing_address.address2 || ""}
+${order.billing_address.zip}
+${order.billing_address.city}, ${order.billing_address.country}`
     const shippingAddress = `${order.shipping_address.first_name} ${
       order.shipping_address.last_name
     }
-  ${order.shipping_address.address1 || ""}
-  ${order.shipping_address.address2 || ""}
-  ${order.shipping_address.zip}
-  ${order.shipping_address.city}, ${order.shipping_address.country}`
+${order.shipping_address.address1 || ""}
+${order.shipping_address.address2 || ""}
+${order.shipping_address.zip}
+${order.shipping_address.city}, ${order.shipping_address.country}`
 
     // Create a PDF document.
     const doc = new PDFDocument()

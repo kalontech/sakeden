@@ -10,25 +10,28 @@ exports.handler = async (event, context) => {
     // Parse order.
     const order = JSON.parse(event.body)
     // Generate packing slip.
-    // const packingSlip = await generatePackingSlip(order)
+    const packingSlip = await generatePackingSlip(order)
     // Send email.
-    mailgun.messages().send(
-      {
-        // attachment: packingSlip.outputPathname,
-        from:
-          "Sakeden <sakeden@sandboxc0a31bd45f39441dbbb86f692d9681db.mailgun.org>",
-        subject: `New order #${order.order_number}`,
-        text:
-          "A new order was created. See packing slip is in the attachments.",
-        to: "andriy.tsaryov@kalon.tech",
-      },
-      (error, body) => {
-        if (error) {
-          console.error(error)
-        }
-        console.log(body)
-      },
-    )
+    await new Promise((resolve, reject) => {
+      mailgun.messages().send(
+        {
+          attachment: packingSlip.outputPathname,
+          from:
+            "Sakeden <sakeden@sandboxc0a31bd45f39441dbbb86f692d9681db.mailgun.org>",
+          subject: `New order #${order.order_number}`,
+          text:
+            "A new order was created. See packing slip is in the attachments.",
+          to: "andriy.tsaryov@kalon.tech",
+        },
+        (error, body) => {
+          if (error) {
+            reject(error)
+          } else {
+            resolve(body)
+          }
+        },
+      )
+    })
     // Reponse (success).
     return {
       body: JSON.stringify({ message: "Okay!", success: true }),

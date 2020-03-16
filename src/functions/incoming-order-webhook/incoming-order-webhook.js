@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
           subject: `New order #${order.order_number}`,
           text:
             "A new order was created. See packing slip is in the attachments.",
-          to: "andriy.tsaryov@kalon.tech",
+          to: process.env.PACKING_SLIP_RECIPIENT_EMAIL,
         },
         (error, body) => {
           if (error) {

@@ -5375,20 +5375,20 @@ export type Query = {
   allSitePage: SitePageConnection
   imageSharp?: Maybe<ImageSharp>
   allImageSharp: ImageSharpConnection
-  shopifyProductOption?: Maybe<ShopifyProductOption>
-  allShopifyProductOption: ShopifyProductOptionConnection
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>
   allShopifyProductMetafield: ShopifyProductMetafieldConnection
+  shopifyProductOption?: Maybe<ShopifyProductOption>
+  allShopifyProductOption: ShopifyProductOptionConnection
   shopifyProductVariant?: Maybe<ShopifyProductVariant>
   allShopifyProductVariant: ShopifyProductVariantConnection
   shopifyProduct?: Maybe<ShopifyProduct>
   allShopifyProduct: ShopifyProductConnection
   shopifyCollection?: Maybe<ShopifyCollection>
   allShopifyCollection: ShopifyCollectionConnection
-  shopifyPage?: Maybe<ShopifyPage>
-  allShopifyPage: ShopifyPageConnection
   shopifyBlog?: Maybe<ShopifyBlog>
   allShopifyBlog: ShopifyBlogConnection
+  shopifyPage?: Maybe<ShopifyPage>
+  allShopifyPage: ShopifyPageConnection
   contentfulAsset?: Maybe<ContentfulAsset>
   allContentfulAsset: ContentfulAssetConnection
   contentfulBlockFormExtraDescriptionTextNode?: Maybe<
@@ -5570,23 +5570,6 @@ export type QueryAllImageSharpArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
-export type QueryShopifyProductOptionArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  name?: Maybe<StringQueryOperatorInput>
-  values?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyProductOptionArgs = {
-  filter?: Maybe<ShopifyProductOptionFilterInput>
-  sort?: Maybe<ShopifyProductOptionSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
 export type QueryShopifyProductMetafieldArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -5602,6 +5585,23 @@ export type QueryShopifyProductMetafieldArgs = {
 export type QueryAllShopifyProductMetafieldArgs = {
   filter?: Maybe<ShopifyProductMetafieldFilterInput>
   sort?: Maybe<ShopifyProductMetafieldSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
+export type QueryShopifyProductOptionArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  name?: Maybe<StringQueryOperatorInput>
+  values?: Maybe<StringQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyProductOptionArgs = {
+  filter?: Maybe<ShopifyProductOptionFilterInput>
+  sort?: Maybe<ShopifyProductOptionSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -5647,6 +5647,7 @@ export type QueryShopifyProductArgs = {
   priceRange?: Maybe<ShopifyProductPriceRangeFilterInput>
   productType?: Maybe<StringQueryOperatorInput>
   publishedAt?: Maybe<DateQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   title?: Maybe<StringQueryOperatorInput>
   updatedAt?: Maybe<DateQueryOperatorInput>
   vendor?: Maybe<StringQueryOperatorInput>
@@ -5684,6 +5685,23 @@ export type QueryAllShopifyCollectionArgs = {
   limit?: Maybe<Scalars["Int"]>
 }
 
+export type QueryShopifyBlogArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  url?: Maybe<StringQueryOperatorInput>
+  shopifyId?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>
+  sort?: Maybe<ShopifyBlogSortInput>
+  skip?: Maybe<Scalars["Int"]>
+  limit?: Maybe<Scalars["Int"]>
+}
+
 export type QueryShopifyPageArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -5701,23 +5719,6 @@ export type QueryShopifyPageArgs = {
 export type QueryAllShopifyPageArgs = {
   filter?: Maybe<ShopifyPageFilterInput>
   sort?: Maybe<ShopifyPageSortInput>
-  skip?: Maybe<Scalars["Int"]>
-  limit?: Maybe<Scalars["Int"]>
-}
-
-export type QueryShopifyBlogArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  title?: Maybe<StringQueryOperatorInput>
-  url?: Maybe<StringQueryOperatorInput>
-  shopifyId?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>
-  sort?: Maybe<ShopifyBlogSortInput>
   skip?: Maybe<Scalars["Int"]>
   limit?: Maybe<Scalars["Int"]>
 }
@@ -6433,6 +6434,7 @@ export type ShopifyCollectionFieldsEnum =
   | "products___priceRange___maxVariantPrice___currencyCode"
   | "products___productType"
   | "products___publishedAt"
+  | "products___tags"
   | "products___title"
   | "products___updatedAt"
   | "products___vendor"
@@ -6719,6 +6721,7 @@ export type ShopifyProduct = Node & {
   priceRange?: Maybe<ShopifyProductPriceRange>
   productType?: Maybe<Scalars["String"]>
   publishedAt?: Maybe<Scalars["Date"]>
+  tags?: Maybe<Array<Maybe<Scalars["String"]>>>
   title?: Maybe<Scalars["String"]>
   updatedAt?: Maybe<Scalars["Date"]>
   vendor?: Maybe<Scalars["String"]>
@@ -6927,6 +6930,7 @@ export type ShopifyProductFieldsEnum =
   | "priceRange___maxVariantPrice___currencyCode"
   | "productType"
   | "publishedAt"
+  | "tags"
   | "title"
   | "updatedAt"
   | "vendor"
@@ -7125,6 +7129,7 @@ export type ShopifyProductFilterInput = {
   priceRange?: Maybe<ShopifyProductPriceRangeFilterInput>
   productType?: Maybe<StringQueryOperatorInput>
   publishedAt?: Maybe<DateQueryOperatorInput>
+  tags?: Maybe<StringQueryOperatorInput>
   title?: Maybe<StringQueryOperatorInput>
   updatedAt?: Maybe<DateQueryOperatorInput>
   vendor?: Maybe<StringQueryOperatorInput>
@@ -8183,6 +8188,7 @@ export type SitePageFieldsEnum =
   | "pluginCreator___pluginOptions___fonts___google"
   | "pluginCreator___pluginOptions___accessToken"
   | "pluginCreator___pluginOptions___downloadLocal"
+  | "pluginCreator___pluginOptions___host"
   | "pluginCreator___pluginOptions___spaceId"
   | "pluginCreator___pluginOptions___path"
   | "pluginCreator___pluginOptions___apiVersion"
@@ -8383,6 +8389,7 @@ export type SitePluginFieldsEnum =
   | "pluginOptions___fonts___google___family"
   | "pluginOptions___accessToken"
   | "pluginOptions___downloadLocal"
+  | "pluginOptions___host"
   | "pluginOptions___spaceId"
   | "pluginOptions___path"
   | "pluginOptions___apiVersion"
@@ -8510,6 +8517,7 @@ export type SitePluginPluginOptions = {
   fonts?: Maybe<SitePluginPluginOptionsFonts>
   accessToken?: Maybe<Scalars["String"]>
   downloadLocal?: Maybe<Scalars["Boolean"]>
+  host?: Maybe<Scalars["String"]>
   spaceId?: Maybe<Scalars["String"]>
   path?: Maybe<Scalars["String"]>
   apiVersion?: Maybe<Scalars["Date"]>
@@ -8535,6 +8543,7 @@ export type SitePluginPluginOptionsFilterInput = {
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>
   accessToken?: Maybe<StringQueryOperatorInput>
   downloadLocal?: Maybe<BooleanQueryOperatorInput>
+  host?: Maybe<StringQueryOperatorInput>
   spaceId?: Maybe<StringQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
   apiVersion?: Maybe<DateQueryOperatorInput>
@@ -8692,6 +8701,55 @@ export type BlogPostsPageQuery = {
 export type ProductsPageQueryVariables = {}
 
 export type ProductsPageQuery = {
+  shopifyCollection: Maybe<{
+    products: Maybe<
+      Array<
+        Maybe<
+          Pick<
+            ShopifyProduct,
+            | "availableForSale"
+            | "description"
+            | "handle"
+            | "shopifyId"
+            | "title"
+          > & {
+            images: Maybe<
+              Array<
+                Maybe<
+                  Pick<ShopifyProductImages, "originalSrc"> & {
+                    localFile: Maybe<{
+                      childImageSharp: Maybe<{
+                        fluid: Maybe<
+                          GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
+                        >
+                      }>
+                    }>
+                  }
+                >
+              >
+            >
+            metafields: Maybe<
+              Array<Maybe<Pick<ShopifyProductMetafield, "key" | "value">>>
+            >
+            variants: Maybe<
+              Array<
+                Maybe<
+                  Pick<ShopifyProductVariant, "shopifyId" | "title"> & {
+                    priceV2: Maybe<
+                      Pick<
+                        ShopifyProductVariantPriceV2,
+                        "amount" | "currencyCode"
+                      >
+                    >
+                  }
+                >
+              >
+            >
+          }
+        >
+      >
+    >
+  }>
   allShopifyProduct: {
     edges: Array<{
       node: Pick<
@@ -8730,6 +8788,60 @@ export type ProductsPageQuery = {
       }
     }>
   }
+}
+
+export type SetsPageQueryVariables = {}
+
+export type SetsPageQuery = {
+  shopifyCollection: Maybe<{
+    products: Maybe<
+      Array<
+        Maybe<
+          Pick<
+            ShopifyProduct,
+            | "availableForSale"
+            | "description"
+            | "handle"
+            | "shopifyId"
+            | "title"
+          > & {
+            images: Maybe<
+              Array<
+                Maybe<
+                  Pick<ShopifyProductImages, "originalSrc"> & {
+                    localFile: Maybe<{
+                      childImageSharp: Maybe<{
+                        fluid: Maybe<
+                          GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
+                        >
+                      }>
+                    }>
+                  }
+                >
+              >
+            >
+            metafields: Maybe<
+              Array<Maybe<Pick<ShopifyProductMetafield, "key" | "value">>>
+            >
+            variants: Maybe<
+              Array<
+                Maybe<
+                  Pick<ShopifyProductVariant, "shopifyId" | "title"> & {
+                    priceV2: Maybe<
+                      Pick<
+                        ShopifyProductVariantPriceV2,
+                        "amount" | "currencyCode"
+                      >
+                    >
+                  }
+                >
+              >
+            >
+          }
+        >
+      >
+    >
+  }>
 }
 
 export type BlogPostQueryVariables = {
@@ -8836,7 +8948,12 @@ export type ProductQuery = {
   shopifyProduct: Maybe<
     Pick<
       ShopifyProduct,
-      "availableForSale" | "description" | "handle" | "shopifyId" | "title"
+      | "availableForSale"
+      | "description"
+      | "handle"
+      | "shopifyId"
+      | "title"
+      | "vendor"
     > & {
       images: Maybe<
         Array<

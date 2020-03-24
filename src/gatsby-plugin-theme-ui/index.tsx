@@ -113,6 +113,14 @@ const theme = {
     input: {
       borderColor: "gray",
     },
+    solid: {
+      borderColor: "black",
+      borderRadius: 0,
+      borderWidth: "2px",
+      height: "60px",
+      margin: 0,
+      outline: "none",
+    },
     textarea: {
       borderColor: "gray",
     },

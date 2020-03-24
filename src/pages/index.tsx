@@ -16,9 +16,42 @@ const priceSorter = (previousEdge: any, nextEdge: any): number => {
 }
 
 const ProductsPage: React.FC = () => {
-  const { allShopifyProduct } = useStaticQuery<ProductsPageQuery>(
+  const { allShopifyProduct, shopifyCollection } = useStaticQuery<
+    ProductsPageQuery
+  >(
     graphql`
       query ProductsPage {
+        shopifyCollection(title: { eq: "Bottles" }) {
+          products {
+            availableForSale
+            description
+            handle
+            images {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 600) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+              originalSrc
+            }
+            metafields {
+              key
+              value
+            }
+            shopifyId
+            title
+            variants {
+              shopifyId
+              title
+              priceV2 {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
         allShopifyProduct(filter: { title: { regex: "/^((?!Sub).)*$/" } }) {
           edges {
             node {
@@ -58,14 +91,16 @@ const ProductsPage: React.FC = () => {
 
   // 1. Price 0 -> 9.
   // 2. Available for sale -> Not available for sale.
-  const allShopifyProductSorted = [
-    ...allShopifyProduct.edges
-      .filter(edge => edge.node.availableForSale)
-      .sort(priceSorter),
-    ...allShopifyProduct.edges
-      .filter(edge => !edge.node.availableForSale)
-      .sort(priceSorter),
-  ]
+  const allShopifyProductSorted = shopifyCollection
+    ? [
+        ...shopifyCollection
+          .products!.filter(node => node && node.availableForSale)
+          .sort(priceSorter),
+        ...shopifyCollection
+          .products!.filter(node => node && !node.availableForSale)
+          .sort(priceSorter),
+      ]
+    : []
 
   return (
     <>
@@ -79,9 +114,9 @@ const ProductsPage: React.FC = () => {
         >
           Collection
         </Heading>
-        <Grid columns={[1, 1, 2, 2]} gap="30px">
-          {allShopifyProductSorted.map(edge => {
-            return <ProductCard node={edge.node as ShopifyProduct} />
+        <Grid columns={[1, 1, 3, 3]} gap="30px">
+          {allShopifyProductSorted.map(node => {
+            return <ProductCard node={node as ShopifyProduct} />
           })}
         </Grid>
       </Layout>

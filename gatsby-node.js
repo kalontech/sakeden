@@ -42,7 +42,8 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.slug,
         },
-        path: node.slug === "home" ? "/" : `/${node.slug}`,
+        // path: node.slug === "home" ? "/" : `/${node.slug}`,
+        path: node.slug,
       })
     })
   })

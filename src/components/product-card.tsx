@@ -70,8 +70,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               fluid={
                 node.images[0].localFile!.childImageSharp!.fluid as FluidObject
               }
+              style={{ height: "411px" }}
               imgStyle={{ objectFit: "contain" }}
-              sx={{ height: "411px" }}
             />
           </Box>
         )}

@@ -28,7 +28,10 @@ const WelcomePopup: React.FC = () => {
 
   const handleSubmit = async (): Promise<void> => {
     try {
-      console.log(await addToMailchimp(email))
+      await addToMailchimp(email)
+      await fetch(
+        `/.netlify/functions/tag-mailchimp-user?email=${email}&tag=updates`,
+      )
       setIsWelcomeVisible(false)
     } catch (err) {
       console.error(err)

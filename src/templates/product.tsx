@@ -1,8 +1,10 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
+// @ts-ignore
+import addToMailchimp from "gatsby-plugin-mailchimp"
 import React, { useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
-import { Box, Button, Flex, Heading, Text } from "theme-ui"
+import { Box, Button, Flex, Heading, Input, Text } from "theme-ui"
 
 import {
   ProductQuery,
@@ -20,6 +22,9 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
+  const [isSubscribed, setIsSubcribed] = useState(false)
+  const [isSubscribing, setIsSubcribing] = useState(false)
+  const [email, setEmail] = useState("")
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
@@ -44,6 +49,21 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     }
   }
 
+  const handleNotifyRestocked = async (): Promise<void> => {
+    try {
+      setIsSubcribing(true)
+      await addToMailchimp(email)
+      await fetch(
+        `/.netlify/functions/tag-mailchimp-user?email=${email}&tag=restocking-${shopifyProduct.handle}`,
+      )
+      setIsSubcribed(true)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsSubcribing(false)
+    }
+  }
+
   const handleSubscribe = (): void => {
     setIsSubscribeVisible(true)
   }
@@ -65,6 +85,14 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               justifyContent: ["flex-start", "flex-start", "center", "center"],
             }}
           >
+            {shopifyProduct.vendor && shopifyProduct.vendor !== "Sakeden" && (
+              <Flex sx={{ alignItems: "center", mb: 2, pb: 1 }}>
+                <Box sx={{ bg: "gray", height: "3px", mr: 2, width: "30px" }} />
+                <Heading as="h4" color="gray" variant="h4">
+                  {shopifyProduct.vendor}
+                </Heading>
+              </Flex>
+            )}
             <Heading as="h2" variant="h2">
               {shopifyProduct.title}
             </Heading>
@@ -115,43 +143,84 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 </Flex>
               </Box>
             ) : (
-              <Flex mt={4}>
-                <Button sx={{ flex: 1, fontSize: "30px" }} variant="secondary">
-                  {shopifyProduct.availableForSale ? (
-                    <Text>
-                      {getPriceFromVariants(
-                        shopifyProduct.variants as ShopifyProductVariant[],
-                        0,
-                      )}
-                    </Text>
-                  ) : (
-                    <Text color="danger">Sold out</Text>
-                  )}
-                </Button>
-                <Box p={2} />
-                <Button
-                  onClick={handleAddToCart}
-                  variant={
-                    shopifyProduct.availableForSale
-                      ? "primary"
-                      : "primaryDisabled"
-                  }
-                  sx={{ flex: 1 }}
-                >
-                  {justAddedToCart ? (
-                    <Box mr={1}>
-                      <MdDone fontSize="28px" />
-                    </Box>
-                  ) : (
-                    <>
+              <Box mt={4}>
+                {!shopifyProduct.availableForSale && (
+                  <Box>
+                    <Heading as="h5" variant="h5" sx={{ mb: -1 }}>
+                      Notify when restocked
+                    </Heading>
+                    <Flex sx={{ alignItems: "center" }}>
+                      <Input
+                        disabled={isSubscribed || isSubscribing}
+                        my={3}
+                        name="Email"
+                        onChange={(
+                          e: React.ChangeEvent<HTMLInputElement>,
+                        ): void => {
+                          setEmail(e.target.value)
+                        }}
+                        placeholder="Email"
+                        value={email}
+                        variant="solid"
+                      />
+                      <Button
+                        onClick={handleNotifyRestocked}
+                        variant={
+                          isSubscribed || isSubscribing
+                            ? "primaryDisabled"
+                            : "primary"
+                        }
+                      >
+                        {isSubscribed
+                          ? "Subscribed"
+                          : isSubscribing
+                          ? "Wait..."
+                          : "Subscribe"}
+                      </Button>
+                    </Flex>
+                  </Box>
+                )}
+                <Flex>
+                  <Button
+                    sx={{ flex: 1, fontSize: "30px" }}
+                    variant="secondary"
+                  >
+                    {shopifyProduct.availableForSale ? (
+                      <Text>
+                        {getPriceFromVariants(
+                          shopifyProduct.variants as ShopifyProductVariant[],
+                          0,
+                        )}
+                      </Text>
+                    ) : (
+                      <Text color="danger">Sold out</Text>
+                    )}
+                  </Button>
+                  <Box p={2} />
+                  <Button
+                    onClick={handleAddToCart}
+                    variant={
+                      shopifyProduct.availableForSale
+                        ? "primary"
+                        : "primaryDisabled"
+                    }
+                    sx={{ flex: 1 }}
+                  >
+                    {justAddedToCart ? (
                       <Box mr={1}>
-                        <MdShoppingCart fontSize="28px" />
+                        <MdDone fontSize="28px" />
                       </Box>
-                      <Text>Add to cart</Text>
-                    </>
-                  )}
-                </Button>
-              </Flex>
+                    ) : (
+                      <>
+                        <Box mr={1}>
+                          <MdShoppingCart fontSize="28px" />
+                        </Box>
+                        <Text>Add to cart</Text>
+                      </>
+                    )}
+                  </Button>
+                </Flex>
+              </Box>
             )}
           </Flex>
           <Box
@@ -215,6 +284,7 @@ export const query = graphql`
           currencyCode
         }
       }
+      vendor
     }
   }
 `

@@ -119,7 +119,7 @@ const CheckoutPopup: React.FC = () => {
         <Button
           disabled={!deliveryDate}
           onClick={handleCheckout}
-          variant="primary"
+          variant={deliveryDate ? "primary" : "primaryDisabled"}
           sx={{ flex: 1 }}
         >
           Checkout

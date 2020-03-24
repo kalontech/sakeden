@@ -17,6 +17,22 @@ module.exports = {
     "gatsby-transformer-sharp",
     {
       options: {
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: true,
+          favicons: true,
+          firefox: true,
+          windows: true,
+          yandex: true,
+        },
+        logo: "./src/images/favicon.png",
+      },
+      resolve: "gatsby-plugin-favicon",
+    },
+    {
+      options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
       resolve: "gatsby-plugin-mailchimp",

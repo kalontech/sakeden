@@ -98,7 +98,7 @@ const theme = {
     light: 200,
     // eslint-disable-next-line sort-keys
     body: 400,
-    heading: 400,
+    heading: 600,
   },
   fonts: {
     body: "Barlow, sans-serif",

@@ -140,7 +140,7 @@ const SubscribePopup: React.FC = () => {
         <Button
           disabled={!deliveryDay}
           onClick={handleCheckout}
-          variant="primary"
+          variant={deliveryDay ? "primary" : "primaryDisabled"}
           sx={{ flex: 1 }}
         >
           Checkout

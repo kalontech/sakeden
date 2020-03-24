@@ -47,7 +47,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
     <InternalLink href={`/products/${node.handle}`}>
       <Card>
         {node.title && (
-          <Heading as="h4" variant="h4" mt={2}>
+          <Heading
+            as="h4"
+            mt={2}
+            style={{
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 1,
+              display: "-webkit-box",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+            variant="h4"
+          >
             {node.title}
           </Heading>
         )}

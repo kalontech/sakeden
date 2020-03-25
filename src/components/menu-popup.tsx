@@ -31,7 +31,7 @@ const MenuPopup: React.FC = () => {
         backgroundImage: `url(${
           menuBackgroundImage!.childImageSharp!.fluid!.src
         })`,
-        backgroundPosition: "bottom right",
+        backgroundPosition: "100% 135%",
         backgroundRepeat: "no-repeat",
         height: "100vh",
         maxWidth: "100%",
@@ -67,7 +67,7 @@ const MenuPopup: React.FC = () => {
             }}
           >
             <Heading as="h2" variant="h2">
-              Collection
+              Bottles
             </Heading>
           </InternalLink>
         </Box>

@@ -2,24 +2,13 @@ import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
 import moment from "moment"
 import React from "react"
-import {
-  FaFacebookSquare,
-  FaTwitterSquare,
-  FaWhatsappSquare,
-} from "react-icons/fa"
-import { MdEmail } from "react-icons/md"
 import Markdown from "react-markdown"
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share"
 import { Box, Flex, Heading, Text } from "theme-ui"
 
 import { BlogPostQuery, ContentfulBlogPost } from "../../graphql-types"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import SocialBar from "../components/social-bar"
 
 const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const data = props.data as BlogPostQuery
@@ -44,29 +33,7 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           </Box>
         </Box>
         <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
-          <Flex>
-            <EmailShareButton title={contentfulBlogPost.title!} url={shareUrl}>
-              <MdEmail size="28px" />
-            </EmailShareButton>
-            <FacebookShareButton
-              title={contentfulBlogPost.title!}
-              url={shareUrl}
-            >
-              <FaFacebookSquare size="28px" />
-            </FacebookShareButton>
-            <TwitterShareButton
-              title={contentfulBlogPost.title!}
-              url={shareUrl}
-            >
-              <FaTwitterSquare size="28px" />
-            </TwitterShareButton>
-            <WhatsappShareButton
-              title={contentfulBlogPost.title!}
-              url={shareUrl}
-            >
-              <FaWhatsappSquare size="28px" />
-            </WhatsappShareButton>
-          </Flex>
+          <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
           <Text>
             {moment(contentfulBlogPost.publishDate).format("MMMM DD, YYYY")}
           </Text>

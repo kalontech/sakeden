@@ -13,15 +13,15 @@ const generatePackingSlip = order => {
     }
 ${order.billing_address.address1 || ""}
 ${order.billing_address.address2 || ""}
-${order.billing_address.zip}
-${order.billing_address.city}, ${order.billing_address.country}`
+${order.billing_address.city || ""}
+${order.billing_address.province} ${order.billing_address.country}`
     const shippingAddress = `${order.shipping_address.first_name} ${
       order.shipping_address.last_name
     }
 ${order.shipping_address.address1 || ""}
 ${order.shipping_address.address2 || ""}
-${order.shipping_address.zip}
-${order.shipping_address.city}, ${order.shipping_address.country}`
+${order.shipping_address.city || ""}
+${order.shipping_address.province} ${order.shipping_address.country}`
 
     // Create a PDF document.
     const doc = new PDFDocument()
@@ -31,10 +31,18 @@ ${order.shipping_address.city}, ${order.shipping_address.country}`
     doc.pipe(writeStream)
 
     // Header.
-    const logoNode = doc
-      .font("Helvetica-Bold")
-      .fontSize(24)
-      .text("Sakeden")
+    // const logoNode = doc
+    //   .font("Helvetica-Bold")
+    //   .fontSize(24)
+    //   .text("Sakeden")
+    const logoNode = doc.image(
+      path.join(__dirname, "..", "..", "images", "logo.png"),
+      undefined,
+      undefined,
+      {
+        width: 100,
+      },
+    )
     doc
       .font("Helvetica")
       .fontSize(14)

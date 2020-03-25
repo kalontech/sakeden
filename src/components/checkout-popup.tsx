@@ -23,22 +23,20 @@ const CheckoutPopup: React.FC = () => {
   const [additionalNotes, setAdditionalNotes] = useState("")
 
   const handleCheckout = async (): Promise<void> => {
-    await client.checkout.updateAttributes(checkout.id, {
+    client.checkout.updateAttributes(checkout.id, {
       customAttributes: [
         {
           key: "Shipping date",
-          value: moment(deliveryDate).format("yyyy-MM-dd"),
+          value: moment(deliveryDate).format("YYYY-MM-DD"),
         },
       ],
       note: additionalNotes,
     })
-    window.location.replace(
-      checkout.webUrl.replace(
-        process.env.CONTEXT === "branch-deploy"
-          ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
-          : process.env.SHOPIFY_SHOP_NAME,
-        process.env.EXTERNAL_DOMAIN,
-      ),
+    window.location = checkout.webUrl.replace(
+      process.env.CONTEXT === "branch-deploy"
+        ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
+        : process.env.SHOPIFY_SHOP_NAME,
+      process.env.EXTERNAL_DOMAIN,
     )
   }
 

@@ -113,6 +113,13 @@ const theme = {
     input: {
       borderColor: "gray",
     },
+    select: {
+      borderRadius: 0,
+      borderWidth: "2px",
+      fontSize: "18px",
+      minWidth: "250px",
+      pr: 4,
+    },
     solid: {
       borderColor: "black",
       borderRadius: 0,

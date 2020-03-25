@@ -1,10 +1,10 @@
-import { graphql, ReplaceComponentRendererArgs } from "gatsby"
+import { graphql, ReplaceComponentRendererArgs, useStaticQuery } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 // @ts-ignore
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import React, { useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
-import { Box, Button, Flex, Heading, Input, Text } from "theme-ui"
+import { Box, Button, Flex, Heading, Input, Select, Text } from "theme-ui"
 
 import {
   ProductQuery,
@@ -14,6 +14,7 @@ import {
 import AppContext from "../app-context"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import SocialBar from "../components/social-bar"
 import { getPriceFromVariants, wait } from "../utils/helpers"
 
 const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
@@ -25,9 +26,13 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const [isSubscribed, setIsSubcribed] = useState(false)
   const [isSubscribing, setIsSubcribing] = useState(false)
   const [email, setEmail] = useState("")
+  const [backgroundPosition, setBackgroundPosition] = useState("0% 0%")
+  const [isZoomedIn, setIsZoomedIn] = useState(false)
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
+
+  const shareUrl = typeof window !== "undefined" ? window.location.href : ""
 
   const handleAddToCart = async (): Promise<void> => {
     if (
@@ -80,7 +85,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         >
           <Flex
             sx={{
-              flex: ["unset", "unset", 0.4, 0.4],
+              flex: ["unset", "unset", 0.5, 0.5],
               flexDirection: "column",
               justifyContent: ["flex-start", "flex-start", "center", "center"],
             }}
@@ -119,6 +124,9 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   style={{ height: "200px" }}
                 />
               )}
+            </Box>
+            <Box mt={3}>
+              <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
             </Box>
             {isSubscription ? (
               <Box mt={2}>
@@ -227,7 +235,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             pl={5}
             sx={{
               display: ["none", "none", "block", "block"],
-              flex: ["unset", "unset", 0.6, 0.6],
+              flex: ["unset", "unset", 0.5, 0.5],
               position: "relative",
             }}
           >
@@ -241,14 +249,47 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   top: "0px",
                 }}
               >
-                <Image
-                  fluid={
-                    shopifyProduct.images[0].localFile!.childImageSharp!
-                      .fluid as FluidObject
-                  }
-                  imgStyle={{ objectFit: "contain" }}
-                  style={{ height: "100%", width: "100%" }}
-                />
+                <figure
+                  onMouseMove={(e: any): void => {
+                    const {
+                      left,
+                      top,
+                      width,
+                      height,
+                    } = e.target.getBoundingClientRect()
+                    const x = ((e.pageX - left) / width) * 100
+                    const y = ((e.pageY - top) / height) * 100
+                    setBackgroundPosition(`${x}% ${y}%`)
+                  }}
+                  onMouseEnter={(): void => {
+                    setIsZoomedIn(true)
+                  }}
+                  onMouseLeave={(): void => {
+                    setIsZoomedIn(false)
+                  }}
+                  style={{
+                    backgroundImage: `url(${shopifyProduct.images[0].originalSrc})`,
+                    backgroundPosition,
+                    height: "100%",
+                    width: "100%",
+                  }}
+                >
+                  <Image
+                    fluid={
+                      shopifyProduct.images[0].localFile!.childImageSharp!
+                        .fluid as FluidObject
+                    }
+                    imgStyle={{
+                      backgroundColor: "white",
+                      objectFit: "contain",
+                    }}
+                    style={{
+                      height: "100%",
+                      visibility: isZoomedIn ? "hidden" : "visible",
+                      width: "100%",
+                    }}
+                  />
+                </figure>
               </Box>
             )}
           </Box>

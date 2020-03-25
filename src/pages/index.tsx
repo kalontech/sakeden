@@ -1,11 +1,17 @@
 import { graphql, useStaticQuery } from "gatsby"
 import _ from "lodash"
-import React from "react"
-import { Grid, Heading } from "theme-ui"
+import React, { useState } from "react"
+import { Box, Flex, Grid, Heading, Select } from "theme-ui"
 
-import { ProductsPageQuery, ShopifyProduct } from "../../graphql-types"
+import {
+  ProductsPageQuery,
+  ShopifyCollection,
+  ShopifyProduct,
+} from "../../graphql-types"
 import Layout from "../components/layout"
 import ProductCard from "../components/product-card"
+import ProductFilters from "../components/product-filters"
+import ProductTitle from "../components/product-title"
 import SEO from "../components/seo"
 
 const priceSorter = (previousEdge: any, nextEdge: any): number => {
@@ -50,6 +56,7 @@ const ProductsPage: React.FC = () => {
                 currencyCode
               }
             }
+            vendor
           }
         }
         allShopifyProduct(filter: { title: { regex: "/^((?!Sub).)*$/" } }) {
@@ -82,16 +89,19 @@ const ProductsPage: React.FC = () => {
                   currencyCode
                 }
               }
+              vendor
             }
           }
         }
       }
     `,
   )
+  const [breweriesFilterValue, setBreweriesFilterValue] = useState("*")
+  const [priceFilterValue, setPriceFilterValue] = useState("asc")
 
   // 1. Price 0 -> 9.
   // 2. Available for sale -> Not available for sale.
-  const allShopifyProductSorted = shopifyCollection
+  let allShopifyProductSorted = shopifyCollection
     ? [
         ...shopifyCollection
           .products!.filter(node => node && node.availableForSale)
@@ -102,18 +112,42 @@ const ProductsPage: React.FC = () => {
       ]
     : []
 
+  if (breweriesFilterValue !== "*") {
+    allShopifyProductSorted = allShopifyProductSorted.filter(
+      node => node && node.vendor === breweriesFilterValue,
+    )
+  }
+
+  if (priceFilterValue === "desc") {
+    allShopifyProductSorted = allShopifyProductSorted.reverse()
+  }
+
   return (
     <>
       <SEO title="Collection" />
       <Layout>
-        <Heading
-          as="h2"
-          mb={3}
-          sx={{ textTransform: "uppercase" }}
-          variant="h2"
-        >
-          Collection
-        </Heading>
+        <ProductTitle
+          items={[
+            { active: true, title: "Bottles", url: "/" },
+            { active: false, title: "Sets", url: "/sets" },
+            {
+              active: false,
+              title: "Subscription",
+              url: "/products/sakeden-sub-club",
+            },
+          ]}
+        />
+        <Box my={3}>
+          <ProductFilters
+            onBreweriesFilterChange={(value): void => {
+              setBreweriesFilterValue(value)
+            }}
+            onPriceFilterChange={(value): void => {
+              setPriceFilterValue(value)
+            }}
+            shopifyCollection={shopifyCollection as ShopifyCollection}
+          />
+        </Box>
         <Grid columns={[1, 1, 3, 3]} gap="30px">
           {allShopifyProductSorted.map(node => {
             return <ProductCard node={node as ShopifyProduct} />

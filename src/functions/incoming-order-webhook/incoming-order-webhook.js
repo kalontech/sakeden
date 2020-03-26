@@ -1,6 +1,6 @@
 const mailgun = require("mailgun-js")({
   apiKey: "4b6173d81d1bf3a6adce446b0e78d2d3-3fb021d1-0040c1d5",
-  domain: "sandboxc0a31bd45f39441dbbb86f692d9681db.mailgun.org",
+  domain: "mg.sakeden.com",
 })
 
 const { generatePackingSlip } = require("./pdf-utils")
@@ -16,8 +16,7 @@ exports.handler = async (event, context) => {
       mailgun.messages().send(
         {
           attachment: packingSlip.outputPathname,
-          from:
-            "Sakeden <sakeden@sandboxc0a31bd45f39441dbbb86f692d9681db.mailgun.org>",
+          from: "Sakeden <incoming-order-webhook@mg.sakeden.com>",
           subject: `New order #${order.order_number}`,
           text:
             "A new order was created. See packing slip is in the attachments.",

@@ -33,6 +33,19 @@ module.exports = {
     },
     {
       options: {
+        trackingId: "UA-155073210-1",
+      },
+      resolve: "gatsby-plugin-google-analytics",
+    },
+    {
+      options: {
+        id: "1743525",
+        sv: "6",
+      },
+      resolve: "gatsby-plugin-hotjar",
+    },
+    {
+      options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
       resolve: "gatsby-plugin-mailchimp",

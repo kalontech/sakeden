@@ -37,15 +37,6 @@ const theme = {
       padding: "0px",
       width: "40px",
     },
-    iconDisabled: {
-      ...button,
-      ...buttonDisabled,
-      bg: "primary",
-      fontSize: "28px",
-      height: "40px",
-      padding: "0px",
-      width: "40px",
-    },
     iconBordered: {
       ...button,
       bg: "secondary",
@@ -53,6 +44,15 @@ const theme = {
       borderStyle: "solid",
       borderWidth: "2px",
       color: "primary",
+      fontSize: "28px",
+      height: "40px",
+      padding: "0px",
+      width: "40px",
+    },
+    iconDisabled: {
+      ...button,
+      ...buttonDisabled,
+      bg: "primary",
       fontSize: "28px",
       height: "40px",
       padding: "0px",
@@ -98,7 +98,7 @@ const theme = {
     light: 200,
     // eslint-disable-next-line sort-keys
     body: 400,
-    heading: 500,
+    heading: "bold",
   },
   fonts: {
     body: "Barlow, sans-serif",

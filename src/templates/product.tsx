@@ -1,8 +1,8 @@
 import { graphql, ReplaceComponentRendererArgs, useStaticQuery } from "gatsby"
-import Image, { FluidObject } from "gatsby-image"
+import GatsbyImage, { FluidObject } from "gatsby-image"
 // @ts-ignore
 import addToMailchimp from "gatsby-plugin-mailchimp"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Input, Select, Text } from "theme-ui"
 
@@ -27,12 +27,25 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const [isSubscribing, setIsSubcribing] = useState(false)
   const [email, setEmail] = useState("")
   const [backgroundPosition, setBackgroundPosition] = useState("0% 0%")
+  const [backgroundSize, setBackgroundSize] = useState("100% 100%")
   const [isZoomedIn, setIsZoomedIn] = useState(false)
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
 
+  // Build URL that will be shared in social networks.
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
+
+  // Determine backrgound size in order to get correct zoom level on hover.
+  useEffect(() => {
+    const image = new Image()
+    image.addEventListener("load", function(this: any) {
+      setBackgroundSize(
+        `${this.naturalWidth / 2}px ${this.naturalHeight / 2}px`,
+      )
+    })
+    image.src = shopifyProduct.images![0]!.originalSrc!
+  }, [shopifyProduct])
 
   const handleAddToCart = async (): Promise<void> => {
     if (
@@ -103,7 +116,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             </Heading>
             <Box mt={2} sx={{ display: ["block", "block", "none", "none"] }}>
               {shopifyProduct.images && shopifyProduct.images[0] && (
-                <Image
+                <GatsbyImage
                   fluid={
                     shopifyProduct.images[0].localFile!.childImageSharp!
                       .fluid as FluidObject
@@ -112,15 +125,21 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 />
               )}
             </Box>
-            <Text mt={2}>{shopifyProduct.description}</Text>
+            <Text mt={2}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: shopifyProduct.descriptionHtml!,
+                }}
+              ></div>
+            </Text>
             <Box mt={4}>
               {shopifyProduct.images && shopifyProduct.images[1] && (
-                <Image
+                <GatsbyImage
                   fluid={
                     shopifyProduct.images[1].localFile!.childImageSharp!
                       .fluid as FluidObject
                   }
-                  imgStyle={{ objectFit: "contain" }}
+                  imgStyle={{ objectFit: "contain", objectPosition: "0px 0px" }}
                   style={{ height: "200px" }}
                 />
               )}
@@ -270,11 +289,13 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   style={{
                     backgroundImage: `url(${shopifyProduct.images[0].originalSrc})`,
                     backgroundPosition,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize,
                     height: "100%",
                     width: "100%",
                   }}
                 >
-                  <Image
+                  <GatsbyImage
                     fluid={
                       shopifyProduct.images[0].localFile!.childImageSharp!
                         .fluid as FluidObject
@@ -303,13 +324,17 @@ export const query = graphql`
   query Product($handle: String!) {
     shopifyProduct(handle: { eq: $handle }) {
       availableForSale
-      description
+      descriptionHtml
       handle
       images {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1200) {
+            fluid {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+            sizes {
+              presentationWidth
+              presentationHeight
             }
           }
         }

@@ -13,17 +13,16 @@ interface ProductTitleProps {
 
 const ProductTitle: React.FC<ProductTitleProps> = ({ items }) => {
   return (
-    <Flex>
+    <Flex sx={{ flexDirection: ["column", "column", "row", "row"] }}>
       {items.map(item => {
         return (
           <InternalLink href={item.url}>
             <Heading
               as="h2"
               sx={{
-                ...(item.active
-                  ? { textDecoration: "underline" }
-                  : { opacity: 0.5 }),
-                mr: 3,
+                ...(item.active ? {} : { opacity: 0.5 }),
+                mb: [2, 2, 0, 0],
+                mr: [0, 0, 4, 4],
                 textTransform: "uppercase",
               }}
               variant="h2"

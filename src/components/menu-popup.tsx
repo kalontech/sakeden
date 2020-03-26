@@ -31,7 +31,7 @@ const MenuPopup: React.FC = () => {
         backgroundImage: `url(${
           menuBackgroundImage!.childImageSharp!.fluid!.src
         })`,
-        backgroundPosition: "100% 135%",
+        backgroundPosition: "100px 500px",
         backgroundRepeat: "no-repeat",
         height: "100vh",
         maxWidth: "100%",

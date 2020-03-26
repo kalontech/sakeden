@@ -11,7 +11,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share"
-import { Flex } from "theme-ui"
+import { Box, Flex } from "theme-ui"
 
 interface SocialBarProps {
   shareUrl: string
@@ -20,19 +20,27 @@ interface SocialBarProps {
 
 const SocialBar: React.FC<SocialBarProps> = ({ shareUrl, title }) => {
   return (
-    <Flex>
-      <EmailShareButton title={title} url={shareUrl}>
-        <MdEmail size="28px" />
-      </EmailShareButton>
-      <FacebookShareButton title={title} url={shareUrl}>
-        <FaFacebookSquare size="28px" />
-      </FacebookShareButton>
-      <TwitterShareButton title={title} url={shareUrl}>
-        <FaTwitterSquare size="28px" />
-      </TwitterShareButton>
-      <WhatsappShareButton title={title} url={shareUrl}>
-        <FaWhatsappSquare size="28px" />
-      </WhatsappShareButton>
+    <Flex py={2}>
+      <Box mr={2}>
+        <EmailShareButton title={title} url={shareUrl}>
+          <MdEmail size="28px" />
+        </EmailShareButton>
+      </Box>
+      <Box mr={2}>
+        <FacebookShareButton title={title} url={shareUrl}>
+          <FaFacebookSquare size="28px" />
+        </FacebookShareButton>
+      </Box>
+      <Box mr={2}>
+        <TwitterShareButton title={title} url={shareUrl}>
+          <FaTwitterSquare size="28px" />
+        </TwitterShareButton>
+      </Box>
+      <Box>
+        <WhatsappShareButton title={title} url={shareUrl}>
+          <FaWhatsappSquare size="28px" />
+        </WhatsappShareButton>
+      </Box>
     </Flex>
   )
 }

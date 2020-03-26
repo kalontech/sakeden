@@ -106,7 +106,7 @@ const SetsPage: React.FC = () => {
             showBreweriesFilter={false}
           />
         </Box>
-        <Grid columns={[1, 1, 3, 3]} gap="30px">
+        <Grid columns={[1, 1, 2, 2]} gap="30px">
           {allShopifyProductSorted.map(node => {
             return <ProductCard node={node as ShopifyProduct} />
           })}

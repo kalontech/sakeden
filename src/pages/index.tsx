@@ -14,13 +14,6 @@ import ProductFilters from "../components/product-filters"
 import ProductTitle from "../components/product-title"
 import SEO from "../components/seo"
 
-const priceSorter = (previousEdge: any, nextEdge: any): number => {
-  return (
-    parseFloat(_.get(previousEdge, "node.variants[0].priceV2.amount", 0)) -
-    parseFloat(_.get(nextEdge, "node.variants[0].priceV2.amount", 0))
-  )
-}
-
 const ProductsPage: React.FC = () => {
   const { allShopifyProduct, shopifyCollection } = useStaticQuery<
     ProductsPageQuery
@@ -101,25 +94,34 @@ const ProductsPage: React.FC = () => {
 
   // 1. Price 0 -> 9.
   // 2. Available for sale -> Not available for sale.
-  let allShopifyProductSorted = shopifyCollection
-    ? [
-        ...shopifyCollection
-          .products!.filter(node => node && node.availableForSale)
-          .sort(priceSorter),
-        ...shopifyCollection
-          .products!.filter(node => node && !node.availableForSale)
-          .sort(priceSorter),
-      ]
-    : []
 
+  // Convert price amounts to numbers.
+  shopifyCollection!.products!.map((shopifyProduct: any) => {
+    try {
+      // @ts-ignore
+      shopifyProduct.variants[0].priceV2.amount = parseFloat(
+        shopifyProduct.variants[0].priceV2.amount,
+      )
+    } catch (err) {
+      console.error(err)
+    } finally {
+      // eslint-disable-next-line no-unsafe-finally
+      return shopifyProduct
+    }
+  })
+
+  // Order by price.
+  let allShopifyProductSorted = _.orderBy(
+    shopifyCollection!.products,
+    "variants[0].priceV2.amount",
+    priceFilterValue as "asc" | "desc",
+  )
+
+  // Apply breweries filter.
   if (breweriesFilterValue !== "*") {
     allShopifyProductSorted = allShopifyProductSorted.filter(
       node => node && node.vendor === breweriesFilterValue,
     )
-  }
-
-  if (priceFilterValue === "desc") {
-    allShopifyProductSorted = allShopifyProductSorted.reverse()
   }
 
   return (

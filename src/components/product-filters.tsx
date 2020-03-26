@@ -76,12 +76,15 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 })
               }
             }}
-            options={breweries.map(brewery => {
-              return {
-                label: brewery,
-                value: brewery,
-              }
-            })}
+            options={[
+              { label: "Show All", value: "*" },
+              ...breweries.map(brewery => {
+                return {
+                  label: brewery,
+                  value: brewery,
+                }
+              }),
+            ]}
             styles={selectStyles}
             theme={selectTheme}
             value={breweriesFilterValue}

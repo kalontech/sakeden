@@ -13,6 +13,7 @@ import {
 } from "../../graphql-types"
 import AppContext from "../app-context"
 import Layout from "../components/layout"
+import ProductTitle from "../components/product-title"
 import SEO from "../components/seo"
 import SocialBar from "../components/social-bar"
 import { getPriceFromVariants, wait } from "../utils/helpers"
@@ -90,230 +91,256 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     <>
       <SEO title="Products" />
       <Layout>
-        <Flex
-          sx={{
-            flexDirection: ["column", "column", "row", "row"],
-            height: "100%",
-          }}
-        >
+        <Flex sx={{ flexDirection: "column", height: "100%" }}>
+          {isSubscription && (
+            <ProductTitle
+              items={[
+                { active: false, title: "Bottles", url: "/" },
+                { active: false, title: "Sets", url: "/sets" },
+                {
+                  active: true,
+                  title: "Subscription",
+                  url: "/products/sakeden-sub-club",
+                },
+              ]}
+            />
+          )}
           <Flex
             sx={{
-              flex: ["unset", "unset", 0.5, 0.5],
-              flexDirection: "column",
-              justifyContent: ["flex-start", "flex-start", "center", "center"],
+              flex: 1,
+              flexDirection: ["column", "column", "row", "row"],
+              height: "100%",
             }}
           >
-            {shopifyProduct.vendor && shopifyProduct.vendor !== "Sakeden" && (
-              <Flex sx={{ alignItems: "center", mb: 2, pb: 1 }}>
-                <Box sx={{ bg: "gray", height: "3px", mr: 2, width: "30px" }} />
-                <Heading as="h4" color="gray" variant="h4">
-                  {shopifyProduct.vendor}
-                </Heading>
-              </Flex>
-            )}
-            <Heading as="h2" variant="h2">
-              {shopifyProduct.title}
-            </Heading>
-            <Box mt={2} sx={{ display: ["block", "block", "none", "none"] }}>
-              {shopifyProduct.images && shopifyProduct.images[0] && (
-                <GatsbyImage
-                  fluid={
-                    shopifyProduct.images[0].localFile!.childImageSharp!
-                      .fluid as FluidObject
-                  }
-                  imgStyle={{ objectFit: "contain" }}
-                />
-              )}
-            </Box>
-            <Text mt={2}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: shopifyProduct.descriptionHtml!,
-                }}
-              ></div>
-            </Text>
-            <Box mt={4}>
-              {shopifyProduct.images && shopifyProduct.images[1] && (
-                <GatsbyImage
-                  fluid={
-                    shopifyProduct.images[1].localFile!.childImageSharp!
-                      .fluid as FluidObject
-                  }
-                  imgStyle={{ objectFit: "contain", objectPosition: "0px 0px" }}
-                  style={{ height: "200px" }}
-                />
-              )}
-            </Box>
-            <Box mt={3}>
-              <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
-            </Box>
-            {isSubscription ? (
-              <Box mt={2}>
-                <Text sx={{ fontStyle: "italic" }}>
-                  Automatically renews every 3 month
-                </Text>
-                <Flex mt={2}>
-                  <Button
-                    sx={{ flex: 1, fontSize: "28px" }}
-                    variant="secondary"
-                  >
-                    {getPriceFromVariants(
-                      shopifyProduct.variants as ShopifyProductVariant[],
-                      0,
-                      3,
-                    )}
-                  </Button>
-                  <Box p={2} />
-                  <Button onClick={handleSubscribe} sx={{ flex: 1 }}>
-                    <Text>Subscribe</Text>
-                  </Button>
+            <Flex
+              sx={{
+                flex: ["unset", "unset", 0.5, 0.5],
+                flexDirection: "column",
+                justifyContent: [
+                  "flex-start",
+                  "flex-start",
+                  "center",
+                  "center",
+                ],
+              }}
+            >
+              {shopifyProduct.vendor && shopifyProduct.vendor !== "Sakeden" && (
+                <Flex sx={{ alignItems: "center", mb: 2, pb: 1 }}>
+                  <Box
+                    sx={{ bg: "gray", height: "3px", mr: 2, width: "30px" }}
+                  />
+                  <Heading as="h4" color="gray" variant="h4">
+                    {shopifyProduct.vendor}
+                  </Heading>
                 </Flex>
-              </Box>
-            ) : (
-              <Box mt={4}>
-                {!shopifyProduct.availableForSale && (
-                  <Box>
-                    <Heading as="h5" variant="h5" sx={{ mb: -1 }}>
-                      Notify when restocked
-                    </Heading>
-                    <Flex sx={{ alignItems: "center" }}>
-                      <Input
-                        disabled={isSubscribed || isSubscribing}
-                        my={3}
-                        name="Email"
-                        onChange={(
-                          e: React.ChangeEvent<HTMLInputElement>,
-                        ): void => {
-                          setEmail(e.target.value)
-                        }}
-                        placeholder="Email"
-                        value={email}
-                        variant="solid"
-                      />
-                      <Button
-                        onClick={handleNotifyRestocked}
-                        variant={
-                          isSubscribed || isSubscribing
-                            ? "primaryDisabled"
-                            : "primary"
-                        }
-                      >
-                        {isSubscribed
-                          ? "Subscribed"
-                          : isSubscribing
-                          ? "Wait..."
-                          : "Subscribe"}
-                      </Button>
-                    </Flex>
-                  </Box>
-                )}
-                <Flex>
-                  <Button
-                    sx={{ flex: 1, fontSize: "30px" }}
-                    variant="secondary"
-                  >
-                    {shopifyProduct.availableForSale ? (
-                      <Text>
-                        {getPriceFromVariants(
-                          shopifyProduct.variants as ShopifyProductVariant[],
-                          0,
-                        )}
-                      </Text>
-                    ) : (
-                      <Text color="danger">Sold out</Text>
-                    )}
-                  </Button>
-                  <Box p={2} />
-                  <Button
-                    onClick={handleAddToCart}
-                    variant={
-                      shopifyProduct.availableForSale
-                        ? "primary"
-                        : "primaryDisabled"
-                    }
-                    sx={{ flex: 1 }}
-                  >
-                    {justAddedToCart ? (
-                      <Box mr={1}>
-                        <MdDone fontSize="28px" />
-                      </Box>
-                    ) : (
-                      <>
-                        <Box mr={1}>
-                          <MdShoppingCart fontSize="28px" />
-                        </Box>
-                        <Text>Add to cart</Text>
-                      </>
-                    )}
-                  </Button>
-                </Flex>
-              </Box>
-            )}
-          </Flex>
-          <Box
-            pl={5}
-            sx={{
-              display: ["none", "none", "block", "block"],
-              flex: ["unset", "unset", 0.5, 0.5],
-              position: "relative",
-            }}
-          >
-            {shopifyProduct.images && shopifyProduct.images[0] && (
-              <Box
-                sx={{
-                  bottom: "0px",
-                  left: "0px",
-                  position: "absolute",
-                  right: ["0px", "0px", "0px", "calc((100vw - 1280px) / -2)"],
-                  top: "0px",
-                }}
-              >
-                <figure
-                  onMouseMove={(e: any): void => {
-                    const {
-                      left,
-                      top,
-                      width,
-                      height,
-                    } = e.target.getBoundingClientRect()
-                    const x = ((e.pageX - left) / width) * 100
-                    const y = ((e.pageY - top) / height) * 100
-                    setBackgroundPosition(`${x}% ${y}%`)
-                  }}
-                  onMouseEnter={(): void => {
-                    setIsZoomedIn(true)
-                  }}
-                  onMouseLeave={(): void => {
-                    setIsZoomedIn(false)
-                  }}
-                  style={{
-                    backgroundImage: `url(${shopifyProduct.images[0].originalSrc})`,
-                    backgroundPosition,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize,
-                    height: "100%",
-                    width: "100%",
-                  }}
-                >
+              )}
+              <Heading as="h2" variant="h2">
+                {shopifyProduct.title}
+              </Heading>
+              <Box mt={2} sx={{ display: ["block", "block", "none", "none"] }}>
+                {shopifyProduct.images && shopifyProduct.images[0] && (
                   <GatsbyImage
                     fluid={
                       shopifyProduct.images[0].localFile!.childImageSharp!
                         .fluid as FluidObject
                     }
+                    imgStyle={{ objectFit: "contain" }}
+                  />
+                )}
+              </Box>
+              <Text mt={2}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: shopifyProduct.descriptionHtml!,
+                  }}
+                ></div>
+              </Text>
+              <Box mt={4}>
+                {shopifyProduct.images && shopifyProduct.images[1] && (
+                  <GatsbyImage
+                    fluid={
+                      shopifyProduct.images[1].localFile!.childImageSharp!
+                        .fluid as FluidObject
+                    }
                     imgStyle={{
-                      backgroundColor: "white",
                       objectFit: "contain",
+                      objectPosition: "0px 0px",
+                    }}
+                    style={{ height: "200px" }}
+                  />
+                )}
+              </Box>
+              <Box mt={3}>
+                <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
+              </Box>
+              {isSubscription ? (
+                <Box mt={2}>
+                  <Text sx={{ fontStyle: "italic" }}>
+                    Automatically renews every 3 month
+                  </Text>
+                  <Flex mt={2}>
+                    <Button
+                      sx={{ flex: 1, fontSize: "28px" }}
+                      variant="secondary"
+                    >
+                      {getPriceFromVariants(
+                        shopifyProduct.variants as ShopifyProductVariant[],
+                        0,
+                        3,
+                      )}
+                    </Button>
+                    <Box p={2} />
+                    <Button onClick={handleSubscribe} sx={{ flex: 1 }}>
+                      <Text>Subscribe</Text>
+                    </Button>
+                  </Flex>
+                </Box>
+              ) : (
+                <Box mt={4}>
+                  {!shopifyProduct.availableForSale && (
+                    <Box>
+                      <Heading as="h5" variant="h5" sx={{ mb: -1 }}>
+                        Notify when restocked
+                      </Heading>
+                      <Flex sx={{ alignItems: "center" }}>
+                        <Input
+                          disabled={isSubscribed || isSubscribing}
+                          my={3}
+                          name="Email"
+                          onChange={(
+                            e: React.ChangeEvent<HTMLInputElement>,
+                          ): void => {
+                            setEmail(e.target.value)
+                          }}
+                          placeholder="Email"
+                          value={email}
+                          variant="solid"
+                        />
+                        <Button
+                          onClick={handleNotifyRestocked}
+                          variant={
+                            isSubscribed || isSubscribing
+                              ? "primaryDisabled"
+                              : "primary"
+                          }
+                        >
+                          {isSubscribed
+                            ? "Subscribed"
+                            : isSubscribing
+                            ? "Wait..."
+                            : "Subscribe"}
+                        </Button>
+                      </Flex>
+                    </Box>
+                  )}
+                  <Flex>
+                    <Button
+                      sx={{ flex: 1, fontSize: "30px" }}
+                      variant="secondary"
+                    >
+                      {shopifyProduct.availableForSale ? (
+                        <Text>
+                          {getPriceFromVariants(
+                            shopifyProduct.variants as ShopifyProductVariant[],
+                            0,
+                          )}
+                        </Text>
+                      ) : (
+                        <Text color="danger">Sold out</Text>
+                      )}
+                    </Button>
+                    <Box p={2} />
+                    <Button
+                      onClick={handleAddToCart}
+                      variant={
+                        shopifyProduct.availableForSale
+                          ? "primary"
+                          : "primaryDisabled"
+                      }
+                      sx={{ flex: 1 }}
+                    >
+                      {justAddedToCart ? (
+                        <Box mr={1}>
+                          <MdDone fontSize="28px" />
+                        </Box>
+                      ) : (
+                        <>
+                          <Box mr={1}>
+                            <MdShoppingCart fontSize="28px" />
+                          </Box>
+                          <Text>Add to cart</Text>
+                        </>
+                      )}
+                    </Button>
+                  </Flex>
+                </Box>
+              )}
+            </Flex>
+            <Box
+              pl={5}
+              sx={{
+                display: ["none", "none", "block", "block"],
+                flex: ["unset", "unset", 0.5, 0.5],
+                position: "relative",
+              }}
+            >
+              {shopifyProduct.images && shopifyProduct.images[0] && (
+                <Box
+                  sx={{
+                    bottom: "0px",
+                    left: "0px",
+                    position: "absolute",
+                    right: ["0px", "0px", "0px", "calc((100vw - 1280px) / -2)"],
+                    top: "0px",
+                  }}
+                >
+                  <figure
+                    onMouseMove={(e: any): void => {
+                      const {
+                        left,
+                        top,
+                        width,
+                        height,
+                      } = e.target.getBoundingClientRect()
+                      const x = ((e.pageX - left) / width) * 100
+                      const y = ((e.pageY - top) / height) * 100
+                      setBackgroundPosition(`${x}% ${y}%`)
+                    }}
+                    onMouseEnter={(): void => {
+                      setIsZoomedIn(true)
+                    }}
+                    onMouseLeave={(): void => {
+                      setIsZoomedIn(false)
                     }}
                     style={{
+                      backgroundImage: `url(${shopifyProduct.images[0].originalSrc})`,
+                      backgroundPosition,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize,
                       height: "100%",
-                      visibility: isZoomedIn ? "hidden" : "visible",
                       width: "100%",
                     }}
-                  />
-                </figure>
-              </Box>
-            )}
-          </Box>
+                  >
+                    <GatsbyImage
+                      fluid={
+                        shopifyProduct.images[0].localFile!.childImageSharp!
+                          .fluid as FluidObject
+                      }
+                      imgStyle={{
+                        backgroundColor: "white",
+                        objectFit: "contain",
+                      }}
+                      style={{
+                        height: "100%",
+                        visibility: isZoomedIn ? "hidden" : "visible",
+                        width: "100%",
+                      }}
+                    />
+                  </figure>
+                </Box>
+              )}
+            </Box>
+          </Flex>
         </Flex>
       </Layout>
     </>

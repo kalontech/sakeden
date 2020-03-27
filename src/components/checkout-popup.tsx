@@ -56,7 +56,12 @@ const CheckoutPopup: React.FC = () => {
         width: ["100vw", "100vw", "700px", "700px"],
       }}
     >
-      <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
+      <Flex
+        sx={{
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Heading
           as="h4"
           color="gray"
@@ -74,7 +79,13 @@ const CheckoutPopup: React.FC = () => {
           <IoMdClose />
         </Button>
       </Flex>
-      <Flex mb={3} mt={2}>
+      <Flex
+        mb={3}
+        mt={2}
+        sx={{
+          flexDirection: ["column", "column", "row", "row"],
+        }}
+      >
         <Box>
           <Heading as="h5" mb={2} variant="h5">
             Delivery date

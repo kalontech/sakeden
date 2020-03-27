@@ -60,7 +60,13 @@ const SubscribePopup: React.FC = () => {
           <IoMdClose />
         </Button>
       </Flex>
-      <Flex mb={3} mt={2}>
+      <Flex
+        mb={3}
+        mt={2}
+        sx={{
+          flexDirection: ["column", "column", "row", "row"],
+        }}
+      >
         <Box sx={{ flex: 0.4 }}>
           <Heading as="h5" mb={2} variant="h5">
             Delivery day

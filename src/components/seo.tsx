@@ -4,6 +4,7 @@ import Helmet from "react-helmet"
 
 interface SEOProps {
   description?: string
+  image?: string
   lang?: string
   meta?: React.DetailedHTMLProps<
     React.MetaHTMLAttributes<HTMLMetaElement>,
@@ -13,14 +14,18 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  description = "",
+  description = "Dedicated to discovering and delivering small-batch, hand crafted artisan sake direct to you from breweries in Japan. Kampai! #SAKEDEN #Sakeology",
+  image,
   lang = "en",
   meta = [],
-  title,
+  title = "Sakeden",
 }) => {
-  const { site } = useStaticQuery(
+  const { file, site } = useStaticQuery(
     graphql`
       query {
+        file(relativePath: { eq: "og.jpg" }) {
+          publicURL
+        }
         site {
           siteMetadata {
             title
@@ -31,6 +36,10 @@ const SEO: React.FC<SEOProps> = ({
       }
     `,
   )
+
+  if (!image) {
+    image = file.publicURL
+  }
 
   const metaDescription = description || site.siteMetadata.description
 
@@ -55,6 +64,10 @@ const SEO: React.FC<SEOProps> = ({
         {
           content: "website",
           property: "og:type",
+        },
+        {
+          content: image,
+          name: "og:image",
         },
         {
           content: "summary",

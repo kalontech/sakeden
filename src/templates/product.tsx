@@ -13,6 +13,7 @@ import {
 } from "../../graphql-types"
 import AppContext from "../app-context"
 import Layout from "../components/layout"
+import { InternalLink } from "../components/link"
 import ProductTitle from "../components/product-title"
 import SEO from "../components/seo"
 import SocialBar from "../components/social-bar"
@@ -89,7 +90,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   return (
     <>
-      <SEO title="Products" />
+      <SEO title={shopifyProduct.title!} />
       <Layout>
         <Flex sx={{ flexDirection: "column", height: "100%" }}>
           {isSubscription && (
@@ -124,6 +125,35 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 ],
               }}
             >
+              {!isSubscription && (
+                <Box sx={{ mb: 4 }}>
+                  <Flex>
+                    <InternalLink href="/">
+                      <Text sx={{ color: "gray" }}>Collections</Text>
+                    </InternalLink>
+                    <Text sx={{ color: "gray", px: 3 }}>/</Text>
+                    {shopifyProduct.tags!.includes("Bottles") && (
+                      <InternalLink href="/bottles">
+                        <Text sx={{ color: "gray" }}>Bottles</Text>
+                      </InternalLink>
+                    )}
+                    {shopifyProduct.tags!.includes("Bydeau") && (
+                      <InternalLink href="/bydeau">
+                        <Text sx={{ color: "gray" }}>Bydeau</Text>
+                      </InternalLink>
+                    )}
+                    {shopifyProduct.tags!.includes("Sets") && (
+                      <InternalLink href="/sets">
+                        <Text sx={{ color: "gray" }}>Sets</Text>
+                      </InternalLink>
+                    )}
+                    <Text sx={{ color: "gray", px: 3 }}>/</Text>
+                    <InternalLink href={`/products/${shopifyProduct.handle!}`}>
+                      <Text>{shopifyProduct.title!}</Text>
+                    </InternalLink>
+                  </Flex>
+                </Box>
+              )}
               {shopifyProduct.vendor && shopifyProduct.vendor !== "Sakeden" && (
                 <Flex sx={{ alignItems: "center", mb: 2, pb: 1 }}>
                   <Box
@@ -368,6 +398,7 @@ export const query = graphql`
         originalSrc
       }
       shopifyId
+      tags
       title
       variants {
         shopifyId

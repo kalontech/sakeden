@@ -90,7 +90,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   return (
     <>
-      <SEO title={shopifyProduct.title!} />
+      <SEO
+        description={shopifyProduct.description!}
+        image={shopifyProduct.images![0]!.originalSrc!}
+        title={shopifyProduct.title!}
+      />
       <Layout>
         <Flex sx={{ flexDirection: "column", height: "100%" }}>
           {isSubscription && (
@@ -381,6 +385,7 @@ export const query = graphql`
   query Product($handle: String!) {
     shopifyProduct(handle: { eq: $handle }) {
       availableForSale
+      description
       descriptionHtml
       handle
       images {

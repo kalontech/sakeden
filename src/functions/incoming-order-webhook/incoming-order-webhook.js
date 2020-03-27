@@ -3,13 +3,14 @@ const mailgun = require("mailgun-js")({
   domain: "mg.sakeden.com",
 })
 
-const { generatePackingSlip } = require("./pdf-utils")
+const { generatePackingSlip, prefetchImages } = require("./pdf-utils")
 
 exports.handler = async (event, context) => {
   try {
     // Parse order.
     const order = JSON.parse(event.body)
     // Generate packing slip.
+    await prefetchImages(order)
     const packingSlip = await generatePackingSlip(order)
     // Send email.
     await new Promise((resolve, reject) => {

@@ -1,7 +1,9 @@
 const fs = require("fs")
+const http = require("http")
 const moment = require("moment")
 const path = require("path")
 const PDFDocument = require("pdfkit")
+const request = require("request-promise")
 
 const lh = 1.15
 
@@ -73,7 +75,18 @@ ${order.shipping_address.province} ${order.shipping_address.country}`
       .text("Quantity", itemsNode.x, itemsNode.y - 14 * lh, { align: "right" })
       .font("Helvetica")
     for (let i = 0; i < order.line_items.length; i++) {
-      const itemNode = doc.text(order.line_items[i].title)
+      const itemNode = doc
+        .image(
+          `/tmp/product-${order.line_items[i].product_id}.jpg`,
+          undefined,
+          undefined,
+          {
+            fit: [50, 50],
+          },
+        )
+        .stroke()
+        .text(order.line_items[i].title)
+      // const itemNode = doc.text(order.line_items[i].title)
       doc.text(order.line_items[i].quantity, itemNode.x, itemNode.y - 14 * lh, {
         align: "right",
       })
@@ -101,6 +114,33 @@ ${order.shipping_address.province} ${order.shipping_address.country}`
   })
 }
 
+const downloadFile = async (pathname, url) => {
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(pathname)
+    request(url)
+      .pipe(file)
+      .on("finish", () => {
+        resolve()
+      })
+      .on("error", error => {
+        reject(error)
+      })
+  })
+}
+
+const prefetchImages = async order => {
+  for (let i = 0; i < order.line_items.length; i++) {
+    const productId = order.line_items[i].product_id
+    const response = JSON.parse(
+      await request(
+        `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      ),
+    )
+    await downloadFile(`/tmp/product-${productId}.jpg`, response.images[0].src)
+  }
+}
+
 module.exports = {
   generatePackingSlip,
+  prefetchImages,
 }

@@ -126,7 +126,7 @@ const ProductsPage: React.FC = () => {
 
   return (
     <>
-      <SEO title="Sakeden" />
+      <SEO title="Sakeden Collection" />
       <Layout>
         <ProductTitle
           items={[

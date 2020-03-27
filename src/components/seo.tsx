@@ -18,13 +18,15 @@ const SEO: React.FC<SEOProps> = ({
   image,
   lang = "en",
   meta = [],
-  title = "Sakeden",
+  title = "Sakeden Collection",
 }) => {
-  const { file, site } = useStaticQuery(
+  const { shopifyProduct, site } = useStaticQuery(
     graphql`
       query {
-        file(relativePath: { eq: "og.jpg" }) {
-          publicURL
+        shopifyProduct(handle: { eq: "fragrant-sake-set" }) {
+          images {
+            originalSrc
+          }
         }
         site {
           siteMetadata {
@@ -38,7 +40,7 @@ const SEO: React.FC<SEOProps> = ({
   )
 
   if (!image) {
-    image = file.publicURL
+    image = shopifyProduct.images[0].originalSrc
   }
 
   const metaDescription = description || site.siteMetadata.description

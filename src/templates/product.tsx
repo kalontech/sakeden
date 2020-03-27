@@ -133,7 +133,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     </InternalLink>
                     <Text sx={{ color: "gray", px: 3 }}>/</Text>
                     {shopifyProduct.tags!.includes("Bottles") && (
-                      <InternalLink href="/bottles">
+                      <InternalLink href="/">
                         <Text sx={{ color: "gray" }}>Bottles</Text>
                       </InternalLink>
                     )}

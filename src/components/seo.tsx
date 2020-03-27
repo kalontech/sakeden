@@ -64,7 +64,7 @@ const SEO: React.FC<SEOProps> = ({
           property: "og:description",
         },
         {
-          content: "website",
+          content: "article",
           property: "og:type",
         },
         {

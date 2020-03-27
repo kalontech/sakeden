@@ -36,7 +36,7 @@ ${order.shipping_address.province} ${order.shipping_address.country}`
     //   .fontSize(24)
     //   .text("Sakeden")
     const logoNode = doc.image(
-      path.join(__dirname, "..", "..", "images", "logo.png"),
+      path.join(__dirname, "logo.png"),
       undefined,
       undefined,
       {

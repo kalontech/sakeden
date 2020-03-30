@@ -9,11 +9,10 @@ import AppContext from "../app-context"
 
 const getDeliveryTime = (): Date => {
   const deliveryTime = new Date()
-
-  if (deliveryTime.getHours() >= 13) {
+  deliveryTime.setDate(deliveryTime.getDate() + 1)
+  if (deliveryTime.getHours() >= 18) {
     deliveryTime.setDate(deliveryTime.getDate() + 1)
   }
-
   return deliveryTime
 }
 
@@ -91,12 +90,18 @@ const CheckoutPopup: React.FC = () => {
             Delivery date
           </Heading>
           <DayPicker
-            disabledDays={{
-              before: getDeliveryTime(),
-            }}
+            disabledDays={[
+              {
+                before: getDeliveryTime(),
+              },
+
+              { daysOfWeek: [0] },
+            ]}
             firstDayOfWeek={1}
-            onDayClick={(date: Date): void => {
-              setDeliveryDate(date)
+            onDayClick={(date: Date, data: Record<string, boolean>): void => {
+              if (!data["disabled"]) {
+                setDeliveryDate(date)
+              }
             }}
             selectedDays={deliveryDate}
           />

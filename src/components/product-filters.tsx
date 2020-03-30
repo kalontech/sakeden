@@ -102,12 +102,12 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
               label: `Breweries: ${
                 breweriesOptions.find(
                   breweriesOption =>
-                    breweriesOption.value === breweriesFilterValue,
+                    breweriesOption.value === (breweriesFilterValue || "ALL"),
                 )!.label
               }`,
               value: breweriesOptions.find(
                 breweriesOption =>
-                  breweriesOption.value === breweriesFilterValue,
+                  breweriesOption.value === (breweriesFilterValue || "ALL"),
               )!.value,
             }}
           />
@@ -129,11 +129,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             value={{
               label: `${
                 subsetOptions.find(
-                  subsetOption => subsetOption.value === subsetFilterValue,
+                  subsetOption =>
+                    subsetOption.value === (subsetFilterValue || "ALL"),
                 )!.label
               }`,
               value: subsetOptions.find(
-                subsetOption => subsetOption.value === subsetFilterValue,
+                subsetOption =>
+                  subsetOption.value === (subsetFilterValue || "ALL"),
               )!.value,
             }}
           />
@@ -155,11 +157,13 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             value={{
               label: `Price: ${
                 priceOptions.find(
-                  priceOption => priceOption.value === priceFilterValue,
+                  priceOption =>
+                    priceOption.value === (priceFilterValue || "asc"),
                 )!.label
               }`,
               value: priceOptions.find(
-                priceOption => priceOption.value === priceFilterValue,
+                priceOption =>
+                  priceOption.value === (priceFilterValue || "asc"),
               )!.value,
             }}
           />

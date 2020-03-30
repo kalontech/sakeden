@@ -2,7 +2,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import _ from "lodash"
 import React, { useEffect, useState } from "react"
 import { Box, Flex, Grid, Heading, Select } from "theme-ui"
-import { NumberParam, StringParam, useQueryParam } from "use-query-params"
+import {
+  NumberParam,
+  StringParam,
+  useQueryParam,
+  useQueryParams,
+} from "use-query-params"
 
 import {
   ProductsPageQuery,
@@ -56,43 +61,26 @@ const SetsPage: React.FC = () => {
       }
     `,
   )
-  const [breweriesFilterValue, setBreweriesFilterValue] = useQueryParam(
-    "breweries",
-    StringParam,
-  )
-  const [priceFilterValue, setPriceFilterValue] = useQueryParam(
-    "price",
-    StringParam,
-  )
-  const [subsetFilterValue, setSubsetFilterValue] = useQueryParam(
-    "subset",
-    StringParam,
-  )
+  const [query, setQuery] = useQueryParams({
+    breweries: StringParam,
+    price: StringParam,
+    subset: StringParam,
+  })
+  const {
+    breweries: breweriesFilterValue = "ALL",
+    price: priceFilterValue = "asc",
+    subset: subsetFilterValue = "ALL",
+  } = query
 
   useEffect(() => {
-    setTimeout(() => {
-      if (!breweriesFilterValue) {
-        setBreweriesFilterValue("ALL")
-      }
-    }, 100)
-    setTimeout(() => {
-      if (!priceFilterValue) {
-        setPriceFilterValue("asc")
-      }
-    }, 200)
-    setTimeout(() => {
-      if (!subsetFilterValue) {
-        setSubsetFilterValue("ALL")
-      }
-    }, 300)
-  }, [
-    breweriesFilterValue,
-    priceFilterValue,
-    setBreweriesFilterValue,
-    setPriceFilterValue,
-    setSubsetFilterValue,
-    subsetFilterValue,
-  ])
+    if (!breweriesFilterValue || !priceFilterValue || !subsetFilterValue) {
+      setQuery({
+        breweries: "ALL",
+        price: "asc",
+        subset: "ALL",
+      })
+    }
+  }, [breweriesFilterValue, priceFilterValue, setQuery, subsetFilterValue])
 
   // 1. Price 0 -> 9.
   // 2. Available for sale -> Not available for sale.
@@ -153,13 +141,22 @@ const SetsPage: React.FC = () => {
           <ProductFilters
             breweriesFilterValue={breweriesFilterValue}
             onBreweriesFilterChange={(value): void => {
-              setBreweriesFilterValue(value)
+              setQuery({
+                ...query,
+                breweries: value,
+              })
             }}
             onPriceFilterChange={(value): void => {
-              setPriceFilterValue(value)
+              setQuery({
+                ...query,
+                price: value,
+              })
             }}
             onSubsetFilterChange={(value): void => {
-              setSubsetFilterValue(value)
+              setQuery({
+                ...query,
+                subset: value,
+              })
             }}
             priceFilterValue={priceFilterValue}
             subsetFilterValue={subsetFilterValue}

@@ -28,29 +28,30 @@ const selectTheme: (theme: Theme) => Theme = theme => ({
 })
 
 interface ProductFiltersProps {
+  breweriesFilterValue?: string
   onBreweriesFilterChange?: (value: string) => void
   onPriceFilterChange?: (value: string) => void
+  onSubsetFilterChange?: (value: string) => void
+  priceFilterValue?: string
+  subsetFilterValue?: string
   shopifyCollection: ShopifyCollection
   showBreweriesFilter?: boolean
   showPriceFilter?: boolean
+  showSubsetFilter?: boolean
 }
 
 const ProductFilters: React.FC<ProductFiltersProps> = ({
+  breweriesFilterValue,
   onBreweriesFilterChange,
   onPriceFilterChange,
+  onSubsetFilterChange,
+  priceFilterValue,
+  subsetFilterValue,
   shopifyCollection,
   showBreweriesFilter = true,
   showPriceFilter = true,
+  showSubsetFilter = true,
 }) => {
-  const [breweriesFilterValue, setBreweriesFilterValue] = useState({
-    label: "Breweries: Show All",
-    value: "*",
-  })
-  const [priceFilterValue, setPriceFilterValue] = useState({
-    label: "Price: Lowest to Highest",
-    value: "asc",
-  })
-
   const breweries = _.sortBy(
     _.uniq(
       shopifyCollection &&
@@ -60,8 +61,49 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
     ),
   )
 
+  const subsetOptions = [
+    { label: "Full Collection", value: "ALL" },
+    { label: "Best Sellers", value: "Best Sellers" },
+    { label: "Reader's Choice", value: "Reader's Choice" },
+    { label: "Sommelier's Choice", value: "Sommelier's Choice" },
+  ]
+
+  const breweriesOptions = [
+    { label: "Show All", value: "ALL" },
+    ...breweries.map(brewery => {
+      return {
+        label: brewery,
+        value: brewery,
+      }
+    }),
+  ]
+
+  const priceOptions = [
+    { label: "Lowest to Highest", value: "asc" },
+    { label: "Highest to Lowest", value: "desc" },
+  ]
+
   return (
     <Flex sx={{ flexDirection: ["column", "column", "row", "row"] }}>
+      {showSubsetFilter && (
+        <Box sx={{ mb: [3, 3, 0, 0], mr: [0, 0, 3, 3] }}>
+          <Select
+            name="color"
+            onChange={(option): void => {
+              if (option) {
+                onSubsetFilterChange &&
+                  onSubsetFilterChange((option as any).value)
+              }
+            }}
+            options={subsetOptions}
+            styles={selectStyles}
+            theme={selectTheme}
+            value={subsetOptions.find(
+              subsetOption => subsetOption.value === subsetFilterValue,
+            )}
+          />
+        </Box>
+      )}
       {showBreweriesFilter && (
         <Box sx={{ mb: [3, 3, 0, 0], mr: [0, 0, 3, 3] }}>
           <Select
@@ -70,24 +112,14 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
               if (option) {
                 onBreweriesFilterChange &&
                   onBreweriesFilterChange((option as any).value)
-                setBreweriesFilterValue({
-                  label: `Breweries: ${(option as any).label}`,
-                  value: (option as any).value,
-                })
               }
             }}
-            options={[
-              { label: "Show All", value: "*" },
-              ...breweries.map(brewery => {
-                return {
-                  label: brewery,
-                  value: brewery,
-                }
-              }),
-            ]}
+            options={breweriesOptions}
             styles={selectStyles}
             theme={selectTheme}
-            value={breweriesFilterValue}
+            value={breweriesOptions.find(
+              breweriesOption => breweriesOption.value === breweriesFilterValue,
+            )}
           />
         </Box>
       )}
@@ -99,19 +131,14 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
               if (option) {
                 onPriceFilterChange &&
                   onPriceFilterChange((option as any).value)
-                setPriceFilterValue({
-                  label: `Price: ${(option as any).label}`,
-                  value: (option as any).value,
-                })
               }
             }}
-            options={[
-              { label: "Lowest to Highest", value: "asc" },
-              { label: "Highest to Lowest", value: "desc" },
-            ]}
+            options={priceOptions}
             styles={selectStyles}
             theme={selectTheme}
-            value={priceFilterValue}
+            value={priceOptions.find(
+              priceOption => priceOption.value === priceFilterValue,
+            )}
           />
         </Box>
       )}

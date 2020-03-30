@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
 import _ from "lodash"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Flex, Grid, Heading, Select } from "theme-ui"
+import { NumberParam, StringParam, useQueryParam } from "use-query-params"
 
 import {
   ProductsPageQuery,
@@ -40,6 +41,7 @@ const ProductsPage: React.FC = () => {
               value
             }
             shopifyId
+            tags
             title
             variants {
               shopifyId
@@ -73,6 +75,7 @@ const ProductsPage: React.FC = () => {
                 value
               }
               shopifyId
+              tags
               title
               variants {
                 shopifyId
@@ -89,8 +92,43 @@ const ProductsPage: React.FC = () => {
       }
     `,
   )
-  const [breweriesFilterValue, setBreweriesFilterValue] = useState("*")
-  const [priceFilterValue, setPriceFilterValue] = useState("asc")
+  const [breweriesFilterValue, setBreweriesFilterValue] = useQueryParam(
+    "breweries",
+    StringParam,
+  )
+  const [priceFilterValue, setPriceFilterValue] = useQueryParam(
+    "price",
+    StringParam,
+  )
+  const [subsetFilterValue, setSubsetFilterValue] = useQueryParam(
+    "subset",
+    StringParam,
+  )
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!breweriesFilterValue) {
+        setBreweriesFilterValue("ALL")
+      }
+    }, 100)
+    setTimeout(() => {
+      if (!priceFilterValue) {
+        setPriceFilterValue("asc")
+      }
+    }, 200)
+    setTimeout(() => {
+      if (!subsetFilterValue) {
+        setSubsetFilterValue("ALL")
+      }
+    }, 300)
+  }, [
+    breweriesFilterValue,
+    priceFilterValue,
+    setBreweriesFilterValue,
+    setPriceFilterValue,
+    setSubsetFilterValue,
+    subsetFilterValue,
+  ])
 
   // 1. Price 0 -> 9.
   // 2. Available for sale -> Not available for sale.
@@ -118,9 +156,17 @@ const ProductsPage: React.FC = () => {
   )
 
   // Apply breweries filter.
-  if (breweriesFilterValue !== "*") {
+  if (breweriesFilterValue !== "ALL") {
     allShopifyProductSorted = allShopifyProductSorted.filter(
       node => node && node.vendor === breweriesFilterValue,
+    )
+  }
+
+  // Apply subset filter.
+  if (subsetFilterValue !== "ALL") {
+    allShopifyProductSorted = allShopifyProductSorted.filter(
+      // @ts-ignore
+      node => node && node.tags.includes(subsetFilterValue),
     )
   }
 
@@ -141,12 +187,18 @@ const ProductsPage: React.FC = () => {
         />
         <Box my={3}>
           <ProductFilters
+            breweriesFilterValue={breweriesFilterValue}
             onBreweriesFilterChange={(value): void => {
               setBreweriesFilterValue(value)
             }}
             onPriceFilterChange={(value): void => {
               setPriceFilterValue(value)
             }}
+            onSubsetFilterChange={(value): void => {
+              setSubsetFilterValue(value)
+            }}
+            priceFilterValue={priceFilterValue}
+            subsetFilterValue={subsetFilterValue}
             shopifyCollection={shopifyCollection as ShopifyCollection}
           />
         </Box>

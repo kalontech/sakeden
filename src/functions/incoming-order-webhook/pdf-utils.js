@@ -144,12 +144,14 @@ const prefetchImages = async order => {
   for (let i = 0; i < order.line_items.length; i++) {
     const productId = order.line_items[i].product_id
     const response = JSON.parse(
-      await request(
-        `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${productId}/images.json`,
-      ),
+      // kalon-dev
       // await request(
-      //   `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      //   `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${productId}/images.json`,
       // ),
+      // sakaguranow
+      await request(
+        `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      ),
     )
     await downloadFile(`/tmp/product-${productId}.jpg`, response.images[0].src)
   }

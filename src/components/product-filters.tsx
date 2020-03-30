@@ -85,25 +85,6 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
 
   return (
     <Flex sx={{ flexDirection: ["column", "column", "row", "row"] }}>
-      {showSubsetFilter && (
-        <Box sx={{ mb: [3, 3, 0, 0], mr: [0, 0, 3, 3] }}>
-          <Select
-            name="color"
-            onChange={(option): void => {
-              if (option) {
-                onSubsetFilterChange &&
-                  onSubsetFilterChange((option as any).value)
-              }
-            }}
-            options={subsetOptions}
-            styles={selectStyles}
-            theme={selectTheme}
-            value={subsetOptions.find(
-              subsetOption => subsetOption.value === subsetFilterValue,
-            )}
-          />
-        </Box>
-      )}
       {showBreweriesFilter && (
         <Box sx={{ mb: [3, 3, 0, 0], mr: [0, 0, 3, 3] }}>
           <Select
@@ -117,9 +98,44 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             options={breweriesOptions}
             styles={selectStyles}
             theme={selectTheme}
-            value={breweriesOptions.find(
-              breweriesOption => breweriesOption.value === breweriesFilterValue,
-            )}
+            value={{
+              label: `Breweries: ${
+                breweriesOptions.find(
+                  breweriesOption =>
+                    breweriesOption.value === breweriesFilterValue,
+                )!.label
+              }`,
+              value: breweriesOptions.find(
+                breweriesOption =>
+                  breweriesOption.value === breweriesFilterValue,
+              )!.value,
+            }}
+          />
+        </Box>
+      )}
+      {showSubsetFilter && (
+        <Box sx={{ mb: [3, 3, 0, 0], mr: [0, 0, 3, 3] }}>
+          <Select
+            name="color"
+            onChange={(option): void => {
+              if (option) {
+                onSubsetFilterChange &&
+                  onSubsetFilterChange((option as any).value)
+              }
+            }}
+            options={subsetOptions}
+            styles={selectStyles}
+            theme={selectTheme}
+            value={{
+              label: `${
+                subsetOptions.find(
+                  subsetOption => subsetOption.value === subsetFilterValue,
+                )!.label
+              }`,
+              value: subsetOptions.find(
+                subsetOption => subsetOption.value === subsetFilterValue,
+              )!.value,
+            }}
           />
         </Box>
       )}
@@ -136,9 +152,16 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             options={priceOptions}
             styles={selectStyles}
             theme={selectTheme}
-            value={priceOptions.find(
-              priceOption => priceOption.value === priceFilterValue,
-            )}
+            value={{
+              label: `Price: ${
+                priceOptions.find(
+                  priceOption => priceOption.value === priceFilterValue,
+                )!.label
+              }`,
+              value: priceOptions.find(
+                priceOption => priceOption.value === priceFilterValue,
+              )!.value,
+            }}
           />
         </Box>
       )}

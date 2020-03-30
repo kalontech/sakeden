@@ -33,6 +33,12 @@ module.exports = {
       resolve: "gatsby-plugin-favicon",
     },
     {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: `2553094571475972`,
+      },
+    },
+    {
       options: {
         trackingId: "UA-155073210-1",
       },

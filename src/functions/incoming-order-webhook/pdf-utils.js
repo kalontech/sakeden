@@ -10,20 +10,19 @@ const lh = 1.15
 const generatePackingSlip = order => {
   return new Promise((resolve, reject) => {
     // Address lines.
-    const billingAddress = `${order.billing_address.first_name} ${
-      order.billing_address.last_name
-    }
+    const billingAddress = `${order.billing_address.first_name || ""} ${order
+      .billing_address.last_name || ""}
 ${order.billing_address.address1 || ""}
 ${order.billing_address.address2 || ""}
 ${order.billing_address.city || ""}
-${order.billing_address.province} ${order.billing_address.country}`
-    const shippingAddress = `${order.shipping_address.first_name} ${
-      order.shipping_address.last_name
-    }
+${order.billing_address.province || ""} ${order.billing_address.country || ""}`
+    const shippingAddress = `${order.shipping_address.first_name || ""} ${order
+      .shipping_address.last_name || ""}
 ${order.shipping_address.address1 || ""}
 ${order.shipping_address.address2 || ""}
 ${order.shipping_address.city || ""}
-${order.shipping_address.province} ${order.shipping_address.country}`
+${order.shipping_address.province || ""} ${order.shipping_address.country ||
+      ""}`
 
     // Create a PDF document.
     const doc = new PDFDocument()
@@ -51,7 +50,11 @@ ${order.shipping_address.province} ${order.shipping_address.country}`
       .text(
         `Order #${order.order_number}\n${moment(order.created_at).format(
           "MMMM DD, YYYY",
-        )}`,
+        )}\nShipping date ${moment(
+          order.note_attributes.find(
+            attribute => attribute.name === "Shipping date",
+          ).value,
+        ).format("MMMM DD, YYYY")}`,
         logoNode.x,
         logoNode.y - 24 * lh,
         {
@@ -94,13 +97,22 @@ ${order.shipping_address.province} ${order.shipping_address.country}`
     doc.moveDown()
 
     // Footer.
-    doc.text("Thanks for shopping with us!", {
+    doc.moveDown()
+    doc.text(
+      "If you like our sake, why not try our Sub Club? 3 bottles selected by our sommeliers, delivered to you door every month?\nMore info on sakeden.com/subs",
+      {
+        align: "center",
+      },
+    )
+    doc.moveDown()
+    doc.font("Helvetica-Bold").text("Thanks for drinking with us!", {
       align: "center",
     })
-    doc.font("Helvetica-Bold").text("Sakeden", {
+    doc.moveDown()
+    doc.font("Helvetica").text("SAKEDEN", {
       align: "center",
     })
-    doc.font("Helvetica").text("mike@sakeden.com", {
+    doc.font("Helvetica").text("enquiries@sakeden.com", {
       align: "center",
     })
 
@@ -133,8 +145,11 @@ const prefetchImages = async order => {
     const productId = order.line_items[i].product_id
     const response = JSON.parse(
       await request(
-        `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+        `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${productId}/images.json`,
       ),
+      // await request(
+      //   `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      // ),
     )
     await downloadFile(`/tmp/product-${productId}.jpg`, response.images[0].src)
   }

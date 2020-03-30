@@ -4,6 +4,7 @@ const mailgun = require("mailgun-js")({
 })
 
 const { generatePackingSlip, prefetchImages } = require("./pdf-utils")
+// const testOrder = require("./order.json")
 
 exports.handler = async (event, context) => {
   try {

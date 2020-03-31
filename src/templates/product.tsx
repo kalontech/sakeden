@@ -141,11 +141,12 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                         <Text sx={{ color: "gray" }}>Bottles</Text>
                       </InternalLink>
                     )}
-                    {shopifyProduct.tags!.includes("Bydeau") && (
-                      <InternalLink href="/bydeau">
-                        <Text sx={{ color: "gray" }}>Bydeau</Text>
-                      </InternalLink>
-                    )}
+                    {shopifyProduct.tags!.includes("Bydeau") &&
+                      shopifyProduct.tags!.length === 1 && (
+                        <InternalLink href="/bydeau">
+                          <Text sx={{ color: "gray" }}>Bydeau</Text>
+                        </InternalLink>
+                      )}
                     {shopifyProduct.tags!.includes("Sets") && (
                       <InternalLink href="/sets">
                         <Text sx={{ color: "gray" }}>Sets</Text>

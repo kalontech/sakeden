@@ -102,7 +102,7 @@ ${order.shipping_address.phone || ""}`
     // Footer.
     doc.moveDown()
     doc.text(
-      "If you like our sake, why not try our Sub Club?\n3 bottles selected by our sommeliers, delivered to you door every month?\nMore info on sakeden.com/subs",
+      "If you like our sake, why not try our Sub Club?\n3 bottles selected by our sommeliers, delivered to you door every month!\nMore info on sakeden.com/subs",
       {
         align: "center",
       },

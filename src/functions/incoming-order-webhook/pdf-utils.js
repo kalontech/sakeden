@@ -15,14 +15,15 @@ const generatePackingSlip = order => {
 ${order.billing_address.address1 || ""}
 ${order.billing_address.address2 || ""}
 ${order.billing_address.city || ""}
-${order.billing_address.province || ""} ${order.billing_address.country || ""}`
+${order.billing_address.province || ""} ${order.billing_address.country || ""}
+${order.billing_address.phone || ""}`
     const shippingAddress = `${order.shipping_address.first_name || ""} ${order
       .shipping_address.last_name || ""}
 ${order.shipping_address.address1 || ""}
 ${order.shipping_address.address2 || ""}
 ${order.shipping_address.city || ""}
-${order.shipping_address.province || ""} ${order.shipping_address.country ||
-      ""}`
+${order.shipping_address.province || ""} ${order.shipping_address.country || ""}
+${order.shipping_address.phone || ""}`
 
     // Create a PDF document.
     const doc = new PDFDocument()
@@ -99,7 +100,7 @@ ${order.shipping_address.province || ""} ${order.shipping_address.country ||
     // Footer.
     doc.moveDown()
     doc.text(
-      "If you like our sake, why not try our Sub Club? 3 bottles selected by our sommeliers, delivered to you door every month?\nMore info on sakeden.com/subs",
+      "If you like our sake, why not try our Sub Club?\n3 bottles selected by our sommeliers, delivered to you door every month?\nMore info on sakeden.com/subs",
       {
         align: "center",
       },

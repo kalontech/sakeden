@@ -69,7 +69,9 @@ ${order.shipping_address.phone || ""}`
     doc.font("Helvetica").text(shippingAddress)
     doc
       .font("Helvetica-Bold")
-      .text("Bill to", shipToNode.x, shipToNode.y - 84 * lh, { align: "right" })
+      .text("Bill to", shipToNode.x, shipToNode.y - 100 * lh, {
+        align: "right",
+      })
     doc.font("Helvetica").text(billingAddress, { align: "right" })
     doc.moveDown()
 

@@ -6,6 +6,7 @@ import { Container } from "theme-ui"
 
 // @ts-ignore
 import Logo from "../images/logo.svg"
+import Banner from "./banner"
 import Header from "./header"
 import Modals from "./modals"
 
@@ -19,6 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children, narrow }) => {
     <>
       <Modals />
       <Header logo={<Logo />} />
+      <Banner />
       <Container
         py={4}
         variant={narrow ? "containerNarrow" : "container"}

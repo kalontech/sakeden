@@ -68,7 +68,7 @@ const SetsPage: React.FC = () => {
   })
   const {
     breweries: breweriesFilterValue = "ALL",
-    price: priceFilterValue = "asc",
+    price: priceFilterValue = "ALL",
     subset: subsetFilterValue = "ALL",
   } = query
 
@@ -76,7 +76,7 @@ const SetsPage: React.FC = () => {
     if (!breweriesFilterValue || !priceFilterValue || !subsetFilterValue) {
       setQuery({
         breweries: "ALL",
-        price: "asc",
+        price: "ALL",
         subset: "ALL",
       })
     }
@@ -100,12 +100,16 @@ const SetsPage: React.FC = () => {
     }
   })
 
+  let allShopifyProductSorted = shopifyCollection!.products!
+
   // Order by price.
-  let allShopifyProductSorted = _.orderBy(
-    shopifyCollection!.products,
-    "variants[0].priceV2.amount",
-    priceFilterValue as "asc" | "desc",
-  )
+  if (priceFilterValue !== "ALL") {
+    allShopifyProductSorted = _.orderBy(
+      shopifyCollection!.products,
+      "variants[0].priceV2.amount",
+      priceFilterValue as "asc" | "desc",
+    )
+  }
 
   // Apply breweries filter.
   if (breweriesFilterValue !== "ALL") {

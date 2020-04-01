@@ -79,6 +79,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   ]
 
   const priceOptions = [
+    { label: "–", value: "ALL" },
     { label: "Lowest to Highest", value: "asc" },
     { label: "Highest to Lowest", value: "desc" },
   ]

@@ -18,6 +18,12 @@ module.exports = {
     "gatsby-transformer-sharp",
     {
       options: {
+        pixelId: "2553094571475972",
+      },
+      resolve: "gatsby-plugin-facebook-pixel",
+    },
+    {
+      options: {
         icons: {
           android: true,
           appleIcon: true,
@@ -31,12 +37,6 @@ module.exports = {
         logo: "./src/images/favicon.png",
       },
       resolve: "gatsby-plugin-favicon",
-    },
-    {
-      resolve: `gatsby-plugin-facebook-pixel`,
-      options: {
-        pixelId: `2553094571475972`,
-      },
     },
     {
       options: {

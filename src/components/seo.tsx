@@ -2,6 +2,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Helmet from "react-helmet"
 
+import { ShopifyProduct } from "../../graphql-types"
+
 interface SEOProps {
   description?: string
   image?: string
@@ -10,6 +12,7 @@ interface SEOProps {
     React.MetaHTMLAttributes<HTMLMetaElement>,
     HTMLMetaElement
   >[]
+  product?: ShopifyProduct
   title: string
 }
 
@@ -18,6 +21,7 @@ const SEO: React.FC<SEOProps> = ({
   image,
   lang = "en",
   meta = [],
+  product,
   title = "Sakeden Collection",
 }) => {
   const { shopifyProduct, site } = useStaticQuery(
@@ -43,50 +47,105 @@ const SEO: React.FC<SEOProps> = ({
     image = shopifyProduct.images[0].originalSrc
   }
 
-  const metaDescription = description || site.siteMetadata.description
-
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       meta={[
-        {
-          content: metaDescription,
-          name: "description",
-        },
+        // General.
         {
           content: title,
-          property: "og:title",
-        },
-        {
-          content: metaDescription,
-          property: "og:description",
-        },
-        {
-          content: "article",
-          property: "og:type",
-        },
-        {
-          content: image,
-          name: "og:image",
-        },
-        {
-          content: "summary",
-          name: "twitter:card",
-        },
-        {
-          content: site.siteMetadata.author,
-          name: "twitter:creator",
+          name: "og:title",
         },
         {
           content: title,
           name: "twitter:title",
         },
         {
-          content: metaDescription,
+          content: description || site.siteMetadata.description,
+          name: "description",
+        },
+        {
+          content: description || site.siteMetadata.description,
           name: "twitter:description",
         },
+        {
+          content: description || site.siteMetadata.description,
+          name: "og:description",
+        },
+
+        // Twitter.
+        {
+          content: "summary",
+          name: "twitter:card",
+        },
+
+        // OG.
+        {
+          content: image,
+          name: "og:image",
+        },
+        {
+          content: product ? "product" : "page",
+          property: "og:type",
+        },
+
+        {
+          content: typeof window !== "undefined" ? window.location.href : "",
+          name: "og:url",
+        },
+        {
+          content: image,
+          name: "og:image",
+        },
+
+        // Product.
+        ...(product
+          ? [
+              {
+                content: product.vendor,
+                name: "product:brand",
+              },
+              {
+                content: product.availableForSale ? "in stock" : "sold out",
+                name: "product:availability",
+              },
+              {
+                content: "new",
+                name: "product:condition",
+              },
+              {
+                content: product.variants![0]!.priceV2!.amount,
+                name: "product:price:amount",
+              },
+              {
+                content: product.variants![0]!.priceV2!.currencyCode,
+                name: "product:price:currency",
+              },
+              {
+                content: product.handle,
+                name: "product:retailer_item_id",
+              },
+              ...(product.tags!.includes("Bottles")
+                ? [
+                    {
+                      content: "bottles",
+                      name: "product:item_group_id",
+                    },
+                  ]
+                : []),
+              ...(product.tags!.includes("Sets")
+                ? [
+                    {
+                      content: "sets",
+                      name: "product:item_group_id",
+                    },
+                  ]
+                : []),
+            ]
+          : []),
+
         ...meta,
       ]}
       title={title}

@@ -3,6 +3,7 @@ import GatsbyImage, { FluidObject } from "gatsby-image"
 // @ts-ignore
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import React, { useContext, useEffect, useState } from "react"
+import ReactPixel from "react-facebook-pixel"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Input, Select, Text } from "theme-ui"
 
@@ -21,6 +22,7 @@ import { getPriceFromVariants, wait } from "../utils/helpers"
 
 const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const data = props.data as ProductQuery
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const shopifyProduct = data.shopifyProduct as ShopifyProduct
 
   const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
@@ -93,6 +95,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
       <SEO
         description={shopifyProduct.description!}
         image={shopifyProduct.images![0]!.originalSrc!}
+        product={shopifyProduct}
         title={shopifyProduct.title!}
       />
       <Layout>

@@ -6,15 +6,7 @@ import createPersistedState from "use-persisted-state"
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface BannerProps {}
 
-const useIsBannerVisible = createPersistedState("isBannerVisible")
-
 const Banner: React.FC<BannerProps> = () => {
-  const [isBannerVisible, setIsBannerVisible] = useIsBannerVisible(true)
-
-  if (!isBannerVisible) {
-    return <Flex />
-  }
-
   return (
     <Box sx={{ bg: "black" }}>
       <Container>
@@ -22,21 +14,12 @@ const Banner: React.FC<BannerProps> = () => {
           sx={{
             alignItems: "center",
             height: "64px",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
-          <Box />
           <Text sx={{ color: "white" }}>
-            Order HK$700 to enjoy FREE DELIVERY
+            Order HK$700 to enjoy FREE DELIVERY for all HK addresses
           </Text>
-          <Button
-            onClick={(): void => {
-              setIsBannerVisible(false)
-            }}
-            variant="icon"
-          >
-            <IoMdClose />
-          </Button>
         </Flex>
       </Container>
     </Box>

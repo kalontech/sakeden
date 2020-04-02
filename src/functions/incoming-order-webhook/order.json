@@ -45,12 +45,8 @@
   "discount_codes": [],
   "note_attributes": [
     {
-      "name": "Gift wrap",
-      "value": "Yes"
-    },
-    {
       "name": "Shipping date",
-      "value": "2020-05-02"
+      "value":"2020-05-02"
     }
   ],
   "payment_gateway_names": [
@@ -223,6 +219,170 @@
         "city": "Kyiv",
         "zip": "00000"
       }
+    },
+    {
+      "id": 4612805034029,
+      "variant_id": 32586574430253,
+      "title": "Warm Sake Set",
+      "quantity": 1,
+      "sku": "",
+      "variant_title": "",
+      "vendor": "Sakeden",
+      "fulfillment_service": "manual",
+      "product_id": 4641180483629,
+      "requires_shipping": true,
+      "taxable": true,
+      "gift_card": false,
+      "name": "Warm Sake Set",
+      "variant_inventory_management": null,
+      "properties": [],
+      "product_exists": true,
+      "fulfillable_quantity": 1,
+      "grams": 0,
+      "price": "750.00",
+      "total_discount": "0.00",
+      "fulfillment_status": null,
+      "price_set": {
+        "shop_money": {
+          "amount": "750.00",
+          "currency_code": "UAH"
+        },
+        "presentment_money": {
+          "amount": "750.00",
+          "currency_code": "UAH"
+        }
+      },
+      "total_discount_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "UAH"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "UAH"
+        }
+      },
+      "discount_allocations": [],
+      "admin_graphql_api_id": "gid:\/\/shopify\/LineItem\/4612805034029",
+      "tax_lines": [
+        {
+          "title": "PDV",
+          "price": "125.00",
+          "rate": 0.2,
+          "price_set": {
+            "shop_money": {
+              "amount": "125.00",
+              "currency_code": "UAH"
+            },
+            "presentment_money": {
+              "amount": "125.00",
+              "currency_code": "UAH"
+            }
+          }
+        }
+      ],
+      "origin_location": {
+        "id": 1766448496685,
+        "country_code": "UA",
+        "province_code": "",
+        "name": "kalon-dev",
+        "address1": "16 Velyka Vasilkivska st",
+        "address2": "",
+        "city": "Kyiv",
+        "zip": "02000"
+      },
+      "destination_location": {
+        "id": 1852960210989,
+        "country_code": "UA",
+        "province_code": "",
+        "name": "Andriy Tsaryov",
+        "address1": "192 Sadova Street, 31",
+        "address2": "",
+        "city": "Kyiv",
+        "zip": "00000"
+      }
+    },
+    {
+      "id": 4612805034029,
+      "variant_id": 32586574430253,
+      "title": "Warm Sake Set",
+      "quantity": 1,
+      "sku": "",
+      "variant_title": "",
+      "vendor": "Sakeden",
+      "fulfillment_service": "manual",
+      "product_id": 4641180483629,
+      "requires_shipping": true,
+      "taxable": true,
+      "gift_card": false,
+      "name": "Warm Sake Set",
+      "variant_inventory_management": null,
+      "properties": [],
+      "product_exists": true,
+      "fulfillable_quantity": 1,
+      "grams": 0,
+      "price": "750.00",
+      "total_discount": "0.00",
+      "fulfillment_status": null,
+      "price_set": {
+        "shop_money": {
+          "amount": "750.00",
+          "currency_code": "UAH"
+        },
+        "presentment_money": {
+          "amount": "750.00",
+          "currency_code": "UAH"
+        }
+      },
+      "total_discount_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "UAH"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "UAH"
+        }
+      },
+      "discount_allocations": [],
+      "admin_graphql_api_id": "gid:\/\/shopify\/LineItem\/4612805034029",
+      "tax_lines": [
+        {
+          "title": "PDV",
+          "price": "125.00",
+          "rate": 0.2,
+          "price_set": {
+            "shop_money": {
+              "amount": "125.00",
+              "currency_code": "UAH"
+            },
+            "presentment_money": {
+              "amount": "125.00",
+              "currency_code": "UAH"
+            }
+          }
+        }
+      ],
+      "origin_location": {
+        "id": 1766448496685,
+        "country_code": "UA",
+        "province_code": "",
+        "name": "kalon-dev",
+        "address1": "16 Velyka Vasilkivska st",
+        "address2": "",
+        "city": "Kyiv",
+        "zip": "02000"
+      },
+      "destination_location": {
+        "id": 1852960210989,
+        "country_code": "UA",
+        "province_code": "",
+        "name": "Andriy Tsaryov",
+        "address1": "192 Sadova Street, 31",
+        "address2": "",
+        "city": "Kyiv",
+        "zip": "00000"
+      }
     }
   ],
   "fulfillments": [],
@@ -266,38 +426,38 @@
     }
   ],
   "billing_address": {
-    "first_name": "Andriy",
-    "address1": "192 Sadova Street, 31",
-    "phone": null,
-    "city": "Kyiv",
-    "zip": "00000",
-    "province": null,
-    "country": "Ukraine",
-    "last_name": "Tsaryov",
-    "address2": "",
+    "first_name": "John",
+    "address1": "Address Line 1",
+    "phone": "Phone Number",
+    "city": "City",
+    "zip": "ZIP",
+    "province": "Province",
+    "country": "Country",
+    "last_name": "Appleseed",
+    "address2": "Address Line 2",
     "company": null,
     "latitude": null,
     "longitude": null,
     "name": "Andriy Tsaryov",
-    "country_code": "UA",
-    "province_code": null
+    "country_code": "Country Code",
+    "province_code": "Province Code"
   },
   "shipping_address": {
-    "first_name": "Andriy",
-    "address1": "192 Sadova Street, 31",
-    "phone": null,
-    "city": "Kyiv",
-    "zip": "00000",
-    "province": null,
-    "country": "Ukraine",
-    "last_name": "Tsaryov",
-    "address2": "",
+    "first_name": "John",
+    "address1": "Address Line 1",
+    "phone": "Phone Number",
+    "city": "City",
+    "zip": "ZIP",
+    "province": "Province",
+    "country": "Country",
+    "last_name": "Appleseed",
+    "address2": "Address Line 2",
     "company": null,
     "latitude": null,
     "longitude": null,
     "name": "Andriy Tsaryov",
-    "country_code": "UA",
-    "province_code": null
+    "country_code": "Country Code",
+    "province_code": "Province Code"
   },
   "client_details": {
     "browser_ip": "91.225.160.161",

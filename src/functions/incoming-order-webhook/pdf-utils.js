@@ -1,5 +1,4 @@
 const fs = require("fs")
-const http = require("http")
 const moment = require("moment")
 const path = require("path")
 const PDFDocument = require("pdfkit")
@@ -51,11 +50,17 @@ ${order.shipping_address.phone || ""}`
       .text(
         `Order #${order.order_number}\n${moment(order.created_at).format(
           "MMMM DD, YYYY",
-        )}\nShipping date ${moment(
+        )}\n${
           order.note_attributes.find(
             attribute => attribute.name === "Shipping date",
-          ).value,
-        ).format("MMMM DD, YYYY")}`,
+          )
+            ? `Shipping date ${moment(
+                order.note_attributes.find(
+                  attribute => attribute.name === "Shipping date",
+                ).value,
+              ).format("MMMM DD, YYYY")}`
+            : ""
+        }`,
         logoNode.x,
         logoNode.y - 24 * lh,
         {
@@ -87,12 +92,15 @@ ${order.shipping_address.phone || ""}`
           undefined,
           undefined,
           {
-            fit: [50, 50],
+            fit: [40, 40],
           },
         )
         .stroke()
-        .text(order.line_items[i].title)
-      // const itemNode = doc.text(order.line_items[i].title)
+      doc.text(
+        "            " + order.line_items[i].title,
+        itemNode.x,
+        itemNode.y - 17.5,
+      )
       doc.text(order.line_items[i].quantity, itemNode.x, itemNode.y - 14 * lh, {
         align: "right",
       })

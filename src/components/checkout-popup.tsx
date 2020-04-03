@@ -20,10 +20,15 @@ const CheckoutPopup: React.FC = () => {
   const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
   const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(undefined)
   const [additionalNotes, setAdditionalNotes] = useState("")
+  const [giftCardNote, setGiftCardNote] = useState("")
 
   const handleCheckout = async (): Promise<void> => {
     client.checkout.updateAttributes(checkout.id, {
       customAttributes: [
+        {
+          key: "Gift card note",
+          value: giftCardNote,
+        },
         {
           key: "Shipping date",
           value: moment(deliveryDate).format("YYYY-MM-DD"),
@@ -114,8 +119,18 @@ const CheckoutPopup: React.FC = () => {
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
               setAdditionalNotes(e.target.value)
             }}
-            rows={8}
+            rows={3}
             value={additionalNotes}
+          ></Textarea>
+          <Heading as="h5" mb={2} mt={3} variant="h5">
+            Include gift card
+          </Heading>
+          <Textarea
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+              setGiftCardNote(e.target.value)
+            }}
+            rows={4}
+            value={giftCardNote}
           ></Textarea>
         </Box>
       </Flex>

@@ -3,26 +3,51 @@ const mailgun = require("mailgun-js")({
   domain: "mg.sakeden.com",
 })
 
-const { generatePackingSlip, prefetchImages } = require("./pdf-utils")
+const {
+  generateGiftCard,
+  generatePackingSlip,
+  prefetchImages,
+} = require("./pdf-utils")
 // const testOrder = require("./order.json")
 
 exports.handler = async (event, context) => {
   try {
     // Parse order.
     const order = JSON.parse(event.body)
-    // Generate packing slip.
+    // Prefetch images.
     await prefetchImages(order)
-    const packingSlip = await generatePackingSlip(order)
+    // Generate attachments.
+    const attachment = []
+    // Generate packing slip.
+    attachment.push((await generatePackingSlip(order)).outputPathname)
+    // Generate gift card.
+    if (
+      order.note_attributes.find(
+        attribute => attribute.name === "Gift card note",
+      )
+    ) {
+      attachment.push(
+        (
+          await generateGiftCard(
+            order,
+            order.note_attributes.find(
+              attribute => attribute.name === "Gift card note",
+            ).value,
+          )
+        ).outputPathname,
+      )
+    }
     // Send email.
     await new Promise((resolve, reject) => {
       mailgun.messages().send(
         {
-          attachment: packingSlip.outputPathname,
+          attachment,
           from: "Sakeden <incoming-order-webhook@mg.sakeden.com>",
           subject: `New order #${order.order_number}`,
           text:
             "A new order was created. See packing slip is in the attachments.",
           to: process.env.PACKING_SLIP_RECIPIENT_EMAIL,
+          // to: "andriy.tsaryov@kalon.tech",
         },
         (error, body) => {
           if (error) {

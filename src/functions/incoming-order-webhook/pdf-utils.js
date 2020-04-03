@@ -6,6 +6,50 @@ const request = require("request-promise")
 
 const lh = 1.15
 
+const generateGiftCard = (order, wishText) => {
+  return new Promise((resolve, reject) => {
+    // Create a PDF document.
+    const doc = new PDFDocument({
+      margins: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      size: [595, 420],
+    })
+    const outputFilename = `gift-card-#${order.order_number}.pdf`
+    const outputPathname = `/tmp/${outputFilename}`
+    const writeStream = fs.createWriteStream(outputPathname)
+    doc.pipe(writeStream)
+
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).fontSize(14)
+
+    doc.image(path.join(__dirname, "frame.png"), 0, 0, {
+      height: 420,
+      width: 595,
+    })
+
+    const wishOptions = {
+      lineGap: 7,
+    }
+    doc.text(
+      wishText,
+      63,
+      210 - doc.heightOfString(wishText, wishOptions) / 2,
+      wishOptions,
+    )
+
+    // Finalize PDF file.
+    doc.end()
+
+    // Resolve filename and pathname.
+    writeStream.on("finish", () => {
+      resolve({ outputFilename, outputPathname })
+    })
+  })
+}
+
 const generatePackingSlip = order => {
   return new Promise((resolve, reject) => {
     // Address lines.
@@ -33,7 +77,7 @@ ${order.shipping_address.phone || ""}`
 
     // Header.
     // const logoNode = doc
-    //   .font("Helvetica-Bold")
+    //   .font(path.join(__dirname, "Barlow-Bold.ttf"))
     //   .fontSize(24)
     //   .text("Sakeden")
     const logoNode = doc.image(
@@ -45,7 +89,7 @@ ${order.shipping_address.phone || ""}`
       },
     )
     doc
-      .font("Helvetica")
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
       .fontSize(14)
       .text(
         `Order #${order.order_number}\n${moment(order.created_at).format(
@@ -70,26 +114,32 @@ ${order.shipping_address.phone || ""}`
     doc.moveDown()
 
     // Addresses.
-    const shipToNode = doc.font("Helvetica-Bold").text("Ship to")
-    doc.font("Helvetica").text(shippingAddress)
+    const shipToNode = doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Ship to")
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).text(shippingAddress)
     doc
-      .font("Helvetica-Bold")
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
       .text("Bill to", shipToNode.x, shipToNode.y - 100 * lh, {
         align: "right",
       })
-    doc.font("Helvetica").text(billingAddress, { align: "right" })
+    doc
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
+      .text(billingAddress, { align: "right" })
     doc.moveDown()
 
     // Items.
-    const itemsNode = doc.font("Helvetica-Bold").text("Items")
+    const itemsNode = doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Items")
     doc
       .text("Quantity", itemsNode.x, itemsNode.y - 14 * lh, { align: "right" })
-      .font("Helvetica")
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
     for (let i = 0; i < order.line_items.length; i++) {
       const itemNode = doc
         .image(
           `/tmp/product-${order.line_items[i].product_id}.jpg`,
-          undefined,
+          72 - 8,
           undefined,
           {
             fit: [40, 40],
@@ -97,7 +147,7 @@ ${order.shipping_address.phone || ""}`
         )
         .stroke()
       doc.text(
-        "            " + order.line_items[i].title,
+        "             " + order.line_items[i].title,
         itemNode.x,
         itemNode.y - 17.5,
       )
@@ -116,16 +166,20 @@ ${order.shipping_address.phone || ""}`
       },
     )
     doc.moveDown()
-    doc.font("Helvetica-Bold").text("Thanks for drinking with us!", {
-      align: "center",
-    })
+    doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Thanks for drinking with us!", {
+        align: "center",
+      })
     doc.moveDown()
-    doc.font("Helvetica").text("SAKEDEN", {
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).text("SAKEDEN", {
       align: "center",
     })
-    doc.font("Helvetica").text("enquiries@sakeden.com", {
-      align: "center",
-    })
+    doc
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
+      .text("enquiries@sakeden.com", {
+        align: "center",
+      })
 
     // Finalize PDF file.
     doc.end()
@@ -169,6 +223,7 @@ const prefetchImages = async order => {
 }
 
 module.exports = {
+  generateGiftCard,
   generatePackingSlip,
   prefetchImages,
 }

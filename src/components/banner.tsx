@@ -18,7 +18,7 @@ const Banner: React.FC<BannerProps> = () => {
           }}
         >
           <Text sx={{ color: "white" }}>
-            Order HK$700 to enjoy FREE DELIVERY for all HK addresses
+            Order HK$400 to enjoy FREE DELIVERY for all HK addresses
           </Text>
         </Flex>
       </Container>

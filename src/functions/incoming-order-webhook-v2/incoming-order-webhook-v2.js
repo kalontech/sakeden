@@ -5,7 +5,7 @@ exports.handler = async (event, context) => {
     request({
       body: event.body,
       method: "POST",
-      uri: "https://sakeden.com/.netlify/functions/generate-pdfs",
+      uri: "https://sakeden.com/.netlify/functions/generate-pdfs-v2",
     })
     await new Promise((resolve, reject) => {
       setTimeout(resolve, 2000)

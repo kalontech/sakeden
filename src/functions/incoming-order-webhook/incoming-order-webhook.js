@@ -8,6 +8,9 @@ exports.handler = async (event, context) => {
       method: "POST",
       uri: "https://sakeden.com/.netlify/functions/generate-pdfs",
     })
+    await new Promise((resolve, reject) => {
+      setTimeout(resolve, 2000)
+    })
     // Reponse (success).
     return {
       body: JSON.stringify({ message: "Okay!", success: true }),

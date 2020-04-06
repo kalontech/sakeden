@@ -12,6 +12,7 @@ const {
 
 exports.handler = async (event, context) => {
   try {
+    console.log(event.body)
     // Parse order.
     const order = JSON.parse(event.body)
     // Prefetch images.

@@ -2,6 +2,7 @@ const request = require("request-promise")
 
 exports.handler = async (event, context) => {
   try {
+    console.log(event.body)
     request({
       body: JSON.parse(event.body),
       json: true,

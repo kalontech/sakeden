@@ -53,20 +53,34 @@ const generateGiftCard = (order, wishText) => {
 const generatePackingSlip = order => {
   return new Promise((resolve, reject) => {
     // Address lines.
-    const billingAddress = `${order.billing_address.first_name || ""} ${order
-      .billing_address.last_name || ""}
+    const billingAddress = order.billing_address
+      ? `${order.billing_address.first_name || ""} ${order.billing_address
+          .last_name || ""}
 ${order.billing_address.address1 || ""}
 ${order.billing_address.address2 || ""}
 ${order.billing_address.city || ""}
 ${order.billing_address.province || ""} ${order.billing_address.country || ""}
 ${order.billing_address.phone || ""}`
-    const shippingAddress = `${order.shipping_address.first_name || ""} ${order
-      .shipping_address.last_name || ""}
+      : `
+
+
+
+
+`
+    const shippingAddress = order.shipping_address
+      ? `${order.shipping_address.first_name || ""} ${order.shipping_address
+          .last_name || ""}
 ${order.shipping_address.address1 || ""}
 ${order.shipping_address.address2 || ""}
 ${order.shipping_address.city || ""}
 ${order.shipping_address.province || ""} ${order.shipping_address.country || ""}
 ${order.shipping_address.phone || ""}`
+      : `
+
+
+
+
+`
 
     // Create a PDF document.
     const doc = new PDFDocument()

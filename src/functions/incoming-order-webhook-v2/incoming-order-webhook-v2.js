@@ -3,7 +3,8 @@ const request = require("request-promise")
 exports.handler = async (event, context) => {
   try {
     request({
-      body: event.body,
+      body: JSON.parse(event.body),
+      json: true,
       method: "POST",
       uri: "https://sakeden.com/.netlify/functions/generate-pdfs-v2",
     })

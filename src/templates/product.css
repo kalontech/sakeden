@@ -1,3 +1,24 @@
 .dangerouslySetInnerHTML__description * {
   width: 100% !important;
 }
+
+.Product__NoPrint {
+  display: block;
+}
+
+.Product__Print {
+  display: none;
+}
+
+
+
+
+@media print {
+  .Product__NoPrint {
+    display: none;
+  }
+  
+  .Product__Print {
+    display: block;
+  }
+}

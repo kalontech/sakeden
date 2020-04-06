@@ -114,43 +114,55 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             }}
           ></div>
           <Flex>
-            {shopifyProduct.images &&
-              shopifyProduct.images.map(image => {
-                return (
+            <Box sx={{ flex: 1, height: "600px" }}>
+              {shopifyProduct.images && shopifyProduct.images[0] && (
+                <img
+                  src={shopifyProduct.images[0].originalSrc!}
+                  style={{
+                    height: "600px",
+                    objectFit: "contain",
+                    width: "100%",
+                  }}
+                />
+              )}
+            </Box>
+            <Box sx={{ flex: 1, height: "600px" }}>
+              <Box sx={{ height: "200px" }}>
+                {shopifyProduct.images && shopifyProduct.images[1] && (
                   <img
-                    src={image!.originalSrc!}
+                    src={shopifyProduct.images[1].originalSrc!}
                     style={{
-                      flex: 1,
-                      height: "300px",
+                      height: "200px",
                       objectFit: "contain",
-                      width: "40%",
+                      width: "100%",
                     }}
                   />
-                )
-              })}
-          </Flex>
-          <Flex
-            sx={{
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              mt: 5,
-            }}
-          >
-            <Heading as="h3" variant="h3">
-              {shopifyProduct.availableForSale ? (
-                <Text>
+                )}
+              </Box>
+              <Box sx={{ height: "300px", mt: "100px" }}>
+                <QRCode
+                  style={{ objectFit: "contain", width: "100%" }}
+                  value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
+                />
+                <Heading
+                  as="h4"
+                  sx={{ mt: 1, textAlign: "center" }}
+                  variant="h4"
+                >
+                  To reorder
+                </Heading>
+                <Heading
+                  as="h2"
+                  sx={{ mt: 3, textAlign: "center" }}
+                  variant="h2"
+                >
                   {getPriceFromVariants(
                     shopifyProduct.variants as ShopifyProductVariant[],
                     0,
                   )}
-                </Text>
-              ) : (
-                <Text color="danger">Sold out</Text>
-              )}
-            </Heading>
-            <QRCode
-              value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
-            />
+                </Heading>
+              </Box>
+            </Box>
           </Flex>
         </Print>
         <NoPrint force>

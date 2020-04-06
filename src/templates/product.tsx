@@ -1,3 +1,5 @@
+import "./product.css"
+
 import { graphql, ReplaceComponentRendererArgs, useStaticQuery } from "gatsby"
 import GatsbyImage, { FluidObject } from "gatsby-image"
 // @ts-ignore
@@ -106,6 +108,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             {shopifyProduct.title!}
           </Heading>
           <div
+            className="dangerouslySetInnerHTML__description"
             dangerouslySetInnerHTML={{
               __html: shopifyProduct.descriptionHtml!,
             }}
@@ -252,6 +255,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   </Box>
                   <Text mt={2}>
                     <div
+                      className="dangerouslySetInnerHTML__description"
                       dangerouslySetInnerHTML={{
                         __html: shopifyProduct.descriptionHtml!,
                       }}

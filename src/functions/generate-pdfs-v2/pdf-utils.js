@@ -3,9 +3,7 @@ const moment = require("moment")
 const path = require("path")
 const PDFDocument = require("pdfkit")
 const request = require("request-promise")
-// const puppeteer = require("puppeteer")
-const puppeteer = require("puppeteer-core")
-const chromium = require("chrome-aws-lambda")
+const puppeteer = require("puppeteer")
 
 const barlowBold = path.join(__dirname, "Barlow-Bold.ttf")
 const barlowRegular = path.join(__dirname, "Barlow-Regular.ttf")
@@ -214,13 +212,7 @@ const generateProductPages = async order => {
     const path = `/tmp/product-${product.handle}.pdf`
     paths.push(path)
     // Generate PDF.
-    // const browser = await puppeteer.launch()
-    const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-    })
+    const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(`https://sakeden.com/products/${product.handle}/?print`, {
       waitUntil: "networkidle2",

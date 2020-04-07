@@ -58,6 +58,10 @@ const Modals: React.FC = () => {
     }
   }, [isAgeRestrictionVisible])
 
+  if (typeof window === "undefined" || window.location.search === "?print") {
+    return <></>
+  }
+
   return (
     <>
       {isMountDelayedNodes && (

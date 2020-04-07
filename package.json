@@ -32,6 +32,7 @@
     "moment": "^2.24.0",
     "pdfkit": "^0.11.0",
     "prop-types": "^15.7.2",
+    "puppeteer": "^2.1.1",
     "qrcode.react": "^1.0.0",
     "react": "^16.12.0",
     "react-day-picker": "^7.4.0",

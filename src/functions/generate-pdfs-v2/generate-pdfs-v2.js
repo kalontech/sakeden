@@ -6,15 +6,15 @@ const mailgun = require("mailgun-js")({
 const {
   generateGiftCard,
   generatePackingSlip,
+  generateProductPages,
   prefetchImages,
 } = require("./pdf-utils")
-// const testOrder = require("./order.json")
+const testOrder = require("./order.json")
 
 exports.handler = async (event, context) => {
   try {
-    console.log(event.body)
     // Parse order.
-    const order = JSON.parse(event.body)
+    const order = testOrder || JSON.parse(event.body)
     // Prefetch images.
     await prefetchImages(order)
     // Generate attachments.
@@ -38,6 +38,8 @@ exports.handler = async (event, context) => {
         ).outputPathname,
       )
     }
+    // Generate product pages.
+    attachment.push(...(await generateProductPages(order)))
     // Send email.
     await new Promise((resolve, reject) => {
       mailgun.messages().send(
@@ -47,8 +49,8 @@ exports.handler = async (event, context) => {
           subject: `New order #${order.order_number}`,
           text:
             "A new order was created. See packing slip is in the attachments.",
-          to: process.env.PACKING_SLIP_RECIPIENT_EMAIL,
-          // to: "andriy.tsaryov@kalon.tech",
+          // to: process.env.PACKING_SLIP_RECIPIENT_EMAIL,
+          to: "andriy.tsaryov@kalon.tech",
         },
         (error, body) => {
           if (error) {

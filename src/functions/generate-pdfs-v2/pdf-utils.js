@@ -3,10 +3,6 @@ const moment = require("moment")
 const path = require("path")
 const PDFDocument = require("pdfkit")
 const request = require("request-promise")
-const puppeteer = require("puppeteer")
-
-const barlowBold = path.join(__dirname, "Barlow-Bold.ttf")
-const barlowRegular = path.join(__dirname, "Barlow-Regular.ttf")
 
 const lh = 1.15
 
@@ -27,7 +23,7 @@ const generateGiftCard = (order, wishText) => {
     const writeStream = fs.createWriteStream(outputPathname)
     doc.pipe(writeStream)
 
-    doc.font(barlowRegular).fontSize(14)
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).fontSize(14)
 
     doc.image(path.join(__dirname, "frame.png"), 0, 0, {
       height: 420,
@@ -93,6 +89,11 @@ ${order.shipping_address.phone || ""}`
     const writeStream = fs.createWriteStream(outputPathname)
     doc.pipe(writeStream)
 
+    // Header.
+    // const logoNode = doc
+    //   .font(path.join(__dirname, "Barlow-Bold.ttf"))
+    //   .fontSize(24)
+    //   .text("Sakeden")
     const logoNode = doc.image(
       path.join(__dirname, "logo.png"),
       undefined,
@@ -102,7 +103,7 @@ ${order.shipping_address.phone || ""}`
       },
     )
     doc
-      .font(barlowRegular)
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
       .fontSize(14)
       .text(
         `Order #${order.order_number}\n${moment(order.created_at).format(
@@ -127,25 +128,31 @@ ${order.shipping_address.phone || ""}`
     doc.moveDown()
 
     // Addresses.
-    const shipToNode = doc.font(barlowBold).text("Ship to")
-    doc.font(barlowRegular).text(shippingAddress)
+    const shipToNode = doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Ship to")
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).text(shippingAddress)
     doc
-      .font(barlowBold)
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
       .text("Bill to", shipToNode.x, shipToNode.y - 100 * lh, {
         align: "right",
       })
-    doc.font(barlowRegular).text(billingAddress, { align: "right" })
+    doc
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
+      .text(billingAddress, { align: "right" })
     doc.moveDown()
 
     // Items.
-    const itemsNode = doc.font(barlowBold).text("Items")
+    const itemsNode = doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Items")
     doc
       .text("Quantity", itemsNode.x, itemsNode.y - 14 * lh, { align: "right" })
-      .font(barlowRegular)
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
     for (let i = 0; i < order.line_items.length; i++) {
       const itemNode = doc
         .image(
-          `/tmp/product-${order.line_items[i].product_id}-image-0.jpg`,
+          `/tmp/product-${order.line_items[i].product_id}.jpg`,
           72 - 8,
           undefined,
           {
@@ -173,16 +180,20 @@ ${order.shipping_address.phone || ""}`
       },
     )
     doc.moveDown()
-    doc.font(barlowBold).text("Thanks for drinking with us!", {
-      align: "center",
-    })
+    doc
+      .font(path.join(__dirname, "Barlow-Bold.ttf"))
+      .text("Thanks for drinking with us!", {
+        align: "center",
+      })
     doc.moveDown()
-    doc.font(barlowRegular).text("SAKEDEN", {
+    doc.font(path.join(__dirname, "Barlow-Regular.ttf")).text("SAKEDEN", {
       align: "center",
     })
-    doc.font(barlowRegular).text("enquiries@sakeden.com", {
-      align: "center",
-    })
+    doc
+      .font(path.join(__dirname, "Barlow-Regular.ttf"))
+      .text("enquiries@sakeden.com", {
+        align: "center",
+      })
 
     // Finalize PDF file.
     doc.end()
@@ -192,39 +203,6 @@ ${order.shipping_address.phone || ""}`
       resolve({ outputFilename, outputPathname })
     })
   })
-}
-
-const generateProductPages = async order => {
-  const paths = []
-  for (const lineItem of order.line_items) {
-    // Get product.
-    const { product } = JSON.parse(
-      // kalon-dev
-      await request(
-        `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${lineItem.product_id}.json`,
-      ),
-      // sakaguranow
-      // await request(
-      //   `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${lineItem.product_id}.json`,
-      // ),
-    )
-    // Generate path.
-    const path = `/tmp/product-${product.handle}.pdf`
-    paths.push(path)
-    // Generate PDF.
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto(`https://sakeden.com/products/${product.handle}/?print`, {
-      waitUntil: "networkidle2",
-    })
-    await page.pdf({
-      format: "A4",
-      margin: { bottom: 80, left: 80, right: 80, top: 80 },
-      path,
-    })
-    await browser.close()
-  }
-  return paths
 }
 
 const downloadFile = async (pathname, url) => {
@@ -246,26 +224,20 @@ const prefetchImages = async order => {
     const productId = order.line_items[i].product_id
     const response = JSON.parse(
       // kalon-dev
-      await request(
-        `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${productId}/images.json`,
-      ),
-      // sakaguranow
       // await request(
-      //   `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      //   `https://8b6d59a6adc753e59b415b878524db68:a79693a95f02b744302befb5bce18ab4@kalon-dev.myshopify.com/admin/products/${productId}/images.json`,
       // ),
+      // sakaguranow
+      await request(
+        `https://67349518a4124055e31971bb43dfabbf:fa3f399e35a3cada32a45de29deaa11a@sakaguranow.myshopify.com/admin/products/${productId}/images.json`,
+      ),
     )
-    for (let j = 0; j < response.images.length; j++) {
-      await downloadFile(
-        `/tmp/product-${productId}-image-${j}.jpg`,
-        response.images[j].src,
-      )
-    }
+    await downloadFile(`/tmp/product-${productId}.jpg`, response.images[0].src)
   }
 }
 
 module.exports = {
   generateGiftCard,
   generatePackingSlip,
-  generateProductPages,
   prefetchImages,
 }

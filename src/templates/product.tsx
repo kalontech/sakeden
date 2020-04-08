@@ -391,7 +391,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         }}
       ></div>
       <Flex>
-        <Box sx={{ flex: 1, height: "600px" }}>
+        <Box sx={{ flex: 1, height: "500px" }}>
           {shopifyProduct.images && shopifyProduct.images[0] && (
             <img
               src={
@@ -399,14 +399,14 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   .src!
               }
               style={{
-                height: "600px",
+                height: "500px",
                 objectFit: "contain",
                 width: "100%",
               }}
             />
           )}
         </Box>
-        <Box sx={{ flex: 1, height: "600px" }}>
+        <Box sx={{ flex: 1, height: "500px" }}>
           <Box sx={{ height: "200px" }}>
             {shopifyProduct.images && shopifyProduct.images[1] && (
               <img
@@ -419,7 +419,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               />
             )}
           </Box>
-          <Box sx={{ height: "300px", mt: "100px" }}>
+          <Box sx={{ height: "200px", mt: "100px" }}>
             <Heading
               as="h4"
               sx={{ letterSpacing: "1.3px", mb: 2, textAlign: "center" }}

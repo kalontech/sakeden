@@ -394,7 +394,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         <Box sx={{ flex: 1, height: "600px" }}>
           {shopifyProduct.images && shopifyProduct.images[0] && (
             <img
-              src={shopifyProduct.images[0].originalSrc!}
+              src={
+                shopifyProduct.images[0].localFile!.childImageSharp!.resize!
+                  .src!
+              }
               style={{
                 height: "600px",
                 objectFit: "contain",
@@ -466,6 +469,9 @@ export const query = graphql`
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+            resize(height: 1000) {
+              src
             }
             sizes {
               presentationWidth

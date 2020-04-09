@@ -55,18 +55,29 @@ exports.createPages = ({ graphql, actions }) => {
         edges {
           node {
             handle
+            shopifyId
           }
         }
       }
     }
   `).then(result => {
     result.data.allShopifyProduct.edges.forEach(({ node }) => {
+      const [, , , , id] = Buffer.from(node.shopifyId, "base64")
+        .toString("ascii")
+        .split("/")
       actions.createPage({
         component: path.resolve("./src/templates/product.tsx"),
         context: {
           handle: node.handle,
         },
         path: `/products/${node.handle}`,
+      })
+      actions.createPage({
+        component: path.resolve("./src/templates/product.tsx"),
+        context: {
+          handle: node.handle,
+        },
+        path: `/products/${id}`,
       })
     })
   })

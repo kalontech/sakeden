@@ -69,7 +69,7 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
         })}
       </Grid>
       <Box p={1} />
-      <InternalLink href="/products">
+      <InternalLink href="/bottles">
         <Button sx={{ mt: 4, mx: "auto" }}>View all collection</Button>
       </InternalLink>
     </Box>

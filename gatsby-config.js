@@ -16,12 +16,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // "gatsby-plugin-offline",
     "gatsby-transformer-sharp",
-    {
-      options: {
-        pixelId: "2553094571475972",
-      },
-      resolve: "gatsby-plugin-facebook-pixel",
-    },
+    // {
+    //   options: {
+    //     pixelId: "2553094571475972",
+    //   },
+    //   resolve: "gatsby-plugin-facebook-pixel",
+    // },
     {
       options: {
         icons: {
@@ -38,19 +38,19 @@ module.exports = {
       },
       resolve: "gatsby-plugin-favicon",
     },
-    {
-      options: {
-        trackingId: "UA-155073210-1",
-      },
-      resolve: "gatsby-plugin-google-analytics",
-    },
-    {
-      options: {
-        id: "1743525",
-        sv: "6",
-      },
-      resolve: "gatsby-plugin-hotjar",
-    },
+    // {
+    //   options: {
+    //     trackingId: "UA-155073210-1",
+    //   },
+    //   resolve: "gatsby-plugin-google-analytics",
+    // },
+    // {
+    //   options: {
+    //     id: "1743525",
+    //     sv: "6",
+    //   },
+    //   resolve: "gatsby-plugin-hotjar",
+    // },
     {
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,

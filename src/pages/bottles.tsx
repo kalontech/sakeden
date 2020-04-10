@@ -168,7 +168,7 @@ const ProductsPage: React.FC = () => {
       <Layout>
         <ProductTitle
           items={[
-            { active: true, title: "Bottles", url: "/" },
+            { active: true, title: "Bottles", url: "/bottles" },
             { active: false, title: "Sets", url: "/sets" },
             {
               active: false,

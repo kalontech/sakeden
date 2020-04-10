@@ -21,9 +21,11 @@ const CheckoutPopup: React.FC = () => {
   const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(undefined)
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
+  const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
 
   const handleCheckout = async (): Promise<void> => {
-    client.checkout.updateAttributes(checkout.id, {
+    setIsUpdatingAttributes(true)
+    await client.checkout.updateAttributes(checkout.id, {
       customAttributes: [
         {
           key: "Gift card note",
@@ -151,7 +153,7 @@ const CheckoutPopup: React.FC = () => {
           variant={deliveryDate ? "primary" : "primaryDisabled"}
           sx={{ flex: 1 }}
         >
-          Checkout
+          {isUpdatingAttributes ? "Loading..." : "Checkout"}
         </Button>
       </Flex>
     </Box>

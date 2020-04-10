@@ -24,26 +24,31 @@ const CheckoutPopup: React.FC = () => {
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
 
   const handleCheckout = async (): Promise<void> => {
-    setIsUpdatingAttributes(true)
-    await client.checkout.updateAttributes(checkout.id, {
-      customAttributes: [
-        {
-          key: "Gift card note",
-          value: giftCardNote,
-        },
-        {
-          key: "Shipping date",
-          value: moment(deliveryDate).format("YYYY-MM-DD"),
-        },
-      ],
-      note: additionalNotes,
-    })
-    window.location = checkout.webUrl.replace(
-      process.env.CONTEXT === "branch-deploy"
-        ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
-        : process.env.SHOPIFY_SHOP_NAME,
-      process.env.EXTERNAL_DOMAIN,
-    )
+    try {
+      setIsUpdatingAttributes(true)
+      await client.checkout.updateAttributes(checkout.id, {
+        customAttributes: [
+          {
+            key: "Gift card note",
+            value: giftCardNote,
+          },
+          {
+            key: "Shipping date",
+            value: moment(deliveryDate).format("YYYY-MM-DD"),
+          },
+        ],
+        note: additionalNotes,
+      })
+      window.location = checkout.webUrl.replace(
+        process.env.CONTEXT === "branch-deploy"
+          ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
+          : process.env.SHOPIFY_SHOP_NAME,
+        process.env.EXTERNAL_DOMAIN,
+      )
+    } catch (err) {
+      // @ts-ignore
+      Sentry.captureException(err)
+    }
   }
 
   if (!checkout) {

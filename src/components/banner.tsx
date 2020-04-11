@@ -18,7 +18,7 @@ const Banner: React.FC<BannerProps> = () => {
           }}
         >
           <Text sx={{ color: "white" }}>
-            FREE SHIPPING ON ALL ORDERS Delivered Friday or Saturday
+            Order HK$400 to enjoy FREE DELIVERY for all HK addresses
           </Text>
         </Flex>
       </Container>

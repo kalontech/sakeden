@@ -101,6 +101,8 @@ const CheckoutPopup: React.FC = () => {
               },
 
               { daysOfWeek: [0] },
+              // exclude Easter holiday
+              new Date(2020, 3, 13),
             ]}
             firstDayOfWeek={1}
             onDayClick={(date: Date, data: Record<string, boolean>): void => {

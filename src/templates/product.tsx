@@ -382,7 +382,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const renderPrintLayout = () => (
     <Flex sx={{ flexDirection: "column", height: "740px" }}>
       <Flex sx={{ flexDirection: "column" }}>
-        <Heading as="h4" sx={{ mb: 3 }} variant="h4">
+        <Heading as="h4" sx={{ fontWeight: "normal", mb: 3 }} variant="h4">
           {shopifyProduct.title!}
         </Heading>
         <div
@@ -414,10 +414,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           {shopifyProduct.images && shopifyProduct.images[1] && (
             <Flex
               sx={{
-                alignItems: "center",
+                alignItems: "flex-end",
                 flex: 1,
                 justifyContent: "center",
-                p: 3,
+                p: 1,
               }}
             >
               <img
@@ -437,13 +437,13 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               alignItems: "center",
               flex: 1,
               flexDirection: "column",
-              justifyContent: "center",
-              p: 3,
+              justifyContent: "flex-start",
+              p: 1,
             }}
           >
             <Heading
               as="h4"
-              sx={{ mb: "5px", textAlign: "center" }}
+              sx={{ fontWeight: "normal", mb: "5px", textAlign: "center" }}
               variant="h4"
             >
               To reorder
@@ -456,8 +456,8 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               as="h4"
               sx={{
                 fontWeight: "normal",
-                letterSpacing: "6.1px",
-                ml: "6.1px",
+                letterSpacing: "6.5px",
+                ml: "6.5px",
                 mt: 2,
                 textAlign: "center",
               }}
@@ -483,7 +483,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         title={shopifyProduct.title!}
       />
       <div className="Product__Print">{renderPrintLayout()}</div>
-      <div className="Product__NoPrint">{renderPrintLayout()}</div>
+      <div className="Product__NoPrint">{renderNoPrintLayout()}</div>
     </>
   )
 }

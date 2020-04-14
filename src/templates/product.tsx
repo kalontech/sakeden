@@ -380,9 +380,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   )
 
   const renderPrintLayout = () => (
-    <Flex sx={{ flexDirection: "column", height: "900px" }}>
+    <Flex
+      sx={{ border: "3px solid red", flexDirection: "column", height: "600px" }}
+    >
       <Flex sx={{ flexDirection: "column" }}>
-        <Heading as="h2" sx={{ my: 3 }} variant="h2">
+        <Heading as="h4" sx={{ mb: 3 }} variant="h4">
           {shopifyProduct.title!}
         </Heading>
         <div
@@ -390,10 +392,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           dangerouslySetInnerHTML={{
             __html: shopifyProduct.descriptionHtml!.replace("<p><br></p>", ""),
           }}
+          style={{ fontSize: "12px" }}
         ></div>
       </Flex>
       <Flex sx={{ flex: 1 }}>
-        <Flex sx={{ flex: 0.6 }}>
+        <Flex sx={{ flex: 0.6, position: "relative" }}>
           {shopifyProduct.images && shopifyProduct.images[0] && (
             <img
               src={
@@ -403,6 +406,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               style={{
                 height: "100%",
                 objectFit: "contain",
+                position: "absolute",
                 width: "100%",
               }}
             />
@@ -436,24 +440,31 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               flex: 1,
               flexDirection: "column",
               justifyContent: "center",
+              letterSpacing: "-1.0px",
               p: 3,
             }}
           >
             <Heading
               as="h4"
-              sx={{ letterSpacing: "1.3px", mb: 2, textAlign: "center" }}
+              sx={{ mb: "5px", textAlign: "center" }}
               variant="h4"
             >
               To reorder
             </Heading>
             <QRCode
-              style={{ objectFit: "contain", width: "100%" }}
+              style={{ height: "110px", objectFit: "contain", width: "110px" }}
               value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
             />
             <Heading
-              as="h2"
-              sx={{ fontWeight: "normal", mt: 3, textAlign: "center" }}
-              variant="h2"
+              as="h4"
+              sx={{
+                fontWeight: "normal",
+                letterSpacing: "6.1px",
+                ml: "6.1px",
+                mt: 2,
+                textAlign: "center",
+              }}
+              variant="h4"
             >
               {getPriceFromVariants(
                 shopifyProduct.variants as ShopifyProductVariant[],
@@ -475,7 +486,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         title={shopifyProduct.title!}
       />
       <div className="Product__Print">{renderPrintLayout()}</div>
-      <div className="Product__NoPrint">{renderNoPrintLayout()}</div>
+      <div className="Product__NoPrint">{renderPrintLayout()}</div>
     </>
   )
 }

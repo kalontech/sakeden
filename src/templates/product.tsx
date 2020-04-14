@@ -381,7 +381,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   const renderPrintLayout = () => (
     <Flex
-      sx={{ border: "3px solid red", flexDirection: "column", height: "600px" }}
+      sx={{ border: "3px solid red", flexDirection: "column", height: "740px" }}
     >
       <Flex sx={{ flexDirection: "column" }}>
         <Heading as="h4" sx={{ mb: 3 }} variant="h4">
@@ -440,7 +440,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               flex: 1,
               flexDirection: "column",
               justifyContent: "center",
-              letterSpacing: "-1.0px",
               p: 3,
             }}
           >

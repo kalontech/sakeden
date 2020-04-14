@@ -380,18 +380,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   )
 
   const renderPrintLayout = () => (
-    <>
-      <Heading as="h2" sx={{ my: 3 }} variant="h2">
-        {shopifyProduct.title!}
-      </Heading>
-      <div
-        className="dangerouslySetInnerHTML__description"
-        dangerouslySetInnerHTML={{
-          __html: shopifyProduct.descriptionHtml!,
-        }}
-      ></div>
-      <Flex>
-        <Box sx={{ flex: 1, height: "500px" }}>
+    <Flex sx={{ flexDirection: "column", height: "900px" }}>
+      <Flex sx={{ flexDirection: "column" }}>
+        <Heading as="h2" sx={{ my: 3 }} variant="h2">
+          {shopifyProduct.title!}
+        </Heading>
+        <div
+          className="dangerouslySetInnerHTML__description"
+          dangerouslySetInnerHTML={{
+            __html: shopifyProduct.descriptionHtml!.replace("<p><br></p>", ""),
+          }}
+        ></div>
+      </Flex>
+      <Flex sx={{ flex: 1 }}>
+        <Flex sx={{ flex: 0.6 }}>
           {shopifyProduct.images && shopifyProduct.images[0] && (
             <img
               src={
@@ -399,27 +401,44 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   .src!
               }
               style={{
-                height: "500px",
+                height: "100%",
                 objectFit: "contain",
                 width: "100%",
               }}
             />
           )}
-        </Box>
-        <Box sx={{ flex: 1, height: "500px" }}>
-          <Box sx={{ height: "200px" }}>
-            {shopifyProduct.images && shopifyProduct.images[1] && (
+        </Flex>
+        <Flex sx={{ flex: 0.4, flexDirection: "column" }}>
+          {shopifyProduct.images && shopifyProduct.images[1] && (
+            <Flex
+              sx={{
+                alignItems: "center",
+                flex: 1,
+                justifyContent: "center",
+                p: 3,
+              }}
+            >
               <img
                 src={shopifyProduct.images[1].originalSrc!}
                 style={{
-                  height: "200px",
+                  height: "100%",
+                  maxHeight: "200px",
+                  maxWidth: "200px",
                   objectFit: "contain",
                   width: "100%",
                 }}
               />
-            )}
-          </Box>
-          <Box sx={{ height: "200px", mt: "100px" }}>
+            </Flex>
+          )}
+          <Flex
+            sx={{
+              alignItems: "center",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              p: 3,
+            }}
+          >
             <Heading
               as="h4"
               sx={{ letterSpacing: "1.3px", mb: 2, textAlign: "center" }}
@@ -431,16 +450,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               style={{ objectFit: "contain", width: "100%" }}
               value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
             />
-            <Heading as="h2" sx={{ mt: 3, textAlign: "center" }} variant="h2">
+            <Heading
+              as="h2"
+              sx={{ fontWeight: "normal", mt: 3, textAlign: "center" }}
+              variant="h2"
+            >
               {getPriceFromVariants(
                 shopifyProduct.variants as ShopifyProductVariant[],
                 0,
               )}
             </Heading>
-          </Box>
-        </Box>
+          </Flex>
+        </Flex>
       </Flex>
-    </>
+    </Flex>
   )
 
   return (

@@ -99,19 +99,10 @@ module.exports = {
     },
     {
       options: {
-        accessToken:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
-        host:
-          process.env.CONTEXT === "branch-deploy"
-            ? "preview.contentful.com"
-            : "cdn.contentful.com",
-        spaceId:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.CONTENTFUL_PREVIEW_SPACE_ID
-            : process.env.CONTENTFUL_SPACE_ID,
+        host: "cdn.contentful.com",
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
       },
       resolve: "gatsby-source-contentful",
     },
@@ -124,15 +115,9 @@ module.exports = {
     },
     {
       options: {
-        accessToken:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.SHOPIFY_PREVIEW_ACCESS_TOKEN
-            : process.env.SHOPIFY_ACCESS_TOKEN,
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
         apiVersion: "2020-01",
-        shopName:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
-            : process.env.SHOPIFY_SHOP_NAME,
+        shopName: process.env.SHOPIFY_SHOP_NAME,
       },
       resolve: "gatsby-source-shopify",
     },

@@ -19,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.slug,
         },
-        path: `/blog-posts/${node.slug}`,
+        path: `/sakeology/${node.slug}`,
       })
     })
   })

@@ -24,8 +24,8 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
           })}
       </Grid>
       <Box p={1} />
-      <InternalLink href="/blog-posts">
-        <Button sx={{ mt: 4, mx: "auto" }}>View all posts</Button>
+      <InternalLink href="/sakeology">
+        <Button sx={{ mt: 4, mx: "auto" }}>View sakeology</Button>
       </InternalLink>
     </Box>
   )

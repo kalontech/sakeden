@@ -97,13 +97,13 @@ const MenuPopup: React.FC = () => {
         </Box>
         <Box py={2}>
           <InternalLink
-            href="/blog-posts"
+            href="/sakeology"
             onClick={(): void => {
               setIsMenuVisible(false)
             }}
           >
             <Heading as="h2" variant="h2">
-              Blog
+              Sakeology
             </Heading>
           </InternalLink>
         </Box>

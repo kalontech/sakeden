@@ -13,7 +13,7 @@ interface BlogPostCardProps {
 
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
   return (
-    <InternalLink href={`/blog-posts/${node.slug}`}>
+    <InternalLink href={`/sakeology/${node.slug}`}>
       <Card>
         <Flex
           sx={{
@@ -39,7 +39,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
                 />
               </Box>
             )}
-            <Text>{node.description!.description}</Text>
+            {node.description && <Text>{node.description.description}</Text>}
           </Box>
         </Flex>
       </Card>

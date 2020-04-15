@@ -1,8 +1,8 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
-import Image, { FixedObject } from "gatsby-image"
 import moment from "moment"
 import React from "react"
 import Markdown from "react-markdown"
+import { Parallax } from "react-parallax"
 import { Box, Flex, Heading, Text } from "theme-ui"
 
 import { BlogPostQuery, ContentfulBlogPost } from "../../graphql-types"
@@ -51,6 +51,19 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 </Heading>
               )
             },
+            html: ({ value }) => {
+              return (
+                <div
+                  dangerouslySetInnerHTML={{ __html: value }}
+                  style={{
+                    alignItems: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    margin: "16px 0",
+                  }}
+                />
+              )
+            },
             image: ({ alt, src }) => {
               if (src.endsWith(".mp4")) {
                 return (
@@ -64,10 +77,31 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
               return (
                 <Box sx={{ my: 4 }}>
-                  <Image
-                    fixed={{ src } as FixedObject}
-                    style={{ height: "60vh", width: "100%" }}
-                  />
+                  <Box sx={{ display: ["none", "none", "block", "block"] }}>
+                    <Parallax
+                      bgImage={src}
+                      bgImageAlt={alt}
+                      strength={200}
+                      style={{
+                        margin: "0 auto",
+                        width: src.endsWith("#half-width") ? "50%" : "100%",
+                      }}
+                    >
+                      <div style={{ height: "80vh" }} />
+                    </Parallax>
+                  </Box>
+                  <Box sx={{ display: ["block", "block", "none", "none"] }}>
+                    <Parallax
+                      bgImage={src}
+                      bgImageAlt={alt}
+                      strength={200}
+                      style={{
+                        width: "100%",
+                      }}
+                    >
+                      <div style={{ height: "80vh" }} />
+                    </Parallax>
+                  </Box>
                   <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>{alt}</Text>
                 </Box>
               )
@@ -81,6 +115,16 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           }}
           source={contentfulBlogPost.body!.body!}
         />
+        <Flex mt={4}>
+          <Heading
+            as="h4"
+            variant="h4"
+            sx={{ alignItems: "center", lineHeight: 1.5, mr: 3, mt: "2px" }}
+          >
+            Share this
+          </Heading>
+          <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
+        </Flex>
       </Layout>
     </>
   )

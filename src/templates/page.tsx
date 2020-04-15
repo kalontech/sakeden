@@ -71,12 +71,8 @@ export const query = graphql`
           bottomText
           id
           picture {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+            resize(width: 1920) {
+              src
             }
           }
           subtitle

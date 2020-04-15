@@ -73,15 +73,15 @@ module.exports = {
       },
       resolve: "gatsby-plugin-manifest",
     },
-    {
-      options: {
-        dsn:
-          "https://d113865b5e104680a8095b280c8e2413@o138408.ingest.sentry.io/5196139",
-        enabled: (() => ["production"].includes(process.env.NODE_ENV))(),
-        environment: process.env.NODE_ENV,
-      },
-      resolve: "gatsby-plugin-sentry",
-    },
+    // {
+    //   options: {
+    //     dsn:
+    //       "https://d113865b5e104680a8095b280c8e2413@o138408.ingest.sentry.io/5196139",
+    //     enabled: (() => ["production"].includes(process.env.NODE_ENV))(),
+    //     environment: process.env.NODE_ENV,
+    //   },
+    //   resolve: "gatsby-plugin-sentry",
+    // },
     {
       options: {
         fonts: {

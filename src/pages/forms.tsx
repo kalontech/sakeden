@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 const FormsPage: React.FC = () => (
   <Layout>
     <SEO title="Forms" />
-    <form name="Contact" data-netlify>
+    <form action="https://sakeden-v2.netlify.app/" data-netlify name="Contact">
       <p>
         <label>
           Name <input type="text" name="name" />

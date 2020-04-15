@@ -30,7 +30,7 @@ const WelcomePopup: React.FC = () => {
     try {
       await addToMailchimp(email)
       await fetch(
-        `/.netlify/functions/tag-mailchimp-user?email=${email}&tag=updates`,
+        `https://sakeden-v2.netlify.app/.netlify/functions/tag-mailchimp-user?email=${email}&tag=updates`,
       )
       setIsWelcomeVisible(false)
     } catch (err) {

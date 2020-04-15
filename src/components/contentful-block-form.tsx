@@ -38,7 +38,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
         console.log(await addToMailchimp((formValues as any).EMAIL, formValues))
       }
       if (sendToNetlifyForms) {
-        await fetch("/", {
+        await fetch("https://sakeden-v2.netlify.app/", {
           body: encode({
             ...formValues,
             "form-name": title,
@@ -144,7 +144,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
             <Box as="form" onSubmit={handleSubmit}>
               {contentfulfields &&
                 contentfulfields.map(contentfulfield =>
-                  renderContentfulfield(contentfulfield!),
+                  renderContentfulfield(contentfulfield),
                 )}
               <Button mt={4}>Submit</Button>
             </Box>

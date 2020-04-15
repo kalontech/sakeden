@@ -78,7 +78,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
       setIsSubcribing(true)
       await addToMailchimp(email)
       await fetch(
-        `/.netlify/functions/tag-mailchimp-user?email=${email}&tag=restocking-${shopifyProduct.handle}`,
+        `https://sakeden-v2.netlify.app/.netlify/functions/tag-mailchimp-user?email=${email}&tag=restocking-${shopifyProduct.handle}`,
       )
       setIsSubcribed(true)
     } catch (err) {

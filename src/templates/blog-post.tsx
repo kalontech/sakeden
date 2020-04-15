@@ -20,7 +20,7 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     <>
       <SEO title={contentfulBlogPost.title!} />
       <Layout narrow>
-        <Box mb={3}>
+        <Box mb={2}>
           <Box sx={{ display: ["none", "none", "block", "block"] }}>
             <Heading as="h1" variant="h1">
               {contentfulBlogPost.title}
@@ -115,16 +115,9 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
           }}
           source={contentfulBlogPost.body!.body!}
         />
-        <Flex mt={4}>
-          <Heading
-            as="h4"
-            variant="h4"
-            sx={{ alignItems: "center", lineHeight: 1.5, mr: 3, mt: "2px" }}
-          >
-            Share this
-          </Heading>
+        <Box mt={4}>
           <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
-        </Flex>
+        </Box>
       </Layout>
     </>
   )

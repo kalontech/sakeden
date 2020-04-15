@@ -68,7 +68,6 @@ export const query = graphql`
           title
         }
         ... on ContentfulBlockHero {
-          bottomText
           id
           picture {
             localFile {
@@ -79,7 +78,9 @@ export const query = graphql`
               }
             }
           }
-          subtitle
+          pictureText {
+            pictureText
+          }
           title
         }
       }

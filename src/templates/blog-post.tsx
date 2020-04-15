@@ -38,49 +38,53 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             {moment(contentfulBlogPost.publishDate).format("MMMM DD, YYYY")}
           </Text>
         </Flex>
-        <Markdown
-          renderers={{
-            heading: ({ children, level }) => {
-              return (
-                <Heading
-                  as={`h${level + 1}` as "h2" | "h3" | "h4"}
-                  sx={{ mb: 3, mt: 4 }}
-                  variant={`h${level + 2}` as "h2" | "h3" | "h4"}
-                >
-                  {children}
-                </Heading>
-              )
-            },
-            image: ({ alt, src }) => {
-              if (src.endsWith(".mp4")) {
+        {contentfulBlogPost.body && (
+          <Markdown
+            renderers={{
+              heading: ({ children, level }) => {
+                return (
+                  <Heading
+                    as={`h${level + 1}` as "h2" | "h3" | "h4"}
+                    sx={{ mb: 3, mt: 4 }}
+                    variant={`h${level + 2}` as "h2" | "h3" | "h4"}
+                  >
+                    {children}
+                  </Heading>
+                )
+              },
+              image: ({ alt, src }) => {
+                if (src.endsWith(".mp4")) {
+                  return (
+                    <Box sx={{ my: 4 }}>
+                      <video controls style={{ width: "100%" }}>
+                        <source src={src} />
+                      </video>
+                    </Box>
+                  )
+                }
+
                 return (
                   <Box sx={{ my: 4 }}>
-                    <video controls style={{ width: "100%" }}>
-                      <source src={src} />
-                    </video>
+                    <Image
+                      fixed={{ src } as FixedObject}
+                      style={{ height: "60vh", width: "100%" }}
+                    />
+                    <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
+                      {alt}
+                    </Text>
                   </Box>
                 )
-              }
-
-              return (
-                <Box sx={{ my: 4 }}>
-                  <Image
-                    fixed={{ src } as FixedObject}
-                    style={{ height: "60vh", width: "100%" }}
-                  />
-                  <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>{alt}</Text>
-                </Box>
-              )
-            },
-            paragraph: ({ children }) => {
-              return <Text sx={{ my: 1 }}>{children}</Text>
-            },
-            root: ({ children }) => {
-              return <Box sx={{ my: 3 }}>{children}</Box>
-            },
-          }}
-          source={contentfulBlogPost.body!.body!}
-        />
+              },
+              paragraph: ({ children }) => {
+                return <Text sx={{ my: 1 }}>{children}</Text>
+              },
+              root: ({ children }) => {
+                return <Box sx={{ my: 3 }}>{children}</Box>
+              },
+            }}
+            source={contentfulBlogPost.body.body!}
+          />
+        )}
       </Layout>
     </>
   )

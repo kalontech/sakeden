@@ -68,14 +68,15 @@ export const query = graphql`
           title
         }
         ... on ContentfulBlockHero {
-          bottomText
           id
           picture {
             resize(width: 1920) {
               src
             }
           }
-          subtitle
+          pictureText {
+            pictureText
+          }
           title
         }
       }

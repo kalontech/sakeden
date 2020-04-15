@@ -98,7 +98,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         {isSubscription && (
           <ProductTitle
             items={[
-              { active: false, title: "Bottles", url: "/" },
+              { active: false, title: "Bottles", url: "/bottles" },
               { active: false, title: "Sets", url: "/sets" },
               {
                 active: true,

@@ -11,7 +11,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share"
-import { Box, Flex } from "theme-ui"
+import { Box, Flex, Heading } from "theme-ui"
 
 interface SocialBarProps {
   shareUrl: string
@@ -20,7 +20,14 @@ interface SocialBarProps {
 
 const SocialBar: React.FC<SocialBarProps> = ({ shareUrl, title }) => {
   return (
-    <Flex py={2}>
+    <Flex sx={{ alignItems: "center", py: 2 }}>
+      <Heading
+        as="h4"
+        variant="h4"
+        sx={{ alignItems: "center", lineHeight: 1.5, mr: 3 }}
+      >
+        Share this
+      </Heading>
       <Box mr={2}>
         <EmailShareButton title={title} url={shareUrl}>
           <MdEmail size="28px" />

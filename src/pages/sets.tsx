@@ -132,7 +132,7 @@ const SetsPage: React.FC = () => {
       <Layout>
         <ProductTitle
           items={[
-            { active: false, title: "Bottles", url: "/" },
+            { active: false, title: "Bottles", url: "/bottles" },
             { active: true, title: "Sets", url: "/sets" },
             {
               active: false,

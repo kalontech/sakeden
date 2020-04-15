@@ -1,7 +1,5 @@
 import React from "react"
-import { IoMdClose } from "react-icons/io"
-import { Box, Button, Container, Flex, Text } from "theme-ui"
-import createPersistedState from "use-persisted-state"
+import { Box, Container, Flex, Text } from "theme-ui"
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface BannerProps {}
@@ -17,7 +15,7 @@ const Banner: React.FC<BannerProps> = () => {
             justifyContent: "center",
           }}
         >
-          <Text sx={{ color: "white" }}>
+          <Text sx={{ color: "white", textAlign: "center" }}>
             Order HK$400 to enjoy FREE DELIVERY for all HK addresses
           </Text>
         </Flex>

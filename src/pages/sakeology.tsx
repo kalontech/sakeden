@@ -38,7 +38,7 @@ const BlogPostsPage: React.FC = () => {
 
   return (
     <>
-      <SEO title="Blog" />
+      <SEO title="Sakeology" />
       <Layout>
         <Heading
           as="h1"
@@ -46,7 +46,7 @@ const BlogPostsPage: React.FC = () => {
           sx={{ textTransform: "uppercase" }}
           variant="h1"
         >
-          Blog
+          Sakeology
         </Heading>
         <Grid columns={[1, 1, 3, 3]} gap="30px">
           {allContentfulBlogPost &&

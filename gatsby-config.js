@@ -16,12 +16,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // "gatsby-plugin-offline",
     "gatsby-transformer-sharp",
-    {
-      options: {
-        pixelId: "2553094571475972",
-      },
-      resolve: "gatsby-plugin-facebook-pixel",
-    },
+    // {
+    //   options: {
+    //     pixelId: "2553094571475972",
+    //   },
+    //   resolve: "gatsby-plugin-facebook-pixel",
+    // },
     {
       options: {
         icons: {
@@ -38,19 +38,19 @@ module.exports = {
       },
       resolve: "gatsby-plugin-favicon",
     },
-    {
-      options: {
-        trackingId: "UA-155073210-1",
-      },
-      resolve: "gatsby-plugin-google-analytics",
-    },
-    {
-      options: {
-        id: "1743525",
-        sv: "6",
-      },
-      resolve: "gatsby-plugin-hotjar",
-    },
+    // {
+    //   options: {
+    //     trackingId: "UA-155073210-1",
+    //   },
+    //   resolve: "gatsby-plugin-google-analytics",
+    // },
+    // {
+    //   options: {
+    //     id: "1743525",
+    //     sv: "6",
+    //   },
+    //   resolve: "gatsby-plugin-hotjar",
+    // },
     {
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
@@ -73,15 +73,15 @@ module.exports = {
       },
       resolve: "gatsby-plugin-manifest",
     },
-    {
-      options: {
-        dsn:
-          "https://d113865b5e104680a8095b280c8e2413@o138408.ingest.sentry.io/5196139",
-        enabled: (() => ["production"].includes(process.env.NODE_ENV))(),
-        environment: process.env.NODE_ENV,
-      },
-      resolve: "gatsby-plugin-sentry",
-    },
+    // {
+    //   options: {
+    //     dsn:
+    //       "https://d113865b5e104680a8095b280c8e2413@o138408.ingest.sentry.io/5196139",
+    //     enabled: (() => ["production"].includes(process.env.NODE_ENV))(),
+    //     environment: process.env.NODE_ENV,
+    //   },
+    //   resolve: "gatsby-plugin-sentry",
+    // },
     {
       options: {
         fonts: {
@@ -99,19 +99,10 @@ module.exports = {
     },
     {
       options: {
-        accessToken:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
-        host:
-          process.env.CONTEXT === "branch-deploy"
-            ? "preview.contentful.com"
-            : "cdn.contentful.com",
-        spaceId:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.CONTENTFUL_PREVIEW_SPACE_ID
-            : process.env.CONTENTFUL_SPACE_ID,
+        host: "cdn.contentful.com",
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
       },
       resolve: "gatsby-source-contentful",
     },
@@ -124,15 +115,9 @@ module.exports = {
     },
     {
       options: {
-        accessToken:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.SHOPIFY_PREVIEW_ACCESS_TOKEN
-            : process.env.SHOPIFY_ACCESS_TOKEN,
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
         apiVersion: "2020-01",
-        shopName:
-          process.env.CONTEXT === "branch-deploy"
-            ? process.env.SHOPIFY_PREVIEW_SHOP_NAME
-            : process.env.SHOPIFY_SHOP_NAME,
+        shopName: process.env.SHOPIFY_SHOP_NAME,
       },
       resolve: "gatsby-source-shopify",
     },

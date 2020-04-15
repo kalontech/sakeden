@@ -19,7 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.slug,
         },
-        path: `/blog-posts/${node.slug}`,
+        path: `/sakeology/${node.slug}`,
       })
     })
   })
@@ -42,8 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           slug: node.slug,
         },
-        // path: node.slug === "home" ? "/" : `/${node.slug}`,
-        path: node.slug,
+        path: node.slug === "home" ? "/" : `/${node.slug}`,
       })
     })
   })

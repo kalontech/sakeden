@@ -1,5 +1,5 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
-import { FixedObject } from "gatsby-image"
+import Image, { FixedObject } from "gatsby-image"
 import moment from "moment"
 import React from "react"
 import Markdown from "react-markdown"
@@ -19,7 +19,15 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   return (
     <>
-      <SEO title={contentfulBlogPost.title!} />
+      <SEO
+        description={
+          contentfulBlogPost.description
+            ? contentfulBlogPost.description.description!
+            : ""
+        }
+        image={`https:${contentfulBlogPost.image!.file!.url!}`}
+        title={contentfulBlogPost.title!}
+      />
       <Layout narrow>
         <Box mb={2}>
           <Box sx={{ display: ["none", "none", "block", "block"] }}>
@@ -33,7 +41,13 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             </Heading>
           </Box>
         </Box>
-        <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
+        <Flex
+          sx={{
+            alignItems: ["flex-start", "flex-start", "center", "center"],
+            flexDirection: ["column", "column", "row", "row"],
+            justifyContent: "space-between",
+          }}
+        >
           <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
           <Text>
             {moment(contentfulBlogPost.publishDate).format("MMMM DD, YYYY")}
@@ -140,6 +154,11 @@ export const query = graphql`
       }
       description {
         description
+      }
+      image {
+        file {
+          url
+        }
       }
       publishDate
       slug

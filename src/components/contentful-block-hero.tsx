@@ -13,13 +13,6 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
 }) => {
   return (
     <Box my={5}>
-      {picture && (
-        <Box sx={{ my: 4 }}>
-          <Parallax bgImage={picture.resize!.src!} strength={200}>
-            <div style={{ height: "400px" }} />
-          </Parallax>
-        </Box>
-      )}
       <Box sx={{ display: ["none", "none", "block", "block"] }}>
         <Heading as="h1" sx={{ textAlign: "center" }} variant="h1">
           {title}
@@ -30,8 +23,15 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
           {title}
         </Heading>
       </Box>
-      <Text sx={{ textAlign: "center" }}>{subtitle}</Text>
-      <Text sx={{ textAlign: "center" }}>{bottomText}</Text>
+      {picture && (
+        <Box sx={{ my: 4 }}>
+          <Parallax bgImage={picture.resize!.src!} strength={200}>
+            <div style={{ height: "400px" }} />
+          </Parallax>
+        </Box>
+      )}
+      <Text sx={{ py: 2, textAlign: "center" }}>{subtitle}</Text>
+      <Text sx={{ py: 2, textAlign: "center" }}>{bottomText}</Text>
     </Box>
   )
 }

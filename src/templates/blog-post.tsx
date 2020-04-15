@@ -1,4 +1,5 @@
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
+import { FixedObject } from "gatsby-image"
 import moment from "moment"
 import React from "react"
 import Markdown from "react-markdown"
@@ -38,83 +39,91 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             {moment(contentfulBlogPost.publishDate).format("MMMM DD, YYYY")}
           </Text>
         </Flex>
-        <Markdown
-          renderers={{
-            heading: ({ children, level }) => {
-              return (
-                <Heading
-                  as={`h${level + 1}` as "h2" | "h3" | "h4"}
-                  sx={{ mb: 3, mt: 4 }}
-                  variant={`h${level + 2}` as "h2" | "h3" | "h4"}
-                >
-                  {children}
-                </Heading>
-              )
-            },
-            html: ({ value }) => {
-              return (
-                <div
-                  dangerouslySetInnerHTML={{ __html: value }}
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "16px 0",
-                  }}
-                />
-              )
-            },
-            image: ({ alt, src }) => {
-              if (src.endsWith(".mp4")) {
+        {contentfulBlogPost.body && (
+          <Markdown
+            renderers={{
+              heading: ({ children, level }) => {
+                return (
+                  <Heading
+                    as={`h${level + 1}` as "h2" | "h3" | "h4"}
+                    sx={{ mb: 3, mt: 4 }}
+                    variant={`h${level + 2}` as "h2" | "h3" | "h4"}
+                  >
+                    {children}
+                  </Heading>
+                )
+              },
+              html: ({ value }) => {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{ __html: value }}
+                    style={{
+                      alignItems: "center",
+                      display: "flex",
+                      justifyContent: "center",
+                      margin: "16px 0",
+                    }}
+                  />
+                )
+              },
+              image: ({ alt, src }) => {
+                if (src.endsWith(".mp4")) {
+                  return (
+                    <Box sx={{ my: 4 }}>
+                      <Image
+                        fixed={{ src } as FixedObject}
+                        style={{ height: "60vh", width: "100%" }}
+                      />
+                      <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
+                        {alt}
+                      </Text>
+                    </Box>
+                  )
+                }
+
                 return (
                   <Box sx={{ my: 4 }}>
-                    <video controls style={{ width: "100%" }}>
-                      <source src={src} />
-                    </video>
+                    <Box sx={{ display: ["none", "none", "block", "block"] }}>
+                      <Parallax
+                        bgImage={src}
+                        bgImageAlt={alt}
+                        strength={100}
+                        style={{
+                          margin: "0 auto",
+                          width: src.endsWith("#half-width") ? "50%" : "100%",
+                        }}
+                      >
+                        <div style={{ height: "80vh" }} />
+                      </Parallax>
+                    </Box>
+                    <Box sx={{ display: ["block", "block", "none", "none"] }}>
+                      <Parallax
+                        bgImage={src}
+                        bgImageAlt={alt}
+                        strength={200}
+                        style={{
+                          width: "100%",
+                        }}
+                      >
+                        <div style={{ height: "80vh" }} />
+                      </Parallax>
+                    </Box>
+                    <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
+                      {alt}
+                    </Text>
                   </Box>
                 )
-              }
-
-              return (
-                <Box sx={{ my: 4 }}>
-                  <Box sx={{ display: ["none", "none", "block", "block"] }}>
-                    <Parallax
-                      bgImage={src}
-                      bgImageAlt={alt}
-                      strength={100}
-                      style={{
-                        margin: "0 auto",
-                        width: src.endsWith("#half-width") ? "50%" : "100%",
-                      }}
-                    >
-                      <div style={{ height: "80vh" }} />
-                    </Parallax>
-                  </Box>
-                  <Box sx={{ display: ["block", "block", "none", "none"] }}>
-                    <Parallax
-                      bgImage={src}
-                      bgImageAlt={alt}
-                      strength={200}
-                      style={{
-                        width: "100%",
-                      }}
-                    >
-                      <div style={{ height: "80vh" }} />
-                    </Parallax>
-                  </Box>
-                  <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>{alt}</Text>
-                </Box>
-              )
-            },
-            paragraph: ({ children }) => {
-              return <Text sx={{ my: 1 }}>{children}</Text>
-            },
-            root: ({ children }) => {
-              return <Box sx={{ my: 3 }}>{children}</Box>
-            },
-          }}
-          source={contentfulBlogPost.body!.body!}
-        />
+              },
+              paragraph: ({ children }) => {
+                return <Text sx={{ my: 1 }}>{children}</Text>
+              },
+              root: ({ children }) => {
+                return <Box sx={{ my: 3 }}>{children}</Box>
+              },
+            }}
+            source={contentfulBlogPost.body.body!}
+          />
+        )}
         <Box mt={4}>
           <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
         </Box>

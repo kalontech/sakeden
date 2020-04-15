@@ -437,7 +437,9 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               alignItems: "center",
               flex: 1,
               flexDirection: "column",
-              justifyContent: "flex-start",
+              justifyContent: shopifyProduct.images![1]!
+                ? "flex-start"
+                : "center",
               p: 1,
             }}
           >

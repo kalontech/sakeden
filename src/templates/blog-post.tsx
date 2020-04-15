@@ -81,7 +81,7 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     <Parallax
                       bgImage={src}
                       bgImageAlt={alt}
-                      strength={200}
+                      strength={100}
                       style={{
                         margin: "0 auto",
                         width: src.endsWith("#half-width") ? "50%" : "100%",

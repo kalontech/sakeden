@@ -1,5 +1,6 @@
 // @ts-ignore
 import addToMailchimp from "gatsby-plugin-mailchimp"
+import qs from "query-string"
 import { encode } from "querystring"
 import React, { useState } from "react"
 import { Box, Button, Flex, Heading, Input, Text, Textarea } from "theme-ui"
@@ -38,14 +39,11 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
         console.log(await addToMailchimp((formValues as any).EMAIL, formValues))
       }
       if (sendToNetlifyForms) {
-        await fetch("https://sakeden-v2.netlify.app/", {
-          body: encode({
-            ...formValues,
-            "form-name": title,
-          }),
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          method: "POST",
-        })
+        await fetch(
+          `${
+            process.env.FIREBASE_FUNCTIONS_PREFIX
+          }/emailFeedback?${qs.stringify(formValues)}`,
+        )
       }
       setIsSubmitted(true)
     } catch (err) {
@@ -144,7 +142,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
             <Box as="form" onSubmit={handleSubmit}>
               {contentfulfields &&
                 contentfulfields.map(contentfulfield =>
-                  renderContentfulfield(contentfulfield),
+                  renderContentfulfield(contentfulfield!),
                 )}
               <Button mt={4}>Submit</Button>
             </Box>

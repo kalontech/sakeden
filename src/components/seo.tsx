@@ -23,7 +23,7 @@ const SEO: React.FC<SEOProps> = ({
   lang = "en",
   meta = [],
   product,
-  title = "Sakeden Collection",
+  title = "SAKEDEN",
   withoutTitleSuffix,
 }) => {
   const { shopifyProduct, site } = useStaticQuery(

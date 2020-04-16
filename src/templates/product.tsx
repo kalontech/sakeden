@@ -130,7 +130,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   </InternalLink>
                   <Text sx={{ color: "gray", px: 3 }}>/</Text>
                   {shopifyProduct.tags!.includes("Bottles") && (
-                    <InternalLink href="/">
+                    <InternalLink href="/bottles">
                       <Text sx={{ color: "gray" }}>Bottles</Text>
                     </InternalLink>
                   )}
@@ -212,9 +212,14 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 <Text sx={{ fontStyle: "italic" }}>
                   Automatically renews every 3 month
                 </Text>
-                <Flex mt={2}>
+                <Flex
+                  sx={{
+                    flexDirection: ["column", "column", "row", "row"],
+                    mt: 2,
+                  }}
+                >
                   <Button
-                    sx={{ flex: 1, fontSize: "28px" }}
+                    sx={{ flex: ["none", "none", 1, 1], fontSize: "28px" }}
                     variant="secondary"
                   >
                     {getPriceFromVariants(
@@ -224,7 +229,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     )}
                   </Button>
                   <Box p={2} />
-                  <Button onClick={handleSubscribe} sx={{ flex: 1 }}>
+                  <Button
+                    onClick={handleSubscribe}
+                    sx={{ flex: ["none", "none", 1, 1] }}
+                  >
                     <Text>Subscribe</Text>
                   </Button>
                 </Flex>
@@ -267,9 +275,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     </Flex>
                   </Box>
                 )}
-                <Flex>
+                <Flex
+                  sx={{ flexDirection: ["column", "column", "row", "row"] }}
+                >
                   <Button
-                    sx={{ flex: 1, fontSize: "30px" }}
+                    sx={{ flex: ["none", "none", 1, 1], fontSize: "30px" }}
                     variant="secondary"
                   >
                     {shopifyProduct.availableForSale ? (
@@ -291,7 +301,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                         ? "primary"
                         : "primaryDisabled"
                     }
-                    sx={{ flex: 1 }}
+                    sx={{ flex: ["none", "none", 1, 1] }}
                   >
                     {justAddedToCart ? (
                       <Box mr={1}>

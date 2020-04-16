@@ -56,6 +56,9 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         {contentfulBlogPost.body && (
           <Markdown
             renderers={{
+              emphasis: ({ children }) => {
+                return <em style={{ marginRight: "4px" }}>{children}</em>
+              },
               heading: ({ children, level }) => {
                 return (
                   <Heading

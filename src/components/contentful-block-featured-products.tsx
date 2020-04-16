@@ -57,6 +57,7 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
   )
   const [featuredProducts, setFeaturedProducts] = useState<ShopifyProduct[]>([])
 
+  // This picks only featured products and sorts it according to the Contenful order.
   useEffect(() => {
     const selectedProducts: ShopifyProduct[] = []
 

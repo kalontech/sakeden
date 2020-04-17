@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { graphql, useStaticQuery } from "gatsby"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Box, Button, Grid, Heading } from "theme-ui"
 
 import {
@@ -53,10 +55,24 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
       }
     `,
   )
+  const [featuredProducts, setFeaturedProducts] = useState<ShopifyProduct[]>([])
 
-  const featuredProducts = allShopifyProduct.edges.filter(({ node }) => {
-    return products!.includes(node.handle!)
-  })
+  // This picks only featured products and sorts it according to the Contenful order.
+  useEffect(() => {
+    const selectedProducts: ShopifyProduct[] = []
+
+    for (const product of products || []) {
+      const foundProduct = allShopifyProduct.edges.find(({ node }) => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return node.handle! === product
+      })
+      if (foundProduct) {
+        selectedProducts.push(foundProduct.node as ShopifyProduct)
+      }
+    }
+
+    setFeaturedProducts(selectedProducts)
+  }, [allShopifyProduct])
 
   return (
     <Box my={5}>
@@ -64,13 +80,13 @@ const ContentfulBlockFeaturedProducts: React.FC<ContentfulBlockFeaturedProductsP
         {title}
       </Heading>
       <Grid columns={[1, 1, 3, 3]} gap="30px">
-        {featuredProducts.map(edge => {
-          return <ProductCard node={edge.node as ShopifyProduct} />
+        {featuredProducts.map(node => {
+          return <ProductCard node={node} />
         })}
       </Grid>
       <Box p={1} />
       <InternalLink href="/bottles">
-        <Button sx={{ mt: 4, mx: "auto" }}>View all collection</Button>
+        <Button sx={{ mt: 4, mx: "auto" }}>View collection</Button>
       </InternalLink>
     </Box>
   )

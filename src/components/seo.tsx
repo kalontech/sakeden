@@ -14,6 +14,7 @@ interface SEOProps {
   >[]
   product?: ShopifyProduct
   title: string
+  withoutTitleSuffix?: boolean
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -22,7 +23,8 @@ const SEO: React.FC<SEOProps> = ({
   lang = "en",
   meta = [],
   product,
-  title = "Sakeden Collection",
+  title = "SAKEDEN",
+  withoutTitleSuffix,
 }) => {
   const { shopifyProduct, site } = useStaticQuery(
     graphql`
@@ -149,7 +151,9 @@ const SEO: React.FC<SEOProps> = ({
         ...meta,
       ]}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={
+        withoutTitleSuffix ? `%s` : `%s | ${site.siteMetadata.title}`
+      }
     />
   )
 }

@@ -14,7 +14,10 @@ const PagePage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   return (
     <>
-      <SEO title={contentfulPage.title!} />
+      <SEO
+        title={contentfulPage.title!}
+        withoutTitleSuffix={contentfulPage.slug === "home"}
+      />
       <Layout>{blocks.map(renderContentfulBlock)}</Layout>
     </>
   )
@@ -39,6 +42,7 @@ export const query = graphql`
                 }
               }
             }
+            publishDate
             slug
             title
           }

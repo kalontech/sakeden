@@ -9317,7 +9317,7 @@ export type PageQuery = { contentfulPage?: Maybe<(
     & { blocks?: Maybe<Array<Maybe<(
       Pick<ContentfulBlockFeaturedBlogPosts, 'id' | 'title'>
       & { blogPosts?: Maybe<Array<Maybe<(
-        Pick<ContentfulBlogPost, 'createdAt' | 'slug' | 'title'>
+        Pick<ContentfulBlogPost, 'createdAt' | 'publishDate' | 'slug' | 'title'>
         & { description?: Maybe<Pick<ContentfulBlogPostDescriptionTextNode, 'description'>>, image?: Maybe<{ localFile?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }> }
       )>>> }
     ) | Pick<ContentfulBlockFeaturedProducts, 'id' | 'products' | 'title'> | (

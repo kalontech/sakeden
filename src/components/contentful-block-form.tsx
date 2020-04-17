@@ -107,9 +107,16 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
               justifyContent: "center",
             }}
           >
-            <Heading as="h1" variant="h1">
-              {extraTitle}
-            </Heading>
+            <Box sx={{ display: ["none", "none", "block", "block"] }}>
+              <Heading as="h1" variant="h1">
+                {extraTitle}
+              </Heading>
+            </Box>
+            <Box sx={{ display: ["block", "block", "none", "none"] }}>
+              <Heading as="h2" variant="h2">
+                {extraTitle}
+              </Heading>
+            </Box>
             <Text>{extraDescription.extraDescription}</Text>
             <Box p={1} />
             <Box mt={4}>

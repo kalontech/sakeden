@@ -5669,10 +5669,10 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection;
   shopifyProduct?: Maybe<ShopifyProduct>;
   allShopifyProduct: ShopifyProductConnection;
-  shopifyPage?: Maybe<ShopifyPage>;
-  allShopifyPage: ShopifyPageConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
+  shopifyPage?: Maybe<ShopifyPage>;
+  allShopifyPage: ShopifyPageConnection;
   shopifyBlog?: Maybe<ShopifyBlog>;
   allShopifyBlog: ShopifyBlogConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
@@ -5983,29 +5983,6 @@ export type QueryAllShopifyProductArgs = {
 };
 
 
-export type QueryShopifyPageArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  handle?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  bodySummary?: Maybe<StringQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyPageArgs = {
-  filter?: Maybe<ShopifyPageFilterInput>;
-  sort?: Maybe<ShopifyPageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6024,6 +6001,29 @@ export type QueryShopifyCollectionArgs = {
 export type QueryAllShopifyCollectionArgs = {
   filter?: Maybe<ShopifyCollectionFilterInput>;
   sort?: Maybe<ShopifyCollectionSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryShopifyPageArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  handle?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  body?: Maybe<StringQueryOperatorInput>;
+  bodySummary?: Maybe<StringQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyPageArgs = {
+  filter?: Maybe<ShopifyPageFilterInput>;
+  sort?: Maybe<ShopifyPageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -8706,6 +8706,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
+  'pluginCreator___pluginOptions___pixelId' |
   'pluginCreator___pluginOptions___icons___android' |
   'pluginCreator___pluginOptions___icons___appleIcon' |
   'pluginCreator___pluginOptions___icons___appleStartup' |
@@ -8715,6 +8716,9 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___icons___windows' |
   'pluginCreator___pluginOptions___icons___yandex' |
   'pluginCreator___pluginOptions___logo' |
+  'pluginCreator___pluginOptions___trackingId' |
+  'pluginCreator___pluginOptions___id' |
+  'pluginCreator___pluginOptions___sv' |
   'pluginCreator___pluginOptions___endpoint' |
   'pluginCreator___pluginOptions___background_color' |
   'pluginCreator___pluginOptions___display' |
@@ -8722,6 +8726,9 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___short_name' |
   'pluginCreator___pluginOptions___start_url' |
   'pluginCreator___pluginOptions___theme_color' |
+  'pluginCreator___pluginOptions___dsn' |
+  'pluginCreator___pluginOptions___enabled' |
+  'pluginCreator___pluginOptions___environment' |
   'pluginCreator___pluginOptions___fonts___google' |
   'pluginCreator___pluginOptions___accessToken' |
   'pluginCreator___pluginOptions___downloadLocal' |
@@ -8917,6 +8924,7 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
+  'pluginOptions___pixelId' |
   'pluginOptions___icons___android' |
   'pluginOptions___icons___appleIcon' |
   'pluginOptions___icons___appleStartup' |
@@ -8926,6 +8934,9 @@ export type SitePluginFieldsEnum =
   'pluginOptions___icons___windows' |
   'pluginOptions___icons___yandex' |
   'pluginOptions___logo' |
+  'pluginOptions___trackingId' |
+  'pluginOptions___id' |
+  'pluginOptions___sv' |
   'pluginOptions___endpoint' |
   'pluginOptions___background_color' |
   'pluginOptions___display' |
@@ -8933,6 +8944,9 @@ export type SitePluginFieldsEnum =
   'pluginOptions___short_name' |
   'pluginOptions___start_url' |
   'pluginOptions___theme_color' |
+  'pluginOptions___dsn' |
+  'pluginOptions___enabled' |
+  'pluginOptions___environment' |
   'pluginOptions___fonts___google' |
   'pluginOptions___fonts___google___family' |
   'pluginOptions___accessToken' |
@@ -9055,8 +9069,12 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  pixelId?: Maybe<Scalars['String']>;
   icons?: Maybe<SitePluginPluginOptionsIcons>;
   logo?: Maybe<Scalars['String']>;
+  trackingId?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  sv?: Maybe<Scalars['String']>;
   endpoint?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
   display?: Maybe<Scalars['String']>;
@@ -9064,6 +9082,9 @@ export type SitePluginPluginOptions = {
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   theme_color?: Maybe<Scalars['String']>;
+  dsn?: Maybe<Scalars['String']>;
+  enabled?: Maybe<Scalars['Boolean']>;
+  environment?: Maybe<Scalars['String']>;
   fonts?: Maybe<SitePluginPluginOptionsFonts>;
   accessToken?: Maybe<Scalars['String']>;
   downloadLocal?: Maybe<Scalars['Boolean']>;
@@ -9084,8 +9105,12 @@ export type SitePluginPluginOptionsApiVersionArgs = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  pixelId?: Maybe<StringQueryOperatorInput>;
   icons?: Maybe<SitePluginPluginOptionsIconsFilterInput>;
   logo?: Maybe<StringQueryOperatorInput>;
+  trackingId?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  sv?: Maybe<StringQueryOperatorInput>;
   endpoint?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
@@ -9093,6 +9118,9 @@ export type SitePluginPluginOptionsFilterInput = {
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   theme_color?: Maybe<StringQueryOperatorInput>;
+  dsn?: Maybe<StringQueryOperatorInput>;
+  enabled?: Maybe<BooleanQueryOperatorInput>;
+  environment?: Maybe<StringQueryOperatorInput>;
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
   accessToken?: Maybe<StringQueryOperatorInput>;
   downloadLocal?: Maybe<BooleanQueryOperatorInput>;

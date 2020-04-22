@@ -35,6 +35,9 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const [backgroundPosition, setBackgroundPosition] = useState("0% 0%")
   const [backgroundSize, setBackgroundSize] = useState("100% 100%")
   const [isZoomedIn, setIsZoomedIn] = useState(false)
+  const [currentVariant, setCurrentVariant] = useState<ShopifyProductVariant>(
+    shopifyProduct.variants![0]!,
+  )
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
@@ -54,23 +57,17 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   }, [shopifyProduct])
 
   const handleAddToCart = async (): Promise<void> => {
-    if (
-      shopifyProduct.variants &&
-      shopifyProduct.variants[0] &&
-      shopifyProduct.variants[0].shopifyId
-    ) {
-      addLineItems([
-        {
-          quantity: 1,
-          variantId: shopifyProduct.variants[0].shopifyId,
-        },
-      ])
+    addLineItems([
+      {
+        quantity: 1,
+        variantId: currentVariant.shopifyId,
+      },
+    ])
 
-      // Display success mark in the button.
-      setJustAddedToCart(true)
-      await wait(3000)
-      setJustAddedToCart(false)
-    }
+    // Display success mark in the button.
+    setJustAddedToCart(true)
+    await wait(3000)
+    setJustAddedToCart(false)
   }
 
   const handleNotifyRestocked = async (): Promise<void> => {
@@ -204,6 +201,27 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 />
               )}
             </Box>
+            {shopifyProduct.variants!.length >= 2 && (
+              <Flex mt={4}>
+                {shopifyProduct.variants!.map(variant => {
+                  return (
+                    <Button
+                      onClick={(): void => {
+                        setCurrentVariant(variant!)
+                      }}
+                      sx={{ mr: 2 }}
+                      variant={
+                        currentVariant.shopifyId === variant!.shopifyId
+                          ? "variantSelected"
+                          : "variantNotSelected"
+                      }
+                    >
+                      {variant!.title}
+                    </Button>
+                  )
+                })}
+              </Flex>
+            )}
             <Box mt={3}>
               <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
             </Box>
@@ -222,11 +240,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     sx={{ flex: ["none", "none", 1, 1], fontSize: "28px" }}
                     variant="secondary"
                   >
-                    {getPriceFromVariants(
-                      shopifyProduct.variants as ShopifyProductVariant[],
-                      0,
-                      3,
-                    )}
+                    {getPriceFromVariants([currentVariant], 0, 3)}
                   </Button>
                   <Box p={2} />
                   <Button
@@ -283,12 +297,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     variant="secondary"
                   >
                     {shopifyProduct.availableForSale ? (
-                      <Text>
-                        {getPriceFromVariants(
-                          shopifyProduct.variants as ShopifyProductVariant[],
-                          0,
-                        )}
-                      </Text>
+                      <Text>{getPriceFromVariants([currentVariant], 0)}</Text>
                     ) : (
                       <Text color="danger">Sold out</Text>
                     )}
@@ -475,10 +484,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               }}
               variant="h4"
             >
-              {getPriceFromVariants(
-                shopifyProduct.variants as ShopifyProductVariant[],
-                0,
-              )}
+              {getPriceFromVariants([currentVariant], 0)}
             </Heading>
           </Flex>
         </Flex>

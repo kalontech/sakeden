@@ -3,7 +3,7 @@ import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
 import { Box, Button, Flex, Heading, Text } from "theme-ui"
 
-import { ShopifyProduct, ShopifyProductVariant } from "../../graphql-types"
+import { ShopifyProduct } from "../../graphql-types"
 import AppContext from "../app-context"
 import { getPriceFromVariants, wait } from "../utils/helpers"
 import Card from "./card"
@@ -92,10 +92,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
         >
           {node.availableForSale ? (
             <Text variant="price">
-              {getPriceFromVariants(
-                node.variants as ShopifyProductVariant[],
-                0,
-              )}
+              {getPriceFromVariants([node.variants![0]!], 0)}
             </Text>
           ) : (
             <Text color="danger" variant="price">

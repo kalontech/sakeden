@@ -114,7 +114,9 @@ const CartPopup: React.FC = () => {
                   />
                   <Flex sx={{ flexDirection: "column" }}>
                     <Heading as="h5" variant="h5">
-                      {lineItem.title}
+                      {lineItem.title}{" "}
+                      {lineItem.variant.title !== "Default Title" &&
+                        lineItem.variant.title}
                     </Heading>
                     <Box sx={{ display: ["block", "block", "none", "none"] }}>
                       {renderQuantityEditor()}

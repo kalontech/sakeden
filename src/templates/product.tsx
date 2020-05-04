@@ -38,7 +38,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const [currentVariant, setCurrentVariant] = useState<ShopifyProductVariant>(
     shopifyProduct.variants![0]!,
   )
-  const scrollY = useScrollYPosition()
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
@@ -345,7 +344,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   position: "fixed",
                   right: ["0px", "0px", "0px", "0px"],
                   // Increase height when the Black Banner is not at the screen.
-                  top: scrollY > 94 ? "72px" : "164px",
+                  top: "164px",
                   transition: "top 100ms ease-in-out",
                 }}
               >

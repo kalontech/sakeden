@@ -1,3 +1,4 @@
+import { DiscussionEmbed } from "disqus-react"
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
 import moment from "moment"
@@ -143,6 +144,16 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         )}
         <Box mt={4}>
           <SocialBar shareUrl={shareUrl} title={contentfulBlogPost.title!} />
+        </Box>
+        <Box mt={4}>
+          <DiscussionEmbed
+            config={{
+              identifier: `sakeology/${contentfulBlogPost.slug!}`,
+              title: contentfulBlogPost.title!,
+              url: `https://sakeden.com/sakeology/${contentfulBlogPost.slug!}`,
+            }}
+            shortname={process.env.GATSBY_DISQUS_NAME!}
+          />
         </Box>
       </Layout>
     </>

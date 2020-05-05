@@ -20,6 +20,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
   title,
 }) => {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formValues, setFormValues] = useState({})
 
   const setFormValue = (fieldName: string, value: string) => {
@@ -34,7 +35,12 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
   ): Promise<void> => {
     e.preventDefault()
 
+    if (isSubmitting) {
+      return
+    }
+
     try {
+      setIsSubmitting(true)
       if (sendToMailchimp) {
         console.log(await addToMailchimp((formValues as any).EMAIL, formValues))
       }
@@ -48,6 +54,8 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
       setIsSubmitted(true)
     } catch (err) {
       console.error(err)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -151,7 +159,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
                 contentfulfields.map(contentfulfield =>
                   renderContentfulfield(contentfulfield!),
                 )}
-              <Button mt={4}>Submit</Button>
+              <Button mt={4}>{isSubmitting ? "Submitting" : "Submit"}</Button>
             </Box>
           </>
         )}

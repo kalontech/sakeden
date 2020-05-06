@@ -52,6 +52,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
         )
       }
       setIsSubmitted(true)
+      setFormValues({})
     } catch (err) {
       console.error(err)
     } finally {

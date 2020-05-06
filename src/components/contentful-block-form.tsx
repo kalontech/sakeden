@@ -52,10 +52,10 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
         )
       }
       setIsSubmitted(true)
-      setFormValues({})
     } catch (err) {
       console.error(err)
     } finally {
+      setIsSubmitted(true)
       setIsSubmitting(false)
     }
   }
@@ -98,6 +98,8 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
       </>
     )
   }
+
+  console.log(successTitle, successDescription)
 
   return (
     <Flex

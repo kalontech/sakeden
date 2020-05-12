@@ -1281,21 +1281,21 @@ export type ContentfulBlockForm = Node & {
   sendToMailchimp?: Maybe<Scalars['Boolean']>;
   sendToNetlifyForms?: Maybe<Scalars['Boolean']>;
   successTitle?: Maybe<Scalars['String']>;
-  extraTitle?: Maybe<Scalars['String']>;
   contentfulfields?: Maybe<Array<Maybe<Scalars['String']>>>;
   page?: Maybe<Array<Maybe<ContentfulPage>>>;
+  description?: Maybe<ContentfulBlockFormDescriptionTextNode>;
   successDescription?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>;
-  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulBlockFormSys>;
   node_locale?: Maybe<Scalars['String']>;
-  description?: Maybe<ContentfulBlockFormDescriptionTextNode>;
+  extraTitle?: Maybe<Scalars['String']>;
+  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>;
+  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNode>;
   childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>;
   childContentfulBlockFormExtraDescriptionTextNode?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>;
-  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNode>;
 };
 
 
@@ -1724,7 +1724,6 @@ export type ContentfulBlockFormFieldsEnum =
   'sendToMailchimp' |
   'sendToNetlifyForms' |
   'successTitle' |
-  'extraTitle' |
   'contentfulfields' |
   'page' |
   'page___id' |
@@ -1773,94 +1772,6 @@ export type ContentfulBlockFormFieldsEnum =
   'page___updatedAt' |
   'page___sys___revision' |
   'page___node_locale' |
-  'successDescription___id' |
-  'successDescription___parent___id' |
-  'successDescription___parent___parent___id' |
-  'successDescription___parent___parent___children' |
-  'successDescription___parent___children' |
-  'successDescription___parent___children___id' |
-  'successDescription___parent___children___children' |
-  'successDescription___parent___internal___content' |
-  'successDescription___parent___internal___contentDigest' |
-  'successDescription___parent___internal___description' |
-  'successDescription___parent___internal___fieldOwners' |
-  'successDescription___parent___internal___ignoreType' |
-  'successDescription___parent___internal___mediaType' |
-  'successDescription___parent___internal___owner' |
-  'successDescription___parent___internal___type' |
-  'successDescription___children' |
-  'successDescription___children___id' |
-  'successDescription___children___parent___id' |
-  'successDescription___children___parent___children' |
-  'successDescription___children___children' |
-  'successDescription___children___children___id' |
-  'successDescription___children___children___children' |
-  'successDescription___children___internal___content' |
-  'successDescription___children___internal___contentDigest' |
-  'successDescription___children___internal___description' |
-  'successDescription___children___internal___fieldOwners' |
-  'successDescription___children___internal___ignoreType' |
-  'successDescription___children___internal___mediaType' |
-  'successDescription___children___internal___owner' |
-  'successDescription___children___internal___type' |
-  'successDescription___internal___content' |
-  'successDescription___internal___contentDigest' |
-  'successDescription___internal___description' |
-  'successDescription___internal___fieldOwners' |
-  'successDescription___internal___ignoreType' |
-  'successDescription___internal___mediaType' |
-  'successDescription___internal___owner' |
-  'successDescription___internal___type' |
-  'successDescription___successDescription' |
-  'extraDescription___id' |
-  'extraDescription___parent___id' |
-  'extraDescription___parent___parent___id' |
-  'extraDescription___parent___parent___children' |
-  'extraDescription___parent___children' |
-  'extraDescription___parent___children___id' |
-  'extraDescription___parent___children___children' |
-  'extraDescription___parent___internal___content' |
-  'extraDescription___parent___internal___contentDigest' |
-  'extraDescription___parent___internal___description' |
-  'extraDescription___parent___internal___fieldOwners' |
-  'extraDescription___parent___internal___ignoreType' |
-  'extraDescription___parent___internal___mediaType' |
-  'extraDescription___parent___internal___owner' |
-  'extraDescription___parent___internal___type' |
-  'extraDescription___children' |
-  'extraDescription___children___id' |
-  'extraDescription___children___parent___id' |
-  'extraDescription___children___parent___children' |
-  'extraDescription___children___children' |
-  'extraDescription___children___children___id' |
-  'extraDescription___children___children___children' |
-  'extraDescription___children___internal___content' |
-  'extraDescription___children___internal___contentDigest' |
-  'extraDescription___children___internal___description' |
-  'extraDescription___children___internal___fieldOwners' |
-  'extraDescription___children___internal___ignoreType' |
-  'extraDescription___children___internal___mediaType' |
-  'extraDescription___children___internal___owner' |
-  'extraDescription___children___internal___type' |
-  'extraDescription___internal___content' |
-  'extraDescription___internal___contentDigest' |
-  'extraDescription___internal___description' |
-  'extraDescription___internal___fieldOwners' |
-  'extraDescription___internal___ignoreType' |
-  'extraDescription___internal___mediaType' |
-  'extraDescription___internal___owner' |
-  'extraDescription___internal___type' |
-  'extraDescription___extraDescription' |
-  'spaceId' |
-  'contentful_id' |
-  'createdAt' |
-  'updatedAt' |
-  'sys___revision' |
-  'sys___contentType___sys___type' |
-  'sys___contentType___sys___linkType' |
-  'sys___contentType___sys___id' |
-  'sys___contentType___sys___contentful_id' |
-  'node_locale' |
   'description___id' |
   'description___parent___id' |
   'description___parent___parent___id' |
@@ -1900,6 +1811,134 @@ export type ContentfulBlockFormFieldsEnum =
   'description___internal___owner' |
   'description___internal___type' |
   'description___description' |
+  'successDescription___id' |
+  'successDescription___parent___id' |
+  'successDescription___parent___parent___id' |
+  'successDescription___parent___parent___children' |
+  'successDescription___parent___children' |
+  'successDescription___parent___children___id' |
+  'successDescription___parent___children___children' |
+  'successDescription___parent___internal___content' |
+  'successDescription___parent___internal___contentDigest' |
+  'successDescription___parent___internal___description' |
+  'successDescription___parent___internal___fieldOwners' |
+  'successDescription___parent___internal___ignoreType' |
+  'successDescription___parent___internal___mediaType' |
+  'successDescription___parent___internal___owner' |
+  'successDescription___parent___internal___type' |
+  'successDescription___children' |
+  'successDescription___children___id' |
+  'successDescription___children___parent___id' |
+  'successDescription___children___parent___children' |
+  'successDescription___children___children' |
+  'successDescription___children___children___id' |
+  'successDescription___children___children___children' |
+  'successDescription___children___internal___content' |
+  'successDescription___children___internal___contentDigest' |
+  'successDescription___children___internal___description' |
+  'successDescription___children___internal___fieldOwners' |
+  'successDescription___children___internal___ignoreType' |
+  'successDescription___children___internal___mediaType' |
+  'successDescription___children___internal___owner' |
+  'successDescription___children___internal___type' |
+  'successDescription___internal___content' |
+  'successDescription___internal___contentDigest' |
+  'successDescription___internal___description' |
+  'successDescription___internal___fieldOwners' |
+  'successDescription___internal___ignoreType' |
+  'successDescription___internal___mediaType' |
+  'successDescription___internal___owner' |
+  'successDescription___internal___type' |
+  'successDescription___successDescription' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale' |
+  'extraTitle' |
+  'extraDescription___id' |
+  'extraDescription___parent___id' |
+  'extraDescription___parent___parent___id' |
+  'extraDescription___parent___parent___children' |
+  'extraDescription___parent___children' |
+  'extraDescription___parent___children___id' |
+  'extraDescription___parent___children___children' |
+  'extraDescription___parent___internal___content' |
+  'extraDescription___parent___internal___contentDigest' |
+  'extraDescription___parent___internal___description' |
+  'extraDescription___parent___internal___fieldOwners' |
+  'extraDescription___parent___internal___ignoreType' |
+  'extraDescription___parent___internal___mediaType' |
+  'extraDescription___parent___internal___owner' |
+  'extraDescription___parent___internal___type' |
+  'extraDescription___children' |
+  'extraDescription___children___id' |
+  'extraDescription___children___parent___id' |
+  'extraDescription___children___parent___children' |
+  'extraDescription___children___children' |
+  'extraDescription___children___children___id' |
+  'extraDescription___children___children___children' |
+  'extraDescription___children___internal___content' |
+  'extraDescription___children___internal___contentDigest' |
+  'extraDescription___children___internal___description' |
+  'extraDescription___children___internal___fieldOwners' |
+  'extraDescription___children___internal___ignoreType' |
+  'extraDescription___children___internal___mediaType' |
+  'extraDescription___children___internal___owner' |
+  'extraDescription___children___internal___type' |
+  'extraDescription___internal___content' |
+  'extraDescription___internal___contentDigest' |
+  'extraDescription___internal___description' |
+  'extraDescription___internal___fieldOwners' |
+  'extraDescription___internal___ignoreType' |
+  'extraDescription___internal___mediaType' |
+  'extraDescription___internal___owner' |
+  'extraDescription___internal___type' |
+  'extraDescription___extraDescription' |
+  'childContentfulBlockFormDescriptionTextNode___id' |
+  'childContentfulBlockFormDescriptionTextNode___parent___id' |
+  'childContentfulBlockFormDescriptionTextNode___parent___parent___id' |
+  'childContentfulBlockFormDescriptionTextNode___parent___parent___children' |
+  'childContentfulBlockFormDescriptionTextNode___parent___children' |
+  'childContentfulBlockFormDescriptionTextNode___parent___children___id' |
+  'childContentfulBlockFormDescriptionTextNode___parent___children___children' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___content' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___contentDigest' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___description' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___fieldOwners' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___ignoreType' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___mediaType' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___owner' |
+  'childContentfulBlockFormDescriptionTextNode___parent___internal___type' |
+  'childContentfulBlockFormDescriptionTextNode___children' |
+  'childContentfulBlockFormDescriptionTextNode___children___id' |
+  'childContentfulBlockFormDescriptionTextNode___children___parent___id' |
+  'childContentfulBlockFormDescriptionTextNode___children___parent___children' |
+  'childContentfulBlockFormDescriptionTextNode___children___children' |
+  'childContentfulBlockFormDescriptionTextNode___children___children___id' |
+  'childContentfulBlockFormDescriptionTextNode___children___children___children' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___content' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___contentDigest' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___description' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___fieldOwners' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___ignoreType' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___mediaType' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___owner' |
+  'childContentfulBlockFormDescriptionTextNode___children___internal___type' |
+  'childContentfulBlockFormDescriptionTextNode___internal___content' |
+  'childContentfulBlockFormDescriptionTextNode___internal___contentDigest' |
+  'childContentfulBlockFormDescriptionTextNode___internal___description' |
+  'childContentfulBlockFormDescriptionTextNode___internal___fieldOwners' |
+  'childContentfulBlockFormDescriptionTextNode___internal___ignoreType' |
+  'childContentfulBlockFormDescriptionTextNode___internal___mediaType' |
+  'childContentfulBlockFormDescriptionTextNode___internal___owner' |
+  'childContentfulBlockFormDescriptionTextNode___internal___type' |
+  'childContentfulBlockFormDescriptionTextNode___description' |
   'childContentfulBlockFormSuccessDescriptionTextNode___id' |
   'childContentfulBlockFormSuccessDescriptionTextNode___parent___id' |
   'childContentfulBlockFormSuccessDescriptionTextNode___parent___parent___id' |
@@ -1977,46 +2016,7 @@ export type ContentfulBlockFormFieldsEnum =
   'childContentfulBlockFormExtraDescriptionTextNode___internal___mediaType' |
   'childContentfulBlockFormExtraDescriptionTextNode___internal___owner' |
   'childContentfulBlockFormExtraDescriptionTextNode___internal___type' |
-  'childContentfulBlockFormExtraDescriptionTextNode___extraDescription' |
-  'childContentfulBlockFormDescriptionTextNode___id' |
-  'childContentfulBlockFormDescriptionTextNode___parent___id' |
-  'childContentfulBlockFormDescriptionTextNode___parent___parent___id' |
-  'childContentfulBlockFormDescriptionTextNode___parent___parent___children' |
-  'childContentfulBlockFormDescriptionTextNode___parent___children' |
-  'childContentfulBlockFormDescriptionTextNode___parent___children___id' |
-  'childContentfulBlockFormDescriptionTextNode___parent___children___children' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___content' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___contentDigest' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___description' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___fieldOwners' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___ignoreType' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___mediaType' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___owner' |
-  'childContentfulBlockFormDescriptionTextNode___parent___internal___type' |
-  'childContentfulBlockFormDescriptionTextNode___children' |
-  'childContentfulBlockFormDescriptionTextNode___children___id' |
-  'childContentfulBlockFormDescriptionTextNode___children___parent___id' |
-  'childContentfulBlockFormDescriptionTextNode___children___parent___children' |
-  'childContentfulBlockFormDescriptionTextNode___children___children' |
-  'childContentfulBlockFormDescriptionTextNode___children___children___id' |
-  'childContentfulBlockFormDescriptionTextNode___children___children___children' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___content' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___contentDigest' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___description' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___fieldOwners' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___ignoreType' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___mediaType' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___owner' |
-  'childContentfulBlockFormDescriptionTextNode___children___internal___type' |
-  'childContentfulBlockFormDescriptionTextNode___internal___content' |
-  'childContentfulBlockFormDescriptionTextNode___internal___contentDigest' |
-  'childContentfulBlockFormDescriptionTextNode___internal___description' |
-  'childContentfulBlockFormDescriptionTextNode___internal___fieldOwners' |
-  'childContentfulBlockFormDescriptionTextNode___internal___ignoreType' |
-  'childContentfulBlockFormDescriptionTextNode___internal___mediaType' |
-  'childContentfulBlockFormDescriptionTextNode___internal___owner' |
-  'childContentfulBlockFormDescriptionTextNode___internal___type' |
-  'childContentfulBlockFormDescriptionTextNode___description';
+  'childContentfulBlockFormExtraDescriptionTextNode___extraDescription';
 
 export type ContentfulBlockFormFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2027,21 +2027,21 @@ export type ContentfulBlockFormFilterInput = {
   sendToMailchimp?: Maybe<BooleanQueryOperatorInput>;
   sendToNetlifyForms?: Maybe<BooleanQueryOperatorInput>;
   successTitle?: Maybe<StringQueryOperatorInput>;
-  extraTitle?: Maybe<StringQueryOperatorInput>;
   contentfulfields?: Maybe<StringQueryOperatorInput>;
   page?: Maybe<ContentfulPageFilterListInput>;
+  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
   successDescription?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFilterInput>;
-  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulBlockFormSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
+  extraTitle?: Maybe<StringQueryOperatorInput>;
+  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
+  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
   childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFilterInput>;
   childContentfulBlockFormExtraDescriptionTextNode?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
-  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
 };
 
 export type ContentfulBlockFormGroupConnection = {
@@ -5661,10 +5661,10 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
-  shopifyProductMetafield?: Maybe<ShopifyProductMetafield>;
-  allShopifyProductMetafield: ShopifyProductMetafieldConnection;
   shopifyProductOption?: Maybe<ShopifyProductOption>;
   allShopifyProductOption: ShopifyProductOptionConnection;
+  shopifyProductMetafield?: Maybe<ShopifyProductMetafield>;
+  allShopifyProductMetafield: ShopifyProductMetafieldConnection;
   shopifyProductVariant?: Maybe<ShopifyProductVariant>;
   allShopifyProductVariant: ShopifyProductVariantConnection;
   shopifyProduct?: Maybe<ShopifyProduct>;
@@ -5677,12 +5677,12 @@ export type Query = {
   allShopifyBlog: ShopifyBlogConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
-  contentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNode>;
-  allContentfulBlockFormDescriptionTextNode: ContentfulBlockFormDescriptionTextNodeConnection;
   contentfulBlockFormExtraDescriptionTextNode?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>;
   allContentfulBlockFormExtraDescriptionTextNode: ContentfulBlockFormExtraDescriptionTextNodeConnection;
   contentfulBlockFormSuccessDescriptionTextNode?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>;
   allContentfulBlockFormSuccessDescriptionTextNode: ContentfulBlockFormSuccessDescriptionTextNodeConnection;
+  contentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNode>;
+  allContentfulBlockFormDescriptionTextNode: ContentfulBlockFormDescriptionTextNodeConnection;
   contentfulBlockForm?: Maybe<ContentfulBlockForm>;
   allContentfulBlockForm: ContentfulBlockFormConnection;
   contentfulBlockFeaturedProducts?: Maybe<ContentfulBlockFeaturedProducts>;
@@ -5881,6 +5881,25 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryShopifyProductOptionArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  values?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyProductOptionArgs = {
+  filter?: Maybe<ShopifyProductOptionFilterInput>;
+  sort?: Maybe<ShopifyProductOptionSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryShopifyProductMetafieldArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -5897,25 +5916,6 @@ export type QueryShopifyProductMetafieldArgs = {
 export type QueryAllShopifyProductMetafieldArgs = {
   filter?: Maybe<ShopifyProductMetafieldFilterInput>;
   sort?: Maybe<ShopifyProductMetafieldSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShopifyProductOptionArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  values?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyProductOptionArgs = {
-  filter?: Maybe<ShopifyProductOptionFilterInput>;
-  sort?: Maybe<ShopifyProductOptionSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -6075,23 +6075,6 @@ export type QueryAllContentfulAssetArgs = {
 };
 
 
-export type QueryContentfulBlockFormDescriptionTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllContentfulBlockFormDescriptionTextNodeArgs = {
-  filter?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
-  sort?: Maybe<ContentfulBlockFormDescriptionTextNodeSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryContentfulBlockFormExtraDescriptionTextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6126,6 +6109,23 @@ export type QueryAllContentfulBlockFormSuccessDescriptionTextNodeArgs = {
 };
 
 
+export type QueryContentfulBlockFormDescriptionTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulBlockFormDescriptionTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
+  sort?: Maybe<ContentfulBlockFormDescriptionTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulBlockFormArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6135,21 +6135,21 @@ export type QueryContentfulBlockFormArgs = {
   sendToMailchimp?: Maybe<BooleanQueryOperatorInput>;
   sendToNetlifyForms?: Maybe<BooleanQueryOperatorInput>;
   successTitle?: Maybe<StringQueryOperatorInput>;
-  extraTitle?: Maybe<StringQueryOperatorInput>;
   contentfulfields?: Maybe<StringQueryOperatorInput>;
   page?: Maybe<ContentfulPageFilterListInput>;
+  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
   successDescription?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFilterInput>;
-  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulBlockFormSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
+  extraTitle?: Maybe<StringQueryOperatorInput>;
+  extraDescription?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
+  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
   childContentfulBlockFormSuccessDescriptionTextNode?: Maybe<ContentfulBlockFormSuccessDescriptionTextNodeFilterInput>;
   childContentfulBlockFormExtraDescriptionTextNode?: Maybe<ContentfulBlockFormExtraDescriptionTextNodeFilterInput>;
-  childContentfulBlockFormDescriptionTextNode?: Maybe<ContentfulBlockFormDescriptionTextNodeFilterInput>;
 };
 
 

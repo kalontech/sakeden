@@ -99,8 +99,6 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
     )
   }
 
-  console.log(successTitle, successDescription)
-
   return (
     <Flex
       sx={{

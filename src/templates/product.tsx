@@ -27,7 +27,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const shopifyProduct = data.shopifyProduct as ShopifyProduct
 
-  const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
+  const {
+    addLineItems,
+    setIsSubscribeVisible,
+    setSubscriptionProduct,
+  } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
   const [isSubscribed, setIsSubcribed] = useState(false)
   const [isSubscribing, setIsSubcribing] = useState(false)
@@ -38,12 +42,38 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const [currentVariant, setCurrentVariant] = useState<ShopifyProductVariant>(
     shopifyProduct.variants![0]!,
   )
+  const [subscriptionInterval, setSubscriptionInterval] = useState("bi-weekly")
+  const [subscriptionType, setSubscriptionType] = useState("premium")
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
 
   // Build URL that will be shared in social networks.
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
+
+  const currentSubscriptionProduct = data.allShopifyProduct.edges.find(edge => {
+    return (
+      edge.node.handle?.includes(subscriptionInterval) &&
+      edge.node.handle.includes(subscriptionType)
+    )
+  })
+
+  useEffect(() => {
+    const subcriptionProduct = data.allShopifyProduct.edges.find(edge => {
+      return (
+        edge.node.handle?.includes(subscriptionInterval) &&
+        edge.node.handle.includes(subscriptionType)
+      )
+    })
+    if (subcriptionProduct) {
+      setSubscriptionProduct(subcriptionProduct.node!.handle!)
+    }
+  }, [
+    data.allShopifyProduct.edges,
+    setSubscriptionProduct,
+    subscriptionInterval,
+    subscriptionType,
+  ])
 
   // Determine backrgound size in order to get correct zoom level on hover.
   useEffect(() => {
@@ -222,14 +252,71 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 })}
               </Flex>
             )}
+            {isSubscription && (
+              <>
+                <Flex mt={4}>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionType("regular")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionType === "regular"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Regular
+                  </Button>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionType("premium")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionType === "premium"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Premium
+                  </Button>
+                </Flex>
+                <Flex mt={2}>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionInterval("bi-weekly")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionInterval === "bi-weekly"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Bi-weekly
+                  </Button>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionInterval("monthly")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionInterval === "monthly"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Monthly
+                  </Button>
+                </Flex>
+              </>
+            )}
             <Box mt={3}>
               <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
             </Box>
-            {isSubscription ? (
+            {isSubscription && currentSubscriptionProduct ? (
               <Box mt={2}>
-                <Text sx={{ fontStyle: "italic" }}>
-                  Automatically renews every 3 month
-                </Text>
                 <Flex
                   sx={{
                     flexDirection: ["column", "column", "row", "row"],
@@ -240,7 +327,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     sx={{ flex: ["none", "none", 1, 1], fontSize: "28px" }}
                     variant="secondary"
                   >
-                    {getPriceFromVariants([currentVariant], 0, 3)}
+                    {getPriceFromVariants(
+                      [currentSubscriptionProduct.node!.variants![0]!] as any,
+                      0,
+                      1,
+                    )}
                   </Button>
                   <Box p={2} />
                   <Button
@@ -508,6 +599,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
 export const query = graphql`
   query Product($handle: String!) {
+    allShopifyProduct(filter: { title: { regex: "/Sub/" } }) {
+      edges {
+        node {
+          handle
+          title
+          variants {
+            priceV2 {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
     shopifyProduct(handle: { eq: $handle }) {
       availableForSale
       description

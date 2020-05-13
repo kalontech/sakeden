@@ -29,6 +29,8 @@ export interface AppContextProps {
   setIsMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsSubscribeVisible: React.Dispatch<React.SetStateAction<boolean>>
   setIsWelcomeVisible: React.Dispatch<React.SetStateAction<boolean>>
+  setSubscriptionProduct: React.Dispatch<React.SetStateAction<string>>
+  subscriptionProduct: string
   updateLineItems: (lineItemsToUpdate: any[]) => Promise<void>
 }
 
@@ -51,6 +53,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   const [isMenuVisible, setIsMenuVisible] = useState(false)
   const [isSubscribeVisible, setIsSubscribeVisible] = useState(false)
   const [isWelcomeVisible, setIsWelcomeVisible] = useIsWelcomeVisible(true)
+  const [subscriptionProduct, setSubscriptionProduct] = useState("")
 
   useEffect(() => {
     fetchCheckout()
@@ -124,6 +127,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
         setIsMenuVisible,
         setIsSubscribeVisible,
         setIsWelcomeVisible,
+        setSubscriptionProduct,
+        subscriptionProduct,
         updateLineItems,
       }}
     >

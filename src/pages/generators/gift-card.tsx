@@ -7,7 +7,12 @@ const GiftCard: React.FC = () => {
 
   return (
     <Flex
-      sx={{ alignItems: "center", height: "100vh", justifyContent: "center" }}
+      sx={{
+        alignItems: "center",
+        height: "100vh",
+        justifyContent: "center",
+        whiteSpace: "pre-line",
+      }}
     >
       {wish as string}
     </Flex>

@@ -74,8 +74,12 @@ export const query = graphql`
         ... on ContentfulBlockHero {
           id
           picture {
-            resize(width: 1920) {
-              src
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1440) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
           pictureText {

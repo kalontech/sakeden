@@ -7,7 +7,7 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 
 import AppContext from "../app-context"
 
-const getDeliveryTime = (): Date => {
+export const getDeliveryTime = (): Date => {
   const deliveryTime = new Date()
   deliveryTime.setDate(deliveryTime.getDate() + 1)
   if (deliveryTime.getHours() >= 18) {
@@ -18,7 +18,7 @@ const getDeliveryTime = (): Date => {
 
 const CheckoutPopup: React.FC = () => {
   const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
-  const [deliveryDate, setDeliveryDate] = useState<Date | undefined>(undefined)
+  const [deliveryDate, setDeliveryDate] = useState<Date>(getDeliveryTime())
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
@@ -159,7 +159,7 @@ const CheckoutPopup: React.FC = () => {
             <Text sx={{ color: "danger" }}>Wrong discount code</Text>
           )}
           <Heading as="h5" mb={2} mt={3} variant="h5">
-            Additional notes
+            Notes for delivery
           </Heading>
           <Textarea
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -169,7 +169,7 @@ const CheckoutPopup: React.FC = () => {
             value={additionalNotes}
           ></Textarea>
           <Heading as="h5" mb={2} mt={3} variant="h5">
-            Include gift card
+            Include Gift Card Message
           </Heading>
           <Textarea
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -192,18 +192,9 @@ const CheckoutPopup: React.FC = () => {
         </Button>
         <Box p={2} />
         <Button
-          disabled={
-            !(
-              deliveryDate &&
-              (discountCode.length === 0 || isValidDiscountCode)
-            )
-          }
+          disabled={!deliveryDate}
           onClick={handleCheckout}
-          variant={
-            deliveryDate && (discountCode.length === 0 || isValidDiscountCode)
-              ? "primary"
-              : "primaryDisabled"
-          }
+          variant={deliveryDate ? "primary" : "primaryDisabled"}
           sx={{ flex: 1 }}
         >
           {isUpdatingAttributes ? "Loading..." : "Checkout"}

@@ -7,7 +7,7 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 
 import AppContext from "../app-context"
 
-const getDeliveryTime = (): Date => {
+export const getDeliveryTime = (): Date => {
   const deliveryTime = new Date()
   deliveryTime.setDate(deliveryTime.getDate() + 1)
   if (deliveryTime.getHours() >= 18) {

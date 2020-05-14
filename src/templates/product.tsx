@@ -66,7 +66,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
       )
     })
     if (subcriptionProduct) {
-      setSubscriptionProduct(subcriptionProduct.node!.handle!)
+      setSubscriptionProduct(subcriptionProduct.node.handle!)
     }
   }, [
     data.allShopifyProduct.edges,
@@ -74,17 +74,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     subscriptionInterval,
     subscriptionType,
   ])
-
-  // Determine backrgound size in order to get correct zoom level on hover.
-  useEffect(() => {
-    const image = new Image()
-    image.addEventListener("load", function(this: any) {
-      setBackgroundSize(
-        `${this.naturalWidth / 2}px ${this.naturalHeight / 2}px`,
-      )
-    })
-    image.src = shopifyProduct.images![0]!.originalSrc!
-  }, [shopifyProduct])
 
   const handleAddToCart = async (): Promise<void> => {
     addLineItems([
@@ -328,7 +317,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     variant="secondary"
                   >
                     {getPriceFromVariants(
-                      [currentSubscriptionProduct.node!.variants![0]!] as any,
+                      [currentSubscriptionProduct.node.variants![0]!] as any,
                       0,
                       1,
                     )}
@@ -569,7 +558,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
 export const query = graphql`
   query Product($handle: String!) {
-    allShopifyProduct(filter: { title: { regex: "/Sub/" } }) {
+    allShopifyProduct(filter: { title: { regex: "/Auto renew/" } }) {
       edges {
         node {
           handle

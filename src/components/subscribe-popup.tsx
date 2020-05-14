@@ -12,21 +12,21 @@ import AppContext from "../app-context"
 import { getDeliveryTime } from "./checkout-popup"
 
 const config = {
-  "sakeden-sub-club-bi-weekly-premium": {
+  "sakeden-sub-club-bi-weekly-premium-1": {
     subscriptionId: "249318",
-    variantId: "32832272957528",
+    variantId: "32832307593304",
   },
-  "sakeden-sub-club-monthly-premium": {
+  "sakeden-sub-club-monthly-premium-1": {
     subscriptionId: "249319",
-    variantId: "32832283279448",
+    variantId: "32832312410200",
   },
-  "sakeden-sub-club-monthly-regular": {
+  "sakeden-sub-club-monthly-regular-1": {
     subscriptionId: "249319",
-    variantId: "32832279478360",
+    variantId: "32832312377432",
   },
-  "sakeden-sub-club-regular-bi-weekly": {
+  "sakeden-sub-club-regular-bi-weekly-1": {
     subscriptionId: "249318",
-    variantId: "32832270434392",
+    variantId: "32832307626072",
   },
 }
 

@@ -13,18 +13,34 @@ import { getDeliveryTime } from "./checkout-popup"
 
 const config = {
   "sakeden-sub-club-bi-weekly-premium-1": {
+    chargeIntervalFrequency: "4",
+    chargeIntervalUnitType: "Weeks",
+    shippingIntervalFrequency: "2",
+    shippingIntervalUnitType: "Weeks",
     subscriptionId: "249318",
     variantId: "32832307593304",
   },
   "sakeden-sub-club-monthly-premium-1": {
+    chargeIntervalFrequency: "1",
+    chargeIntervalUnitType: "Months",
+    shippingIntervalFrequency: "1",
+    shippingIntervalUnitType: "Months",
     subscriptionId: "249319",
     variantId: "32832312410200",
   },
   "sakeden-sub-club-monthly-regular-1": {
+    chargeIntervalFrequency: "1",
+    chargeIntervalUnitType: "Months",
+    shippingIntervalFrequency: "1",
+    shippingIntervalUnitType: "Months",
     subscriptionId: "249319",
     variantId: "32832312377432",
   },
   "sakeden-sub-club-regular-bi-weekly-1": {
+    chargeIntervalFrequency: "4",
+    chargeIntervalUnitType: "Weeks",
+    shippingIntervalFrequency: "2",
+    shippingIntervalUnitType: "Weeks",
     subscriptionId: "249318",
     variantId: "32832307626072",
   },
@@ -43,10 +59,14 @@ const SubscribePopup: React.FC = () => {
       // @ts-ignore
       const cc = config[subscriptionProduct]
       const q = qs.stringify({
+        charge_interval_frequency: cc.chargeIntervalFrequency,
+        charge_interval_unit_type: cc.chargeIntervalUnitType,
         delivery_day: moment(deliveryDay).format("YYYY-MM-DD"),
         gift_card_note: giftCardNote,
         note: additionalNotes,
         quantity: 1,
+        shipping_interval_frequency: cc.chargeIntervalFrequency,
+        shipping_interval_unit_type: cc.shippingIntervalUnitType,
         subscription_id: cc.subscriptionId,
         variant_id: cc.variantId,
       })

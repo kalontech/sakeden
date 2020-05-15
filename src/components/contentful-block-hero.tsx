@@ -25,9 +25,11 @@ const ContentfulBlockHero: React.FC<ContentfulBlockHeroProps> = ({
       </Box>
       {picture && (
         <Box sx={{ my: 4 }}>
-          <Parallax bgImage={picture.resize!.src!} strength={200}>
-            <div style={{ height: "400px" }} />
-          </Parallax>
+          <Image
+            fluid={picture.localFile!.childImageSharp!.fluid as FluidObject}
+            style={{ height: "400px" }}
+            imgStyle={{ objectFit: "cover", objectPosition: "right" }}
+          />
         </Box>
       )}
       {pictureText && (

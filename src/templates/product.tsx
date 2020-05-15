@@ -1,5 +1,6 @@
 import "./product.css"
 
+import { DiscussionEmbed } from "disqus-react"
 import { graphql, ReplaceComponentRendererArgs } from "gatsby"
 import GatsbyImage, { FluidObject } from "gatsby-image"
 // @ts-ignore
@@ -7,6 +8,7 @@ import addToMailchimp from "gatsby-plugin-mailchimp"
 import QRCode from "qrcode.react"
 import React, { useContext, useEffect, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
+import { useScrollYPosition } from "react-use-scroll-position"
 import { Box, Button, Flex, Heading, Input, Text } from "theme-ui"
 
 import {
@@ -20,6 +22,7 @@ import { InternalLink } from "../components/link"
 import ProductTitle from "../components/product-title"
 import SEO from "../components/seo"
 import SocialBar from "../components/social-bar"
+import ZoomingImage from "../components/zooming-image"
 import { getPriceFromVariants, wait } from "../utils/helpers"
 
 const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
@@ -27,17 +30,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const shopifyProduct = data.shopifyProduct as ShopifyProduct
 
-  const { addLineItems, setIsSubscribeVisible } = useContext(AppContext)
+  const {
+    addLineItems,
+    setIsSubscribeVisible,
+    setSubscriptionProduct,
+  } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
   const [isSubscribed, setIsSubcribed] = useState(false)
   const [isSubscribing, setIsSubcribing] = useState(false)
   const [email, setEmail] = useState("")
-  const [backgroundPosition, setBackgroundPosition] = useState("0% 0%")
-  const [backgroundSize, setBackgroundSize] = useState("100% 100%")
-  const [isZoomedIn, setIsZoomedIn] = useState(false)
   const [currentVariant, setCurrentVariant] = useState<ShopifyProductVariant>(
     shopifyProduct.variants![0]!,
   )
+  const [subscriptionInterval, setSubscriptionInterval] = useState("bi-weekly")
+  const [subscriptionType, setSubscriptionType] = useState("premium")
 
   // Determine whether this product is subscription.
   const isSubscription = shopifyProduct.title!.includes("Sub")
@@ -45,16 +51,29 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   // Build URL that will be shared in social networks.
   const shareUrl = typeof window !== "undefined" ? window.location.href : ""
 
-  // Determine backrgound size in order to get correct zoom level on hover.
+  const currentSubscriptionProduct = data.allShopifyProduct.edges.find(edge => {
+    return (
+      edge.node.handle?.includes(subscriptionInterval) &&
+      edge.node.handle.includes(subscriptionType)
+    )
+  })
+
   useEffect(() => {
-    const image = new Image()
-    image.addEventListener("load", function(this: any) {
-      setBackgroundSize(
-        `${this.naturalWidth / 2}px ${this.naturalHeight / 2}px`,
+    const subcriptionProduct = data.allShopifyProduct.edges.find(edge => {
+      return (
+        edge.node.handle?.includes(subscriptionInterval) &&
+        edge.node.handle.includes(subscriptionType)
       )
     })
-    image.src = shopifyProduct.images![0]!.originalSrc!
-  }, [shopifyProduct])
+    if (subcriptionProduct) {
+      setSubscriptionProduct(subcriptionProduct.node.handle!)
+    }
+  }, [
+    data.allShopifyProduct.edges,
+    setSubscriptionProduct,
+    subscriptionInterval,
+    subscriptionType,
+  ])
 
   const handleAddToCart = async (): Promise<void> => {
     addLineItems([
@@ -222,14 +241,71 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 })}
               </Flex>
             )}
+            {isSubscription && (
+              <>
+                <Flex mt={4}>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionType("regular")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionType === "regular"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Regular
+                  </Button>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionType("premium")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionType === "premium"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Premium
+                  </Button>
+                </Flex>
+                <Flex mt={2}>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionInterval("bi-weekly")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionInterval === "bi-weekly"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Bi-weekly
+                  </Button>
+                  <Button
+                    onClick={(): void => {
+                      setSubscriptionInterval("monthly")
+                    }}
+                    sx={{ mr: 2, width: ["100%", "100%", "200px", "200px"] }}
+                    variant={
+                      subscriptionInterval === "monthly"
+                        ? "variantSelected"
+                        : "variantNotSelected"
+                    }
+                  >
+                    Monthly
+                  </Button>
+                </Flex>
+              </>
+            )}
             <Box mt={3}>
               <SocialBar shareUrl={shareUrl} title={shopifyProduct.title!} />
             </Box>
-            {isSubscription ? (
+            {isSubscription && currentSubscriptionProduct ? (
               <Box mt={2}>
-                <Text sx={{ fontStyle: "italic" }}>
-                  Automatically renews every 3 month
-                </Text>
                 <Flex
                   sx={{
                     flexDirection: ["column", "column", "row", "row"],
@@ -240,7 +316,11 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     sx={{ flex: ["none", "none", 1, 1], fontSize: "28px" }}
                     variant="secondary"
                   >
-                    {getPriceFromVariants([currentVariant], 0, 3)}
+                    {getPriceFromVariants(
+                      [currentSubscriptionProduct.node.variants![0]!] as any,
+                      0,
+                      1,
+                    )}
                   </Button>
                   <Box p={2} />
                   <Button
@@ -328,6 +408,16 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 </Flex>
               </Box>
             )}
+            <Box mt={4}>
+              <DiscussionEmbed
+                config={{
+                  identifier: `products/${shopifyProduct.handle!}`,
+                  title: shopifyProduct.title!,
+                  url: `https://sakeden.com/products/${shopifyProduct.handle!}`,
+                }}
+                shortname={process.env.GATSBY_DISQUS_NAME!}
+              />
+            </Box>
           </Flex>
           <Box
             pl={5}
@@ -341,55 +431,15 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               <Box
                 sx={{
                   bottom: "0px",
-                  left: "0px",
-                  position: "absolute",
-                  right: ["0px", "0px", "0px", "calc((100vw - 1280px) / -2)"],
-                  top: "0px",
+                  left: "50%",
+                  position: "fixed",
+                  right: ["0px", "0px", "0px", "0px"],
+                  // Increase height when the Black Banner is not at the screen.
+                  top: "164px",
+                  transition: "top 100ms ease-in-out",
                 }}
               >
-                <figure
-                  onMouseMove={(e: any): void => {
-                    const {
-                      left,
-                      top,
-                      width,
-                      height,
-                    } = e.target.getBoundingClientRect()
-                    const x = ((e.pageX - left) / width) * 100
-                    const y = ((e.pageY - top) / height) * 100
-                    setBackgroundPosition(`${x}% ${y}%`)
-                  }}
-                  onMouseEnter={(): void => {
-                    setIsZoomedIn(true)
-                  }}
-                  onMouseLeave={(): void => {
-                    setIsZoomedIn(false)
-                  }}
-                  style={{
-                    backgroundImage: `url(${shopifyProduct.images[0].originalSrc})`,
-                    backgroundPosition,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize,
-                    height: "100%",
-                    width: "100%",
-                  }}
-                >
-                  <GatsbyImage
-                    fluid={
-                      shopifyProduct.images[0].localFile!.childImageSharp!
-                        .fluid as FluidObject
-                    }
-                    imgStyle={{
-                      backgroundColor: "white",
-                      objectFit: "contain",
-                    }}
-                    style={{
-                      height: "100%",
-                      visibility: isZoomedIn ? "hidden" : "visible",
-                      width: "100%",
-                    }}
-                  />
-                </figure>
+                <ZoomingImage image={shopifyProduct.images[0]} />
               </Box>
             )}
           </Box>
@@ -508,6 +558,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
 export const query = graphql`
   query Product($handle: String!) {
+    allShopifyProduct(filter: { title: { regex: "/Auto renew/" } }) {
+      edges {
+        node {
+          handle
+          title
+          variants {
+            priceV2 {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
     shopifyProduct(handle: { eq: $handle }) {
       availableForSale
       description

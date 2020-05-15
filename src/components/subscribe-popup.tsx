@@ -1,27 +1,78 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
+import moment from "moment"
+import qs from "query-string"
 import React, { useContext, useState } from "react"
+// @ts-ignore
+import DayPicker from "react-day-picker"
 import { IoMdClose } from "react-icons/io"
-import Select, { OptionTypeBase, ValueType } from "react-select"
 import { Box, Button, Flex, Heading, Textarea } from "theme-ui"
 
 import AppContext from "../app-context"
+import { getDeliveryTime } from "./checkout-popup"
+
+const config = {
+  "sakeden-sub-club-bi-weekly-premium-1": {
+    chargeIntervalFrequency: "4",
+    chargeIntervalUnitType: "Weeks",
+    shippingIntervalFrequency: "2",
+    shippingIntervalUnitType: "Weeks",
+    subscriptionId: "249318",
+    variantId: "32832307593304",
+  },
+  "sakeden-sub-club-monthly-premium-1": {
+    chargeIntervalFrequency: "1",
+    chargeIntervalUnitType: "Months",
+    shippingIntervalFrequency: "1",
+    shippingIntervalUnitType: "Months",
+    subscriptionId: "249319",
+    variantId: "32832312410200",
+  },
+  "sakeden-sub-club-monthly-regular-1": {
+    chargeIntervalFrequency: "1",
+    chargeIntervalUnitType: "Months",
+    shippingIntervalFrequency: "1",
+    shippingIntervalUnitType: "Months",
+    subscriptionId: "249319",
+    variantId: "32832312377432",
+  },
+  "sakeden-sub-club-regular-bi-weekly-1": {
+    chargeIntervalFrequency: "4",
+    chargeIntervalUnitType: "Weeks",
+    shippingIntervalFrequency: "2",
+    shippingIntervalUnitType: "Weeks",
+    subscriptionId: "249318",
+    variantId: "32832307626072",
+  },
+}
 
 const SubscribePopup: React.FC = () => {
-  const { checkout, setIsSubscribeVisible } = useContext(AppContext)
-  const [deliveryDay, setDeliveryDay] = useState<
-    ValueType<OptionTypeBase> | undefined
-  >(undefined)
+  const { checkout, setIsSubscribeVisible, subscriptionProduct } = useContext(
+    AppContext,
+  )
+  const [deliveryDay, setDeliveryDay] = useState()
   const [additionalNotes, setAdditionalNotes] = useState("")
+  const [giftCardNote, setGiftCardNote] = useState("")
 
   const handleCheckout = (): void => {
     if (deliveryDay) {
       // @ts-ignore
-      const _deliveryDay = deliveryDay.value
-      const _note = additionalNotes
-      const _subscriptionId = 230548
-      const _variantId = ""
+      const cc = config[subscriptionProduct]
+      const q = qs.stringify({
+        charge_interval_frequency: cc.chargeIntervalFrequency,
+        charge_interval_unit_type: cc.chargeIntervalUnitType,
+        delivery_day: moment(deliveryDay).format("YYYY-MM-DD"),
+        gift_card_note: giftCardNote,
+        note: additionalNotes,
+        quantity: 1,
+        shipping_interval_frequency: cc.chargeIntervalFrequency,
+        shipping_interval_unit_type: cc.shippingIntervalUnitType,
+        subscription_id: cc.subscriptionId,
+        variant_id: cc.variantId,
+      })
 
       window.location.replace(
-        `https://shop.sakeden.com/pages/recharge-checkout?delivery_day=${_deliveryDay}&note=${_note}&subscription_id=${_subscriptionId}&variant_id=${_variantId}`,
+        `https://shop.sakeden.com/pages/recharge-checkout?${q}`,
       )
     }
   }
@@ -67,68 +118,52 @@ const SubscribePopup: React.FC = () => {
           flexDirection: ["column", "column", "row", "row"],
         }}
       >
-        <Box sx={{ flex: 0.4 }}>
+        <Box>
           <Heading as="h5" mb={2} variant="h5">
-            Delivery day
+            First delivery date
           </Heading>
-          <Select
-            onChange={(value): void => {
-              setDeliveryDay(value)
-            }}
-            options={[
-              { label: "1st", value: "1st" },
-              { label: "2nd", value: "2nd" },
-              { label: "3rd", value: "3rd" },
-              { label: "4th", value: "4th" },
-              { label: "5th", value: "5th" },
-              { label: "6th", value: "6th" },
-              { label: "7th", value: "7th" },
-              { label: "8th", value: "8th" },
-              { label: "9th", value: "9th" },
-              { label: "10th", value: "10th" },
-              { label: "11th", value: "11th" },
-              { label: "12th", value: "12th" },
-              { label: "13th", value: "13th" },
-              { label: "14th", value: "14th" },
-              { label: "15th", value: "15th" },
-              { label: "16th", value: "16th" },
-              { label: "17th", value: "17th" },
-              { label: "18th", value: "18th" },
-              { label: "19th", value: "19th" },
-              { label: "20th", value: "20th" },
-              { label: "21th", value: "21th" },
-              { label: "22th", value: "22th" },
-              { label: "23th", value: "23th" },
-              { label: "24th", value: "24th" },
-              { label: "25th", value: "25th" },
-              { label: "26th", value: "26th" },
-              { label: "27th", value: "27th" },
-              { label: "28th", value: "28th" },
+          <DayPicker
+            disabledDays={[
               {
-                label: "29th or last day of the month",
-                value: "29th or last day of the month",
+                before: getDeliveryTime(),
               },
+
+              { daysOfWeek: [0] },
+              // exclude Easter holiday
+              new Date(2020, 3, 13),
+              // exclude labor day holidays
+              new Date(2020, 3, 30),
+              new Date(2020, 4, 1),
             ]}
-            styles={{
-              menuList: (provided, state) => ({
-                ...provided,
-                maxHeight: "200px",
-              }),
+            firstDayOfWeek={1}
+            onDayClick={(date: Date, data: Record<string, boolean>): void => {
+              if (!data["disabled"]) {
+                setDeliveryDay(date as any)
+              }
             }}
-            value={deliveryDay}
+            selectedDays={deliveryDay}
           />
         </Box>
-        <Box p={2} />
-        <Box sx={{ flex: 0.6 }}>
+        <Box sx={{ flex: 1 }}>
           <Heading as="h5" mb={2} variant="h5">
-            Additional notes
+            Notes for delivery
           </Heading>
           <Textarea
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
               setAdditionalNotes(e.target.value)
             }}
-            rows={8}
+            rows={3}
             value={additionalNotes}
+          ></Textarea>
+          <Heading as="h5" mb={2} mt={3} variant="h5">
+            Include Gift Card Message
+          </Heading>
+          <Textarea
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+              setGiftCardNote(e.target.value)
+            }}
+            rows={4}
+            value={giftCardNote}
           ></Textarea>
         </Box>
       </Flex>

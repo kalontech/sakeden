@@ -523,7 +523,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               style={{ height: "110px", objectFit: "contain", width: "110px" }}
               value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
             />
-            <Heading
+            {/* <Heading
               as="h4"
               sx={{
                 fontWeight: "normal",
@@ -535,7 +535,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               variant="h4"
             >
               {getPriceFromVariants([currentVariant], 0)}
-            </Heading>
+            </Heading> */}
           </Flex>
         </Flex>
       </Flex>

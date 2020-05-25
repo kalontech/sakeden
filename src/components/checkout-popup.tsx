@@ -10,7 +10,7 @@ import AppContext from "../app-context"
 export const getDeliveryTime = (): Date => {
   const deliveryTime = new Date()
   deliveryTime.setDate(deliveryTime.getDate() + 1)
-  if (deliveryTime.getHours() >= 18) {
+  if (deliveryTime.getHours() >= 16) {
     deliveryTime.setDate(deliveryTime.getDate() + 1)
   }
   if (deliveryTime.getDay() === 0) {

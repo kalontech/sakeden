@@ -70,6 +70,10 @@ const CheckoutPopup: React.FC = () => {
             key: "Packaging (STANDARD or SUSTAINABLE)",
             value: packaging,
           },
+          {
+            key: "Delivery items",
+            value: "",
+          },
         ],
         note: additionalNotes,
       })

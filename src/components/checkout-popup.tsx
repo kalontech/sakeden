@@ -19,12 +19,18 @@ export const getDeliveryTime = (): Date => {
   return deliveryTime
 }
 
+enum PACKAGING_TYPES {
+  STANDARD = "STANDARD",
+  SUSTAINABLE = "SUSTAINABLE",
+}
+
 const CheckoutPopup: React.FC = () => {
   const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
   const [deliveryDate, setDeliveryDate] = useState<Date>(getDeliveryTime())
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
+  const [packaging, setPackaging] = useState(PACKAGING_TYPES.STANDARD)
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
@@ -59,6 +65,10 @@ const CheckoutPopup: React.FC = () => {
           {
             key: "Shipping date",
             value: moment(deliveryDate).format("YYYY-MM-DD"),
+          },
+          {
+            key: "Packaging (STANDARD or SUSTAINABLE)",
+            value: packaging,
           },
         ],
         note: additionalNotes,
@@ -161,6 +171,38 @@ const CheckoutPopup: React.FC = () => {
           {discountCode.length > 0 && !isValidDiscountCode && (
             <Text sx={{ color: "danger" }}>Wrong discount code</Text>
           )}
+          <Heading as="h5" my={2} variant="h5">
+            Packaging
+          </Heading>
+          <Flex
+            mt={2}
+            sx={{
+              flexDirection: ["row", "row", "row", "row"],
+            }}
+          >
+            <Button
+              onClick={() => setPackaging(PACKAGING_TYPES.STANDARD)}
+              sx={{ mr: 2 }}
+              variant={
+                packaging === PACKAGING_TYPES.STANDARD
+                  ? "variantSelected"
+                  : "variantNotSelected"
+              }
+            >
+              Standard
+            </Button>
+            <Button
+              onClick={() => setPackaging(PACKAGING_TYPES.SUSTAINABLE)}
+              sx={{ mr: 2 }}
+              variant={
+                packaging === PACKAGING_TYPES.SUSTAINABLE
+                  ? "variantSelected"
+                  : "variantNotSelected"
+              }
+            >
+              Sustainable
+            </Button>
+          </Flex>
           <Heading as="h5" mb={2} mt={3} variant="h5">
             Notes for delivery
           </Heading>

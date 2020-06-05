@@ -534,7 +534,7 @@ export type ContentfulBlockFeaturedBlogPostsConnectionGroupArgs = {
   field: ContentfulBlockFeaturedBlogPostsFieldsEnum;
 };
 
-export type ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroUnion = ContentfulBlockFeaturedBlogPosts | ContentfulBlockFeaturedProducts | ContentfulBlockForm | ContentfulBlockHero;
+export type ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroContentfulBlockRichTextUnion = ContentfulBlockFeaturedBlogPosts | ContentfulBlockFeaturedProducts | ContentfulBlockForm | ContentfulBlockHero | ContentfulBlockRichText;
 
 export type ContentfulBlockFeaturedBlogPostsEdge = {
   next?: Maybe<ContentfulBlockFeaturedBlogPosts>;
@@ -2868,6 +2868,461 @@ export type ContentfulBlockHeroSysFilterInput = {
   contentType?: Maybe<ContentfulBlockHeroSysContentTypeFilterInput>;
 };
 
+export type ContentfulBlockRichText = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  name?: Maybe<Scalars['String']>;
+  content?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
+  spaceId?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
+  sys?: Maybe<ContentfulBlockRichTextSys>;
+  node_locale?: Maybe<Scalars['String']>;
+  childContentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
+};
+
+
+export type ContentfulBlockRichTextCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulBlockRichTextUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulBlockRichTextConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulBlockRichTextEdge>;
+  nodes: Array<ContentfulBlockRichText>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulBlockRichTextGroupConnection>;
+};
+
+
+export type ContentfulBlockRichTextConnectionDistinctArgs = {
+  field: ContentfulBlockRichTextFieldsEnum;
+};
+
+
+export type ContentfulBlockRichTextConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulBlockRichTextFieldsEnum;
+};
+
+export type ContentfulBlockRichTextContentRichTextNode = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  /** @deprecated This field is deprecated, please use 'json' instead. */
+  nodeType?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  json?: Maybe<Scalars['JSON']>;
+};
+
+export type ContentfulBlockRichTextContentRichTextNodeConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulBlockRichTextContentRichTextNodeEdge>;
+  nodes: Array<ContentfulBlockRichTextContentRichTextNode>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ContentfulBlockRichTextContentRichTextNodeGroupConnection>;
+};
+
+
+export type ContentfulBlockRichTextContentRichTextNodeConnectionDistinctArgs = {
+  field: ContentfulBlockRichTextContentRichTextNodeFieldsEnum;
+};
+
+
+export type ContentfulBlockRichTextContentRichTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ContentfulBlockRichTextContentRichTextNodeFieldsEnum;
+};
+
+export type ContentfulBlockRichTextContentRichTextNodeEdge = {
+  next?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
+  node: ContentfulBlockRichTextContentRichTextNode;
+  previous?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
+};
+
+export type ContentfulBlockRichTextContentRichTextNodeFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'nodeType'
+  | 'content'
+  | 'json';
+
+export type ContentfulBlockRichTextContentRichTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  json?: Maybe<JsonQueryOperatorInput>;
+};
+
+export type ContentfulBlockRichTextContentRichTextNodeGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulBlockRichTextContentRichTextNodeEdge>;
+  nodes: Array<ContentfulBlockRichTextContentRichTextNode>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulBlockRichTextContentRichTextNodeSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulBlockRichTextContentRichTextNodeFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulBlockRichTextEdge = {
+  next?: Maybe<ContentfulBlockRichText>;
+  node: ContentfulBlockRichText;
+  previous?: Maybe<ContentfulBlockRichText>;
+};
+
+export type ContentfulBlockRichTextFieldsEnum = 
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'name'
+  | 'content___id'
+  | 'content___parent___id'
+  | 'content___parent___parent___id'
+  | 'content___parent___parent___children'
+  | 'content___parent___children'
+  | 'content___parent___children___id'
+  | 'content___parent___children___children'
+  | 'content___parent___internal___content'
+  | 'content___parent___internal___contentDigest'
+  | 'content___parent___internal___description'
+  | 'content___parent___internal___fieldOwners'
+  | 'content___parent___internal___ignoreType'
+  | 'content___parent___internal___mediaType'
+  | 'content___parent___internal___owner'
+  | 'content___parent___internal___type'
+  | 'content___children'
+  | 'content___children___id'
+  | 'content___children___parent___id'
+  | 'content___children___parent___children'
+  | 'content___children___children'
+  | 'content___children___children___id'
+  | 'content___children___children___children'
+  | 'content___children___internal___content'
+  | 'content___children___internal___contentDigest'
+  | 'content___children___internal___description'
+  | 'content___children___internal___fieldOwners'
+  | 'content___children___internal___ignoreType'
+  | 'content___children___internal___mediaType'
+  | 'content___children___internal___owner'
+  | 'content___children___internal___type'
+  | 'content___internal___content'
+  | 'content___internal___contentDigest'
+  | 'content___internal___description'
+  | 'content___internal___fieldOwners'
+  | 'content___internal___ignoreType'
+  | 'content___internal___mediaType'
+  | 'content___internal___owner'
+  | 'content___internal___type'
+  | 'content___nodeType'
+  | 'content___content'
+  | 'content___json'
+  | 'spaceId'
+  | 'contentful_id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
+  | 'sys___contentType___sys___contentful_id'
+  | 'node_locale'
+  | 'childContentfulBlockRichTextContentRichTextNode___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___parent___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___parent___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___children___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___children___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___content'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___contentDigest'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___description'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___fieldOwners'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___ignoreType'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___mediaType'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___owner'
+  | 'childContentfulBlockRichTextContentRichTextNode___parent___internal___type'
+  | 'childContentfulBlockRichTextContentRichTextNode___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___parent___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___parent___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___children___id'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___children___children'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___content'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___contentDigest'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___description'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___fieldOwners'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___ignoreType'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___mediaType'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___owner'
+  | 'childContentfulBlockRichTextContentRichTextNode___children___internal___type'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___content'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___contentDigest'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___description'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___fieldOwners'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___ignoreType'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___mediaType'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___owner'
+  | 'childContentfulBlockRichTextContentRichTextNode___internal___type'
+  | 'childContentfulBlockRichTextContentRichTextNode___nodeType'
+  | 'childContentfulBlockRichTextContentRichTextNode___content'
+  | 'childContentfulBlockRichTextContentRichTextNode___json';
+
+export type ContentfulBlockRichTextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<ContentfulBlockRichTextContentRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulBlockRichTextSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  childContentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNodeFilterInput>;
+};
+
+export type ContentfulBlockRichTextGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ContentfulBlockRichTextEdge>;
+  nodes: Array<ContentfulBlockRichText>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulBlockRichTextSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulBlockRichTextFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulBlockRichTextSys = {
+  revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulBlockRichTextSysContentType>;
+};
+
+export type ContentfulBlockRichTextSysContentType = {
+  sys?: Maybe<ContentfulBlockRichTextSysContentTypeSys>;
+};
+
+export type ContentfulBlockRichTextSysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulBlockRichTextSysContentTypeSysFilterInput>;
+};
+
+export type ContentfulBlockRichTextSysContentTypeSys = {
+  type?: Maybe<Scalars['String']>;
+  linkType?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  contentful_id?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulBlockRichTextSysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  linkType?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ContentfulBlockRichTextSysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulBlockRichTextSysContentTypeFilterInput>;
+};
+
 export type ContentfulBlogPost = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -4045,7 +4500,7 @@ export type ContentfulPage = Node & {
   internal: Internal;
   title?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  blocks?: Maybe<Array<Maybe<ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroUnion>>>;
+  blocks?: Maybe<Array<Maybe<ContentfulBlockFeaturedBlogPostsContentfulBlockFeaturedProductsContentfulBlockFormContentfulBlockHeroContentfulBlockRichTextUnion>>>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
@@ -5602,6 +6057,15 @@ export type IntQueryOperatorInput = {
 };
 
 
+export type JsonQueryOperatorInput = {
+  eq?: Maybe<Scalars['JSON']>;
+  ne?: Maybe<Scalars['JSON']>;
+  in?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  nin?: Maybe<Array<Maybe<Scalars['JSON']>>>;
+  regex?: Maybe<Scalars['JSON']>;
+  glob?: Maybe<Scalars['JSON']>;
+};
+
 /** Node Interface */
 export type Node = {
   id: Scalars['ID'];
@@ -5661,6 +6125,8 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
+  contentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
+  allContentfulBlockRichTextContentRichTextNode: ContentfulBlockRichTextContentRichTextNodeConnection;
   shopifyProductOption?: Maybe<ShopifyProductOption>;
   allShopifyProductOption: ShopifyProductOptionConnection;
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>;
@@ -5671,12 +6137,14 @@ export type Query = {
   allShopifyProduct: ShopifyProductConnection;
   shopifyBlog?: Maybe<ShopifyBlog>;
   allShopifyBlog: ShopifyBlogConnection;
-  shopifyPage?: Maybe<ShopifyPage>;
-  allShopifyPage: ShopifyPageConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
+  shopifyPage?: Maybe<ShopifyPage>;
+  allShopifyPage: ShopifyPageConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
+  contentfulBlockRichText?: Maybe<ContentfulBlockRichText>;
+  allContentfulBlockRichText: ContentfulBlockRichTextConnection;
   contentfulBlockFormExtraDescriptionTextNode?: Maybe<ContentfulBlockFormExtraDescriptionTextNode>;
   allContentfulBlockFormExtraDescriptionTextNode: ContentfulBlockFormExtraDescriptionTextNodeConnection;
   contentfulBlockFormSuccessDescriptionTextNode?: Maybe<ContentfulBlockFormSuccessDescriptionTextNode>;
@@ -5881,6 +6349,25 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryContentfulBlockRichTextContentRichTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  json?: Maybe<JsonQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulBlockRichTextContentRichTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockRichTextContentRichTextNodeFilterInput>;
+  sort?: Maybe<ContentfulBlockRichTextContentRichTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryShopifyProductOptionArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6002,29 +6489,6 @@ export type QueryAllShopifyBlogArgs = {
 };
 
 
-export type QueryShopifyPageArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  handle?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  body?: Maybe<StringQueryOperatorInput>;
-  bodySummary?: Maybe<StringQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyPageArgs = {
-  filter?: Maybe<ShopifyPageFilterInput>;
-  sort?: Maybe<ShopifyPageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6043,6 +6507,29 @@ export type QueryShopifyCollectionArgs = {
 export type QueryAllShopifyCollectionArgs = {
   filter?: Maybe<ShopifyCollectionFilterInput>;
   sort?: Maybe<ShopifyCollectionSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryShopifyPageArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  handle?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  body?: Maybe<StringQueryOperatorInput>;
+  bodySummary?: Maybe<StringQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyPageArgs = {
+  filter?: Maybe<ShopifyPageFilterInput>;
+  sort?: Maybe<ShopifyPageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -6070,6 +6557,31 @@ export type QueryContentfulAssetArgs = {
 export type QueryAllContentfulAssetArgs = {
   filter?: Maybe<ContentfulAssetFilterInput>;
   sort?: Maybe<ContentfulAssetSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulBlockRichTextArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<ContentfulBlockRichTextContentRichTextNodeFilterInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  contentful_id?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  sys?: Maybe<ContentfulBlockRichTextSysFilterInput>;
+  node_locale?: Maybe<StringQueryOperatorInput>;
+  childContentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNodeFilterInput>;
+};
+
+
+export type QueryAllContentfulBlockRichTextArgs = {
+  filter?: Maybe<ContentfulBlockRichTextFilterInput>;
+  sort?: Maybe<ContentfulBlockRichTextSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -9326,6 +9838,9 @@ export type PageQuery = { contentfulPage?: Maybe<(
     ) | (
       Pick<ContentfulBlockHero, 'id' | 'title'>
       & { picture?: Maybe<{ localFile?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }>, pictureText?: Maybe<Pick<ContentfulBlockHeroPictureTextTextNode, 'pictureText'>> }
+    ) | (
+      Pick<ContentfulBlockRichText, 'name'>
+      & { content?: Maybe<Pick<ContentfulBlockRichTextContentRichTextNode, 'json'>> }
     )>>> }
   )> };
 

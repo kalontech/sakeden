@@ -74,6 +74,7 @@ const CheckoutPopup: React.FC = () => {
         "attributes[Gift card note]": giftCardNote,
         "attributes[Packaging (STANDARD or SUSTAINABLE)]": packaging,
         "attributes[Shipping date]": moment(deliveryDate).format("YYYY-MM-DD"),
+        discount: discountCode,
         note: additionalNotes,
       })
 
@@ -82,6 +83,9 @@ const CheckoutPopup: React.FC = () => {
 
       // @ts-ignore
       window.location = checkoutUrl
+
+      // Erase the cart.
+      localStorage.removeItem("shopify_checkout_id")
     } catch (err) {
       // @ts-ignore
       Sentry.captureException(err)

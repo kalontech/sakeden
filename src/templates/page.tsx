@@ -87,6 +87,12 @@ export const query = graphql`
           }
           title
         }
+        ... on ContentfulBlockRichText {
+          content {
+            json
+          }
+          name
+        }
       }
       slug
       title

@@ -31,7 +31,7 @@ const MenuPopup: React.FC = () => {
         backgroundImage: `url(${
           menuBackgroundImage!.childImageSharp!.fluid!.src
         })`,
-        backgroundPosition: "100px 500px",
+        backgroundPosition: "100px 600px",
         backgroundRepeat: "no-repeat",
         height: "100vh",
         maxWidth: "100%",
@@ -59,7 +59,7 @@ const MenuPopup: React.FC = () => {
         </Heading>
       </Button>
       <Box p={4}>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/bottles"
             onClick={(): void => {
@@ -71,7 +71,7 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/sets"
             onClick={(): void => {
@@ -83,7 +83,7 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/products/sakeden-sub-club"
             onClick={(): void => {
@@ -95,7 +95,7 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/sakeology"
             onClick={(): void => {
@@ -107,7 +107,7 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/about"
             onClick={(): void => {
@@ -119,7 +119,7 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
-        <Box py={2}>
+        <Box py={1}>
           <InternalLink
             href="/contact"
             onClick={(): void => {
@@ -128,6 +128,30 @@ const MenuPopup: React.FC = () => {
           >
             <Heading as="h2" variant="h2">
               Contact
+            </Heading>
+          </InternalLink>
+        </Box>
+        <Box py={1}>
+          <InternalLink
+            href="/privacy-policy"
+            onClick={(): void => {
+              setIsMenuVisible(false)
+            }}
+          >
+            <Heading as="h4" sx={{ color: "gray" }} variant="h4">
+              Privacy Policy
+            </Heading>
+          </InternalLink>
+        </Box>
+        <Box py={1}>
+          <InternalLink
+            href="/terms-and-conditions"
+            onClick={(): void => {
+              setIsMenuVisible(false)
+            }}
+          >
+            <Heading as="h4" sx={{ color: "gray" }} variant="h4">
+              Terms and Conditions
             </Heading>
           </InternalLink>
         </Box>

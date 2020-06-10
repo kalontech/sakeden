@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^13.4.0",
     "@emotion/core": "^10.0.27",
     "@mdx-js/react": "^1.5.5",
     "disqus-react": "^1.0.8",

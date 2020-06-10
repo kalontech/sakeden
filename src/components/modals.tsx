@@ -64,7 +64,7 @@ const Modals: React.FC = () => {
 
   return (
     <>
-      {isMountDelayedNodes && (
+      {/* {isMountDelayedNodes && (
         <Modal
           closeTimeoutMS={100}
           contentLabel="Welcome"
@@ -76,7 +76,7 @@ const Modals: React.FC = () => {
         >
           <WelcomePopup />
         </Modal>
-      )}
+      )} */}
       <Modal
         closeTimeoutMS={100}
         contentLabel="Age restriction"

@@ -1,4 +1,5 @@
 import moment from "moment"
+import queryString from "query-string"
 import React, { useContext, useEffect, useState } from "react"
 // @ts-ignore
 import DayPicker from "react-day-picker"
@@ -53,35 +54,38 @@ const CheckoutPopup: React.FC = () => {
     autorun()
   }, [discountCode])
 
-  const handleCheckout = async (): Promise<void> => {
+  const handleCheckout = (): void => {
     try {
       setIsUpdatingAttributes(true)
-      await client.checkout.updateAttributes(checkout.id, {
-        customAttributes: [
-          {
-            key: "Gift card note",
-            value: giftCardNote,
-          },
-          {
-            key: "Shipping date",
-            value: moment(deliveryDate).format("YYYY-MM-DD"),
-          },
-          {
-            key: "Packaging (STANDARD or SUSTAINABLE)",
-            value: packaging,
-          },
-          {
-            key: "Delivery items",
-            value: "",
-          },
-        ],
+
+      const variantsMap = []
+
+      for (const lineItem of checkout.lineItems) {
+        const variantId = new Buffer(lineItem.variant.id, "base64")
+          .toString("ascii")
+          .split("?")[0]
+          .split("/")[4]
+        const quantity = lineItem.quantity
+        variantsMap.push(`${variantId}:${quantity}`)
+      }
+
+      const qs = queryString.stringify({
+        "attributes[Delivery items]": "",
+        "attributes[Gift card note]": giftCardNote,
+        "attributes[Packaging (STANDARD or SUSTAINABLE)]": packaging,
+        "attributes[Shipping date]": moment(deliveryDate).format("YYYY-MM-DD"),
+        discount: discountCode,
         note: additionalNotes,
       })
-      await client.checkout.addDiscount(checkout.id, discountCode)
-      window.location = checkout.webUrl.replace(
-        process.env.SHOPIFY_SHOP_NAME,
-        process.env.EXTERNAL_DOMAIN,
-      )
+
+      // eslint-disable-next-line prettier/prettier
+      const checkoutUrl = `https://sakaguranow.myshopify.com/cart/${variantsMap.join(",",)}?${qs}`
+
+      // @ts-ignore
+      window.location = checkoutUrl
+
+      // Erase the cart.
+      localStorage.removeItem("shopify_checkout_id")
     } catch (err) {
       // @ts-ignore
       Sentry.captureException(err)

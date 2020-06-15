@@ -512,17 +512,25 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               p: 1,
             }}
           >
-            <Heading
-              as="h4"
-              sx={{ fontWeight: "normal", mb: "5px", textAlign: "center" }}
-              variant="h4"
-            >
-              To reorder
-            </Heading>
-            <QRCode
-              style={{ height: "110px", objectFit: "contain", width: "110px" }}
-              value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
-            />
+            {typeof window === "object" && window.location.search !== "?qr=0" && (
+              <>
+                <Heading
+                  as="h4"
+                  sx={{ fontWeight: "normal", mb: "5px", textAlign: "center" }}
+                  variant="h4"
+                >
+                  To reorder
+                </Heading>
+                <QRCode
+                  style={{
+                    height: "110px",
+                    objectFit: "contain",
+                    width: "110px",
+                  }}
+                  value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
+                />
+              </>
+            )}
             {/* <Heading
               as="h4"
               sx={{

@@ -92,15 +92,12 @@ const SEO: React.FC<SEOProps> = ({
           content: product ? "product" : "page",
           property: "og:type",
         },
+        // TODO fix this, since it doesn't work with FB and it breaks the image for sharing
 
         // {
         //   content: typeof window !== "undefined" ? window.location.href : "",
         //   name: "og:url",
         // },
-        {
-          content: image,
-          name: "og:image",
-        },
 
         // Product.
         ...(product

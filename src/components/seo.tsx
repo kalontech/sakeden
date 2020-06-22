@@ -93,10 +93,10 @@ const SEO: React.FC<SEOProps> = ({
           property: "og:type",
         },
 
-        {
-          content: typeof window !== "undefined" ? window.location.href : "",
-          name: "og:url",
-        },
+        // {
+        //   content: typeof window !== "undefined" ? window.location.href : "",
+        //   name: "og:url",
+        // },
         {
           content: image,
           name: "og:image",

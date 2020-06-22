@@ -59,6 +59,7 @@ const SEO: React.FC<SEOProps> = ({
         {
           content: title,
           name: "og:title",
+          property: "og:title",
         },
         {
           content: title,
@@ -75,6 +76,7 @@ const SEO: React.FC<SEOProps> = ({
         {
           content: description || site.siteMetadata.description,
           name: "og:description",
+          property: "og:description",
         },
 
         // Twitter.
@@ -87,6 +89,7 @@ const SEO: React.FC<SEOProps> = ({
         {
           content: image,
           name: "og:image",
+          property: "og:image",
         },
         {
           content: product ? "product" : "page",

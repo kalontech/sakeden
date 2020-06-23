@@ -123,6 +123,7 @@ const CheckoutPopup: React.FC = () => {
           Checkout
         </Heading>
         <Button
+          aria-label="Close"
           onClick={(): void => {
             setIsCheckoutVisible(false)
           }}
@@ -189,6 +190,7 @@ const CheckoutPopup: React.FC = () => {
             }}
           >
             <Button
+              aria-label="Standard"
               onClick={() => setPackaging(PACKAGING_TYPES.STANDARD)}
               sx={{ mr: 2 }}
               variant={
@@ -200,6 +202,7 @@ const CheckoutPopup: React.FC = () => {
               Standard
             </Button>
             <Button
+              aria-label="Sustainable"
               onClick={() => setPackaging(PACKAGING_TYPES.SUSTAINABLE)}
               sx={{ mr: 2 }}
               variant={
@@ -235,6 +238,7 @@ const CheckoutPopup: React.FC = () => {
       </Flex>
       <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
         <Button
+          aria-label="Continue shopping"
           onClick={(): void => {
             setIsCheckoutVisible(false)
           }}
@@ -245,6 +249,7 @@ const CheckoutPopup: React.FC = () => {
         </Button>
         <Box p={2} />
         <Button
+          aria-label={isUpdatingAttributes ? "Loading..." : "Checkout"}
           disabled={!deliveryDate}
           onClick={handleCheckout}
           variant={deliveryDate ? "primary" : "primaryDisabled"}

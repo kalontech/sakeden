@@ -53,6 +53,7 @@ const CartPopup: React.FC = () => {
             : "Shopping cart is empty"}
         </Heading>
         <Button
+          aria-label="Close"
           onClick={(): void => {
             setIsCartVisible(false)
           }}
@@ -68,6 +69,7 @@ const CartPopup: React.FC = () => {
               return (
                 <Flex sx={{ alignItems: "center" }}>
                   <Button
+                    aria-label="Minus"
                     onClick={(): void => {
                       setQuantity(lineItem.id, lineItem.quantity - 1)
                     }}
@@ -76,12 +78,14 @@ const CartPopup: React.FC = () => {
                     <IoMdRemove />
                   </Button>
                   <Button
+                    aria-label={lineItem.quantity}
                     sx={{ height: "40px", width: "40px" }}
                     variant="secondary"
                   >
                     {lineItem.quantity}
                   </Button>
                   <Button
+                    aria-label="Plus"
                     onClick={(): void => {
                       setQuantity(lineItem.id, lineItem.quantity + 1)
                     }}
@@ -100,6 +104,7 @@ const CartPopup: React.FC = () => {
                 <Flex sx={{ alignItems: "center" }}>
                   <Box sx={{ display: ["none", "none", "block", "block"] }}>
                     <Button
+                      aria-label="Remove"
                       onClick={(): void => {
                         setQuantity(lineItem.id, 0)
                       }}
@@ -163,6 +168,7 @@ const CartPopup: React.FC = () => {
       </Flex>
       <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
         <Button
+          aria-label="Continue shopping"
           onClick={(): void => {
             setIsCartVisible(false)
           }}
@@ -173,6 +179,7 @@ const CartPopup: React.FC = () => {
         </Button>
         <Box p={2} />
         <Button
+          aria-label="Checkout"
           onClick={(): void => {
             setIsCartVisible(false)
 

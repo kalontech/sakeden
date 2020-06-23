@@ -100,6 +100,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
             </Text>
           )}
           <Button
+            aria-label="Add to cart"
             onClick={handleAddToCart}
             variant={node.availableForSale ? "icon" : "iconDisabled"}
           >

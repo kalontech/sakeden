@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import _ from "lodash"
+import QRCode from "qrcode.react"
 import React, { useEffect, useState } from "react"
 import { Box, Flex, Grid, Heading, Select } from "theme-ui"
 import {
@@ -163,53 +164,35 @@ const ProductsPage: React.FC = () => {
   }
 
   return (
-    <>
-      <SEO title="Bottles" />
-      <Layout>
-        <ProductTitle
-          items={[
-            { active: true, title: "Bottles", url: "/bottles" },
-            { active: false, title: "Sets", url: "/sets" },
-            {
-              active: false,
-              title: "Subscription",
-              url: "/products/sakeden-sub-club",
-            },
-          ]}
-        />
-        <Box my={3}>
-          <ProductFilters
-            breweriesFilterValue={breweriesFilterValue}
-            onBreweriesFilterChange={(value): void => {
-              setQuery({
-                ...query,
-                breweries: value,
-              })
+    <Box>
+      {allShopifyProductSorted.map(node => {
+        return (
+          <Flex
+            sx={{
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: 4,
+              mt: 2,
             }}
-            onPriceFilterChange={(value): void => {
-              setQuery({
-                ...query,
-                price: value,
-              })
-            }}
-            onSubsetFilterChange={(value): void => {
-              setQuery({
-                ...query,
-                subset: value,
-              })
-            }}
-            priceFilterValue={priceFilterValue}
-            subsetFilterValue={subsetFilterValue}
-            shopifyCollection={shopifyCollection as ShopifyCollection}
-          />
-        </Box>
-        <Grid columns={[1, 1, 3, 3]} gap="30px">
-          {allShopifyProductSorted.map(node => {
-            return <ProductCard node={node as ShopifyProduct} />
-          })}
-        </Grid>
-      </Layout>
-    </>
+          >
+            <Heading as="h4" sx={{ pr: 4 }} variant="h4">
+              {node!.title!}
+            </Heading>
+            <QRCode
+              height={80}
+              width={80}
+              size={80}
+              style={{
+                height: "80px",
+                objectFit: "contain",
+                width: "80px",
+              }}
+              value={`https://sakeden.com/products/${node!.handle!}`}
+            />
+          </Flex>
+        )
+      })}
+    </Box>
   )
 }
 

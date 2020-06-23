@@ -130,7 +130,7 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
             <Box p={1} />
             <Box mt={4}>
               <InternalLink href="/">
-                <Button>Sake collection</Button>
+                <Button aria-label="Sake collection">Sake collection</Button>
               </InternalLink>
             </Box>
           </Flex>
@@ -160,7 +160,12 @@ const ContentfulBlockForm: React.FC<ContentfulBlockFormProps> = ({
                 contentfulfields.map(contentfulfield =>
                   renderContentfulfield(contentfulfield!),
                 )}
-              <Button mt={4}>{isSubmitting ? "Submitting" : "Submit"}</Button>
+              <Button
+                aria-label={isSubmitting ? "Submitting" : "Submit"}
+                mt={4}
+              >
+                {isSubmitting ? "Submitting" : "Submit"}
+              </Button>
             </Box>
           </>
         )}

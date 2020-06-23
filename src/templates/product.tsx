@@ -225,6 +225,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 {shopifyProduct.variants!.map(variant => {
                   return (
                     <Button
+                      aria-label={variant!.title as string}
                       onClick={(): void => {
                         setCurrentVariant(variant!)
                       }}
@@ -245,6 +246,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               <>
                 <Flex mt={4}>
                   <Button
+                    aria-label="Regular"
                     onClick={(): void => {
                       setSubscriptionType("regular")
                     }}
@@ -258,6 +260,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     Regular
                   </Button>
                   <Button
+                    aria-label="Premium"
                     onClick={(): void => {
                       setSubscriptionType("premium")
                     }}
@@ -273,6 +276,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 </Flex>
                 <Flex mt={2}>
                   <Button
+                    aria-label="Bi-weekly"
                     onClick={(): void => {
                       setSubscriptionInterval("bi-weekly")
                     }}
@@ -286,6 +290,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     Bi-weekly
                   </Button>
                   <Button
+                    aria-label="Monthly"
                     onClick={(): void => {
                       setSubscriptionInterval("monthly")
                     }}
@@ -313,6 +318,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   }}
                 >
                   <Button
+                    aria-label="Price"
                     sx={{ flex: ["none", "none", 1, 1], fontSize: "28px" }}
                     variant="secondary"
                   >
@@ -324,6 +330,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   </Button>
                   <Box p={2} />
                   <Button
+                    aria-label="Subscribe"
                     onClick={handleSubscribe}
                     sx={{ flex: ["none", "none", 1, 1] }}
                   >
@@ -353,6 +360,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                         variant="solid"
                       />
                       <Button
+                        aria-label="Subscribe"
                         onClick={handleNotifyRestocked}
                         variant={
                           isSubscribed || isSubscribing
@@ -373,6 +381,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   sx={{ flexDirection: ["column", "column", "row", "row"] }}
                 >
                   <Button
+                    aria-label="Sold out"
                     sx={{ flex: ["none", "none", 1, 1], fontSize: "30px" }}
                     variant="secondary"
                   >
@@ -384,6 +393,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   </Button>
                   <Box p={2} />
                   <Button
+                    aria-label="Add to cart"
                     onClick={handleAddToCart}
                     variant={
                       shopifyProduct.availableForSale
@@ -558,8 +568,20 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         product={shopifyProduct}
         title={shopifyProduct.title!}
       />
-      <div className="Product__Print">{renderPrintLayout()}</div>
-      <div className="Product__NoPrint">{renderNoPrintLayout()}</div>
+      <h1>{shopifyProduct.title!}</h1>
+      <QRCode
+        height={1080}
+        width={1080}
+        size={1080}
+        style={{
+          height: "1080px",
+          objectFit: "contain",
+          width: "1080px",
+        }}
+        value={`https://sakeden.com/products/${shopifyProduct.handle!}`}
+      />
+      {/* <div className="Product__Print">{renderPrintLayout()}</div>
+      <div className="Product__NoPrint">{renderNoPrintLayout()}</div> */}
     </>
   )
 }

@@ -103,6 +103,7 @@ const SubscribePopup: React.FC = () => {
           Subscribe
         </Heading>
         <Button
+          aria-label="Close"
           onClick={(): void => {
             setIsSubscribeVisible(false)
           }}
@@ -169,6 +170,7 @@ const SubscribePopup: React.FC = () => {
       </Flex>
       <Flex sx={{ alignItems: "center", justifyContent: "space-between" }}>
         <Button
+          aria-label="Continue shopping"
           onClick={(): void => {
             setIsSubscribeVisible(false)
           }}
@@ -179,6 +181,7 @@ const SubscribePopup: React.FC = () => {
         </Button>
         <Box p={2} />
         <Button
+          aria-label="Checkout"
           disabled={!deliveryDay}
           onClick={handleCheckout}
           variant={deliveryDay ? "primary" : "primaryDisabled"}

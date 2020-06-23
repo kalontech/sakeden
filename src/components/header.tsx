@@ -48,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
             <Flex>
               <Box>
                 <Button
+                  aria-label="Cart"
                   onClick={(): void => {
                     setIsCartVisible(true)
                   }}
@@ -70,6 +71,7 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
               </Box>
               <Box>
                 <Button
+                  aria-label="Menu"
                   onClick={(): void => {
                     setIsMenuVisible(true)
                   }}

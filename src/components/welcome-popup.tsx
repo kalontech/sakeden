@@ -68,6 +68,7 @@ const WelcomePopup: React.FC = () => {
           }}
         >
           <Button
+            aria-label="Close"
             onClick={(): void => {
               setIsWelcomeVisible(false)
             }}
@@ -96,7 +97,11 @@ const WelcomePopup: React.FC = () => {
           value={email}
           variant="borderless"
         />
-        <Button onClick={handleSubmit} sx={{ mt: 4, width: "100%" }}>
+        <Button
+          aria-label="Kampai!"
+          onClick={handleSubmit}
+          sx={{ mt: 4, width: "100%" }}
+        >
           Kampai!
         </Button>
       </Flex>

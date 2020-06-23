@@ -121,6 +121,17 @@ module.exports = {
       },
       resolve: "gatsby-source-shopify",
     },
+    {
+      options: {
+        domains: [
+          "https://vars.hotjar.com",
+          "https://script.hotjar.com",
+          "https://ws6.hotjar.com",
+          "https://www.google-analytics.com",
+        ],
+      },
+      resolve: "gatsby-plugin-preconnect",
+    },
   ],
   siteMetadata: {
     author: "",

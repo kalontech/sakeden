@@ -41,6 +41,7 @@ const MenuPopup: React.FC = () => {
       }}
     >
       <Button
+        aria-label="Close"
         onClick={(): void => {
           setIsMenuVisible(false)
         }}

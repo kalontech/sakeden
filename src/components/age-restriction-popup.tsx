@@ -36,6 +36,7 @@ const AgeRestrictionPopup: React.FC = () => {
           confirm that you are 18 or older
         </Text>
         <Button
+          aria-label="Yes, I am 18 or older"
           onClick={(): void => {
             setIsAgeRestrictionVisible(false)
           }}

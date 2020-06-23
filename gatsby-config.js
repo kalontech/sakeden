@@ -75,6 +75,17 @@ module.exports = {
     },
     {
       options: {
+        domains: [
+          "https://vars.hotjar.com",
+          "https://script.hotjar.com",
+          "https://ws6.hotjar.com",
+          "https://www.google-analytics.com",
+        ],
+      },
+      resolve: "gatsby-plugin-preconnect",
+    },
+    {
+      options: {
         dsn:
           "https://d113865b5e104680a8095b280c8e2413@o138408.ingest.sentry.io/5196139",
         enabled: (() => ["production"].includes(process.env.NODE_ENV))(),
@@ -120,17 +131,6 @@ module.exports = {
         shopName: process.env.SHOPIFY_SHOP_NAME,
       },
       resolve: "gatsby-source-shopify",
-    },
-    {
-      options: {
-        domains: [
-          "https://vars.hotjar.com",
-          "https://script.hotjar.com",
-          "https://ws6.hotjar.com",
-          "https://www.google-analytics.com",
-        ],
-      },
-      resolve: "gatsby-plugin-preconnect",
     },
   ],
   siteMetadata: {

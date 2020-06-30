@@ -88,7 +88,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
         // Use an existing checkout.
         fetchedCheckout = await client.checkout.fetch(existingCheckoutId)
         // Create a new checkout if the order already exists.
-        if (fetchedCheckout.order) {
+        if (fetchedCheckout && fetchedCheckout.order) {
           fetchedCheckout = await client.checkout.create()
         }
       } else {

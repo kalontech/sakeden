@@ -52,7 +52,7 @@
     "request-promise": "^4.2.5",
     "shopify-buy": "^2.9.0",
     "theme-ui": "^0.3.1",
-    "use-persisted-state": "^0.3.0",
+    "use-persisted-state": "npm:@smartrent/use-persisted-state",
     "use-query-params": "^0.6.0"
   },
   "devDependencies": {

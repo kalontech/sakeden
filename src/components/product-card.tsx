@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
         },
       ])
 
-      navigate("#hj-add-to-cart")
+      navigate("#hj-added-to-cart")
 
       // Display success mark in the button.
       setJustAddedToCart(true)

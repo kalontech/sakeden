@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import moment from "moment"
 import queryString from "query-string"
 import React, { useContext, useEffect, useState } from "react"
@@ -36,6 +37,14 @@ const CheckoutPopup: React.FC = () => {
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
   useEffect(() => {
+    navigate("#hj-started-checkout")
+
+    return (): void => {
+      navigate("#hj-empty")
+    }
+  }, [])
+
+  useEffect(() => {
     const autorun = async (): Promise<void> => {
       if (discountCode !== "") {
         const response = await fetch(
@@ -55,6 +64,8 @@ const CheckoutPopup: React.FC = () => {
   }, [discountCode])
 
   const handleCheckout = (): void => {
+    navigate("#hj-checkout-handed-to-shopify")
+
     try {
       setIsUpdatingAttributes(true)
 

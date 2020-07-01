@@ -1,7 +1,7 @@
 import "./product.css"
 
 import { DiscussionEmbed } from "disqus-react"
-import { graphql, ReplaceComponentRendererArgs } from "gatsby"
+import { graphql, navigate, ReplaceComponentRendererArgs } from "gatsby"
 import GatsbyImage, { FluidObject } from "gatsby-image"
 // @ts-ignore
 import addToMailchimp from "gatsby-plugin-mailchimp"
@@ -82,6 +82,8 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
         variantId: currentVariant.shopifyId,
       },
     ])
+
+    navigate("#hj-add-to-cart")
 
     // Display success mark in the button.
     setJustAddedToCart(true)

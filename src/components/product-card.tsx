@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
@@ -35,6 +36,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
           variantId: node.variants[0].shopifyId,
         },
       ])
+
+      navigate("#hj-add-to-cart")
 
       // Display success mark in the button.
       setJustAddedToCart(true)

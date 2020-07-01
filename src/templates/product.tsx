@@ -83,7 +83,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
       },
     ])
 
-    navigate("#hj-add-to-cart")
+    navigate("#hj-added-to-cart")
 
     // Display success mark in the button.
     setJustAddedToCart(true)

@@ -37,10 +37,10 @@ const CheckoutPopup: React.FC = () => {
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
   useEffect(() => {
-    navigate("#hj-started-checkout")
-
-    return (): void => {
-      navigate("#hj-empty")
+    // @ts-ignore
+    if (hj) {
+      // @ts-ignore
+      hj("stateChange", window.location.href + "@hj-started-checkout")
     }
   }, [])
 
@@ -64,7 +64,11 @@ const CheckoutPopup: React.FC = () => {
   }, [discountCode])
 
   const handleCheckout = (): void => {
-    navigate("#hj-checkout-handed-to-shopify")
+    // @ts-ignore
+    if (hj) {
+      // @ts-ignore
+      hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
+    }
 
     try {
       setIsUpdatingAttributes(true)

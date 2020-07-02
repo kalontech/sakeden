@@ -6184,12 +6184,12 @@ export type Query = {
   allShopifyProductVariant: ShopifyProductVariantConnection;
   shopifyProduct?: Maybe<ShopifyProduct>;
   allShopifyProduct: ShopifyProductConnection;
+  shopifyBlog?: Maybe<ShopifyBlog>;
+  allShopifyBlog: ShopifyBlogConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
   shopifyPage?: Maybe<ShopifyPage>;
   allShopifyPage: ShopifyPageConnection;
-  shopifyBlog?: Maybe<ShopifyBlog>;
-  allShopifyBlog: ShopifyBlogConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
   contentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
@@ -6500,6 +6500,26 @@ export type QueryAllShopifyProductArgs = {
 };
 
 
+export type QueryShopifyBlogArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  handle?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>;
+  sort?: Maybe<ShopifyBlogSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryShopifyCollectionArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6541,26 +6561,6 @@ export type QueryShopifyPageArgs = {
 export type QueryAllShopifyPageArgs = {
   filter?: Maybe<ShopifyPageFilterInput>;
   sort?: Maybe<ShopifyPageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShopifyBlogArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  handle?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>;
-  sort?: Maybe<ShopifyBlogSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -9290,9 +9290,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___legacy'
   | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___dsn'
-  | 'pluginCreator___pluginOptions___enabled'
-  | 'pluginCreator___pluginOptions___environment'
   | 'pluginCreator___pluginOptions___fonts___google'
   | 'pluginCreator___pluginOptions___accessToken'
   | 'pluginCreator___pluginOptions___downloadLocal'
@@ -9302,6 +9299,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___apiVersion'
   | 'pluginCreator___pluginOptions___shopName'
   | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___dsn'
+  | 'pluginCreator___pluginOptions___enabled'
+  | 'pluginCreator___pluginOptions___environment'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -9310,7 +9310,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___description'
   | 'pluginCreator___packageJson___version'
   | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___author'
   | 'pluginCreator___packageJson___license'
   | 'pluginCreator___packageJson___dependencies'
   | 'pluginCreator___packageJson___dependencies___name'
@@ -9513,9 +9512,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___legacy'
   | 'pluginOptions___theme_color_in_head'
-  | 'pluginOptions___dsn'
-  | 'pluginOptions___enabled'
-  | 'pluginOptions___environment'
   | 'pluginOptions___fonts___google'
   | 'pluginOptions___fonts___google___family'
   | 'pluginOptions___accessToken'
@@ -9526,6 +9522,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___apiVersion'
   | 'pluginOptions___shopName'
   | 'pluginOptions___pathCheck'
+  | 'pluginOptions___dsn'
+  | 'pluginOptions___enabled'
+  | 'pluginOptions___environment'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -9534,7 +9533,6 @@ export type SitePluginFieldsEnum =
   | 'packageJson___description'
   | 'packageJson___version'
   | 'packageJson___main'
-  | 'packageJson___author'
   | 'packageJson___license'
   | 'packageJson___dependencies'
   | 'packageJson___dependencies___name'
@@ -9577,7 +9575,6 @@ export type SitePluginPackageJson = {
   description?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
   main?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
   license?: Maybe<Scalars['String']>;
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -9618,7 +9615,6 @@ export type SitePluginPackageJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
   main?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
   license?: Maybe<StringQueryOperatorInput>;
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -9658,9 +9654,6 @@ export type SitePluginPluginOptions = {
   include_favicon?: Maybe<Scalars['Boolean']>;
   legacy?: Maybe<Scalars['Boolean']>;
   theme_color_in_head?: Maybe<Scalars['Boolean']>;
-  dsn?: Maybe<Scalars['String']>;
-  enabled?: Maybe<Scalars['Boolean']>;
-  environment?: Maybe<Scalars['String']>;
   fonts?: Maybe<SitePluginPluginOptionsFonts>;
   accessToken?: Maybe<Scalars['String']>;
   downloadLocal?: Maybe<Scalars['Boolean']>;
@@ -9670,6 +9663,9 @@ export type SitePluginPluginOptions = {
   apiVersion?: Maybe<Scalars['Date']>;
   shopName?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  dsn?: Maybe<Scalars['String']>;
+  enabled?: Maybe<Scalars['Boolean']>;
+  environment?: Maybe<Scalars['String']>;
 };
 
 
@@ -9698,9 +9694,6 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   legacy?: Maybe<BooleanQueryOperatorInput>;
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
-  dsn?: Maybe<StringQueryOperatorInput>;
-  enabled?: Maybe<BooleanQueryOperatorInput>;
-  environment?: Maybe<StringQueryOperatorInput>;
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
   accessToken?: Maybe<StringQueryOperatorInput>;
   downloadLocal?: Maybe<BooleanQueryOperatorInput>;
@@ -9710,6 +9703,9 @@ export type SitePluginPluginOptionsFilterInput = {
   apiVersion?: Maybe<DateQueryOperatorInput>;
   shopName?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  dsn?: Maybe<StringQueryOperatorInput>;
+  enabled?: Maybe<BooleanQueryOperatorInput>;
+  environment?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFonts = {

@@ -189,7 +189,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 </Heading>
               </Flex>
             )}
-            <Heading as="h2" variant="h2">
+            <Heading as="h1" variant="h2">
               {shopifyProduct.title}
             </Heading>
             <Box mt={2} sx={{ display: ["block", "block", "none", "none"] }}>

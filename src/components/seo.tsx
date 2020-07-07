@@ -5,6 +5,7 @@ import Helmet from "react-helmet"
 import { ShopifyProduct } from "../../graphql-types"
 
 interface SEOProps {
+  canonicalUrl?: string
   description?: string
   image?: string
   lang?: string
@@ -18,6 +19,7 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
+  canonicalUrl,
   description = "Dedicated to discovering and delivering small-batch, hand crafted artisan sake direct to you from breweries in Japan. Kampai! #SAKEDEN #Sakeology",
   image,
   lang = "en",
@@ -54,6 +56,14 @@ const SEO: React.FC<SEOProps> = ({
       htmlAttributes={{
         lang,
       }}
+      link={[
+        canonicalUrl
+          ? {
+              href: canonicalUrl,
+              rel: "canonical",
+            }
+          : {},
+      ]}
       meta={[
         // General.
         {

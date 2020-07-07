@@ -164,7 +164,7 @@ const ProductsPage: React.FC = () => {
 
   return (
     <>
-      <SEO title="Bottles" />
+      <SEO canonicalUrl="https://sakeden.com/bottles" title="Bottles" />
       <Layout>
         <ProductTitle
           items={[

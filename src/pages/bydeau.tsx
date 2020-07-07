@@ -128,7 +128,7 @@ const SetsPage: React.FC = () => {
 
   return (
     <>
-      <SEO title="Bydeau" />
+      <SEO canonicalUrl="https://sakeden.com/bydeau" title="Bydeau" />
       <Layout>
         <ProductTitle
           items={[{ active: true, title: "Bydeau", url: "/bydeau" }]}

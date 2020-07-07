@@ -8,6 +8,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-react-svg",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-sitemap",
     "gatsby-plugin-theme-ui",
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",
@@ -125,6 +126,7 @@ module.exports = {
   siteMetadata: {
     author: "",
     description: "",
+    siteUrl: "https://sakeden.com",
     title: "SAKEDEN",
   },
 }

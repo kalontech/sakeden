@@ -76,7 +76,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           handle: node.handle,
         },
-        path: `/products/${id}`,
+        path: `/private/products/${id}`,
       })
     })
   })

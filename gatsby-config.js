@@ -27,7 +27,22 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
     },
     "gatsby-plugin-sharp",
-    "gatsby-plugin-sitemap",
+    {
+      options: {
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.nodes.map(node => {
+            return {
+              changefreq: `daily`,
+              priority: 0.7,
+              url: `${site.wp.generalSettings.siteUrl}${node.path.replace(
+                /\/\s*$/,
+                "",
+              )}`,
+            }
+          }),
+      },
+      resolve: "gatsby-plugin-sitemap",
+    },
     "gatsby-plugin-theme-ui",
     "gatsby-plugin-typescript",
     "gatsby-plugin-typescript-checker",

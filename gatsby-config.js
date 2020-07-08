@@ -7,7 +7,19 @@ module.exports = {
     "gatsby-plugin-graphql-codegen",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-react-svg",
-    "gatsby-plugin-robots-txt",
+    {
+      options: {
+        policy: [
+          {
+            allow: "/",
+            crawlDelay: 10,
+            disallow: "/private",
+            userAgent: "*",
+          },
+        ],
+      },
+      resolve: "gatsby-plugin-robots-txt",
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-theme-ui",

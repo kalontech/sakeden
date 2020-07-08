@@ -15,7 +15,9 @@ const PagePage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   return (
     <>
       <SEO
-        canonicalUrl={`https://sakeden.com/${data.contentfulPage?.slug}`}
+        canonicalUrl={`https://sakeden.com/${
+          data.contentfulPage?.slug === "home" ? "" : data.contentfulPage?.slug
+        }`}
         title={contentfulPage.title!}
         withoutTitleSuffix={contentfulPage.slug === "home"}
       />

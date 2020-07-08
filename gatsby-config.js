@@ -13,6 +13,12 @@ module.exports = {
           {
             allow: "/",
             crawlDelay: 10,
+            disallow: "/generators",
+            userAgent: "*",
+          },
+          {
+            allow: "/",
+            crawlDelay: 10,
             disallow: "/private",
             userAgent: "*",
           },

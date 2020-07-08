@@ -2,12 +2,13 @@ import "react-day-picker/lib/style.css"
 import "./layout.css"
 
 import React from "react"
-import { Container } from "theme-ui"
+import { Box, Container } from "theme-ui"
 
 // @ts-ignore
 import Logo from "../images/logo.svg"
 import Banner from "./banner"
 import Header from "./header"
+import MenuPopup from "./menu-popup"
 import Modals from "./modals"
 
 interface LayoutProps {
@@ -18,6 +19,9 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, narrow }) => {
   return (
     <>
+      <Box sx={{ display: "none" }}>
+        <MenuPopup />
+      </Box>
       <Modals />
       <Header logo={<Logo />} />
       <Banner />

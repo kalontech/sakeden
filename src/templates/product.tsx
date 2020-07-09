@@ -559,6 +559,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   return (
     <>
       <SEO
+        canonicalUrl={`https://sakeden.com/products/${shopifyProduct.handle}`}
         description={shopifyProduct.description!}
         image={shopifyProduct.images![0]!.originalSrc!}
         product={shopifyProduct}

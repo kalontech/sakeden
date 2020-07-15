@@ -44,13 +44,13 @@ const CheckoutPopup: React.FC = () => {
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   if (hj) {
-  //     // @ts-ignore
-  //     hj("stateChange", window.location.href + "@hj-started-checkout")
-  //   }
-  // }, [])
+  useEffect(() => {
+    // @ts-ignore
+    if (hj) {
+      // @ts-ignore
+      hj("stateChange", window.location.href + "@hj-started-checkout")
+    }
+  }, [])
 
   useEffect(() => {
     const autorun = async (): Promise<void> => {

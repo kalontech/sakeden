@@ -9,10 +9,16 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 
 import AppContext from "../app-context"
 
-export const getDeliveryTime = (): Date => {
+export const getDeliveryTime = (
+  checkout = { subtotalPriceV2: { amount: 0 } },
+): Date => {
   const deliveryTime = new Date()
-  deliveryTime.setDate(deliveryTime.getDate() + 1)
-  if (deliveryTime.getHours() >= 16) {
+  // deliveryTime.setDate(deliveryTime.getDate() + 1)
+  let sameDayDelivery = false
+  if (Number(checkout["subtotalPriceV2"]["amount"]) >= 600) {
+    sameDayDelivery = true
+  }
+  if (deliveryTime.getHours() >= 16 || !sameDayDelivery) {
     deliveryTime.setDate(deliveryTime.getDate() + 1)
   }
   if (deliveryTime.getDay() === 0) {
@@ -28,7 +34,9 @@ enum PACKAGING_TYPES {
 
 const CheckoutPopup: React.FC = () => {
   const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
-  const [deliveryDate, setDeliveryDate] = useState<Date>(getDeliveryTime())
+  const [deliveryDate, setDeliveryDate] = useState<Date>(
+    getDeliveryTime(checkout),
+  )
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
@@ -36,13 +44,13 @@ const CheckoutPopup: React.FC = () => {
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
-  useEffect(() => {
-    // @ts-ignore
-    if (hj) {
-      // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-started-checkout")
-    }
-  }, [])
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   if (hj) {
+  //     // @ts-ignore
+  //     hj("stateChange", window.location.href + "@hj-started-checkout")
+  //   }
+  // }, [])
 
   useEffect(() => {
     const autorun = async (): Promise<void> => {
@@ -160,7 +168,7 @@ const CheckoutPopup: React.FC = () => {
           <DayPicker
             disabledDays={[
               {
-                before: getDeliveryTime(),
+                before: getDeliveryTime(checkout),
               },
 
               { daysOfWeek: [0] },

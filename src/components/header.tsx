@@ -1,5 +1,6 @@
+import { Link } from "gatsby"
 import React, { useContext } from "react"
-import { MdMenu, MdShoppingCart } from "react-icons/md"
+import { MdMenu, MdPerson, MdShoppingCart } from "react-icons/md"
 import { useScrollYPosition } from "react-use-scroll-position"
 import { Box, Button, Container, Flex, Text } from "theme-ui"
 
@@ -11,9 +12,12 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ logo }) => {
-  const { checkout, setIsCartVisible, setIsMenuVisible } = useContext(
-    AppContext,
-  )
+  const {
+    checkout,
+    setIsCartVisible,
+    setIsMenuVisible,
+    shopifyAccessToken,
+  } = useContext(AppContext)
   const scrollY = useScrollYPosition()
 
   const isSticky = scrollY > 0
@@ -46,6 +50,13 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
               <InternalLink href="/">{logo}</InternalLink>
             </Box>
             <Flex>
+              <Box>
+                <Link to="/login">
+                  <Button variant="iconInverted">
+                    <MdPerson />
+                  </Button>
+                </Link>
+              </Box>
               <Box>
                 <Button
                   onClick={(): void => {

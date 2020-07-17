@@ -6,8 +6,9 @@ import { InternalLink } from "./link"
 interface ProductTitleProps {
   items: {
     active: boolean
+    onClick?: () => void
     title: string
-    url: string
+    url?: string
   }[]
 }
 
@@ -16,9 +17,10 @@ const ProductTitle: React.FC<ProductTitleProps> = ({ items }) => {
     <Flex sx={{ flexDirection: ["column", "column", "row", "row"] }}>
       {items.map(item => {
         return (
-          <InternalLink href={item.url}>
+          <InternalLink href={item.url || "/"}>
             <Heading
               as="h2"
+              onClick={item.onClick}
               sx={{
                 ...(item.active ? {} : { opacity: 0.5 }),
                 mb: [2, 2, 0, 0],

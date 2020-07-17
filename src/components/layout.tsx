@@ -14,9 +14,10 @@ import Modals from "./modals"
 interface LayoutProps {
   children: React.ReactNode
   narrow?: boolean
+  showBanner?: boolean
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, narrow }) => {
+const Layout: React.FC<LayoutProps> = ({ children, narrow, showBanner = true }) => {
   return (
     <>
       <Box sx={{ display: "none" }}>
@@ -24,7 +25,9 @@ const Layout: React.FC<LayoutProps> = ({ children, narrow }) => {
       </Box>
       <Modals />
       <Header logo={<Logo />} />
-      <Banner />
+      {showBanner && (
+        <Banner />
+      )}
       <Container
         py={4}
         variant={narrow ? "containerNarrow" : "container"}

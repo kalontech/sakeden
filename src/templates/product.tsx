@@ -84,10 +84,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     ])
 
     // @ts-ignore
-    if (hj) {
+    // if (hj) {
       // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-added-to-cart")
-    }
+      // hj("stateChange", window.location.href + "@hj-added-to-cart")
+    // }
 
     // Display success mark in the button.
     setJustAddedToCart(true)

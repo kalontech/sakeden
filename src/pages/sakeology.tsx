@@ -11,7 +11,7 @@ const BlogPostsPage: React.FC = () => {
   const { allContentfulBlogPost } = useStaticQuery<BlogPostsPageQuery>(
     graphql`
       query BlogPostsPage {
-        allContentfulBlogPost {
+        allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
           edges {
             node {
               description {
@@ -60,7 +60,7 @@ const BlogPostsPage: React.FC = () => {
             Sakeology
           </Heading>
         </Box>
-        <Grid columns={[1, 1, 3, 3]} gap="30px">
+        <Grid columns={[1, 1, 1, 1]} gap="30px">
           {allContentfulBlogPost &&
             allContentfulBlogPost.edges.map(({ node }) => {
               return <BlogPostCard node={node as ContentfulBlogPost} />

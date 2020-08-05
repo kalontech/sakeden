@@ -19,7 +19,7 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
       query FeaturedBlogPostsPage {
         allContentfulBlogPost(
           sort: { fields: [publishDate], order: DESC }
-          limit: 6
+          limit: 5
         ) {
           edges {
             node {

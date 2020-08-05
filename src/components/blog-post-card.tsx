@@ -15,12 +15,6 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
   return (
     <InternalLink href={`/sakeology/${node.slug}`}>
       <Card>
-        <Heading as="h4" variant="h4">
-          {node.title}
-        </Heading>
-        <Text sx={{ color: "gray", fontSize: 1 }}>
-          {moment(node.publishDate).format("MMMM DD, YYYY")}
-        </Text>
         <Flex
           sx={{
             flexDirection: ["column", "column", "row", "row"],
@@ -29,17 +23,28 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
           }}
         >
           {node.image && (
-            <Box sx={{ my: 3 }}>
+            <Box sx={{ my: 3, width: ["100%", "100%", "400px", "400px"] }}>
               <Image
                 fluid={
                   node.image.localFile!.childImageSharp!.fluid as FluidObject
                 }
-                style={{ width: "300px", height: "210px" }}
+                style={{
+                  width: "100%",
+                  height: "210px",
+                }}
               />
             </Box>
           )}
-          <Box sx={{ m: [0, 0, 3, 3], width: ["100%", "100%", "70%", "70%"] }}>
-            {node.description && <Text>{node.description.description}</Text>}
+          <Box sx={{ m: [0, 0, 3, 3], width: ["100%", "100%", "60%", "60%"] }}>
+            <Heading as="h4" variant="h4">
+              {node.title}
+            </Heading>
+            <Text sx={{ color: "gray", fontSize: 1 }}>
+              {moment(node.publishDate).format("MMMM DD, YYYY")}
+            </Text>
+            <Box>
+              {node.description && <Text>{node.description.description}</Text>}
+            </Box>
           </Box>
         </Flex>
       </Card>

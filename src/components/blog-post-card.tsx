@@ -35,17 +35,25 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
               />
             </Box>
           )}
-          <Box sx={{ m: [0, 0, 3, 3], width: ["100%", "100%", "60%", "60%"] }}>
-            <Heading as="h4" variant="h4">
-              {node.title}
-            </Heading>
-            <Text sx={{ color: "gray", fontSize: 1 }}>
-              {moment(node.publishDate).format("MMMM DD, YYYY")}
-            </Text>
+          <Flex
+            sx={{
+              flexDirection: "column",
+              justifyContent: "space-between",
+              m: [0, 0, 3, 3],
+              width: ["100%", "100%", "60%", "60%"],
+            }}
+          >
             <Box>
+              <Heading as="h4" variant="h4">
+                {node.title}
+              </Heading>
+              <Text sx={{ color: "gray", fontSize: 1 }}>
+                {moment(node.publishDate).format("MMMM DD, YYYY")}
+              </Text>
               {node.description && <Text>{node.description.description}</Text>}
             </Box>
-          </Box>
+            <Box>{node.tags && node.tags.join(" ")}</Box>
+          </Flex>
         </Flex>
       </Card>
     </InternalLink>

@@ -35,6 +35,7 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
                   }
                 }
               }
+              tags
               publishDate
               slug
               title
@@ -52,6 +53,7 @@ const ContentfulBlockFeaturedBlogPosts: React.FC<ContentfulBlockFeaturedBlogPost
       <Grid columns={[1, 1, 1, 1]} gap="30px">
         {allContentfulBlogPost &&
           allContentfulBlogPost.edges.map(({ node }) => {
+            console.log(node)
             return <BlogPostCard node={node as ContentfulBlogPost} />
           })}
       </Grid>

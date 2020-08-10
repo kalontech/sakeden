@@ -26,6 +26,7 @@ const BlogPostsPage: React.FC = () => {
                   }
                 }
               }
+              tags
               publishDate
               slug
               title

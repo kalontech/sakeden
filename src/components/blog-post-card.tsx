@@ -52,7 +52,26 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
               </Text>
               {node.description && <Text>{node.description.description}</Text>}
             </Box>
-            <Box>{node.tags && node.tags.join(" ")}</Box>
+            <Flex
+              sx={{
+                flexDirection: "row",
+              }}
+            >
+              {node.tags &&
+                node.tags.map(tag => (
+                  <Box
+                    sx={{
+                      mr: 3,
+                      p: 2,
+                    }}
+                    style={{
+                      backgroundColor: "lightgrey",
+                    }}
+                  >
+                    {tag}
+                  </Box>
+                ))}
+            </Flex>
           </Flex>
         </Flex>
       </Card>

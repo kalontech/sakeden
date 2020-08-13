@@ -66,6 +66,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
                     }}
                     style={{
                       backgroundColor: "lightgrey",
+                      borderRadius: "5px",
                     }}
                   >
                     {tag}

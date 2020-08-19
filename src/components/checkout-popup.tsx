@@ -28,8 +28,15 @@ export const getDeliveryTime = (
 }
 
 enum PACKAGING_TYPES {
-  STANDARD = "STANDARD",
+  INDIVIDUAL = "INDIVIDUAL",
   SUSTAINABLE = "SUSTAINABLE",
+  GIFT = "GIFT",
+}
+
+const PACKAGING_DESCRIPTION = {
+  [PACKAGING_TYPES.INDIVIDUAL]: "red paper bottle carrier & handle - $0.00",
+  [PACKAGING_TYPES.SUSTAINABLE]: "no bag/box, be kind to mother earth - $0.00",
+  [PACKAGING_TYPES.GIFT]: "red box & handle - $10.00",
 }
 
 const CheckoutPopup: React.FC = () => {
@@ -40,7 +47,7 @@ const CheckoutPopup: React.FC = () => {
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
-  const [packaging, setPackaging] = useState(PACKAGING_TYPES.STANDARD)
+  const [packaging, setPackaging] = useState(PACKAGING_TYPES.INDIVIDUAL)
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
   const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
@@ -84,6 +91,7 @@ const CheckoutPopup: React.FC = () => {
       const variantsMap = []
 
       for (const lineItem of checkout.lineItems) {
+        console.log(lineItem.variant.id)
         const variantId = new Buffer(lineItem.variant.id, "base64")
           .toString("ascii")
           .split("?")[0]
@@ -92,10 +100,14 @@ const CheckoutPopup: React.FC = () => {
         variantsMap.push(`${variantId}:${quantity}`)
       }
 
+      if (packaging === PACKAGING_TYPES.GIFT) {
+        variantsMap.push(`${33266760941656}:${1}`)
+      }
+
       const qs = queryString.stringify({
         "attributes[Delivery items]": "",
         "attributes[Gift card note]": giftCardNote,
-        "attributes[Packaging (STANDARD or SUSTAINABLE)]": packaging,
+        "attributes[Packaging (INDIVIDUAL | SUSTAINABLE | GIFT)]": packaging,
         "attributes[Shipping date]": moment(deliveryDate).format("YYYY-MM-DD"),
         discount: discountCode,
         note: additionalNotes,
@@ -212,15 +224,15 @@ const CheckoutPopup: React.FC = () => {
             }}
           >
             <Button
-              onClick={() => setPackaging(PACKAGING_TYPES.STANDARD)}
+              onClick={() => setPackaging(PACKAGING_TYPES.INDIVIDUAL)}
               sx={{ mr: 2 }}
               variant={
-                packaging === PACKAGING_TYPES.STANDARD
+                packaging === PACKAGING_TYPES.INDIVIDUAL
                   ? "variantSelected"
                   : "variantNotSelected"
               }
             >
-              Standard
+              Individual
             </Button>
             <Button
               onClick={() => setPackaging(PACKAGING_TYPES.SUSTAINABLE)}
@@ -233,7 +245,19 @@ const CheckoutPopup: React.FC = () => {
             >
               Sustainable
             </Button>
+            <Button
+              onClick={() => setPackaging(PACKAGING_TYPES.GIFT)}
+              sx={{ mr: 2 }}
+              variant={
+                packaging === PACKAGING_TYPES.GIFT
+                  ? "variantSelected"
+                  : "variantNotSelected"
+              }
+            >
+              Gift
+            </Button>
           </Flex>
+          <Text>{PACKAGING_DESCRIPTION[packaging]}</Text>
           <Heading as="h5" mb={2} mt={3} variant="h5">
             Notes for delivery
           </Heading>

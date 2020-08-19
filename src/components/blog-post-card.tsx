@@ -55,6 +55,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
             <Flex
               sx={{
                 flexDirection: "row",
+                flexWrap: "wrap",
               }}
             >
               {node.tags &&
@@ -62,6 +63,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
                   <Box
                     sx={{
                       mr: 3,
+                      mt: [3, 3, 0, 0],
                       p: 2,
                     }}
                     style={{

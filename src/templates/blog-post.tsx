@@ -99,6 +99,20 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   )
                 }
 
+                if (src.endsWith("#no-parallax")) {
+                  return (
+                    <Box sx={{ my: 4 }}>
+                      <Image
+                        fixed={{ src } as FixedObject}
+                        style={{ height: "50vh", width: "100%" }}
+                      />
+                      <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
+                        {alt}
+                      </Text>
+                    </Box>
+                  )
+                }
+
                 return (
                   <Box sx={{ my: 4 }}>
                     <Box sx={{ display: ["none", "none", "block", "block"] }}>
@@ -111,7 +125,13 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                           width: src.endsWith("#half-width") ? "50%" : "100%",
                         }}
                       >
-                        <div style={{ height: "80vh" }} />
+                        <div
+                          style={{
+                            height: src.endsWith("#half-width")
+                              ? "40vh"
+                              : "80vh",
+                          }}
+                        />
                       </Parallax>
                     </Box>
                     <Box sx={{ display: ["block", "block", "none", "none"] }}>

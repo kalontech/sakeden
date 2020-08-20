@@ -1,4 +1,5 @@
 import { navigate } from "gatsby"
+import _ from "lodash"
 import moment from "moment"
 import queryString from "query-string"
 import React, { useContext, useEffect, useState } from "react"
@@ -46,10 +47,10 @@ const CheckoutPopup: React.FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-    if (hj) {
-      // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-started-checkout")
-    }
+    // if (hj) {
+    //   // @ts-ignore
+    //   hj("stateChange", window.location.href + "@hj-started-checkout")
+    // }
   }, [])
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const CheckoutPopup: React.FC = () => {
         )
         const body = await response.text()
         if (body === "0") {
-          setIsValidDiscountCode(false)
+          // setIsValidDiscountCode(false)
         } else if (body === "1") {
           setIsValidDiscountCode(true)
         }
@@ -73,10 +74,10 @@ const CheckoutPopup: React.FC = () => {
 
   const handleCheckout = (): void => {
     // @ts-ignore
-    if (hj) {
-      // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
-    }
+    // if (hj) {
+    //   // @ts-ignore
+    //   hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
+    // }
 
     try {
       setIsUpdatingAttributes(true)
@@ -194,6 +195,7 @@ const CheckoutPopup: React.FC = () => {
           <Textarea
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>): void => {
               setDiscountCode(e.target.value)
+              // _.debounce(() => setDiscountCode(e.target.value), 500)
             }}
             rows={1}
             sx={{ resize: "none" }}

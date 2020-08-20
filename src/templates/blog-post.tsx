@@ -90,7 +90,7 @@ const BlogPostPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     <Box sx={{ my: 4 }}>
                       <Image
                         fixed={{ src } as FixedObject}
-                        style={{ height: "60vh", width: "100%" }}
+                        style={{ height: "50vh", width: "100%" }}
                       />
                       <Text sx={{ color: "gray", fontSize: 1, mt: 1 }}>
                         {alt}

@@ -43,7 +43,6 @@ const CheckoutPopup: React.FC = () => {
   const [giftCardNote, setGiftCardNote] = useState("")
   const [packaging, setPackaging] = useState(PACKAGING_TYPES.STANDARD)
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
-  const [isValidDiscountCode, setIsValidDiscountCode] = useState(false)
 
   useEffect(() => {
     // @ts-ignore
@@ -52,25 +51,6 @@ const CheckoutPopup: React.FC = () => {
       hj("stateChange", window.location.href + "@hj-started-checkout")
     }
   }, [])
-
-  useEffect(() => {
-    const autorun = async (): Promise<void> => {
-      if (discountCode !== "") {
-        const response = await fetch(
-          `https://us-central1-sakeden.cloudfunctions.net/lookupDiscountCode?discountCode=${discountCode}`,
-        )
-        const body = await response.text()
-        if (body === "0") {
-          // setIsValidDiscountCode(false)
-        } else if (body === "1") {
-          setIsValidDiscountCode(true)
-        }
-      } else {
-        setIsValidDiscountCode(true)
-      }
-    }
-    autorun()
-  }, [discountCode])
 
   const handleCheckout = (): void => {
     // @ts-ignore
@@ -201,9 +181,6 @@ const CheckoutPopup: React.FC = () => {
             sx={{ resize: "none" }}
             value={discountCode}
           ></Textarea>
-          {discountCode.length > 0 && !isValidDiscountCode && (
-            <Text sx={{ color: "danger" }}>Wrong discount code</Text>
-          )}
           <Heading as="h5" my={2} variant="h5">
             Packaging
           </Heading>

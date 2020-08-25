@@ -441,7 +441,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   position: "fixed",
                   right: ["0px", "0px", "0px", "0px"],
                   // Increase height when the Black Banner is not at the screen.
-                  top: "164px",
+                  top: "236px",
                   transition: "top 100ms ease-in-out",
                 }}
               >

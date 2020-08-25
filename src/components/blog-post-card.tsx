@@ -63,7 +63,7 @@ const BlogPostCard: React.FC<BlogPostCardProps> = ({ node }) => {
                   <Box
                     sx={{
                       mr: 3,
-                      mt: 2,
+                      mt: [3, 3, 0, 0],
                       p: 2,
                     }}
                     style={{

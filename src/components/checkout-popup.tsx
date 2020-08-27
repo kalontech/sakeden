@@ -48,7 +48,7 @@ const CheckoutPopup: React.FC = () => {
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")
-  const [packaging, setPackaging] = useState(PACKAGING_TYPES.INDIVIDUAL)
+  const [packaging, setPackaging] = useState(PACKAGING_TYPES.SUSTAINABLE)
   const [isUpdatingAttributes, setIsUpdatingAttributes] = useState(false)
 
   useEffect(() => {

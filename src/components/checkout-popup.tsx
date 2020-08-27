@@ -35,9 +35,9 @@ enum PACKAGING_TYPES {
 }
 
 const PACKAGING_DESCRIPTION = {
-  [PACKAGING_TYPES.INDIVIDUAL]: "red paper bottle carrier & handle - $0.00",
-  [PACKAGING_TYPES.SUSTAINABLE]: "no bag/box, be kind to mother earth - $0.00",
-  [PACKAGING_TYPES.GIFT]: "red box & handle - $10.00",
+  [PACKAGING_TYPES.INDIVIDUAL]: "Red paper bottle carrier & handle - $0.00",
+  [PACKAGING_TYPES.SUSTAINABLE]: "No bag/box, be kind to mother earth - $0.00",
+  [PACKAGING_TYPES.GIFT]: "Red box & handle - $10.00",
 }
 
 const CheckoutPopup: React.FC = () => {
@@ -53,18 +53,18 @@ const CheckoutPopup: React.FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-    if (hj) {
-      // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-started-checkout")
-    }
+    // if (hj) {
+    //   // @ts-ignore
+    //   hj("stateChange", window.location.href + "@hj-started-checkout")
+    // }
   }, [])
 
   const handleCheckout = (): void => {
     // @ts-ignore
-    if (hj) {
-      // @ts-ignore
-      hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
-    }
+    // if (hj) {
+    //   // @ts-ignore
+    //   hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
+    // }
 
     try {
       setIsUpdatingAttributes(true)
@@ -236,7 +236,9 @@ const CheckoutPopup: React.FC = () => {
               Gift
             </Button>
           </Flex>
-          <Text>{PACKAGING_DESCRIPTION[packaging]}</Text>
+          <Text style={{ fontSize: 16 }}>
+            {PACKAGING_DESCRIPTION[packaging]}
+          </Text>
           <Heading as="h5" mb={2} mt={3} variant="h5">
             Notes for delivery
           </Heading>

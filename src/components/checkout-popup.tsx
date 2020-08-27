@@ -53,18 +53,18 @@ const CheckoutPopup: React.FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-    // if (hj) {
-    //   // @ts-ignore
-    //   hj("stateChange", window.location.href + "@hj-started-checkout")
-    // }
+    if (hj) {
+      // @ts-ignore
+      hj("stateChange", window.location.href + "@hj-started-checkout")
+    }
   }, [])
 
   const handleCheckout = (): void => {
     // @ts-ignore
-    // if (hj) {
-    //   // @ts-ignore
-    //   hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
-    // }
+    if (hj) {
+      // @ts-ignore
+      hj("stateChange", window.location.href + "@hj-checkout-handed-to-shopify")
+    }
 
     try {
       setIsUpdatingAttributes(true)

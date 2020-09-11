@@ -93,6 +93,14 @@ const CartPopup: React.FC = () => {
               )
             }
 
+            let discountPrice = 0
+            console.log(lineItem)
+            if (lineItem.variant.sku === "SK014B") {
+              discountPrice = Number.parseFloat(
+                lineItem.variant.priceV2!.amount || "0",
+              )
+              discountPrice /= 2
+            }
             return (
               <Flex
                 sx={{ alignItems: "center", justifyContent: "space-between" }}
@@ -132,7 +140,9 @@ const CartPopup: React.FC = () => {
                     sx={{ textAlign: "right", width: "150px" }}
                     variant="h4"
                   >
-                    {getPriceFromVariants([lineItem.variant], 0)}
+                    {discountPrice !== 0
+                      ? `HK$${Math.floor(discountPrice)}`
+                      : getPriceFromVariants([lineItem.variant], 0)}
                   </Heading>
                 </Flex>
               </Flex>

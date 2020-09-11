@@ -49,6 +49,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
       setJustAddedToCart(false)
     }
   }
+  // This is a hack for special discounts
+  let discountPrice = 0
+  if (node.handle === "sakarimasu-daiginjo") {
+    discountPrice = Number.parseFloat(node.variants![0]!.priceV2!.amount || "0")
+    discountPrice /= 2
+    discountPrice = Math.floor(discountPrice)
+  }
 
   return (
     <InternalLink href={`/products/${node.handle}`}>
@@ -98,9 +105,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
           sx={{ alignItems: "center", justifyContent: "space-between" }}
         >
           {node.availableForSale ? (
-            <Text variant="price">
-              {getPriceFromVariants([node.variants![0]!], 0)}
-            </Text>
+            <Flex
+              sx={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              <Text
+                color="danger"
+                variant="price"
+                style={{
+                  textDecoration: discountPrice !== 0 ? "line-through" : 0,
+                }}
+              >
+                {getPriceFromVariants([node.variants![0]!], 0)}
+              </Text>
+              {discountPrice !== 0 && (
+                <Text
+                  style={{ marginLeft: 25 }}
+                  variant="price"
+                >{`HK$${discountPrice}`}</Text>
+              )}
+            </Flex>
           ) : (
             <Text color="danger" variant="price">
               SOLD OUT

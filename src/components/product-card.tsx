@@ -109,7 +109,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
               sx={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text
-                color="danger"
+                color={discountPrice !== 0 ? "danger" : "black"}
                 variant="price"
                 style={{
                   textDecoration: discountPrice !== 0 ? "line-through" : 0,

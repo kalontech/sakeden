@@ -114,6 +114,15 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     setIsSubscribeVisible(true)
   }
 
+  //
+  let discountPrice = 0
+  if (shopifyProduct.handle === "sakarimasu-daiginjo") {
+    discountPrice = Number.parseFloat(
+      shopifyProduct.variants![0]!.priceV2!.amount || "0",
+    )
+    discountPrice /= 2
+  }
+
   const renderNoPrintLayout = () => (
     <Layout>
       <Flex sx={{ flexDirection: "column", height: "100%" }}>
@@ -383,7 +392,29 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                     variant="secondary"
                   >
                     {shopifyProduct.availableForSale ? (
-                      <Text>{getPriceFromVariants([currentVariant], 0)}</Text>
+                      <Flex
+                        sx={{
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <Text
+                          color="danger"
+                          variant="price"
+                          style={{
+                            textDecoration:
+                              discountPrice !== 0 ? "line-through" : 0,
+                          }}
+                        >
+                          {getPriceFromVariants([currentVariant], 0)}
+                        </Text>
+                        {discountPrice !== 0 && (
+                          <Text
+                            style={{ marginLeft: 25 }}
+                            variant="price"
+                          >{`HK$${discountPrice}`}</Text>
+                        )}
+                      </Flex>
                     ) : (
                       <Text color="danger">Sold out</Text>
                     )}

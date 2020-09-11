@@ -141,7 +141,7 @@ const CartPopup: React.FC = () => {
                     variant="h4"
                   >
                     {discountPrice !== 0
-                      ? `HK$${discountPrice}`
+                      ? `HK$${Math.floor(discountPrice)}`
                       : getPriceFromVariants([lineItem.variant], 0)}
                   </Heading>
                 </Flex>

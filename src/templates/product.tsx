@@ -114,13 +114,14 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
     setIsSubscribeVisible(true)
   }
 
-  //
+  // This is a hack for special discounts
   let discountPrice = 0
   if (shopifyProduct.handle === "sakarimasu-daiginjo") {
     discountPrice = Number.parseFloat(
       shopifyProduct.variants![0]!.priceV2!.amount || "0",
     )
     discountPrice /= 2
+    discountPrice = Math.floor(discountPrice)
   }
 
   const renderNoPrintLayout = () => (

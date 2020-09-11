@@ -54,6 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   if (node.handle === "sakarimasu-daiginjo") {
     discountPrice = Number.parseFloat(node.variants![0]!.priceV2!.amount || "0")
     discountPrice /= 2
+    discountPrice = Math.floor(discountPrice)
   }
 
   return (

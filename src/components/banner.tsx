@@ -57,9 +57,6 @@ const Banner: React.FC<BannerProps> = () => {
             <Text sx={{ color: "white", textAlign: "center" }}>seconds</Text>
           </Box>
         </Flex>
-        <Text sx={{ color: "white", textAlign: "center" }}>
-          Order HK$600 by 4pm for FREE SAME DAY DELIVERY!
-        </Text>
       </Box>
     )
   }
@@ -73,7 +70,10 @@ const Banner: React.FC<BannerProps> = () => {
             py: 2,
           }}
         >
-          <Countdown date={new Date("2020-09-18")} renderer={renderer} />
+          {/* <Countdown date={new Date("2020-09-18")} renderer={renderer} /> */}
+          <Text sx={{ color: "white", textAlign: "center" }}>
+            Order HK$600 by 4pm for FREE SAME DAY DELIVERY!
+          </Text>
         </Flex>
       </Container>
     </Box>

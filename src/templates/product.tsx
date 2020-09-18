@@ -400,7 +400,6 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                         }}
                       >
                         <Text
-                          color="danger"
                           variant="price"
                           style={{
                             textDecoration:
@@ -413,6 +412,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                           <Text
                             style={{ marginLeft: 25 }}
                             variant="price"
+                            color="danger"
                           >{`HK$${discountPrice}`}</Text>
                         )}
                       </Flex>
@@ -473,7 +473,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   position: "fixed",
                   right: ["0px", "0px", "0px", "0px"],
                   // Increase height when the Black Banner is not at the screen.
-                  top: "236px",
+                  top: "164px",
                   transition: "top 100ms ease-in-out",
                 }}
               >

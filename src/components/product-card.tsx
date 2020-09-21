@@ -51,7 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   }
   // This is a hack for special discounts
   let discountPrice = 0
-  if (node.handle === "sakarimasu-daiginjo") {
+  if (node.handle === "meguro-gorosuke") {
     discountPrice = Number.parseFloat(node.variants![0]!.priceV2!.amount || "0")
     discountPrice /= 2
     discountPrice = Math.floor(discountPrice)

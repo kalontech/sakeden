@@ -116,7 +116,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   // This is a hack for special discounts
   let discountPrice = 0
-  if (shopifyProduct.handle === "sakarimasu-daiginjo") {
+  if (shopifyProduct.handle === "meguro-gorosuke") {
     discountPrice = Number.parseFloat(
       shopifyProduct.variants![0]!.priceV2!.amount || "0",
     )

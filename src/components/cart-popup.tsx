@@ -95,7 +95,7 @@ const CartPopup: React.FC = () => {
 
             let discountPrice = 0
             console.log(lineItem)
-            if (lineItem.variant.sku === "SK014B") {
+            if (lineItem.variant.sku === "SK024B") {
               discountPrice = Number.parseFloat(
                 lineItem.variant.priceV2!.amount || "0",
               )

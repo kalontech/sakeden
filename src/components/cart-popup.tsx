@@ -93,14 +93,13 @@ const CartPopup: React.FC = () => {
               )
             }
 
-            let discountPrice = 0
-            console.log(lineItem)
-            if (lineItem.variant.sku === "SK024B") {
-              discountPrice = Number.parseFloat(
-                lineItem.variant.priceV2!.amount || "0",
-              )
-              discountPrice /= 2
-            }
+            const discountPrice = 0
+            // if (lineItem.variant.sku === "SK024B") {
+            //   discountPrice = Number.parseFloat(
+            //     lineItem.variant.priceV2!.amount || "0",
+            //   )
+            //   discountPrice /= 2
+            // }
             return (
               <Flex
                 sx={{ alignItems: "center", justifyContent: "space-between" }}

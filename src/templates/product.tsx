@@ -115,14 +115,14 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   }
 
   // This is a hack for special discounts
-  let discountPrice = 0
-  if (shopifyProduct.handle === "meguro-gorosuke") {
-    discountPrice = Number.parseFloat(
-      shopifyProduct.variants![0]!.priceV2!.amount || "0",
-    )
-    discountPrice /= 2
-    discountPrice = Math.floor(discountPrice)
-  }
+  const discountPrice = 0
+  // if (shopifyProduct.handle === "meguro-gorosuke") {
+  //   discountPrice = Number.parseFloat(
+  //     shopifyProduct.variants![0]!.priceV2!.amount || "0",
+  //   )
+  //   discountPrice /= 2
+  //   discountPrice = Math.floor(discountPrice)
+  // }
 
   const renderNoPrintLayout = () => (
     <Layout>
@@ -473,7 +473,7 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   position: "fixed",
                   right: ["0px", "0px", "0px", "0px"],
                   // Increase height when the Black Banner is not at the screen.
-                  top: "164px",
+                  top: "180px",
                   transition: "top 100ms ease-in-out",
                 }}
               >

@@ -170,6 +170,10 @@ const CheckoutPopup: React.FC = () => {
               // exclude labor day holidays
               new Date(2020, 3, 30),
               new Date(2020, 4, 1),
+              // HK holidays
+              new Date(2020, 9, 1),
+              new Date(2020, 9, 2),
+              new Date(2020, 9, 3),
             ]}
             firstDayOfWeek={1}
             onDayClick={(date: Date, data: Record<string, boolean>): void => {

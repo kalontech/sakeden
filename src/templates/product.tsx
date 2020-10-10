@@ -221,8 +221,8 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                 }}
               ></div>
             </Text>
-            <Box mt={4}>
-              {shopifyProduct.images && shopifyProduct.images[1] && (
+            {shopifyProduct.images && shopifyProduct.images[1] && (
+              <Box my={4}>
                 <GatsbyImage
                   fluid={
                     shopifyProduct.images[1].localFile!.childImageSharp!
@@ -234,10 +234,10 @@ const ProductPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
                   }}
                   style={{ height: "200px" }}
                 />
-              )}
-            </Box>
+              </Box>
+            )}
             {shopifyProduct.variants!.length >= 2 && (
-              <Flex mt={4}>
+              <Flex>
                 {shopifyProduct.variants!.map(variant => {
                   return (
                     <Button

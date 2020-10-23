@@ -1014,7 +1014,6 @@ export type ContentfulBlockFeaturedProducts = Node & {
   internal: Internal;
   title?: Maybe<Scalars['String']>;
   products?: Maybe<Array<Maybe<Scalars['String']>>>;
-  page?: Maybe<Array<Maybe<ContentfulPage>>>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
@@ -1155,53 +1154,6 @@ export type ContentfulBlockFeaturedProductsFieldsEnum =
   | 'internal___type'
   | 'title'
   | 'products'
-  | 'page'
-  | 'page___id'
-  | 'page___parent___id'
-  | 'page___parent___parent___id'
-  | 'page___parent___parent___children'
-  | 'page___parent___children'
-  | 'page___parent___children___id'
-  | 'page___parent___children___children'
-  | 'page___parent___internal___content'
-  | 'page___parent___internal___contentDigest'
-  | 'page___parent___internal___description'
-  | 'page___parent___internal___fieldOwners'
-  | 'page___parent___internal___ignoreType'
-  | 'page___parent___internal___mediaType'
-  | 'page___parent___internal___owner'
-  | 'page___parent___internal___type'
-  | 'page___children'
-  | 'page___children___id'
-  | 'page___children___parent___id'
-  | 'page___children___parent___children'
-  | 'page___children___children'
-  | 'page___children___children___id'
-  | 'page___children___children___children'
-  | 'page___children___internal___content'
-  | 'page___children___internal___contentDigest'
-  | 'page___children___internal___description'
-  | 'page___children___internal___fieldOwners'
-  | 'page___children___internal___ignoreType'
-  | 'page___children___internal___mediaType'
-  | 'page___children___internal___owner'
-  | 'page___children___internal___type'
-  | 'page___internal___content'
-  | 'page___internal___contentDigest'
-  | 'page___internal___description'
-  | 'page___internal___fieldOwners'
-  | 'page___internal___ignoreType'
-  | 'page___internal___mediaType'
-  | 'page___internal___owner'
-  | 'page___internal___type'
-  | 'page___title'
-  | 'page___slug'
-  | 'page___spaceId'
-  | 'page___contentful_id'
-  | 'page___createdAt'
-  | 'page___updatedAt'
-  | 'page___sys___revision'
-  | 'page___node_locale'
   | 'spaceId'
   | 'contentful_id'
   | 'createdAt'
@@ -1220,7 +1172,6 @@ export type ContentfulBlockFeaturedProductsFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   products?: Maybe<StringQueryOperatorInput>;
-  page?: Maybe<ContentfulPageFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
@@ -2246,6 +2197,7 @@ export type ContentfulBlockHero = Node & {
   internal: Internal;
   title?: Maybe<Scalars['String']>;
   picture?: Maybe<ContentfulAsset>;
+  page?: Maybe<Array<Maybe<ContentfulPage>>>;
   pictureText?: Maybe<ContentfulBlockHeroPictureTextTextNode>;
   spaceId?: Maybe<Scalars['String']>;
   contentful_id?: Maybe<Scalars['String']>;
@@ -2524,6 +2476,53 @@ export type ContentfulBlockHeroFieldsEnum =
   | 'picture___resize___width'
   | 'picture___resize___height'
   | 'picture___resize___aspectRatio'
+  | 'page'
+  | 'page___id'
+  | 'page___parent___id'
+  | 'page___parent___parent___id'
+  | 'page___parent___parent___children'
+  | 'page___parent___children'
+  | 'page___parent___children___id'
+  | 'page___parent___children___children'
+  | 'page___parent___internal___content'
+  | 'page___parent___internal___contentDigest'
+  | 'page___parent___internal___description'
+  | 'page___parent___internal___fieldOwners'
+  | 'page___parent___internal___ignoreType'
+  | 'page___parent___internal___mediaType'
+  | 'page___parent___internal___owner'
+  | 'page___parent___internal___type'
+  | 'page___children'
+  | 'page___children___id'
+  | 'page___children___parent___id'
+  | 'page___children___parent___children'
+  | 'page___children___children'
+  | 'page___children___children___id'
+  | 'page___children___children___children'
+  | 'page___children___internal___content'
+  | 'page___children___internal___contentDigest'
+  | 'page___children___internal___description'
+  | 'page___children___internal___fieldOwners'
+  | 'page___children___internal___ignoreType'
+  | 'page___children___internal___mediaType'
+  | 'page___children___internal___owner'
+  | 'page___children___internal___type'
+  | 'page___internal___content'
+  | 'page___internal___contentDigest'
+  | 'page___internal___description'
+  | 'page___internal___fieldOwners'
+  | 'page___internal___ignoreType'
+  | 'page___internal___mediaType'
+  | 'page___internal___owner'
+  | 'page___internal___type'
+  | 'page___title'
+  | 'page___slug'
+  | 'page___spaceId'
+  | 'page___contentful_id'
+  | 'page___createdAt'
+  | 'page___updatedAt'
+  | 'page___sys___revision'
+  | 'page___node_locale'
   | 'pictureText___id'
   | 'pictureText___parent___id'
   | 'pictureText___parent___parent___id'
@@ -2620,6 +2619,7 @@ export type ContentfulBlockHeroFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   picture?: Maybe<ContentfulAssetFilterInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
   pictureText?: Maybe<ContentfulBlockHeroPictureTextTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
@@ -6133,22 +6133,20 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
-  contentfulBlockHeroPictureTextTextNode?: Maybe<ContentfulBlockHeroPictureTextTextNode>;
-  allContentfulBlockHeroPictureTextTextNode: ContentfulBlockHeroPictureTextTextNodeConnection;
-  shopifyProductOption?: Maybe<ShopifyProductOption>;
-  allShopifyProductOption: ShopifyProductOptionConnection;
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>;
   allShopifyProductMetafield: ShopifyProductMetafieldConnection;
+  shopifyProductOption?: Maybe<ShopifyProductOption>;
+  allShopifyProductOption: ShopifyProductOptionConnection;
   shopifyProductVariant?: Maybe<ShopifyProductVariant>;
   allShopifyProductVariant: ShopifyProductVariantConnection;
   shopifyProduct?: Maybe<ShopifyProduct>;
   allShopifyProduct: ShopifyProductConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
-  shopifyBlog?: Maybe<ShopifyBlog>;
-  allShopifyBlog: ShopifyBlogConnection;
   shopifyPage?: Maybe<ShopifyPage>;
   allShopifyPage: ShopifyPageConnection;
+  shopifyBlog?: Maybe<ShopifyBlog>;
+  allShopifyBlog: ShopifyBlogConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
   contentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
@@ -6167,6 +6165,8 @@ export type Query = {
   allContentfulBlockFeaturedProducts: ContentfulBlockFeaturedProductsConnection;
   contentfulBlockFeaturedBlogPosts?: Maybe<ContentfulBlockFeaturedBlogPosts>;
   allContentfulBlockFeaturedBlogPosts: ContentfulBlockFeaturedBlogPostsConnection;
+  contentfulBlockHeroPictureTextTextNode?: Maybe<ContentfulBlockHeroPictureTextTextNode>;
+  allContentfulBlockHeroPictureTextTextNode: ContentfulBlockHeroPictureTextTextNodeConnection;
   contentfulBlockHero?: Maybe<ContentfulBlockHero>;
   allContentfulBlockHero: ContentfulBlockHeroConnection;
   contentfulPage?: Maybe<ContentfulPage>;
@@ -6357,18 +6357,22 @@ export type QueryAllImageSharpArgs = {
 };
 
 
-export type QueryContentfulBlockHeroPictureTextTextNodeArgs = {
+export type QueryShopifyProductMetafieldArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  pictureText?: Maybe<StringQueryOperatorInput>;
+  key?: Maybe<StringQueryOperatorInput>;
+  namespace?: Maybe<StringQueryOperatorInput>;
+  value?: Maybe<StringQueryOperatorInput>;
+  valueType?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
 };
 
 
-export type QueryAllContentfulBlockHeroPictureTextTextNodeArgs = {
-  filter?: Maybe<ContentfulBlockHeroPictureTextTextNodeFilterInput>;
-  sort?: Maybe<ContentfulBlockHeroPictureTextTextNodeSortInput>;
+export type QueryAllShopifyProductMetafieldArgs = {
+  filter?: Maybe<ShopifyProductMetafieldFilterInput>;
+  sort?: Maybe<ShopifyProductMetafieldSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -6388,27 +6392,6 @@ export type QueryShopifyProductOptionArgs = {
 export type QueryAllShopifyProductOptionArgs = {
   filter?: Maybe<ShopifyProductOptionFilterInput>;
   sort?: Maybe<ShopifyProductOptionSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShopifyProductMetafieldArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  key?: Maybe<StringQueryOperatorInput>;
-  namespace?: Maybe<StringQueryOperatorInput>;
-  value?: Maybe<StringQueryOperatorInput>;
-  valueType?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyProductMetafieldArgs = {
-  filter?: Maybe<ShopifyProductMetafieldFilterInput>;
-  sort?: Maybe<ShopifyProductMetafieldSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -6499,26 +6482,6 @@ export type QueryAllShopifyCollectionArgs = {
 };
 
 
-export type QueryShopifyBlogArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  handle?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyBlogArgs = {
-  filter?: Maybe<ShopifyBlogFilterInput>;
-  sort?: Maybe<ShopifyBlogSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryShopifyPageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6537,6 +6500,26 @@ export type QueryShopifyPageArgs = {
 export type QueryAllShopifyPageArgs = {
   filter?: Maybe<ShopifyPageFilterInput>;
   sort?: Maybe<ShopifyPageSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryShopifyBlogArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  handle?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyBlogArgs = {
+  filter?: Maybe<ShopifyBlogFilterInput>;
+  sort?: Maybe<ShopifyBlogSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -6707,7 +6690,6 @@ export type QueryContentfulBlockFeaturedProductsArgs = {
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   products?: Maybe<StringQueryOperatorInput>;
-  page?: Maybe<ContentfulPageFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
@@ -6750,6 +6732,23 @@ export type QueryAllContentfulBlockFeaturedBlogPostsArgs = {
 };
 
 
+export type QueryContentfulBlockHeroPictureTextTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  pictureText?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulBlockHeroPictureTextTextNodeArgs = {
+  filter?: Maybe<ContentfulBlockHeroPictureTextTextNodeFilterInput>;
+  sort?: Maybe<ContentfulBlockHeroPictureTextTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulBlockHeroArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6757,6 +6756,7 @@ export type QueryContentfulBlockHeroArgs = {
   internal?: Maybe<InternalFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   picture?: Maybe<ContentfulAssetFilterInput>;
+  page?: Maybe<ContentfulPageFilterListInput>;
   pictureText?: Maybe<ContentfulBlockHeroPictureTextTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;

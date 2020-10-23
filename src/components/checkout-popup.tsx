@@ -10,19 +10,33 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 
 import AppContext from "../app-context"
 
+const excludedDates = [
+  new Date(2020, 3, 13),
+  // exclude labor day holidays
+  new Date(2020, 3, 30),
+  new Date(2020, 4, 1),
+  // HK holidays
+  new Date(2020, 9, 1),
+  new Date(2020, 9, 2),
+  new Date(2020, 9, 3),
+  new Date(2020, 10, 26),
+]
+
 export const getDeliveryTime = (
   checkout = { subtotalPriceV2: { amount: 0 } },
 ): Date => {
   const deliveryTime = new Date()
-  // deliveryTime.setDate(deliveryTime.getDate() + 1)
   let sameDayDelivery = false
   if (Number(checkout["subtotalPriceV2"]["amount"]) >= 600) {
     sameDayDelivery = true
   }
-  if (deliveryTime.getHours() >= 16 || !sameDayDelivery) {
+  if (deliveryTime.getHours() >= 14 || !sameDayDelivery) {
     deliveryTime.setDate(deliveryTime.getDate() + 1)
   }
   if (deliveryTime.getDay() === 0) {
+    deliveryTime.setDate(deliveryTime.getDate() + 1)
+  }
+  while (excludedDates.filter(d => deliveryTime === d).length > 0) {
     deliveryTime.setDate(deliveryTime.getDate() + 1)
   }
   return deliveryTime
@@ -166,14 +180,7 @@ const CheckoutPopup: React.FC = () => {
 
               { daysOfWeek: [0] },
               // exclude Easter holiday
-              new Date(2020, 3, 13),
-              // exclude labor day holidays
-              new Date(2020, 3, 30),
-              new Date(2020, 4, 1),
-              // HK holidays
-              new Date(2020, 9, 1),
-              new Date(2020, 9, 2),
-              new Date(2020, 9, 3),
+              ...excludedDates,
             ]}
             firstDayOfWeek={1}
             onDayClick={(date: Date, data: Record<string, boolean>): void => {

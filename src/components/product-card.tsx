@@ -1,4 +1,4 @@
-import { navigate } from "gatsby"
+import { graphql, navigate, useStaticQuery } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 import React, { SyntheticEvent, useContext, useState } from "react"
 import { MdDone, MdShoppingCart } from "react-icons/md"
@@ -17,6 +17,17 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   const { addLineItems } = useContext(AppContext)
   const [justAddedToCart, setJustAddedToCart] = useState(false)
+  const { file: newTagImage } = useStaticQuery<any>(graphql`
+    query NewTagImageQuery {
+      file(relativePath: { eq: "new-tag.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 25) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  `)
 
   const descriptionMetafield =
     node.metafields &&
@@ -60,22 +71,35 @@ const ProductCard: React.FC<ProductCardProps> = ({ node }) => {
   return (
     <InternalLink href={`/products/${node.handle}`}>
       <Card>
-        {node.title && (
-          <Heading
-            as="h4"
-            mt={2}
-            style={{
-              WebkitBoxOrient: "vertical",
-              WebkitLineClamp: 1,
-              display: "-webkit-box",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-            variant="h4"
-          >
-            {node.title}
-          </Heading>
-        )}
+        <Flex sx={{ flexDirection: "row", justifyContent: "space-between" }}>
+          {node.title && (
+            <Heading
+              as="h4"
+              mt={2}
+              mb={1}
+              style={{
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 1,
+                display: "-webkit-box",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              variant="h4"
+            >
+              {node.title.length > 30
+                ? node.title.substring(0, 30) + "..."
+                : node.title}
+            </Heading>
+          )}
+
+          {node.tags && node.tags.includes("New") && (
+            <Image
+              fluid={newTagImage.childImageSharp!.fluid! as FluidObject}
+              imgStyle={{ objectFit: "contain" }}
+              style={{ height: "100px", width: "30px", marginTop: -40 }}
+            />
+          )}
+        </Flex>
         {description && (
           <Text
             style={{

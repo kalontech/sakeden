@@ -11,19 +11,13 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 import AppContext from "../app-context"
 
 const excludedDates = [
-  new Date(2020, 3, 13),
-  // exclude labor day holidays
-  new Date(2020, 3, 30),
-  new Date(2020, 4, 1),
-  // HK holidays
-  new Date(2020, 9, 1),
-  new Date(2020, 9, 2),
-  new Date(2020, 9, 3),
-  new Date(2020, 9, 26),
-  // Christmas holidays
-  new Date(2020, 11, 24),
-  new Date(2020, 11, 25),
-  new Date(2020, 11, 26),
+  // chinese new year
+  new Date(2021, 1, 11),
+  new Date(2021, 1, 12),
+  new Date(2021, 1, 13),
+  new Date(2021, 1, 15),
+  new Date(2021, 1, 16),
+  new Date(2021, 1, 17),
 ]
 
 export const getDeliveryTime = (

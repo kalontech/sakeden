@@ -6376,22 +6376,22 @@ export type Query = {
   allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
-  shopifyProductOption?: Maybe<ShopifyProductOption>;
-  allShopifyProductOption: ShopifyProductOptionConnection;
   shopifyProductMetafield?: Maybe<ShopifyProductMetafield>;
   allShopifyProductMetafield: ShopifyProductMetafieldConnection;
+  shopifyProductOption?: Maybe<ShopifyProductOption>;
+  allShopifyProductOption: ShopifyProductOptionConnection;
   shopifyProductVariant?: Maybe<ShopifyProductVariant>;
   allShopifyProductVariant: ShopifyProductVariantConnection;
   shopifyProduct?: Maybe<ShopifyProduct>;
   allShopifyProduct: ShopifyProductConnection;
-  shopifyPage?: Maybe<ShopifyPage>;
-  allShopifyPage: ShopifyPageConnection;
-  shopifyBlog?: Maybe<ShopifyBlog>;
-  allShopifyBlog: ShopifyBlogConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
   shopifyShop?: Maybe<ShopifyShop>;
   allShopifyShop: ShopifyShopConnection;
+  shopifyPage?: Maybe<ShopifyPage>;
+  allShopifyPage: ShopifyPageConnection;
+  shopifyBlog?: Maybe<ShopifyBlog>;
+  allShopifyBlog: ShopifyBlogConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
   contentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
@@ -6560,15 +6560,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
 };
 
 
@@ -6602,25 +6602,6 @@ export type QueryAllImageSharpArgs = {
 };
 
 
-export type QueryShopifyProductOptionArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  values?: Maybe<StringQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyProductOptionArgs = {
-  filter?: Maybe<ShopifyProductOptionFilterInput>;
-  sort?: Maybe<ShopifyProductOptionSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryShopifyProductMetafieldArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6642,12 +6623,33 @@ export type QueryAllShopifyProductMetafieldArgs = {
 };
 
 
+export type QueryShopifyProductOptionArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  values?: Maybe<StringQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyProductOptionArgs = {
+  filter?: Maybe<ShopifyProductOptionFilterInput>;
+  sort?: Maybe<ShopifyProductOptionSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryShopifyProductVariantArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   availableForSale?: Maybe<BooleanQueryOperatorInput>;
+  compareAtPrice?: Maybe<StringQueryOperatorInput>;
+  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2FilterInput>;
   image?: Maybe<ShopifyProductVariantImageFilterInput>;
   price?: Maybe<StringQueryOperatorInput>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2FilterInput>;
@@ -6705,6 +6707,48 @@ export type QueryAllShopifyProductArgs = {
 };
 
 
+export type QueryShopifyCollectionArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  descriptionHtml?: Maybe<StringQueryOperatorInput>;
+  handle?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
+  shopifyId?: Maybe<StringQueryOperatorInput>;
+  products?: Maybe<ShopifyProductFilterListInput>;
+};
+
+
+export type QueryAllShopifyCollectionArgs = {
+  filter?: Maybe<ShopifyCollectionFilterInput>;
+  sort?: Maybe<ShopifyCollectionSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryShopifyShopArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  moneyFormat?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyShopArgs = {
+  filter?: Maybe<ShopifyShopFilterInput>;
+  sort?: Maybe<ShopifyShopSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryShopifyPageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6743,48 +6787,6 @@ export type QueryShopifyBlogArgs = {
 export type QueryAllShopifyBlogArgs = {
   filter?: Maybe<ShopifyBlogFilterInput>;
   sort?: Maybe<ShopifyBlogSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShopifyCollectionArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  descriptionHtml?: Maybe<StringQueryOperatorInput>;
-  handle?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  shopifyId?: Maybe<StringQueryOperatorInput>;
-  products?: Maybe<ShopifyProductFilterListInput>;
-};
-
-
-export type QueryAllShopifyCollectionArgs = {
-  filter?: Maybe<ShopifyCollectionFilterInput>;
-  sort?: Maybe<ShopifyCollectionSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryShopifyShopArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  moneyFormat?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyShopArgs = {
-  filter?: Maybe<ShopifyShopFilterInput>;
-  sort?: Maybe<ShopifyShopSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -7613,6 +7615,9 @@ export type ShopifyCollectionFieldsEnum =
   | 'products___variants___internal___owner'
   | 'products___variants___internal___type'
   | 'products___variants___availableForSale'
+  | 'products___variants___compareAtPrice'
+  | 'products___variants___compareAtPriceV2___amount'
+  | 'products___variants___compareAtPriceV2___currencyCode'
   | 'products___variants___image___id'
   | 'products___variants___image___originalSrc'
   | 'products___variants___price'
@@ -8160,6 +8165,9 @@ export type ShopifyProductFieldsEnum =
   | 'variants___internal___owner'
   | 'variants___internal___type'
   | 'variants___availableForSale'
+  | 'variants___compareAtPrice'
+  | 'variants___compareAtPriceV2___amount'
+  | 'variants___compareAtPriceV2___currencyCode'
   | 'variants___image___id'
   | 'variants___image___originalSrc'
   | 'variants___image___localFile___sourceInstanceName'
@@ -8246,6 +8254,7 @@ export type ShopifyProductFieldsEnum =
   | 'variants___product___variants___id'
   | 'variants___product___variants___children'
   | 'variants___product___variants___availableForSale'
+  | 'variants___product___variants___compareAtPrice'
   | 'variants___product___variants___price'
   | 'variants___product___variants___requiresShipping'
   | 'variants___product___variants___selectedOptions'
@@ -8768,6 +8777,8 @@ export type ShopifyProductVariant = Node & {
   children: Array<Node>;
   internal: Internal;
   availableForSale?: Maybe<Scalars['Boolean']>;
+  compareAtPrice?: Maybe<Scalars['String']>;
+  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2>;
   image?: Maybe<ShopifyProductVariantImage>;
   price?: Maybe<Scalars['String']>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2>;
@@ -8780,6 +8791,16 @@ export type ShopifyProductVariant = Node & {
   presentmentPrices?: Maybe<ShopifyProductVariantPresentmentPrices>;
   shopifyId?: Maybe<Scalars['String']>;
   product?: Maybe<ShopifyProduct>;
+};
+
+export type ShopifyProductVariantCompareAtPriceV2 = {
+  amount?: Maybe<Scalars['String']>;
+  currencyCode?: Maybe<Scalars['String']>;
+};
+
+export type ShopifyProductVariantCompareAtPriceV2FilterInput = {
+  amount?: Maybe<StringQueryOperatorInput>;
+  currencyCode?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ShopifyProductVariantConnection = {
@@ -8897,6 +8918,9 @@ export type ShopifyProductVariantFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'availableForSale'
+  | 'compareAtPrice'
+  | 'compareAtPriceV2___amount'
+  | 'compareAtPriceV2___currencyCode'
   | 'image___id'
   | 'image___originalSrc'
   | 'image___localFile___sourceInstanceName'
@@ -9074,6 +9098,9 @@ export type ShopifyProductVariantFieldsEnum =
   | 'product___variants___internal___owner'
   | 'product___variants___internal___type'
   | 'product___variants___availableForSale'
+  | 'product___variants___compareAtPrice'
+  | 'product___variants___compareAtPriceV2___amount'
+  | 'product___variants___compareAtPriceV2___currencyCode'
   | 'product___variants___image___id'
   | 'product___variants___image___originalSrc'
   | 'product___variants___price'
@@ -9153,6 +9180,8 @@ export type ShopifyProductVariantFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   availableForSale?: Maybe<BooleanQueryOperatorInput>;
+  compareAtPrice?: Maybe<StringQueryOperatorInput>;
+  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2FilterInput>;
   image?: Maybe<ShopifyProductVariantImageFilterInput>;
   price?: Maybe<StringQueryOperatorInput>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2FilterInput>;
@@ -9210,10 +9239,22 @@ export type ShopifyProductVariantPresentmentPricesEdgesFilterListInput = {
 
 export type ShopifyProductVariantPresentmentPricesEdgesNode = {
   price?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodePrice>;
+  compareAtPrice?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPrice>;
+};
+
+export type ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPrice = {
+  amount?: Maybe<Scalars['String']>;
+  currencyCode?: Maybe<Scalars['String']>;
+};
+
+export type ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPriceFilterInput = {
+  amount?: Maybe<StringQueryOperatorInput>;
+  currencyCode?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ShopifyProductVariantPresentmentPricesEdgesNodeFilterInput = {
   price?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodePriceFilterInput>;
+  compareAtPrice?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPriceFilterInput>;
 };
 
 export type ShopifyProductVariantPresentmentPricesEdgesNodePrice = {
@@ -9738,15 +9779,15 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -9792,6 +9833,92 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___slug'
   | 'context___handle'
@@ -9898,93 +10025,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___packageJson___keywords'
   | 'pluginCreatorId'
-  | 'componentPath'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type';
+  | 'componentPath';
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -9992,15 +10033,15 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -10490,6 +10531,20 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { allShopifyProduct: { edges: Array<{ node: (
         Pick<ShopifyProduct, 'availableForSale' | 'description' | 'handle' | 'shopifyId' | 'title'>
+        & { images?: Maybe<Array<Maybe<(
+          Pick<ShopifyProductImages, 'originalSrc'>
+          & { localFile?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebp_TracedSvgFragment> }> }> }
+        )>>>, metafields?: Maybe<Array<Maybe<Pick<ShopifyProductMetafield, 'key' | 'value'>>>>, variants?: Maybe<Array<Maybe<(
+          Pick<ShopifyProductVariant, 'shopifyId' | 'title'>
+          & { priceV2?: Maybe<Pick<ShopifyProductVariantPriceV2, 'amount' | 'currencyCode'>> }
+        )>>> }
+      ) }> } };
+
+export type HeaderAllProductsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HeaderAllProductsQuery = { allShopifyProduct: { edges: Array<{ node: (
+        Pick<ShopifyProduct, 'availableForSale' | 'description' | 'handle' | 'shopifyId' | 'tags' | 'title' | 'vendor'>
         & { images?: Maybe<Array<Maybe<(
           Pick<ShopifyProductImages, 'originalSrc'>
           & { localFile?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebp_TracedSvgFragment> }> }> }

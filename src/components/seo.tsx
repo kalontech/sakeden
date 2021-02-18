@@ -88,7 +88,10 @@ const SEO: React.FC<SEOProps> = ({
           name: "og:description",
           property: "og:description",
         },
-
+        {
+          content: "tyvsaMvwcOMeRr83q446w1zEZOfZpn7PWcIaJGVKVag",
+          name: "google-site-verification",
+        },
         // Twitter.
         {
           content: "summary",

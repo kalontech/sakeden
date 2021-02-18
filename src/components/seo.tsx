@@ -48,7 +48,7 @@ const SEO: React.FC<SEOProps> = ({
   )
 
   if (!image) {
-    image = shopifyProduct.images[0].originalSrc
+    image = shopifyProduct?.images[0].originalSrc
   }
 
   return (

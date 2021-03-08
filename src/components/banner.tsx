@@ -72,7 +72,6 @@ const Banner: React.FC<BannerProps> = () => {
         >
           {/* <Countdown date={new Date("2020-09-18")} renderer={renderer} /> */}
           <Text sx={{ color: "white", textAlign: "center" }}>
-            10% OFF your first order with code "SAKEFIRST" at checkout <br />
             Order HK$600 by 2pm for FREE SAME DAY DELIVERY!
           </Text>
         </Flex>

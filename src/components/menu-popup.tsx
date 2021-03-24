@@ -155,6 +155,18 @@ const MenuPopup: React.FC = () => {
             </Heading>
           </InternalLink>
         </Box>
+        <Box py={1}>
+          <InternalLink
+            href="/returns-and-exchange-policy"
+            onClick={(): void => {
+              setIsMenuVisible(false)
+            }}
+          >
+            <Heading as="h4" sx={{ color: "gray" }} variant="h4">
+              Returns & Refunds
+            </Heading>
+          </InternalLink>
+        </Box>
         <Flex mt={3} sx={{ justifyContent: "center" }}>
           <Box px={2}>
             <ExternalLink href={process.env.SOCIAL_INSTAGRAM_URL!}>

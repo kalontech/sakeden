@@ -180,7 +180,7 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               }}
             >
               <img
-                src="/sub-trial-image.jpg"
+                src="https://i.ibb.co/vmPKYhR/sub-trial-image.jpg"
                 // width="100%"
                 height="100%"
                 style={{

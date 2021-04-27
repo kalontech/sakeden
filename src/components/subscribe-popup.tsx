@@ -28,6 +28,14 @@ const config = {
     subscriptionId: "249319",
     variantId: "32832312410200",
   },
+  "sakeden-sub-club-monthly-premium-trial-1": {
+    chargeIntervalFrequency: "1",
+    chargeIntervalUnitType: "Months",
+    shippingIntervalFrequency: "1",
+    shippingIntervalUnitType: "Months",
+    subscriptionId: "249319",
+    variantId: "39648831471798",
+  },
   "sakeden-sub-club-monthly-regular-1": {
     chargeIntervalFrequency: "1",
     chargeIntervalUnitType: "Months",

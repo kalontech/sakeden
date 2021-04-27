@@ -73,6 +73,18 @@ module.exports = {
           {
             allow: "/",
             crawlDelay: 10,
+            disallow: "/products/sakeden-sub-club-monthly-premium-trial",
+            userAgent: "*",
+          },
+          {
+            allow: "/",
+            crawlDelay: 10,
+            disallow: "/products/sakeden-sub-club-monthly-premium-trial-1",
+            userAgent: "*",
+          },
+          {
+            allow: "/",
+            crawlDelay: 10,
             disallow: "/products/sakeden-sub-club-bi-weekly-premium-1",
             userAgent: "*",
           },

@@ -816,52 +816,6 @@ export type ContentfulBlockFeaturedBlogPostsFieldsEnum =
   | 'blogPosts___image___resize___width'
   | 'blogPosts___image___resize___height'
   | 'blogPosts___image___resize___aspectRatio'
-  | 'blogPosts___block_featured_blog_posts'
-  | 'blogPosts___block_featured_blog_posts___id'
-  | 'blogPosts___block_featured_blog_posts___parent___id'
-  | 'blogPosts___block_featured_blog_posts___parent___children'
-  | 'blogPosts___block_featured_blog_posts___children'
-  | 'blogPosts___block_featured_blog_posts___children___id'
-  | 'blogPosts___block_featured_blog_posts___children___children'
-  | 'blogPosts___block_featured_blog_posts___internal___content'
-  | 'blogPosts___block_featured_blog_posts___internal___contentDigest'
-  | 'blogPosts___block_featured_blog_posts___internal___description'
-  | 'blogPosts___block_featured_blog_posts___internal___fieldOwners'
-  | 'blogPosts___block_featured_blog_posts___internal___ignoreType'
-  | 'blogPosts___block_featured_blog_posts___internal___mediaType'
-  | 'blogPosts___block_featured_blog_posts___internal___owner'
-  | 'blogPosts___block_featured_blog_posts___internal___type'
-  | 'blogPosts___block_featured_blog_posts___title'
-  | 'blogPosts___block_featured_blog_posts___blogPosts'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___id'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___children'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___title'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___slug'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___tags'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___publishDate'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___block_featured_blog_posts'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___spaceId'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___contentful_id'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___createdAt'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___updatedAt'
-  | 'blogPosts___block_featured_blog_posts___blogPosts___node_locale'
-  | 'blogPosts___block_featured_blog_posts___page'
-  | 'blogPosts___block_featured_blog_posts___page___id'
-  | 'blogPosts___block_featured_blog_posts___page___children'
-  | 'blogPosts___block_featured_blog_posts___page___title'
-  | 'blogPosts___block_featured_blog_posts___page___slug'
-  | 'blogPosts___block_featured_blog_posts___page___spaceId'
-  | 'blogPosts___block_featured_blog_posts___page___contentful_id'
-  | 'blogPosts___block_featured_blog_posts___page___createdAt'
-  | 'blogPosts___block_featured_blog_posts___page___updatedAt'
-  | 'blogPosts___block_featured_blog_posts___page___node_locale'
-  | 'blogPosts___block_featured_blog_posts___spaceId'
-  | 'blogPosts___block_featured_blog_posts___contentful_id'
-  | 'blogPosts___block_featured_blog_posts___createdAt'
-  | 'blogPosts___block_featured_blog_posts___updatedAt'
-  | 'blogPosts___block_featured_blog_posts___sys___type'
-  | 'blogPosts___block_featured_blog_posts___sys___revision'
-  | 'blogPosts___block_featured_blog_posts___node_locale'
   | 'blogPosts___description___id'
   | 'blogPosts___description___parent___id'
   | 'blogPosts___description___parent___children'
@@ -901,6 +855,52 @@ export type ContentfulBlockFeaturedBlogPostsFieldsEnum =
   | 'blogPosts___sys___type'
   | 'blogPosts___sys___revision'
   | 'blogPosts___node_locale'
+  | 'blogPosts___block_featured_blog_posts'
+  | 'blogPosts___block_featured_blog_posts___id'
+  | 'blogPosts___block_featured_blog_posts___parent___id'
+  | 'blogPosts___block_featured_blog_posts___parent___children'
+  | 'blogPosts___block_featured_blog_posts___children'
+  | 'blogPosts___block_featured_blog_posts___children___id'
+  | 'blogPosts___block_featured_blog_posts___children___children'
+  | 'blogPosts___block_featured_blog_posts___internal___content'
+  | 'blogPosts___block_featured_blog_posts___internal___contentDigest'
+  | 'blogPosts___block_featured_blog_posts___internal___description'
+  | 'blogPosts___block_featured_blog_posts___internal___fieldOwners'
+  | 'blogPosts___block_featured_blog_posts___internal___ignoreType'
+  | 'blogPosts___block_featured_blog_posts___internal___mediaType'
+  | 'blogPosts___block_featured_blog_posts___internal___owner'
+  | 'blogPosts___block_featured_blog_posts___internal___type'
+  | 'blogPosts___block_featured_blog_posts___title'
+  | 'blogPosts___block_featured_blog_posts___blogPosts'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___id'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___children'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___title'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___slug'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___tags'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___publishDate'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___spaceId'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___contentful_id'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___createdAt'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___updatedAt'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___node_locale'
+  | 'blogPosts___block_featured_blog_posts___blogPosts___block_featured_blog_posts'
+  | 'blogPosts___block_featured_blog_posts___page'
+  | 'blogPosts___block_featured_blog_posts___page___id'
+  | 'blogPosts___block_featured_blog_posts___page___children'
+  | 'blogPosts___block_featured_blog_posts___page___title'
+  | 'blogPosts___block_featured_blog_posts___page___slug'
+  | 'blogPosts___block_featured_blog_posts___page___spaceId'
+  | 'blogPosts___block_featured_blog_posts___page___contentful_id'
+  | 'blogPosts___block_featured_blog_posts___page___createdAt'
+  | 'blogPosts___block_featured_blog_posts___page___updatedAt'
+  | 'blogPosts___block_featured_blog_posts___page___node_locale'
+  | 'blogPosts___block_featured_blog_posts___spaceId'
+  | 'blogPosts___block_featured_blog_posts___contentful_id'
+  | 'blogPosts___block_featured_blog_posts___createdAt'
+  | 'blogPosts___block_featured_blog_posts___updatedAt'
+  | 'blogPosts___block_featured_blog_posts___sys___type'
+  | 'blogPosts___block_featured_blog_posts___sys___revision'
+  | 'blogPosts___block_featured_blog_posts___node_locale'
   | 'blogPosts___childContentfulBlogPostDescriptionTextNode___id'
   | 'blogPosts___childContentfulBlogPostDescriptionTextNode___parent___id'
   | 'blogPosts___childContentfulBlogPostDescriptionTextNode___parent___children'
@@ -3053,9 +3053,9 @@ export type ContentfulBlockRichTextContentRichTextNode = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  content?: Maybe<Scalars['String']>;
   /** @deprecated This field is deprecated, please use 'json' instead. */
   nodeType?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
   sys?: Maybe<ContentfulBlockRichTextContentRichTextNodeSys>;
   json?: Maybe<Scalars['JSON']>;
 };
@@ -3174,8 +3174,8 @@ export type ContentfulBlockRichTextContentRichTextNodeFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'nodeType'
   | 'content'
+  | 'nodeType'
   | 'sys___type'
   | 'json';
 
@@ -3184,8 +3184,8 @@ export type ContentfulBlockRichTextContentRichTextNodeFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  nodeType?: Maybe<StringQueryOperatorInput>;
   content?: Maybe<StringQueryOperatorInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
   sys?: Maybe<ContentfulBlockRichTextContentRichTextNodeSysFilterInput>;
   json?: Maybe<JsonQueryOperatorInput>;
 };
@@ -3392,8 +3392,8 @@ export type ContentfulBlockRichTextFieldsEnum =
   | 'content___internal___mediaType'
   | 'content___internal___owner'
   | 'content___internal___type'
-  | 'content___nodeType'
   | 'content___content'
+  | 'content___nodeType'
   | 'content___sys___type'
   | 'content___json'
   | 'spaceId'
@@ -3445,8 +3445,8 @@ export type ContentfulBlockRichTextFieldsEnum =
   | 'childContentfulBlockRichTextContentRichTextNode___internal___mediaType'
   | 'childContentfulBlockRichTextContentRichTextNode___internal___owner'
   | 'childContentfulBlockRichTextContentRichTextNode___internal___type'
-  | 'childContentfulBlockRichTextContentRichTextNode___nodeType'
   | 'childContentfulBlockRichTextContentRichTextNode___content'
+  | 'childContentfulBlockRichTextContentRichTextNode___nodeType'
   | 'childContentfulBlockRichTextContentRichTextNode___sys___type'
   | 'childContentfulBlockRichTextContentRichTextNode___json';
 
@@ -3525,7 +3525,6 @@ export type ContentfulBlogPost = Node & {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   publishDate?: Maybe<Scalars['Date']>;
   image?: Maybe<ContentfulAsset>;
-  block_featured_blog_posts?: Maybe<Array<Maybe<ContentfulBlockFeaturedBlogPosts>>>;
   description?: Maybe<ContentfulBlogPostDescriptionTextNode>;
   body?: Maybe<ContentfulBlogPostBodyTextNode>;
   spaceId?: Maybe<Scalars['String']>;
@@ -3534,6 +3533,7 @@ export type ContentfulBlogPost = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulBlogPostSys>;
   node_locale?: Maybe<Scalars['String']>;
+  block_featured_blog_posts?: Maybe<Array<Maybe<ContentfulBlockFeaturedBlogPosts>>>;
   childContentfulBlogPostDescriptionTextNode?: Maybe<ContentfulBlogPostDescriptionTextNode>;
   childContentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNode>;
 };
@@ -4136,135 +4136,6 @@ export type ContentfulBlogPostFieldsEnum =
   | 'image___resize___width'
   | 'image___resize___height'
   | 'image___resize___aspectRatio'
-  | 'block_featured_blog_posts'
-  | 'block_featured_blog_posts___id'
-  | 'block_featured_blog_posts___parent___id'
-  | 'block_featured_blog_posts___parent___parent___id'
-  | 'block_featured_blog_posts___parent___parent___children'
-  | 'block_featured_blog_posts___parent___children'
-  | 'block_featured_blog_posts___parent___children___id'
-  | 'block_featured_blog_posts___parent___children___children'
-  | 'block_featured_blog_posts___parent___internal___content'
-  | 'block_featured_blog_posts___parent___internal___contentDigest'
-  | 'block_featured_blog_posts___parent___internal___description'
-  | 'block_featured_blog_posts___parent___internal___fieldOwners'
-  | 'block_featured_blog_posts___parent___internal___ignoreType'
-  | 'block_featured_blog_posts___parent___internal___mediaType'
-  | 'block_featured_blog_posts___parent___internal___owner'
-  | 'block_featured_blog_posts___parent___internal___type'
-  | 'block_featured_blog_posts___children'
-  | 'block_featured_blog_posts___children___id'
-  | 'block_featured_blog_posts___children___parent___id'
-  | 'block_featured_blog_posts___children___parent___children'
-  | 'block_featured_blog_posts___children___children'
-  | 'block_featured_blog_posts___children___children___id'
-  | 'block_featured_blog_posts___children___children___children'
-  | 'block_featured_blog_posts___children___internal___content'
-  | 'block_featured_blog_posts___children___internal___contentDigest'
-  | 'block_featured_blog_posts___children___internal___description'
-  | 'block_featured_blog_posts___children___internal___fieldOwners'
-  | 'block_featured_blog_posts___children___internal___ignoreType'
-  | 'block_featured_blog_posts___children___internal___mediaType'
-  | 'block_featured_blog_posts___children___internal___owner'
-  | 'block_featured_blog_posts___children___internal___type'
-  | 'block_featured_blog_posts___internal___content'
-  | 'block_featured_blog_posts___internal___contentDigest'
-  | 'block_featured_blog_posts___internal___description'
-  | 'block_featured_blog_posts___internal___fieldOwners'
-  | 'block_featured_blog_posts___internal___ignoreType'
-  | 'block_featured_blog_posts___internal___mediaType'
-  | 'block_featured_blog_posts___internal___owner'
-  | 'block_featured_blog_posts___internal___type'
-  | 'block_featured_blog_posts___title'
-  | 'block_featured_blog_posts___blogPosts'
-  | 'block_featured_blog_posts___blogPosts___id'
-  | 'block_featured_blog_posts___blogPosts___parent___id'
-  | 'block_featured_blog_posts___blogPosts___parent___children'
-  | 'block_featured_blog_posts___blogPosts___children'
-  | 'block_featured_blog_posts___blogPosts___children___id'
-  | 'block_featured_blog_posts___blogPosts___children___children'
-  | 'block_featured_blog_posts___blogPosts___internal___content'
-  | 'block_featured_blog_posts___blogPosts___internal___contentDigest'
-  | 'block_featured_blog_posts___blogPosts___internal___description'
-  | 'block_featured_blog_posts___blogPosts___internal___fieldOwners'
-  | 'block_featured_blog_posts___blogPosts___internal___ignoreType'
-  | 'block_featured_blog_posts___blogPosts___internal___mediaType'
-  | 'block_featured_blog_posts___blogPosts___internal___owner'
-  | 'block_featured_blog_posts___blogPosts___internal___type'
-  | 'block_featured_blog_posts___blogPosts___title'
-  | 'block_featured_blog_posts___blogPosts___slug'
-  | 'block_featured_blog_posts___blogPosts___tags'
-  | 'block_featured_blog_posts___blogPosts___publishDate'
-  | 'block_featured_blog_posts___blogPosts___image___id'
-  | 'block_featured_blog_posts___blogPosts___image___children'
-  | 'block_featured_blog_posts___blogPosts___image___contentful_id'
-  | 'block_featured_blog_posts___blogPosts___image___spaceId'
-  | 'block_featured_blog_posts___blogPosts___image___createdAt'
-  | 'block_featured_blog_posts___blogPosts___image___updatedAt'
-  | 'block_featured_blog_posts___blogPosts___image___title'
-  | 'block_featured_blog_posts___blogPosts___image___description'
-  | 'block_featured_blog_posts___blogPosts___image___node_locale'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___id'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___children'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___title'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___blogPosts'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___page'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___spaceId'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___contentful_id'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___createdAt'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___updatedAt'
-  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___node_locale'
-  | 'block_featured_blog_posts___blogPosts___description___id'
-  | 'block_featured_blog_posts___blogPosts___description___children'
-  | 'block_featured_blog_posts___blogPosts___description___description'
-  | 'block_featured_blog_posts___blogPosts___body___id'
-  | 'block_featured_blog_posts___blogPosts___body___children'
-  | 'block_featured_blog_posts___blogPosts___body___body'
-  | 'block_featured_blog_posts___blogPosts___spaceId'
-  | 'block_featured_blog_posts___blogPosts___contentful_id'
-  | 'block_featured_blog_posts___blogPosts___createdAt'
-  | 'block_featured_blog_posts___blogPosts___updatedAt'
-  | 'block_featured_blog_posts___blogPosts___sys___type'
-  | 'block_featured_blog_posts___blogPosts___sys___revision'
-  | 'block_featured_blog_posts___blogPosts___node_locale'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___id'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___children'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___description'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___id'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___children'
-  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___body'
-  | 'block_featured_blog_posts___page'
-  | 'block_featured_blog_posts___page___id'
-  | 'block_featured_blog_posts___page___parent___id'
-  | 'block_featured_blog_posts___page___parent___children'
-  | 'block_featured_blog_posts___page___children'
-  | 'block_featured_blog_posts___page___children___id'
-  | 'block_featured_blog_posts___page___children___children'
-  | 'block_featured_blog_posts___page___internal___content'
-  | 'block_featured_blog_posts___page___internal___contentDigest'
-  | 'block_featured_blog_posts___page___internal___description'
-  | 'block_featured_blog_posts___page___internal___fieldOwners'
-  | 'block_featured_blog_posts___page___internal___ignoreType'
-  | 'block_featured_blog_posts___page___internal___mediaType'
-  | 'block_featured_blog_posts___page___internal___owner'
-  | 'block_featured_blog_posts___page___internal___type'
-  | 'block_featured_blog_posts___page___title'
-  | 'block_featured_blog_posts___page___slug'
-  | 'block_featured_blog_posts___page___spaceId'
-  | 'block_featured_blog_posts___page___contentful_id'
-  | 'block_featured_blog_posts___page___createdAt'
-  | 'block_featured_blog_posts___page___updatedAt'
-  | 'block_featured_blog_posts___page___sys___type'
-  | 'block_featured_blog_posts___page___sys___revision'
-  | 'block_featured_blog_posts___page___node_locale'
-  | 'block_featured_blog_posts___spaceId'
-  | 'block_featured_blog_posts___contentful_id'
-  | 'block_featured_blog_posts___createdAt'
-  | 'block_featured_blog_posts___updatedAt'
-  | 'block_featured_blog_posts___sys___type'
-  | 'block_featured_blog_posts___sys___revision'
-  | 'block_featured_blog_posts___node_locale'
   | 'description___id'
   | 'description___parent___id'
   | 'description___parent___parent___id'
@@ -4356,6 +4227,135 @@ export type ContentfulBlogPostFieldsEnum =
   | 'sys___contentType___sys___id'
   | 'sys___contentType___sys___contentful_id'
   | 'node_locale'
+  | 'block_featured_blog_posts'
+  | 'block_featured_blog_posts___id'
+  | 'block_featured_blog_posts___parent___id'
+  | 'block_featured_blog_posts___parent___parent___id'
+  | 'block_featured_blog_posts___parent___parent___children'
+  | 'block_featured_blog_posts___parent___children'
+  | 'block_featured_blog_posts___parent___children___id'
+  | 'block_featured_blog_posts___parent___children___children'
+  | 'block_featured_blog_posts___parent___internal___content'
+  | 'block_featured_blog_posts___parent___internal___contentDigest'
+  | 'block_featured_blog_posts___parent___internal___description'
+  | 'block_featured_blog_posts___parent___internal___fieldOwners'
+  | 'block_featured_blog_posts___parent___internal___ignoreType'
+  | 'block_featured_blog_posts___parent___internal___mediaType'
+  | 'block_featured_blog_posts___parent___internal___owner'
+  | 'block_featured_blog_posts___parent___internal___type'
+  | 'block_featured_blog_posts___children'
+  | 'block_featured_blog_posts___children___id'
+  | 'block_featured_blog_posts___children___parent___id'
+  | 'block_featured_blog_posts___children___parent___children'
+  | 'block_featured_blog_posts___children___children'
+  | 'block_featured_blog_posts___children___children___id'
+  | 'block_featured_blog_posts___children___children___children'
+  | 'block_featured_blog_posts___children___internal___content'
+  | 'block_featured_blog_posts___children___internal___contentDigest'
+  | 'block_featured_blog_posts___children___internal___description'
+  | 'block_featured_blog_posts___children___internal___fieldOwners'
+  | 'block_featured_blog_posts___children___internal___ignoreType'
+  | 'block_featured_blog_posts___children___internal___mediaType'
+  | 'block_featured_blog_posts___children___internal___owner'
+  | 'block_featured_blog_posts___children___internal___type'
+  | 'block_featured_blog_posts___internal___content'
+  | 'block_featured_blog_posts___internal___contentDigest'
+  | 'block_featured_blog_posts___internal___description'
+  | 'block_featured_blog_posts___internal___fieldOwners'
+  | 'block_featured_blog_posts___internal___ignoreType'
+  | 'block_featured_blog_posts___internal___mediaType'
+  | 'block_featured_blog_posts___internal___owner'
+  | 'block_featured_blog_posts___internal___type'
+  | 'block_featured_blog_posts___title'
+  | 'block_featured_blog_posts___blogPosts'
+  | 'block_featured_blog_posts___blogPosts___id'
+  | 'block_featured_blog_posts___blogPosts___parent___id'
+  | 'block_featured_blog_posts___blogPosts___parent___children'
+  | 'block_featured_blog_posts___blogPosts___children'
+  | 'block_featured_blog_posts___blogPosts___children___id'
+  | 'block_featured_blog_posts___blogPosts___children___children'
+  | 'block_featured_blog_posts___blogPosts___internal___content'
+  | 'block_featured_blog_posts___blogPosts___internal___contentDigest'
+  | 'block_featured_blog_posts___blogPosts___internal___description'
+  | 'block_featured_blog_posts___blogPosts___internal___fieldOwners'
+  | 'block_featured_blog_posts___blogPosts___internal___ignoreType'
+  | 'block_featured_blog_posts___blogPosts___internal___mediaType'
+  | 'block_featured_blog_posts___blogPosts___internal___owner'
+  | 'block_featured_blog_posts___blogPosts___internal___type'
+  | 'block_featured_blog_posts___blogPosts___title'
+  | 'block_featured_blog_posts___blogPosts___slug'
+  | 'block_featured_blog_posts___blogPosts___tags'
+  | 'block_featured_blog_posts___blogPosts___publishDate'
+  | 'block_featured_blog_posts___blogPosts___image___id'
+  | 'block_featured_blog_posts___blogPosts___image___children'
+  | 'block_featured_blog_posts___blogPosts___image___contentful_id'
+  | 'block_featured_blog_posts___blogPosts___image___spaceId'
+  | 'block_featured_blog_posts___blogPosts___image___createdAt'
+  | 'block_featured_blog_posts___blogPosts___image___updatedAt'
+  | 'block_featured_blog_posts___blogPosts___image___title'
+  | 'block_featured_blog_posts___blogPosts___image___description'
+  | 'block_featured_blog_posts___blogPosts___image___node_locale'
+  | 'block_featured_blog_posts___blogPosts___description___id'
+  | 'block_featured_blog_posts___blogPosts___description___children'
+  | 'block_featured_blog_posts___blogPosts___description___description'
+  | 'block_featured_blog_posts___blogPosts___body___id'
+  | 'block_featured_blog_posts___blogPosts___body___children'
+  | 'block_featured_blog_posts___blogPosts___body___body'
+  | 'block_featured_blog_posts___blogPosts___spaceId'
+  | 'block_featured_blog_posts___blogPosts___contentful_id'
+  | 'block_featured_blog_posts___blogPosts___createdAt'
+  | 'block_featured_blog_posts___blogPosts___updatedAt'
+  | 'block_featured_blog_posts___blogPosts___sys___type'
+  | 'block_featured_blog_posts___blogPosts___sys___revision'
+  | 'block_featured_blog_posts___blogPosts___node_locale'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___id'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___children'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___title'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___blogPosts'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___page'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___spaceId'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___contentful_id'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___createdAt'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___updatedAt'
+  | 'block_featured_blog_posts___blogPosts___block_featured_blog_posts___node_locale'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___id'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___children'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostDescriptionTextNode___description'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___id'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___children'
+  | 'block_featured_blog_posts___blogPosts___childContentfulBlogPostBodyTextNode___body'
+  | 'block_featured_blog_posts___page'
+  | 'block_featured_blog_posts___page___id'
+  | 'block_featured_blog_posts___page___parent___id'
+  | 'block_featured_blog_posts___page___parent___children'
+  | 'block_featured_blog_posts___page___children'
+  | 'block_featured_blog_posts___page___children___id'
+  | 'block_featured_blog_posts___page___children___children'
+  | 'block_featured_blog_posts___page___internal___content'
+  | 'block_featured_blog_posts___page___internal___contentDigest'
+  | 'block_featured_blog_posts___page___internal___description'
+  | 'block_featured_blog_posts___page___internal___fieldOwners'
+  | 'block_featured_blog_posts___page___internal___ignoreType'
+  | 'block_featured_blog_posts___page___internal___mediaType'
+  | 'block_featured_blog_posts___page___internal___owner'
+  | 'block_featured_blog_posts___page___internal___type'
+  | 'block_featured_blog_posts___page___title'
+  | 'block_featured_blog_posts___page___slug'
+  | 'block_featured_blog_posts___page___spaceId'
+  | 'block_featured_blog_posts___page___contentful_id'
+  | 'block_featured_blog_posts___page___createdAt'
+  | 'block_featured_blog_posts___page___updatedAt'
+  | 'block_featured_blog_posts___page___sys___type'
+  | 'block_featured_blog_posts___page___sys___revision'
+  | 'block_featured_blog_posts___page___node_locale'
+  | 'block_featured_blog_posts___spaceId'
+  | 'block_featured_blog_posts___contentful_id'
+  | 'block_featured_blog_posts___createdAt'
+  | 'block_featured_blog_posts___updatedAt'
+  | 'block_featured_blog_posts___sys___type'
+  | 'block_featured_blog_posts___sys___revision'
+  | 'block_featured_blog_posts___node_locale'
   | 'childContentfulBlogPostDescriptionTextNode___id'
   | 'childContentfulBlogPostDescriptionTextNode___parent___id'
   | 'childContentfulBlogPostDescriptionTextNode___parent___parent___id'
@@ -4447,7 +4447,6 @@ export type ContentfulBlogPostFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>;
   publishDate?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<ContentfulAssetFilterInput>;
-  block_featured_blog_posts?: Maybe<ContentfulBlockFeaturedBlogPostsFilterListInput>;
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>;
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -4456,6 +4455,7 @@ export type ContentfulBlogPostFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulBlogPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  block_featured_blog_posts?: Maybe<ContentfulBlockFeaturedBlogPostsFilterListInput>;
   childContentfulBlogPostDescriptionTextNode?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>;
   childContentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>;
 };
@@ -6386,12 +6386,12 @@ export type Query = {
   allShopifyProduct: ShopifyProductConnection;
   shopifyCollection?: Maybe<ShopifyCollection>;
   allShopifyCollection: ShopifyCollectionConnection;
-  shopifyShop?: Maybe<ShopifyShop>;
-  allShopifyShop: ShopifyShopConnection;
   shopifyPage?: Maybe<ShopifyPage>;
   allShopifyPage: ShopifyPageConnection;
   shopifyBlog?: Maybe<ShopifyBlog>;
   allShopifyBlog: ShopifyBlogConnection;
+  shopifyShop?: Maybe<ShopifyShop>;
+  allShopifyShop: ShopifyShopConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
   contentfulBlockRichTextContentRichTextNode?: Maybe<ContentfulBlockRichTextContentRichTextNode>;
@@ -6560,15 +6560,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 
@@ -6648,8 +6648,6 @@ export type QueryShopifyProductVariantArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   availableForSale?: Maybe<BooleanQueryOperatorInput>;
-  compareAtPrice?: Maybe<StringQueryOperatorInput>;
-  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2FilterInput>;
   image?: Maybe<ShopifyProductVariantImageFilterInput>;
   price?: Maybe<StringQueryOperatorInput>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2FilterInput>;
@@ -6730,25 +6728,6 @@ export type QueryAllShopifyCollectionArgs = {
 };
 
 
-export type QueryShopifyShopArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  moneyFormat?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllShopifyShopArgs = {
-  filter?: Maybe<ShopifyShopFilterInput>;
-  sort?: Maybe<ShopifyShopSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryShopifyPageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6792,6 +6771,25 @@ export type QueryAllShopifyBlogArgs = {
 };
 
 
+export type QueryShopifyShopArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  moneyFormat?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllShopifyShopArgs = {
+  filter?: Maybe<ShopifyShopFilterInput>;
+  sort?: Maybe<ShopifyShopSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulAssetArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -6828,8 +6826,8 @@ export type QueryContentfulBlockRichTextContentRichTextNodeArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  nodeType?: Maybe<StringQueryOperatorInput>;
   content?: Maybe<StringQueryOperatorInput>;
+  nodeType?: Maybe<StringQueryOperatorInput>;
   sys?: Maybe<ContentfulBlockRichTextContentRichTextNodeSysFilterInput>;
   json?: Maybe<JsonQueryOperatorInput>;
 };
@@ -7123,7 +7121,6 @@ export type QueryContentfulBlogPostArgs = {
   tags?: Maybe<StringQueryOperatorInput>;
   publishDate?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<ContentfulAssetFilterInput>;
-  block_featured_blog_posts?: Maybe<ContentfulBlockFeaturedBlogPostsFilterListInput>;
   description?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>;
   body?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
@@ -7132,6 +7129,7 @@ export type QueryContentfulBlogPostArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulBlogPostSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  block_featured_blog_posts?: Maybe<ContentfulBlockFeaturedBlogPostsFilterListInput>;
   childContentfulBlogPostDescriptionTextNode?: Maybe<ContentfulBlogPostDescriptionTextNodeFilterInput>;
   childContentfulBlogPostBodyTextNode?: Maybe<ContentfulBlogPostBodyTextNodeFilterInput>;
 };
@@ -7615,9 +7613,6 @@ export type ShopifyCollectionFieldsEnum =
   | 'products___variants___internal___owner'
   | 'products___variants___internal___type'
   | 'products___variants___availableForSale'
-  | 'products___variants___compareAtPrice'
-  | 'products___variants___compareAtPriceV2___amount'
-  | 'products___variants___compareAtPriceV2___currencyCode'
   | 'products___variants___image___id'
   | 'products___variants___image___originalSrc'
   | 'products___variants___price'
@@ -8165,9 +8160,6 @@ export type ShopifyProductFieldsEnum =
   | 'variants___internal___owner'
   | 'variants___internal___type'
   | 'variants___availableForSale'
-  | 'variants___compareAtPrice'
-  | 'variants___compareAtPriceV2___amount'
-  | 'variants___compareAtPriceV2___currencyCode'
   | 'variants___image___id'
   | 'variants___image___originalSrc'
   | 'variants___image___localFile___sourceInstanceName'
@@ -8254,7 +8246,6 @@ export type ShopifyProductFieldsEnum =
   | 'variants___product___variants___id'
   | 'variants___product___variants___children'
   | 'variants___product___variants___availableForSale'
-  | 'variants___product___variants___compareAtPrice'
   | 'variants___product___variants___price'
   | 'variants___product___variants___requiresShipping'
   | 'variants___product___variants___selectedOptions'
@@ -8777,8 +8768,6 @@ export type ShopifyProductVariant = Node & {
   children: Array<Node>;
   internal: Internal;
   availableForSale?: Maybe<Scalars['Boolean']>;
-  compareAtPrice?: Maybe<Scalars['String']>;
-  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2>;
   image?: Maybe<ShopifyProductVariantImage>;
   price?: Maybe<Scalars['String']>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2>;
@@ -8791,16 +8780,6 @@ export type ShopifyProductVariant = Node & {
   presentmentPrices?: Maybe<ShopifyProductVariantPresentmentPrices>;
   shopifyId?: Maybe<Scalars['String']>;
   product?: Maybe<ShopifyProduct>;
-};
-
-export type ShopifyProductVariantCompareAtPriceV2 = {
-  amount?: Maybe<Scalars['String']>;
-  currencyCode?: Maybe<Scalars['String']>;
-};
-
-export type ShopifyProductVariantCompareAtPriceV2FilterInput = {
-  amount?: Maybe<StringQueryOperatorInput>;
-  currencyCode?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ShopifyProductVariantConnection = {
@@ -8918,9 +8897,6 @@ export type ShopifyProductVariantFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'availableForSale'
-  | 'compareAtPrice'
-  | 'compareAtPriceV2___amount'
-  | 'compareAtPriceV2___currencyCode'
   | 'image___id'
   | 'image___originalSrc'
   | 'image___localFile___sourceInstanceName'
@@ -9098,9 +9074,6 @@ export type ShopifyProductVariantFieldsEnum =
   | 'product___variants___internal___owner'
   | 'product___variants___internal___type'
   | 'product___variants___availableForSale'
-  | 'product___variants___compareAtPrice'
-  | 'product___variants___compareAtPriceV2___amount'
-  | 'product___variants___compareAtPriceV2___currencyCode'
   | 'product___variants___image___id'
   | 'product___variants___image___originalSrc'
   | 'product___variants___price'
@@ -9180,8 +9153,6 @@ export type ShopifyProductVariantFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   availableForSale?: Maybe<BooleanQueryOperatorInput>;
-  compareAtPrice?: Maybe<StringQueryOperatorInput>;
-  compareAtPriceV2?: Maybe<ShopifyProductVariantCompareAtPriceV2FilterInput>;
   image?: Maybe<ShopifyProductVariantImageFilterInput>;
   price?: Maybe<StringQueryOperatorInput>;
   priceV2?: Maybe<ShopifyProductVariantPriceV2FilterInput>;
@@ -9239,22 +9210,10 @@ export type ShopifyProductVariantPresentmentPricesEdgesFilterListInput = {
 
 export type ShopifyProductVariantPresentmentPricesEdgesNode = {
   price?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodePrice>;
-  compareAtPrice?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPrice>;
-};
-
-export type ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPrice = {
-  amount?: Maybe<Scalars['String']>;
-  currencyCode?: Maybe<Scalars['String']>;
-};
-
-export type ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPriceFilterInput = {
-  amount?: Maybe<StringQueryOperatorInput>;
-  currencyCode?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ShopifyProductVariantPresentmentPricesEdgesNodeFilterInput = {
   price?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodePriceFilterInput>;
-  compareAtPrice?: Maybe<ShopifyProductVariantPresentmentPricesEdgesNodeCompareAtPriceFilterInput>;
 };
 
 export type ShopifyProductVariantPresentmentPricesEdgesNodePrice = {
@@ -9779,15 +9738,15 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -9833,92 +9792,6 @@ export type SitePageFieldsEnum =
   | 'internalComponentName'
   | 'componentChunkName'
   | 'matchPath'
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___slug'
   | 'context___handle'
@@ -10025,7 +9898,93 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___packageJson___keywords'
   | 'pluginCreatorId'
-  | 'componentPath';
+  | 'componentPath'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -10033,15 +9992,15 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -10632,6 +10591,23 @@ export type SetsPageQuery = { shopifyCollection?: Maybe<{ products?: Maybe<Array
         & { priceV2?: Maybe<Pick<ShopifyProductVariantPriceV2, 'amount' | 'currencyCode'>> }
       )>>> }
     )>>> }> };
+
+export type SubClubTrialQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SubClubTrialQuery = { allShopifyProduct: { edges: Array<{ node: (
+        Pick<ShopifyProduct, 'handle' | 'title'>
+        & { variants?: Maybe<Array<Maybe<{ priceV2?: Maybe<Pick<ShopifyProductVariantPriceV2, 'amount' | 'currencyCode'>> }>>> }
+      ) }> }, shopifyProduct?: Maybe<(
+    Pick<ShopifyProduct, 'availableForSale' | 'description' | 'descriptionHtml' | 'handle' | 'shopifyId' | 'tags' | 'title' | 'vendor'>
+    & { images?: Maybe<Array<Maybe<(
+      Pick<ShopifyProductImages, 'originalSrc'>
+      & { localFile?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebp_TracedSvgFragment>, resize?: Maybe<Pick<ImageSharpResize, 'src'>>, sizes?: Maybe<Pick<ImageSharpSizes, 'presentationWidth' | 'presentationHeight'>> }> }> }
+    )>>>, variants?: Maybe<Array<Maybe<(
+      Pick<ShopifyProductVariant, 'shopifyId' | 'title'>
+      & { priceV2?: Maybe<Pick<ShopifyProductVariantPriceV2, 'amount' | 'currencyCode'>> }
+    )>>> }
+  )> };
 
 export type BlogPostQueryVariables = Exact<{
   slug: Scalars['String'];

@@ -174,6 +174,8 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               sx={{
                 bottom: "0px",
                 left: "45%",
+
+                height: "calc(100vh - 70px)",
                 position: "fixed",
                 right: ["0px", "0px", "0px", "0px"],
                 transition: "top 100ms ease-in-out",
@@ -181,7 +183,6 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             >
               <img
                 src="https://i.ibb.co/vmPKYhR/sub-trial-image.jpg"
-                // width="100%"
                 height="100%"
                 style={{
                   objectFit: "contain",

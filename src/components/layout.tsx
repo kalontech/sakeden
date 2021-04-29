@@ -16,13 +16,17 @@ interface LayoutProps {
   narrow?: boolean
   sx?: any
   noBanner?: boolean
+  noPaddingHeader?: boolean
+  pt?: any
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   sx,
+  pt = 4,
   narrow,
   noBanner = false,
+  noPaddingHeader = false,
 }) => {
   return (
     <Box sx={sx}>
@@ -33,7 +37,8 @@ const Layout: React.FC<LayoutProps> = ({
       <Header logo={<Logo />} />
       {!noBanner && <Banner />}
       <Container
-        py={4}
+        pt={pt}
+        pb={4}
         variant={narrow ? "containerNarrow" : "container"}
         sx={{ flex: 1 }}
       >

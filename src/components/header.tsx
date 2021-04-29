@@ -150,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({ logo }) => {
           <Flex
             sx={{
               alignItems: "center",
-              height: isSticky ? "70px" : "100px",
+              height: "100px",
               justifyContent: "space-between",
               transition: "100ms ease-in-out",
             }}

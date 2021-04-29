@@ -30,21 +30,6 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
   const { setIsSubscribeVisible, setSubscriptionProduct } = useContext(
     AppContext,
   )
-  const [justAddedToCart, setJustAddedToCart] = useState(false)
-  const [isSubscribed, setIsSubcribed] = useState(false)
-  const [isSubscribing, setIsSubcribing] = useState(false)
-  const [email, setEmail] = useState("")
-  const [currentVariant, setCurrentVariant] = useState<ShopifyProductVariant>(
-    shopifyProduct.variants![0]!,
-  )
-  const [subscriptionInterval, setSubscriptionInterval] = useState("bi-weekly")
-  const [subscriptionType, setSubscriptionType] = useState("premium")
-
-  // Determine whether this product is subscription.
-  const isSubscription = shopifyProduct.title!.includes("Sub")
-
-  // Build URL that will be shared in social networks.
-  const shareUrl = typeof window !== "undefined" ? window.location.href : ""
 
   useEffect(() => {
     setSubscriptionProduct("sakeden-sub-club-monthly-premium-trial-1")
@@ -56,6 +41,7 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
 
   const renderNoPrintLayout = () => (
     <Layout
+      pt={[0, 0, 4, 4]}
       sx={{
         backgroundColor: "#414141",
         overflow: "hidden",
@@ -65,7 +51,12 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
       <Flex
         sx={{
           flexDirection: "column",
-          height: "calc(100vh - 160px)",
+          height: [
+            "100%",
+            "100%",
+            "calc(100vh - 160px)",
+            "calc(100vh - 160px)",
+          ],
         }}
       >
         <Flex
@@ -83,6 +74,20 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               alignItems: ["center"],
             }}
           >
+            <Box
+              sx={{
+                display: ["block", "block", "none", "none"],
+                mb: [3, 3, 0, 0],
+              }}
+            >
+              <img
+                src="https://i.ibb.co/vmPKYhR/sub-trial-image.jpg"
+                height="100%"
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
             <Heading as="h2" variant="h3" color="white">
               Special offer
             </Heading>
@@ -92,7 +97,12 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
             <Heading as="h2" variant="h3" color="white">
               PREMIUM SAKE TRIAL
             </Heading>
-            <Heading as="h4" variant="h4" color="white">
+            <Heading
+              as="h4"
+              variant="h4"
+              color="white"
+              style={{ textAlign: "center" }}
+            >
               SUBSCRIPTION FOR A LIMITED TIME
             </Heading>
 
@@ -131,7 +141,7 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               <Flex
                 sx={{
                   flexDirection: ["column", "column", "row", "row"],
-                  mt: 2,
+                  my: 2,
                   justifyContent: [
                     "flex-start",
                     "flex-start",
@@ -142,12 +152,16 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               >
                 <Button
                   onClick={handleSubscribe}
-                  sx={{ flex: ["none", "none", "none", "none"] }}
+                  sx={{
+                    flex: "none",
+                    borderRadius: 15,
+                  }}
                 >
                   <Text>Sign up</Text>
                 </Button>
               </Flex>
             </Box>
+
             <Heading as="h4" variant="h4" color="white">
               USE CODE: BTR159 for 15% OFF
             </Heading>
@@ -162,6 +176,7 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               *Your subscription will automatically end after 3 months.
             </Text>
           </Flex>
+
           <Box
             pl={5}
             sx={{
@@ -174,7 +189,6 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               sx={{
                 bottom: "0px",
                 left: "45%",
-
                 height: "calc(100vh - 70px)",
                 position: "fixed",
                 right: ["0px", "0px", "0px", "0px"],

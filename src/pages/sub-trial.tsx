@@ -162,7 +162,12 @@ const SubTrialPage: React.FC<ReplaceComponentRendererArgs["props"]> = props => {
               </Flex>
             </Box>
 
-            <Heading as="h4" variant="h4" color="white">
+            <Heading
+              as="h4"
+              variant="h4"
+              color="white"
+              style={{ textAlign: "center" }}
+            >
               USE CODE: BTR159 for 15% OFF
             </Heading>
             <Text

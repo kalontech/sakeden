@@ -18,6 +18,12 @@ const excludedDates = [
   new Date(2021, 1, 15),
   new Date(2021, 1, 16),
   new Date(2021, 1, 17),
+  // others
+  new Date(2021, 6, 1),
+  new Date(2021, 8, 22),
+  new Date(2021, 9, 14),
+  new Date(2021, 11, 25),
+  new Date(2021, 11, 27),
 ]
 
 export const getDeliveryTime = (

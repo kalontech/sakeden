@@ -60,9 +60,7 @@ const PACKAGING_DESCRIPTION = {
 
 const CheckoutPopup: React.FC = () => {
   const { checkout, client, setIsCheckoutVisible } = useContext(AppContext)
-  const [deliveryDate, setDeliveryDate] = useState<Date>(
-    getDeliveryTime(checkout),
-  )
+  const [deliveryDate, setDeliveryDate] = useState<Date>()
   const [additionalNotes, setAdditionalNotes] = useState("")
   const [discountCode, setDiscountCode] = useState("")
   const [giftCardNote, setGiftCardNote] = useState("")

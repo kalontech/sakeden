@@ -11,6 +11,17 @@ import { Box, Button, Flex, Heading, Text, Textarea } from "theme-ui"
 import AppContext from "../app-context"
 
 const excludedDates = [
+  // 2023 chinese new year
+  new Date(2023, 1, 19),
+  new Date(2023, 1, 20),
+  new Date(2023, 1, 21),
+  new Date(2023, 1, 23),
+  new Date(2023, 1, 24),
+  new Date(2023, 1, 25),
+  new Date(2023, 1, 26),
+  new Date(2023, 1, 27),
+  new Date(2023, 1, 28),
+  new Date(2023, 1, 30),
   // chinese new year
   new Date(2021, 1, 11),
   new Date(2021, 1, 12),
